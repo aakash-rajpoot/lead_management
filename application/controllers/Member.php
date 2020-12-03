@@ -12,7 +12,9 @@ class Member extends CI_Controller {
     }
     
     public function index(){
+        $this->load->view('templates/admin_header');
         $this->load->view('member/total_members');
+        $this->load->view('templates/admin_footer');
     }
 
 }
