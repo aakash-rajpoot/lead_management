@@ -89,9 +89,11 @@
                                         </div></a>
                                     </li>
                                     <li class="c-menu__item has-submenu" data-toggle="tooltip"> 
+                                    <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
                                             <div class="c-menu-item__title"><span>Add Member</span></div>
                                         </div>
+                                        </a>
                                     </li>
                                 </ul>
                                     </div>
