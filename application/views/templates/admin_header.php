@@ -75,32 +75,27 @@
                                 <div class="c-menu-item__title"><span>Profile</span></div>
                             </div>
                         </li>
-                        <!-- <li class="c-menu__item is-active" data-toggle="tooltip" title="Members">
-                            <div class="c-menu__item__inner"><i class="fa fa-plane"></i>
-                                <div class="c-menu-item__title"><span>Members</span></div>
-                            </div>
-                        </li> -->
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Members">
-                            <a href="<?=base_url('index.php/member')?>">
                                 <div class="c-menu__item__inner"><i class="fa fa-users"></i>
                                     <div class="c-menu-item__title"><span>Members</span></div>
-                                    </a>
                                 </div>
 
-                                    <div class="c-menu-item__expand js-expand-submenu"><i class="fa fa-angle-down"></i>
-                                    <ul><li class="c-menu__item " data-toggle="tooltip"> <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
-                                    <div class="c-menu-item__title"><span>Lead</span></div>
-                                </div></li>
-                                    <li class="c-menu__item has-submenu" data-toggle="tooltip">  <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
-                                    <div class="c-menu-item__title"><span>Lead</span></div>
-                                </div></li>
-                                    <li class="c-menu__item has-submenu" data-toggle="tooltip"> <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
-                                    <div class="c-menu-item__title"><span>Lead</span></div>
-                                </div></li>
-                                    <li class="c-menu__item has-submenu" data-toggle="tooltip"> <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
-                                    <div class="c-menu-item__title"><span>Lead</span></div>
-                                </div></li>
-                                    </ul>
+                                <div class="c-menu-item__expand js-expand-submenu"><i class="fa fa-angle-down"></i>
+                                <ul>
+                                    <li class="c-menu__item " data-toggle="tooltip">
+                                    <a href="<?=base_url('index.php/member')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
+                                             <div class="c-menu-item__title"><span>All Members</span></div>
+                                        </div></a>
+                                    </li>
+                                    <li class="c-menu__item has-submenu" data-toggle="tooltip"> 
+                                    <a href="<?=base_url('index.php/member/add_member')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
+                                            <div class="c-menu-item__title"><span>Add Member</span></div>
+                                        </div>
+                                        </a>
+                                    </li>
+                                </ul>
                                     </div>
                             
                         
