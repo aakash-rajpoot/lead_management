@@ -23,6 +23,7 @@ class Admin extends CI_Controller {
         if(isset($_POST['admin-login']) && $this->form_validation->run()){
             $user = $query->row_array();
 			if(!empty($user)) {
+                $this->session->set_userdata($user);
 				redirect('admin/admin_dashboard/');
             }
         }
@@ -44,40 +45,9 @@ class Admin extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
-
-    function send_sms($phone_number, $verification_code) {
-    
-        $apiKey = urlencode('Jz0sPt9cSBc-5uSObptlg2rnrvqAHHiaYKNCBSjxll');
-
-        $phone_number = '9643293056';
-
-        $verification_code = rand('10000','99999');
-    
-        $sender = urlencode('SPMKTC');
-    
-        $message = rawurlencode("Dear Customer, kindly enter this OTP ".$verification_code." to register at Supermarkeet.com. this will be valid for next 15 minutes.");
-    
-        $data = array('apikey' => $apiKey, 'numbers' => $phone_number, 'sender' => $sender, 'message' => $message);
-
-        $ch = curl_init('https://api.textlocal.in/send/');
-    
-        curl_setopt($ch, CURLOPT_POST, true);
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $response = curl_exec($ch);
-
-        curl_close($ch);
-        
-        echo $response;
-
-    }
-  
     function logout(){
-
-        
+        $this->session->sess_destroy();
+		redirect('admin');
     }
 
 
