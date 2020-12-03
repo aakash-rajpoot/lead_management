@@ -1,39 +1,133 @@
-<style>
-    .fields{
-        margin:20px;
-    }
-    .main{
-        margin:200px 300px;
-        border:1px solid grey;
-    }
-    .error{
-        color:red;
-        font-size:18px;
-    }
-    .error_validation{
-        color:red;
-        font-size:16px;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<title> square</title>
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src='https://use.fontawesome.com/2188c74ac9.js'></script>
+<head>
 
+
+<style>
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+:root {
+  --primary-color: white;
+  --secondary-color: #4caf50;
+  --bg-color: rgba(0, 0, 0, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: url(https://picsum.photos/2500/1667?image=353) no-repeat;
+  background-size: auto;
+  background-position-y: 30%;
+}
+
+/*--------------------------------------------------------------
+# Login
+--------------------------------------------------------------*/
+.login-box {
+  /* width: 320px; */
+  padding: 20px;
+  margin-top:316px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg-color);
+  box-shadow: 0 15px 25px var(--bg-color);
+  border-radius: 10px;
+}
+
+.login-box h1 {
+  font-size: 30px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  padding: 13px 0;
+  text-align: center;
+}
+
+.textbox {
+  width: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  margin: 8px 0 30px 0;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.textbox i {
+  width: 26px;
+  float: left;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.textbox input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 18px;
+  width: 80%;
+  float: left;
+  margin: 0 10px;
+  color: var(--primary-color);
+}
+
+.btn {
+  width: 100%;
+  height: 50px;
+  background: none;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  color: var(--primary-color);
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 0;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <?php echo form_open('',array('method' => 'post','novalidate'=>'novalidate')); ?>
-<div class="main"> 
-    <div class="error_validation">
+<div class="error_validation">
         <?= validation_errors(); ?> 
-    </div> 
-    <div class="fields">
-        <h1>Admin Login</h1>
-    </div> 
-    <div class="fields">
-        <label for="email">Email ID:</label>
-        <input type="text" name="email" id="email"><sup class='error'>*</sup>
     </div>
-    <div class="fields">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password"><sup class='error'>*</sup>
-    </div>
-    <div class="fields">
-        <button type="submit" name="admin-login">Login</button>
-    </div>
+<!-- login -->
+<div class="login-box">
+  <h1>Admin Login</h1>
+
+  <!-- ======= Username ======= -->
+  <div class="textbox">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <input type="text" name="email" id="email"><sup class='error'>*</sup>
+  </div>
+
+  <!-- ======= Password ======= -->
+  <div class="textbox">
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <input type="password" name="password" id="password"><sup class='error'>*</sup>
+  </div>
+
+  <!-- ======= Sign in ======= -->
+  <button type="submit" class="btn btn-primary" name="admin-login">Login</button>
 </div>
 <?php echo form_close(); ?>
+</div>
+</div>
+</div>
+</body>
+</html>
