@@ -72,7 +72,11 @@ class Admin extends CI_Controller {
         echo $response;
 
     }
-    
+  
+    function logout(){
+
+        
+    }
 
 
 
