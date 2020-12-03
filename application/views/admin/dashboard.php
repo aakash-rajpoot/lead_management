@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> square1
     <main class="l-main" id="table2">
         <div class="content-wrapper content-wrapper--with-bg">
             <h1 class="page-title">Dashboard</h1>

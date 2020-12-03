@@ -39,7 +39,11 @@
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
 </head>
+<<<<<<< HEAD
 <div style="margin-top:150px">
+=======
+<div style="margin-top:150px; margin-bottom:150px;">
+>>>>>>> square1
     <body class="sidebar-is-reduced">
         <header class="l-header">
             <div class="l-header__inner clearfix">
