@@ -17,4 +17,8 @@ class Member extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    function add_member(){
+        $this->load->view('member/add_new_member');
+    }
+
 }
