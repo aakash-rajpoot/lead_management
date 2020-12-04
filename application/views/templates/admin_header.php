@@ -38,16 +38,21 @@
 
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
+  <style>
+  .submenus{
+    margin-left: -20px;
+  }
+  </style>
 </head>
 <div style="margin-top:150px margin-bottom:150px">
     <body class="sidebar-is-reduced">
         <header class="l-header">
             <div class="l-header__inner clearfix">
-                <div class="c-header-icon js-hamburger">
+                <div class="c-header-icon js-hamburger" title="Open">
                     <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
                 </div>
                 <div class="c-header-icon has-dropdown">
-                    <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell"></i>
+                    <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i>
                     <div class="c-dropdown c-dropdown--notifications">
                         <div class="c-dropdown__header"></div>
                         <div class="c-dropdown__content"></div>
@@ -58,8 +63,8 @@
                 </div>
                 <div class="header-icons-group">
                     <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div>
-                    <div class="c-header-icon user"><span class=" c-badge--header-icon animated shake"></span><i class="glyphicon glyphicon-user"></i></div>
-                    <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off"></i></a></div>
+                    <div class="c-header-icon user"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i></div>
+                    <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div>
                 </div>
             </div>
         </header>
@@ -80,23 +85,25 @@
                                     <div class="c-menu-item__title"><span>Members</span></div>
                                 </div>
 
-                                <div class="c-menu-item__expand js-expand-submenu"><i class="fa fa-angle-down"></i>
-                                <ul>
-                                    <li class="c-menu__item " data-toggle="tooltip">
-                                    <a href="<?=base_url('index.php/member')?>">
-                                        <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
-                                             <div class="c-menu-item__title"><span>All Members</span></div>
+                                <div class="c-menu-item__expand js-expand-submenu">
+                                <!-- <i class="fa fa-angle-down"></i> -->
+                                </div>
+                                <ul class="submenus">
+                                    <li class="c-menu__item " data-toggle="tooltip" title="All Member">
+                                     <a href="<?=base_url('index.php/member')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                             <div class="c-menu-item__title  sub-menus"><span>All Members</span></div>
                                         </div></a>
                                     </li>
-                                    <li class="c-menu__item has-submenu" data-toggle="tooltip"> 
+                                    <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Add Member"> 
                                     <a href="<?=base_url('index.php/member/add_member')?>">
-                                        <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
-                                            <div class="c-menu-item__title"><span>Add Member</span></div>
+                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                            <div class="c-menu-item__title sub-menus"><span>Add Member</span></div>
                                         </div>
                                         </a>
                                     </li>
                                 </ul>
-                                    </div>
+                                    
                             
                         
                         </li>
