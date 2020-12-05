@@ -40,7 +40,7 @@
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
   <style>
   .submenus{
-    margin-left: -20px;
+    margin-left: -25px;
   }
   </style>
 </head>
@@ -84,7 +84,7 @@
                                 <div class="c-menu__item__inner"><i class="fa fa-users"></i>
                                     <div class="c-menu-item__title"><span>Members</span></div>
                                 </div>
-
+                                </li>
                                 <div class="c-menu-item__expand js-expand-submenu">
                                 <!-- <i class="fa fa-angle-down"></i> -->
                                 </div>
@@ -104,9 +104,9 @@
                                     </li>
                                 </ul>
                                     
-                            
+                               
                         
-                        </li>
+                       
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Lead">
                             <a href="#table2">
                                 <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
@@ -186,6 +186,20 @@
 
     Dashboard.init();
     //# sourceURL=pen.js
+</script>
+<script>
+/* navigation sub-menu display */
+
+// Change 'hover' to 'click' if you want to
+
+
+// $('.slideout-menu li').click(
+//         function() {
+//              $(this).children('.mobile-sub-menu').show();
+//         },
+//         function() {
+//               $(this).children('.mobile-sub-menu').hide();
+//     }); 
 </script>
 
 </html>
