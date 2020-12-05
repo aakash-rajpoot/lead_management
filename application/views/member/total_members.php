@@ -56,9 +56,9 @@
                             <td><?//=$totalmember['other_info']?></td>
                             <td><?//=$totalmember['reference']?></td> -->
                             <td class="edit-icon">
-                                <i><a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>" class="btn btn-primary btn-sm mb-3 fa fa-pencil-square-o" data-toggle="modal" aria-hidden="true"></a></i>&nbsp
-                                <i><a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash deleteThis" aria-hidden="true"></a></i>
-                                <i><a href="#" onClick = "hardDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_hard_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash deleteThis" aria-hidden="true"></a></i>
+                                <i><a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>" class="fa fa-pencil-square-o" data-toggle="modal" aria-hidden="true"></a></i>&nbsp
+                                <i><a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a></i>
+                                <i><a href="#" onClick = "hardDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_hard_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a></i>
                             </td>
                         </tr>
                     </tbody>
