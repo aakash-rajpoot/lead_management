@@ -19,7 +19,7 @@
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="container">
             <div class="mt-5">
-                <table id="dt-all-checkbox" class="table" cellspacing="0" width="100%">
+                <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>S.No</th>

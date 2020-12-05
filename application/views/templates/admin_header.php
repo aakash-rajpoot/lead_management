@@ -40,8 +40,53 @@
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
   <style>
   .submenus{
-    margin-left: -20px;
+    margin-left: -25px;
   }
+
+  /* add */
+  /* Dropdown Button */
+.dropbtn {
+
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  margin-top:173px;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 135px;
+
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 5px 16px;
+  text-decoration: none;
+  text-align:center;
+ 
+  display: block;
+}
+
+
+/* Change color of dropdown links on hover */
+/* .dropdown-content a:hover {
+    margin-left: 30px;
+} */
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+/* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+
   </style>
 </head>
 <div style="margin-top:150px margin-bottom:150px">
@@ -63,7 +108,32 @@
                 </div>
                 <div class="header-icons-group">
                     <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div>
-                    <div class="c-header-icon user"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i></div>
+                    <div class="dropdown">
+                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i>
+                    <div class="dropdown-content">
+                    <div class="row">
+                    <a href="#">
+                    <div class="col-md-12 mb-1 pt-2">
+                   <h5>View Profile</h5>
+                </div>
+                </a>
+                <a href="#">
+                    <div class="col-md-12 mb-1">
+                    <h5>Change Password</h5>
+                </div>
+                </a>
+                <a href="#">
+                    <div class="col-md-12 mb-1">
+                    <h5>Logout</h5>
+                </div>
+                </a>
+                    </div>
+    <!-- Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a> -->
+  </div>
+  </div>
+                    </div>
                     <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div>
                 </div>
             </div>
@@ -80,22 +150,22 @@
                                 <div class="c-menu-item__title"><span>Profile</span></div>
                             </div>
                         </li>
-                        <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Members">
+                        <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Members">
                                 <div class="c-menu__item__inner"><i class="fa fa-users"></i>
                                     <div class="c-menu-item__title"><span>Members</span></div>
                                 </div>
-
+                                </li>
                                 <div class="c-menu-item__expand js-expand-submenu">
                                 <!-- <i class="fa fa-angle-down"></i> -->
                                 </div>
                                 <ul class="submenus">
-                                    <li class="c-menu__item " data-toggle="tooltip" title="All Member">
+                                    <li class="c-menu__item "  title="All Member">
                                      <a href="<?=base_url('index.php/member')?>">
                                         <div class="c-menu__item__inner"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                              <div class="c-menu-item__title  sub-menus"><span>All Members</span></div>
                                         </div></a>
                                     </li>
-                                    <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Add Member"> 
+                                    <li class="c-menu__item" title="Add Member"> 
                                     <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"></i>
                                             <div class="c-menu-item__title sub-menus"><span>Add Member</span></div>
@@ -104,9 +174,9 @@
                                     </li>
                                 </ul>
                                     
-                            
+                               
                         
-                        </li>
+                       
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Lead">
                             <a href="#table2">
                                 <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
@@ -186,6 +256,20 @@
 
     Dashboard.init();
     //# sourceURL=pen.js
+</script>
+<script>
+/* navigation sub-menu display */
+
+// Change 'hover' to 'click' if you want to
+
+
+// $('.slideout-menu li').click(
+//         function() {
+//              $(this).children('.mobile-sub-menu').show();
+//         },
+//         function() {
+//               $(this).children('.mobile-sub-menu').hide();
+//     }); 
 </script>
 
 </html>
