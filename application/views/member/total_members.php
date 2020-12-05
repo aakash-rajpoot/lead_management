@@ -18,7 +18,7 @@
 <div id="table1">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="container">
-            <div class="mt-5">
+            <div class="mt-5" style="margin-top:110px;margin-left:50px;">
                 <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -28,11 +28,11 @@
                             <th class="th-sm">Phone Number</th>
                             <th class="th-sm">Alternate Phone Number</th>
                             <th class="th-sm">Property Of Address</th>
-                            <!-- <th class="th-sm">Client Address</th>
+                            <th class="th-sm">Client Address</th>
                             <th class="th-sm">Role</th>
                             <th class="th-sm">Remarks</th>
                             <th class="th-sm">Other Information</th>
-                            <th class="th-sm">Reference By</th> -->
+                            <th class="th-sm">Reference By</th>
                             <th class="th-sm">Action</th>
                         </tr>
                     </thead>
@@ -50,15 +50,15 @@
                             <td><?=$totalmember['phone']?></td>
                             <td><?=$totalmember['alt_phone']?></td>
                             <td><?=$totalmember['property_address']?></td>
-                            <!-- <td><?//=$totalmember['client_address']?></td>
-                            <td><?//=$totalmember['role']?></td>
-                            <td><?//=$totalmember['remark']?></td>
-                            <td><?//=$totalmember['other_info']?></td>
-                            <td><?//=$totalmember['reference']?></td> -->
+                            <td><?=$totalmember['client_address']?></td>
+                            <td><?=$totalmember['role']?></td>
+                            <td><?=$totalmember['remark']?></td>
+                            <td><?=$totalmember['other_info']?></td>
+                            <td><?=$totalmember['reference']?></td>
                             <td class="edit-icon">
-                                <i><a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>" class="fa fa-pencil-square-o" data-toggle="modal" aria-hidden="true"></a></i>&nbsp
-                                <i><a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a></i>
-                                <i><a href="#" onClick = "hardDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_hard_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a></i>
+                                <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>" class="fa fa-pencil-square-o" data-toggle="modal" aria-hidden="true"></a>&nbsp
+                                <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a>
+                                <a href="#" onClick = "hardDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_hard_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a>
                             </td>
                         </tr>
                     </tbody>
