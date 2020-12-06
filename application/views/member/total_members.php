@@ -18,6 +18,7 @@
 <div id="table1">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="container">
+        <div class="wrap-career " style="margin-top:110px;margin-left:50px;">
             <div class="mt-5">
                 <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
                     <thead>
@@ -67,6 +68,7 @@
                 </table>
             </div>
         </div>
+    </div>
     </div>
 </div>
 

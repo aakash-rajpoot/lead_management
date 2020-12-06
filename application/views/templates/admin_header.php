@@ -56,10 +56,10 @@
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
-  margin-top:173px;
+  margin-top:218px;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 135px;
+  min-width: 153px;
 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -128,12 +128,10 @@
                 </div>
                 </a>
                     </div>
-    <!-- Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a> -->
+  
   </div>
   </div>
-                    </div>
+    </div>
                     <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div>
                 </div>
             </div>
@@ -178,11 +176,9 @@
                         
                        
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Lead">
-                            <a href="#table2">
                                 <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
                                     <div class="c-menu-item__title"><span>Lead</span></div>
                                 </div>
-                            </a>
                         </li>
   
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
@@ -223,9 +219,9 @@
             $(global.menuClass + " .is-active").removeClass("is-active");
             $(el).addClass("is-active");
 
-            if (hasSubmenu) {
-            	$(el).find("ul").slideDown();
-            }
+            // if (hasSubmenu) {
+            // 	$(el).find("ul").slideDown();
+            // }
         };
 
         var sidebarChangeWidth = function sidebarChangeWidth() {
