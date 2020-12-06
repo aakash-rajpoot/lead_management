@@ -3,7 +3,7 @@
 <title> square</title>
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src='https://use.fontawesome.com/2188c74ac9.js'></script>
+
 <head>
 
 
@@ -34,14 +34,15 @@ body {
 # Login
 --------------------------------------------------------------*/
 .login-box {
-  /* width: 320px; */
   padding: 50px;
   margin-top:316px;
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--bg-color);
+
+  background-color:   #212529);
+  /* background-color: var(--bg-color); */
   box-shadow: 0 15px 25px var(--bg-color);
   border-radius: 10px;
 }
@@ -129,5 +130,6 @@ body {
 </div>
 </div>
 </div>
+<script src='https://use.fontawesome.com/2188c74ac9.js'></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="wrap-career " style="margin-top:110px;margin-left:50px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Member</h2>
@@ -93,7 +94,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-primary" name="member_submit" type="submit">Submit</button>
+                <button class="btn btn-primary btn-lg" name="member_submit" type="submit">Submit</button>
             </div>
         </form>
     </div>
