@@ -112,21 +112,21 @@
                     <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i>
                     <div class="dropdown-content">
                     <div class="row">
-                    <a href="#">
-                    <div class="col-md-12 mb-1 pt-2">
-                   <h5>View Profile</h5>
-                </div>
-                </a>
-                <a href="#">
-                    <div class="col-md-12 mb-1">
-                    <h5>Change Password</h5>
-                </div>
-                </a>
-                <a href="#">
-                    <div class="col-md-12 mb-1">
-                    <h5>Logout</h5>
-                </div>
-                </a>
+                        <a href="<?=base_url('index.php/admin/view_profile');?>">
+                            <div class="col-md-12 mb-1 pt-2">
+                                <h5>View Profile</h5>
+                            </div>
+                        </a>
+                        <a href="<?=base_url('index.php/admin/change_pass');?>">
+                            <div class="col-md-12 mb-1">
+                                <h5>Change Password</h5>
+                            </div>
+                        </a>
+                        <a href="<?=base_url('index.php/admin/logout');?>">
+                            <div class="col-md-12 mb-1">
+                                <h5>Logout</h5>
+                            </div>
+                        </a>
                     </div>
   
   </div>
