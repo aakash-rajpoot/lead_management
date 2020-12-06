@@ -12,13 +12,26 @@
 
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
+    <style>
+   .ex1 {
+ 
+  /* width: 100%; */
+  overflow-x: scroll;
+  /* overflow-y: scroll;
+  height:400px; */
+}
+.ex2{
+  overflow-y: scroll;
+  height:600px;
+}
+    </style>
 
 </head>
 <body>
-<div id="table1">
+<div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="container">
-            <div class="mt-5" style="margin-top:110px;margin-left:50px;">
+            <div class="mt-5 ex1" style="margin-top:110px;margin-left:50px;">
                 <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>

@@ -138,7 +138,7 @@
         </header>
         <div class="l-sidebar">
             <div class="logo">
-                <div class="logo__txt"><img src="<?=base_url('media/kritak_logo.png')?>" class="logo-img"></div>
+                <div class="logo__txt"><img src="<?=base_url('media/kritak_logo.png')?>" class="logo-img" title="logo"></div>
             </div>
             <div class="l-sidebar__content">
                 <nav class="c-menu js-menu">
@@ -180,6 +180,21 @@
                                     <div class="c-menu-item__title"><span>Lead</span></div>
                                 </div>
                         </li>
+                        <ul class="submenus">
+                                    <li class="c-menu__item "  title="All Lead">
+                                     <a href="#">
+                                        <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"></i>
+                                             <div class="c-menu-item__title  sub-menus"><span>All Lead</span></div>
+                                        </div></a>
+                                    </li>
+                                    <li class="c-menu__item" title="Add Lead"> 
+                                    <a href="<?=base_url('index.php/lead')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                            <div class="c-menu-item__title sub-menus"><span>Add Lead</span></div>
+                                        </div>
+                                        </a>
+                                    </li>
+                                </ul>
   
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
                             <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
