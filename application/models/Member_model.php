@@ -11,12 +11,11 @@ class Member_model extends CI_Model {
             'phone' => $this->input->post('phone'),
             'email' => $this->input->post('email'),
             'alt_phone' => $this->input->post('alt_phone'),
-            'property_address' => $this->input->post('property_address'),
-            'client_address' => $this->input->post('client_address'),
+            'gender' => $this->input->post('gender'),
+            'dob' => $this->input->post('dob'),
             'role' => $this->input->post('role'),
-            'remark' => $this->input->post('remark'),
-            'other_info' => $this->input->post('other_info'),
-            'reference' => $this->input->post('reference')
+            'joining_date' => $this->input->post('joining_date'),
+            'other_info' => $this->input->post('other_info')
         );
         $this->db->insert('sq_members',$member);
    }
@@ -29,7 +28,7 @@ class Member_model extends CI_Model {
     }
 
     function soft_delete_member($id){
-         $this->db->set('status',0);
+        $this->db->set('status',0);
         $this->db->where('id', $id);
         return $this->db->update('sq_members');
     }
@@ -37,28 +36,26 @@ class Member_model extends CI_Model {
     function hard_delete_member($id){
        $this->db->where('id', $id);
        return $this->db->delete('sq_members');
+    }
+
+    function update_member_details($id){
+        $member = array(
+            'name' => $this->input->post('name'),
+            'phone' => $this->input->post('phone'),
+            'email' => $this->input->post('email'),
+            'alt_phone' => $this->input->post('alt_phone'),
+            'gender' => $this->input->post('gender'),
+            'dob' => $this->input->post('dob'),
+            'role' => $this->input->post('role'),
+            'joining_date' => $this->input->post('joining_date'),
+            'other_info' => $this->input->post('other_info')
+        );
+            $this->db->set($member);
+            $this->db->where('id', $id);
+            return $this->db->update('sq_members',$member);
    }
 
-   function update_member_details($id){
-
-    $member = array(
-        'name' => $this->input->post('name'),
-        'phone' => $this->input->post('phone'),
-        'email' => $this->input->post('email'),
-        'alt_phone' => $this->input->post('alt_phone'),
-        'property_address' => $this->input->post('property_address'),
-        'client_address' => $this->input->post('client_address'),
-        'role' => $this->input->post('role'),
-        'remark' => $this->input->post('remark'),
-        'other_info' => $this->input->post('other_info'),
-        'reference' => $this->input->post('reference')
-    );
-        $this->db->set($member);
-        $this->db->where('id', $id);
-        return $this->db->update('sq_members',$member);
-   }
-
-    function fetch_all_members($id){
+    function fetch_member_data($id){
         $this->db->select("*");
         $this->db->from('sq_members');
         $this->db->where('id',$id);

@@ -1,7 +1,6 @@
-
 <div class="container">
     <div class="wrap-career " style="margin-top:110px;margin-left:50px;">
-        <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Member</h2>
+        <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Member Details</h2>
         <?php echo form_open('member/add_member',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
         <?php echo validation_errors(); ?> 
             <div class="row">
@@ -38,17 +37,22 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="property_address">Property of address <span class="text-danger font-weight-medium">*</span></label>
-                    <textarea class="form-control" rows="3" name="property_address" id="property_address"></textarea>
+                    <label class="label-input" for="dob">Birth Date <span class="text-danger font-weight-medium">*</span></label>
+                    <input type="date" class="form-control" rows="3" name="dob" id="dob"/>
                     <div class="invalid-feedback">
-                        Valid Property of address is required.
+                        Valid Gender is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="client_address">Client Address <span class="text-danger font-weight-medium">*</span></label>
-                    <textarea class="form-control" rows="3" name="client_address" id="client_address"></textarea>
+                    <label class="label-input" for="gender">Gender</label>
+                    <select class="custom-select d-block w-100" name="gender" id="gender">
+                        <option>---Select---</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>    
+                    </select>
                     <div class="invalid-feedback">
-                        Please enter a valid Client Address.
+                        Please provide a valid gender.
                     </div>
                 </div>
             </div>
@@ -79,22 +83,15 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="remark">Remarks<span class="text-danger font-weight-medium">*</span></label>
-                    <input type="text" class="form-control" name="remark" id="remark">
+                    <label class="label-input" for="joining_date">Date of Joining<span class="text-danger font-weight-medium">*</span></label>
+                    <input type="date" class="form-control" name="joining_date" id="joining_date">
                     <div class="invalid-feedback">
-                        Valid name is remark.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="label-input" for="reference">Reference by – only for sales team <span class="text-danger font-weight-medium">*</span></label>
-                    <input type="email" class="form-control" name="reference" id="reference">
-                    <div class="invalid-feedback">
-                        Please enter a valid reference by.
+                        Valid name is Date of Joining.
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-primary btn-lg" name="member_submit" type="submit">Submit</button>
+                <button class="btn btn-primary" name="member_submit" type="submit">Submit</button>
             </div>
         </form>
     </div>

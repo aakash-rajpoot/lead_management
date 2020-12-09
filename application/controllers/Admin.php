@@ -60,7 +60,7 @@ class Admin extends CI_Controller {
 		if(isset($_POST['admin_change_password']) && $this->form_validation->run()){
                 $new_pass = md5($this->input->post('new_pass'));
                 $this->admin_model->change_password($new_pass);
-                redirect('admin/dashboard');
+                redirect('admin/logout');
             }
 		$this->load->view('admin/change_password');
 		$this->load->view('templates/admin_footer');
@@ -74,6 +74,41 @@ class Admin extends CI_Controller {
 		}
         $this->load->view('templates/admin_footer');
     }
+
+    function view_profile(){
+        $this->load->view('templates/admin_header');
+        $data = $this->admin_model->fetch_admin_profile_details();
+        print_r($data['profile_image']);die;
+        if($data['profile_image'] == ''){
+            $config['upload_path'] = './media/images';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['width']  = 150;
+            $config['height'] = 50;
+
+            $this->load->library('upload',$config);
+            $this->upload->initialize($config);
+           
+            if($this->upload->do_upload('profile_image')){
+                $_POST['profile_image'] = $this->upload->data('file_name');
+            }else{
+                $error = array('error' => $this->upload->display_errors());
+            }
+        }
+   
+        $this->form_validation->set_rules('fname', 'First name','min_length[2]|max_length[50]|regex_match[/^[A-Za-z]+$/]');
+        $this->form_validation->set_rules('lname', 'Last name','min_length[2]|max_length[50]|regex_match[/^[A-Za-z]+$/]');
+        $this->form_validation->set_rules('mobile', 'Mobile number','min_length[10]|max_length[12]|regex_match[/^[1]?[6789]\d{9}$/]');
+
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        $this->form_validation->set_message('required', 'Enter %s');
+
+        if(isset($_POST['update_profile']) && $this->form_validation->run()){
+            $this->admin_model->profile_update();
+            redirect('admin/view_profile');
+        }
+		$this->load->view('admin/view_profile', $data);
+		$this->load->view('templates/admin_footer');	
+	}
 
 
 }

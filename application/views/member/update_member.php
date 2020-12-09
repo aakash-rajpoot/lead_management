@@ -37,17 +37,22 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="property_address">Property of address <span class="text-danger font-weight-medium">*</span></label>
-                    <textarea class="form-control" rows="3" name="property_address" id="property_address"><?=$property_address;?></textarea>
+                    <label class="label-input" for="dob">Birth Date <span class="text-danger font-weight-medium">*</span></label>
+                    <input type="date" class="form-control" rows="3" name="dob" id="dob" value="<?=$dob;?>" />
                     <div class="invalid-feedback">
-                        Valid Property of address is required.
+                        Valid Gender is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="client_address">Client Address <span class="text-danger font-weight-medium">*</span></label>
-                    <textarea class="form-control" rows="3" name="client_address" id="client_address" ><?=$client_address;?></textarea>
+                    <label class="label-input" for="gender">Gender</label>
+                    <select class="custom-select d-block w-100" name="gender" id="gender">
+                        <option>---Select---</option>
+                        <option <?php if(trim(strtolower($gender)) === trim(strtolower("Male"))){ echo 'Selected'; } ?>>Male</option>
+                        <option <?php if(trim(strtolower($gender)) === trim(strtolower("Female"))){ echo 'Selected'; } ?>>Female</option>
+                        <option <?php if(trim(strtolower($gender)) === trim(strtolower("Other"))){ echo 'Selected'; } ?>>Other</option>    
+                    </select>
                     <div class="invalid-feedback">
-                        Please enter a valid Client Address.
+                        Please provide a valid gender.
                     </div>
                 </div>
             </div>
@@ -78,17 +83,10 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="remark">Remarks<span class="text-danger font-weight-medium">*</span></label>
-                    <input type="text" class="form-control" name="remark" id="remark" value="<?=$remark;?>">
+                    <label class="label-input" for="joining_date">Date of Joining<span class="text-danger font-weight-medium">*</span></label>
+                    <input type="date" class="form-control" name="joining_date" id="joining_date" value="<?=$joining_date;?>">
                     <div class="invalid-feedback">
-                        Valid name is remark.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="label-input" for="reference">Reference by – only for sales team <span class="text-danger font-weight-medium">*</span></label>
-                    <input type="email" class="form-control" name="reference" id="reference" value="<?=$reference;?>">
-                    <div class="invalid-feedback">
-                        Please enter a valid reference by.
+                        Valid name is Date of Joining.
                     </div>
                 </div>
             </div>

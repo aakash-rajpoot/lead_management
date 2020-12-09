@@ -6,7 +6,7 @@ class Admin_model extends CI_Model {
     }
 
    function login_verification($email, $password){
-        $this->db->select("name,email");
+        $this->db->select("username,email");
         $this->db->from('sq_admin');
         $this->db->where(array('email'=>$email,'password'=>$password,'role_id'=>'1'));
         return $this->db->get();
@@ -27,6 +27,30 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get();
         return $query->row_array();
     }
+
+    function fetch_admin_profile_details(){
+        $this->db->select('*');
+        $this->db->from('sq_admin');
+        $this->db->where('role_id', 1);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    function profile_update(){
+        $data = array(
+            'fname' => $this->input->post('fname'),
+            'lname' => $this->input->post('lname'),
+            'mobile' => $this->input->post('mobile'),
+            'dob' => $this->input->post('dob'),
+            'address' => $this->input->post('address'),
+            'gender' => $this->input->post('gender'),
+            'profile_image' => $this->input->post('profile_image')
+        );  
+        $this->db->set($data);
+        $this->db->where('role_id', 1);
+        return $this->db->update('sq_admin',$data);
+    }
+
 
 
 

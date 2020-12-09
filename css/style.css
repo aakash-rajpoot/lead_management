@@ -566,3 +566,8 @@ th.th-lg.sorting {
 .w-100 {
     font-size: 12px;
 }
+
+.profile_size {
+    width: 230px;
+    height: 230px;
+}
