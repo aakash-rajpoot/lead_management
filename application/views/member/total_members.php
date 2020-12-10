@@ -31,7 +31,7 @@
 <div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="container">
-            <div class="mt-5 ex1" style="margin-top:110px;margin-left:50px;">
+            <div class="mt-5 ex1" style="margin-top:110px;margin-left:120px;">
                 <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -67,9 +67,9 @@
                             <td><?=$totalmember['joining_date']?></td>
                             <td><?=$totalmember['other_info']?></td>
                             <td class="edit-icon">
-                                <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>" class="fa fa-pencil-square-o" data-toggle="modal" aria-hidden="true"></a>&nbsp
-                                <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a>
-                                <a href="#" onClick = "hardDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_hard_data/<?=$totalmember['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a>
+                                <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"></a>&nbsp
+                                <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="Soft delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true"></a>
+                                <a href="#" onClick = "hardDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_hard_data/<?=$totalmember['id'];?>" title="Hard delete" id="delete-<?=$i?>" class="fa fa-trash hard-recode" aria-hidden="true"></a>
                             </td>
                         </tr>
                     </tbody>
