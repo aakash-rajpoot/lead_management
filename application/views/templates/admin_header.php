@@ -49,18 +49,19 @@
                 <div class="c-header-icon js-hamburger" title="Open">
                     <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
                 </div>
-                <div class="c-header-icon has-dropdown">
+                
+                <div class="c-search">
+                    <input class="c-search__input u-input" placeholder="Search..." type="text" />
+                </div>
+                <div class="header-icons-group">
+                    <!-- <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div> -->
+                    <div class="c-header-icon has-dropdown">
                     <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i>
                     <div class="c-dropdown c-dropdown--notifications">
                         <div class="c-dropdown__header"></div>
                         <div class="c-dropdown__content"></div>
                     </div>
                 </div>
-                <div class="c-search">
-                    <input class="c-search__input u-input" placeholder="Search..." type="text" />
-                </div>
-                <div class="header-icons-group">
-                    <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div>
                     <div class="dropdown">
                     <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i>
                     <div class="dropdown-content">
@@ -85,7 +86,7 @@
   </div>
   </div>
     </div>
-                    <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div>
+                    <!-- <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div> -->
                 </div>
             </div>
         </header>
@@ -136,14 +137,21 @@
                         </li>
                         <ul class="submenus">
                                     <li class="c-menu__item "  title="All Lead">
-                                     <a href="#">
+                                     <a href="<?=base_url('index.php/lead')?>">
                                         <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"><span class="icon-titles">&nbsp; &nbsp; All Lead</span></i>
                                              <div class="c-menu-item__title  sub-menus"></div>
                                         </div></a>
                                     </li>
                                     <li class="c-menu__item" title="Add Lead"> 
-                                    <a href="<?=base_url('index.php/lead')?>">
+                                    <a href="<?=base_url('index.php/lead/add_lead')?>">
                                         <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Add Lead</span></i>
+                                            <!-- <div class="c-menu-item__title sub-menus"><span>Add Lead</span></div> -->
+                                        </div>
+                                        </a>
+                                    </li>
+                                    <li class="c-menu__item" title="Assign Lead"> 
+                                    <a href="<?=base_url('index.php/lead/assign_lead')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Lead Assign</span></i>
                                             <!-- <div class="c-menu-item__title sub-menus"><span>Add Lead</span></div> -->
                                         </div>
                                         </a>
