@@ -5,4 +5,5 @@ class Setting_model extends CI_Model {
         $this->load->database();
     }
 
+    
 }

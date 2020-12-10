@@ -189,6 +189,13 @@
                                 </div>
                                 </a>
                             </li>
+                            <li class="c-menu__item" title="Assign Lead"> 
+                            <a href="<?=base_url('index.php/lead/assign_lead')?>">
+                                <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    <div class="c-menu-item__title sub-menus"><span>Assign Lead</span></div>
+                                </div>
+                                </a>
+                            </li>
                         </ul>
   
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">

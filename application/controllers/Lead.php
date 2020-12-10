@@ -84,4 +84,13 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    function assign_lead(){
+        $this->load->view('templates/admin_header');
+        $data = $this->lead_model->fetch_lead_data();
+        $all_leads = $data->result_array();
+        $names['leads'] = $all_leads;
+        $this->load->view('lead/assign_lead',$names);
+        $this->load->view('templates/admin_footer');
+    }
+
 }
