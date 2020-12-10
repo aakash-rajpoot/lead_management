@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="wrap-career " style="margin-top:110px;margin-left:50px;">
+    <div class="wrap-career " style="margin-top:110px;margin-left:120px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Member Details</h2>
         <?php echo form_open('member/add_member',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
         <?php echo validation_errors(); ?> 

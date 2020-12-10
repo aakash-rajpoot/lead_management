@@ -39,53 +39,7 @@
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
   <style>
-
-  .submenus{
-    margin-left: -25px;
-  }
-
-  /* add */
-  /* Dropdown Button */
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  margin-top:218px;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 153px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 5px 16px;
-  text-decoration: none;
-  text-align:center;
-  display: block;
-}
-
-
-/* Change color of dropdown links on hover */
-/* .dropdown-content a:hover {
-    margin-left: 30px;
-} */
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-/* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
-
+  
   </style>
 </head>
 <div style="margin-top:150px margin-bottom:150px">
@@ -95,42 +49,43 @@
                 <div class="c-header-icon js-hamburger" title="Open">
                     <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
                 </div>
+                <div class="c-header-icon has-dropdown">
+                    <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i>
+                    <div class="c-dropdown c-dropdown--notifications">
+                        <div class="c-dropdown__header"></div>
+                        <div class="c-dropdown__content"></div>
+                    </div>
+                </div>
                 <div class="c-search">
                     <input class="c-search__input u-input" placeholder="Search..." type="text" />
                 </div>
                 <div class="header-icons-group">
-                    <div class="c-header-icon has-dropdown">
-                        <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i>
-                        <div class="c-dropdown c-dropdown--notifications">
-                            <div class="c-dropdown__header"></div>
-                            <div class="c-dropdown__content"></div>
-                        </div>
-                    </div>
-                    <!-- <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div> -->
+                    <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div>
                     <div class="dropdown">
-                        <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i>
-                            <div class="dropdown-content">
-                                <div class="row">
-                                    <a href="<?=base_url('index.php/admin/view_profile');?>">
-                                        <div class="col-md-12 mb-1 pt-2">
-                                            <h5>View Profile</h5>
-                                        </div>
-                                    </a>
-                                    <a href="<?=base_url('index.php/admin/change_pass');?>">
-                                        <div class="col-md-12 mb-1">
-                                            <h5>Change Password</h5>
-                                        </div>
-                                    </a>
-                                    <a href="<?=base_url('index.php/admin/logout');?>">
-                                        <div class="col-md-12 mb-1">
-                                            <h5>Logout</h5>
-                                        </div>
-                                    </a>
-                                </div>  
+                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i>
+                    <div class="dropdown-content">
+                    <div class="row">
+                        <a href="<?=base_url('index.php/admin/view_profile');?>">
+                            <div class="col-md-12 mb-1 pt-2">
+                                <h5>View Profile</h5>
                             </div>
-                        </div>
+                        </a>
+                        <a href="<?=base_url('index.php/admin/change_pass');?>">
+                            <div class="col-md-12 mb-1">
+                                <h5>Change Password</h5>
+                            </div>
+                        </a>
+                        <a href="<?=base_url('index.php/admin/logout');?>">
+                            <div class="col-md-12 mb-1">
+                                <h5>Logout</h5>
+                            </div>
+                        </a>
                     </div>
-                <!-- <div class="c-header-icon logout"><a href="<?//=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div> -->
+  
+  </div>
+  </div>
+    </div>
+                    <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div>
                 </div>
             </div>
         </header>
@@ -142,75 +97,81 @@
                 <nav class="c-menu js-menu">
                     <ul class="u-list">
                         <li class="c-menu__item is-active" data-toggle="tooltip" title="Profile">
-                            <div class="c-menu__item__inner"><i class="fa fa-user"></i>
-                                <div class="c-menu-item__title"><span>Profile</span></div>
+                            <div class="c-menu__item__inner"><i class="fa fa-user"> <span class="icon-titles">&nbsp; &nbsp; Profile</span></i>
+                                <div class="c-menu-item__title"></div>
                             </div>
                         </li>
                         <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Members">
-                        <div class="c-menu__item__inner"><i class="fa fa-users"></i>
-                            <div class="c-menu-item__title"><span>Members</span></div>
-                        </div>
-                        </li>
-                        <div class="c-menu-item__expand js-expand-submenu">
-                        <!-- <i class="fa fa-angle-down"></i> -->
-                        </div>
-                        <ul class="submenus">
-                            <li class="c-menu__item "  title="All Member">
-                                <a href="<?=base_url('index.php/member')?>">
-                                <div class="c-menu__item__inner"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                        <div class="c-menu-item__title  sub-menus"><span>All Members</span></div>
-                                </div></a>
-                            </li>
-                            <li class="c-menu__item" title="Add Member"> 
-                            <a href="<?=base_url('index.php/member/add_member')?>">
-                                <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                    <div class="c-menu-item__title sub-menus"><span>Add Member</span></div>
+                                <div class="c-menu__item__inner"><i class="fa fa-users"> <span class="icon-titles">&nbsp; &nbsp;  Members</span></i>
+                                    <!-- <div class="c-menu-item__title"><span>Members</span></div> -->
                                 </div>
-                                </a>
-                            </li>
-                        </ul>
+                                </li>
+                                <!-- <div class="c-menu-item__expand js-expand-submenu">
+                                <i class="fa fa-angle-down"></i>
+                                </div> -->
+                                
+                                <ul class="submenus">
+                                    <li class="c-menu__item "  title="All Member">
+                                     <a href="<?=base_url('index.php/member')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Members</span></i>
+                                             <!-- <div class="c-menu-item__title  sub-menus"><span>All Members</span></div> -->
+                                        </div></a>
+                                    </li>
+                                    <li class="c-menu__item" title="Add Member"> 
+                                    <a href="<?=base_url('index.php/member/add_member')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Member</span></i>
+                                            <!-- <div class="c-menu-item__title sub-menus"><span>Add Member</span></div> -->
+                                        </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                
+                               
+                        
+                       
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Lead">
-                            <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
-                                <div class="c-menu-item__title"><span>Lead</span></div>
-                            </div>
+                                <div class="c-menu__item__inner"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i>
+                                    <!-- <div class="c-menu-item__title"><span>Lead</span></div> -->
+                                </div>
                         </li>
-
                         <ul class="submenus">
-                            <li class="c-menu__item "  title="All Lead">
-                                <a href="<?=base_url('index.php/lead')?>">
-                                <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"></i>
-                                        <div class="c-menu-item__title  sub-menus"><span>All Lead</span></div>
-                                </div></a>
-                            </li>
-                            <li class="c-menu__item" title="Add Lead"> 
-                            <a href="<?=base_url('index.php/lead/add_lead')?>">
-                                <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                    <div class="c-menu-item__title sub-menus"><span>Add Lead</span></div>
-                                </div>
-                                </a>
-                            </li>
-                            <li class="c-menu__item" title="Assign Lead"> 
-                            <a href="<?=base_url('index.php/lead/assign_lead')?>">
-                                <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                    <div class="c-menu-item__title sub-menus"><span>Assign Lead</span></div>
-                                </div>
-                                </a>
-                            </li>
-                        </ul>
+                                    <li class="c-menu__item "  title="All Lead">
+                                     <a href="#">
+                                        <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"><span class="icon-titles">&nbsp; &nbsp; All Lead</span></i>
+                                             <div class="c-menu-item__title  sub-menus"></div>
+                                        </div></a>
+                                    </li>
+                                    <li class="c-menu__item" title="Add Lead"> 
+                                    <a href="<?=base_url('index.php/lead')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Add Lead</span></i>
+                                            <!-- <div class="c-menu-item__title sub-menus"><span>Add Lead</span></div> -->
+                                        </div>
+                                        </a>
+                                    </li>
+                                </ul>
   
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
-                        <a href="<?=base_url('index.php/setting')?>">
-                            <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
-                                <div class="c-menu-item__title"><span>Settings</span></div>
+                            <div class="c-menu__item__inner"><i class="fa fa-cogs">&nbsp; &nbsp;  <span class="icon-titles">Settings</span></i>
+                                <!-- <div class="c-menu-item__title"><span>Settings</span></div> -->
                             </div>
-                            </a>
                         </li>
+                        <!-- <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+                            <a href="http://127.0.0.1:5500/dashboard.html">
+                                <div class="c-menu__item__inner"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                    <div class="c-menu-item__title"><span>Back</span></div>
+                                </div>
+                            </a>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
         </div>
     </body>
+  
 
+<!-- <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script> -->
+
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script> -->
 <script>
     "use strict";
 
@@ -235,7 +196,7 @@
         var sidebarChangeWidth = function sidebarChangeWidth() {
             var $menuItemsTitle = $("li .menu-item__title");
 
-            $("body").toggleClass("sidebar-is-expanded");
+            $("body").toggleClass("sidebar-is-reduced sidebar-is-expanded");
             $(".hamburger-toggle").toggleClass("is-opened");
 
             if ($("body").hasClass("sidebar-is-expanded")) {
