@@ -39,15 +39,14 @@
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
   <style>
+
   .submenus{
     margin-left: -25px;
   }
 
   /* add */
   /* Dropdown Button */
-.dropbtn {
 
-}
 .dropdown {
   position: relative;
   display: inline-block;
@@ -60,7 +59,6 @@
   position: absolute;
   background-color: #f1f1f1;
   min-width: 153px;
-
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -71,7 +69,6 @@
   padding: 5px 16px;
   text-decoration: none;
   text-align:center;
- 
   display: block;
 }
 
@@ -82,7 +79,9 @@
 } */
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
@@ -96,43 +95,42 @@
                 <div class="c-header-icon js-hamburger" title="Open">
                     <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
                 </div>
-                <div class="c-header-icon has-dropdown">
-                    <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i>
-                    <div class="c-dropdown c-dropdown--notifications">
-                        <div class="c-dropdown__header"></div>
-                        <div class="c-dropdown__content"></div>
-                    </div>
-                </div>
                 <div class="c-search">
                     <input class="c-search__input u-input" placeholder="Search..." type="text" />
                 </div>
                 <div class="header-icons-group">
-                    <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div>
-                    <div class="dropdown">
-                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i>
-                    <div class="dropdown-content">
-                    <div class="row">
-                        <a href="<?=base_url('index.php/admin/view_profile');?>">
-                            <div class="col-md-12 mb-1 pt-2">
-                                <h5>View Profile</h5>
-                            </div>
-                        </a>
-                        <a href="<?=base_url('index.php/admin/change_pass');?>">
-                            <div class="col-md-12 mb-1">
-                                <h5>Change Password</h5>
-                            </div>
-                        </a>
-                        <a href="<?=base_url('index.php/admin/logout');?>">
-                            <div class="col-md-12 mb-1">
-                                <h5>Logout</h5>
-                            </div>
-                        </a>
+                    <div class="c-header-icon has-dropdown">
+                        <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i>
+                        <div class="c-dropdown c-dropdown--notifications">
+                            <div class="c-dropdown__header"></div>
+                            <div class="c-dropdown__content"></div>
+                        </div>
                     </div>
-  
-  </div>
-  </div>
-    </div>
-                    <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div>
+                    <!-- <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div> -->
+                    <div class="dropdown">
+                        <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i>
+                            <div class="dropdown-content">
+                                <div class="row">
+                                    <a href="<?=base_url('index.php/admin/view_profile');?>">
+                                        <div class="col-md-12 mb-1 pt-2">
+                                            <h5>View Profile</h5>
+                                        </div>
+                                    </a>
+                                    <a href="<?=base_url('index.php/admin/change_pass');?>">
+                                        <div class="col-md-12 mb-1">
+                                            <h5>Change Password</h5>
+                                        </div>
+                                    </a>
+                                    <a href="<?=base_url('index.php/admin/logout');?>">
+                                        <div class="col-md-12 mb-1">
+                                            <h5>Logout</h5>
+                                        </div>
+                                    </a>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                <!-- <div class="c-header-icon logout"><a href="<?//=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div> -->
                 </div>
             </div>
         </header>
@@ -197,27 +195,18 @@
                                 </ul>
   
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+                        <a href="<?=base_url('index.php/setting')?>">
                             <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
                                 <div class="c-menu-item__title"><span>Settings</span></div>
                             </div>
-                        </li>
-                        <!-- <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
-                            <a href="http://127.0.0.1:5500/dashboard.html">
-                                <div class="c-menu__item__inner"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    <div class="c-menu-item__title"><span>Back</span></div>
-                                </div>
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
     </body>
-  
 
-<!-- <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script> -->
-
-<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script> -->
 <script>
     "use strict";
 
@@ -242,7 +231,7 @@
         var sidebarChangeWidth = function sidebarChangeWidth() {
             var $menuItemsTitle = $("li .menu-item__title");
 
-            $("body").toggleClass("sidebar-is-reduced sidebar-is-expanded");
+            $("body").toggleClass("sidebar-is-expanded");
             $(".hamburger-toggle").toggleClass("is-opened");
 
             if ($("body").hasClass("sidebar-is-expanded")) {
