@@ -78,7 +78,7 @@ class Admin extends CI_Controller {
     function view_profile(){
         $this->load->view('templates/admin_header');
         $data = $this->admin_model->fetch_admin_profile_details();
-        print_r($data['profile_image']);die;
+ 
         if($data['profile_image'] == ''){
             $config['upload_path'] = './media/images';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
@@ -87,7 +87,7 @@ class Admin extends CI_Controller {
 
             $this->load->library('upload',$config);
             $this->upload->initialize($config);
-           
+
             if($this->upload->do_upload('profile_image')){
                 $_POST['profile_image'] = $this->upload->data('file_name');
             }else{
