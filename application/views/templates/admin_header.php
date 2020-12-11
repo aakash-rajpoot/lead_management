@@ -113,20 +113,21 @@
             <div class="l-sidebar__content">
                 <nav class="c-menu js-menu">
                     <ul class="u-list site-menu">
-                        <li class="c-menu__item is-active" data-toggle="tooltip" title="Profile">
-                            <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
-                                <div class="c-menu__item__inner">
+                        <li class="c-menu__item is-active">
+ 
+                                <div class="c-menu__item__inner menusss">
+
                                     <i class="fa fa-user"> <span class="icon-titles">&nbsp; &nbsp; Dashboard</span></i>
                                         <div class="c-menu-item__title"></div>
                                 </div>
                             </a>
                         </li>    
-                        <li class="site-menu-item">
-                            <div class="c-menu__item__inner">
+                        <li class="c-menu__item site-menu-item main-menu">
+                            <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-users"> <span class="icon-titles">&nbsp; &nbsp;  Members</span></i>&nbsp; &nbsp; <i class="fa fa-angle-down"></i> 
                             </div>
                                
-                            <ul class="site-menu-sub">
+                            <ul class="site-menu-sub ">
                                 <li class="site-menu-item" title="All Member">  
                                     <a href="<?=base_url('index.php/member')?>">
                                         <div class="c-menu__item__inner">
@@ -142,6 +143,30 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="c-menu__item site-menu-item main-menu" title="Lead"> 
+                            <div class="c-menu__item__inner menusss"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i>&nbsp; &nbsp; <i class="fa fa-angle-down"></i>
+                        </div>
+                        
+                        <ul class="site-menu-sub ">
+                            <li class="site-menu-item "  title="All Lead">
+                                <a href="<?=base_url('index.php/lead')?>">
+                                    <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"><span class="icon-titles">&nbsp; &nbsp; All Lead</span></i>
+                                        <div class="c-menu-item__title  sub-menus"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="site-menu-item" title="Add Lead"> 
+                                <a href="<?=base_url('index.php/lead/add_lead')?>">
+                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Add Lead</span></i></div>
+                                </a>
+                            </li>
+                            <li class="site-menu-item" title="Assign Lead"> 
+                                <a href="<?=base_url('index.php/lead/assign_lead')?>">
+                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Lead Assign</span></i></div>
+                                </a>
+                            </li>
+                        </ul>
                         </li>
                         <li class="site-menu-item" title="Lead"> 
                             <div class="c-menu__item__inner"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i></div>
@@ -167,7 +192,7 @@
                         </ul>
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
                             <a href="<?=base_url('index.php/setting')?>">
-                                <div class="c-menu__item__inner"><i class="fa fa-cogs">&nbsp; &nbsp;  <span class="icon-titles">Settings</span></i></div>
+                                <div class="c-menu__item__inner menusss"><i class="fa fa-cogs">&nbsp; &nbsp;  <span class="icon-titles">Settings</span></i></div>
                             </a>
                         </li>
                     </ul>
@@ -193,5 +218,14 @@ $(function (event) {
     });
 });
 </script> -->
+<script>
+ $('.site-menu li').removeClass('active');
+                $(this).addClass('active');
+                $(this).children('ul').slideDown();
+            }
+        });
+    });
+});
+</script>
 
 </html>
