@@ -15,7 +15,7 @@
             <option>---Select---</option>
 
         <?php 
-        foreach($leads as $lead ){ ?>
+        foreach($leads as $lead ) { ?>
             <option ><?=$lead['name'].' ('.$lead['role'].')'; ?></option>
         <?php } ?>
         </select>

@@ -38,11 +38,33 @@
 
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
-  <style>
-  
-  </style>
+
+<style>
+    .add_search{
+        margin-left:600px;
+        padding:12px; 
+    }
+    .search_button{
+        border-radius:5px;
+        border:1px solid white;
+        background-color:transparent ;
+        width:90px;
+    }
+    .input_button{
+        border-radius:5px;
+        border:1px solid white;
+        width:100%;
+    }
+    .search_button:hover{
+        border:1px solid white;
+        border-radius:3px;
+        background: #0b7dda;
+        width:90px;
+    }
+
+</style>
+
 </head>
-<div style="margin-top:150px margin-bottom:150px">
     <body class="sidebar-is-reduced">
         <header class="l-header">
             <div class="l-header__inner clearfix">
@@ -50,8 +72,10 @@
                     <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
                 </div>
                 
-                <div class="c-search">
-                    <input class="c-search__input u-input" placeholder="Search..." type="text" />
+                <div class="c-search add_search ">
+                    <!-- <input class="c-search__input u-input" placeholder="Search..." type="text" /> -->
+                    <input type="text" class="input_button" placeholder="Search.." name="search2">
+                    <button type="submit" class="search_button"><i class="fa fa-search"></i></button>
                 </div>
                 <div class="header-icons-group">
                     <!-- <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div> -->
@@ -82,11 +106,10 @@
                             </div>
                         </a>
                     </div>
-  
-  </div>
-  </div>
-    </div>
-                    <!-- <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div> -->
+                    </div>
+                    </div>
+                    </div>
+                    <!-- <div class="c-header-icon logout"><a href="<?//=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div> -->
                 </div>
             </div>
         </header>
@@ -97,13 +120,15 @@
             <div class="l-sidebar__content">
                 <nav class="c-menu js-menu">
                     <ul class="u-list">
-                        <li class="c-menu__item is-active" data-toggle="tooltip" title="Profile">
-                            <div class="c-menu__item__inner"><i class="fa fa-user"> <span class="icon-titles">&nbsp; &nbsp; Profile</span></i>
+                        <li class="c-menu__item is-active" data-toggle="tooltip" title="Dashboard">
+                        <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
+                            <div class="c-menu__item__inner"><i class="fa fa-user"> <span class="icon-titles">&nbsp; Dashboard</span></i>
                                 <div class="c-menu-item__title"></div>
                             </div>
+                        </a>
                         </li>
                         <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Members">
-                                <div class="c-menu__item__inner"><i class="fa fa-users"> <span class="icon-titles">&nbsp; &nbsp;  Members</span></i>
+                                <div class="c-menu__item__inner"><i class="fa fa-users"> <span class="icon-titles">&nbsp;  Members</span></i>
                                     <!-- <div class="c-menu-item__title"><span>Members</span></div> -->
                                 </div>
                                 </li>
@@ -126,10 +151,6 @@
                                         </a>
                                     </li>
                                 </ul>
-                                
-                               
-                        
-                       
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Lead">
                                 <div class="c-menu__item__inner"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i>
                                     <!-- <div class="c-menu-item__title"><span>Lead</span></div> -->

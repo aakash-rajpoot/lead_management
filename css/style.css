@@ -506,7 +506,7 @@ main.l-main .page-title {
 }
 
 .logo-img {
-    width: 161px;
+    width: 160px;
     height: 70px;
 }
 
@@ -585,8 +585,6 @@ th.th-lg.sorting {
 
 
 /* Dropdown Button */
-
-.dropbtn {}
 
 .dropdown {
     position: relative;
