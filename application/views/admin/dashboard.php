@@ -1,4 +1,4 @@
-   
+<div class="wrap-career " style="margin-top:110px;margin-left:120px;">
 <main class="l-main">
     <div class="content-wrapper content-wrapper--with-bg">
         <h1 class="page-title">Dashboard</h1>
@@ -28,3 +28,4 @@
         </div>
     </div>
 </main>
+</div>

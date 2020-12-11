@@ -180,7 +180,7 @@ h3 {
     position: relative;
     display: flex;
     float: left;
-    width: 91px;
+    width: 136px;
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -282,7 +282,7 @@ h3 {
 }
 
 .l-sidebar {
-    width: 160px;
+    width: 204px;
     position: absolute;
     z-index: 10;
     left: 0;
@@ -356,7 +356,7 @@ h3 {
     left: 0;
     top: 50%;
     margin-top: -18px;
-    background-color: #5f9cfd;
+    /* background-color: #5f9cfd; */
     opacity: 0;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -365,28 +365,37 @@ h3 {
     transition: all 0.5s ease-in-out;
 }
 
-.c-menu>ul .c-menu__item.is-active .c-menu__item__inner {
+li a:hover {
+    text-decoration: none;
+}
+
+
+/* .c-menu>ul .c-menu__item.is-active .c-menu__item__inner {
     border-left-color: #5f9cfd;
     background-color: #1e3e6f;
-}
+} */
 
+
+/* 
 .c-menu>ul .c-menu__item.is-active .c-menu__item__inner i {
     color: #5f9cfd;
-}
+} */
 
-.c-menu>ul .c-menu__item.is-active .c-menu__item__inner .c-menu-item__title span {
+
+/* .c-menu>ul .c-menu__item.is-active .c-menu__item__inner .c-menu-item__title span {
     color: #5f9cfd;
-}
+} */
 
 .c-menu>ul .c-menu__item.is-active .c-menu__item__inner:before {
     height: 36px;
     opacity: 1;
 }
 
-.c-menu>ul .c-menu__item:not(.is-active):hover .c-menu__item__inner {
+
+/* .c-menu>ul .c-menu__item:not(.is-active):hover .c-menu__item__inner {
     background-color: #23527c;
     border-left-color: #23527c;
-}
+} */
 
 .c-menu>ul .c-menu__item i {
     flex: 0 0 126px;
@@ -507,7 +516,7 @@ main.l-main .page-title {
 }
 
 .logo-img {
-    width: 160px;
+    width: 203px;
     height: 70px;
 }
 
@@ -522,6 +531,10 @@ main.l-main .page-title {
 tr {
     background: #eee;
 } */
+
+li.site-menu-item {
+    list-style: none;
+}
 
 i.fa.fa-pencil-square-o {
     color: green;
@@ -660,6 +673,18 @@ a.fa.fa-pencil-square-o {
     font-size: 16px;
 }
 
+.copyright {
+    font-size: 16px;
+}
+
 .site-menu-sub .site-menu-item:hover {
-    background-color: blue;
+    background-color: #1e3e6f;
+}
+
+.menusss:hover {
+    background-color: #1e3e6f;
+}
+
+.nav .sub-menu {
+    display: none;
 }
