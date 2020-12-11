@@ -88,7 +88,18 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_header');
         $data = $this->lead_model->fetch_lead_data();
         $all_leads = $data->result_array();
+        $data = $this->lead_model->fetch_lead_name();
+        $lead_name = $data->result_array();
+        $names['names'] = $lead_name;
         $names['leads'] = $all_leads;
+    
+        $this->form_validation->set_rules('lead_name', 'Lead Name','required');
+        $this->form_validation->set_rules('assign_lead', 'Assign Lead','required');
+
+        if(isset($_POST['lead_assign']) && $this->form_validation->run()){
+            $this->lead_model->update_lead_assign_data();
+            redirect('lead');
+        }
         $this->load->view('lead/assign_lead',$names);
         $this->load->view('templates/admin_footer');
     }

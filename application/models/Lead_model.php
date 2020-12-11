@@ -68,10 +68,28 @@ class Lead_model extends CI_Model {
 
     function fetch_lead_data(){
         $this->db->select("name,role");
+        $this->db->from('sq_members');
+        $this->db->where('status',1);
+        return $this->db->get();
+    }
+
+    function fetch_lead_name(){
+        $this->db->select("name");
         $this->db->from('sq_lead');
         $this->db->where('status',1);
         return $this->db->get();
-         
+    }
+
+    function update_lead_assign_data(){
+
+        $name = $this->input->post('lead_name');
+
+        $data = $this->input->post('assign_lead');
+
+        $this->db->set('assign_to', $data);
+        $this->db->where('name', $name);
+        return $this->db->update('sq_lead');
+
     }
 
 

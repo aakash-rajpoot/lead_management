@@ -6,8 +6,8 @@
 }
 
 .general_fields{
-    margin-left:150px;
-    margin-top:50px;
+    margin-left:250px;
+    margin-top:30px;
 }
 
 
@@ -20,14 +20,22 @@
     <input type="text" id="site" name="site" >
 </div>
 <div class="general_fields">
-    <label for="tagline">Tagline: </label>
-    <input type="text" id="tagline" name="tagline" >
+    <label for="default_role">Default Role: </label>
+    <input type="text" id="default_role" name="default_role" >
 </div>
 <div class="general_fields">
-    <label for="">Site Title: </label>
-    <input type="text" id="site" name="site" >
+    <label for="admin_email">Admin Email-Id: </label>
+    <input type="email" id="admin_email" name="admin_email" >
 </div>
 <div class="general_fields">
-    <label for="">Site Title: </label>
-    <input type="text" id="site" name="site" >
+    <label for="personal_email">Personal Email-Id: </label>
+    <input type="email" id="personal_email" name="personal_email" >
+</div>
+<div class="general_fields">
+    <label for="mail_config">Mail Configuration: </label>
+    <input type="text" id="mail_config" name="mail_config" >
+</div>
+<div class="general_fields">
+    <label for="time_zone">Time Zone: </label>
+    <input type="text" id="time_zone" name="time_zone" >
 </div>

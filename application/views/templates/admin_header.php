@@ -161,7 +161,7 @@
                             </li>
                             <li class="c-menu__item" title="Assign Lead"> 
                                 <a href="<?=base_url('index.php/lead/assign_lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Lead Assign</span></i></div>
+                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Assign Lead</span></i></div>
                                 </a>
                             </li>
                         </ul>
@@ -175,7 +175,7 @@
             </div>
         </div>
     </body>
-<script>
+<!-- <script>
 $(function (event) {
     $(document).ready(function() {
         $('.site-menu li:has(ul)').click(function(e) {
@@ -192,6 +192,6 @@ $(function (event) {
         });
     });
 });
-</script>
+</script> -->
 
 </html>

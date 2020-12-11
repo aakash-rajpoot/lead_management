@@ -36,7 +36,8 @@
                     <thead>
                         <tr>
                             <th>S.No</th>
-                            <th class="th-sm">Full Name</th>
+                            <th class="th-sm">Lead Name</th>
+                            <th class="th-sm">Assign TO</th>
                             <th class="th-sm">Email Id</th>
                             <th class="th-sm">Phone Number</th>
                             <th class="th-sm">Alternate Phone Number</th>
@@ -59,6 +60,7 @@
                         <tr>
                             <td><?=$i;?></td>
                             <td><?=$totallead['name']?></td>
+                            <td><?=$totallead['assign_to']?></td>
                             <td><?=$totallead['email']?></td>
                             <td><?=$totallead['phone']?></td>
                             <td><?=$totallead['alt_phone']?></td>
