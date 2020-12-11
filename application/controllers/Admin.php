@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
             $user = $query->row_array();
 			if(!empty($user)) {
                 $this->session->set_userdata($user);
-				redirect('admin/admin_dashboard/');
+				redirect('admin/admin_dashboard');
             }
         }
         $this->load->view('admin/login');
