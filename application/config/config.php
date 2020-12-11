@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost:91/Codeigniter/square';
-$config['base_url'] = 'http://localhost/mayank/lead_management/';
+$config['base_url'] = 'http://localhost:91/Codeigniter/square';
 
 //http://localhost:91/Codeigniter/square
 /*

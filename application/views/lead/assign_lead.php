@@ -1,7 +1,7 @@
 <div style="margin-left:200px; margin-top:150px;">
     <?=form_open('lead/assign_lead',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
     <?=validation_errors(); ?> 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-8 mb-3">
         <label class="label-input" for="lead_name">Lead Name: </label>
         <input type="text" class="form-control" name="lead_name" id="lead_name">
         <!-- <div class="invalid-feedback">
