@@ -38,54 +38,29 @@
 
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
-
-<style>
-    .add_search{
-        margin-left:600px;
-        padding:12px; 
-    }
-    .search_button{
-        border-radius:5px;
-        border:1px solid white;
-        background-color:transparent ;
-        width:90px;
-    }
-    .input_button{
-        border-radius:5px;
-        border:1px solid white;
-        width:100%;
-    }
-    .search_button:hover{
-        border:1px solid white;
-        border-radius:3px;
-        background: #0b7dda;
-        width:90px;
-    }
-
-</style>
-
+  <style>
+  
+  </style>
 </head>
+<div style="margin-top:150px margin-bottom:150px">
     <body class="sidebar-is-reduced">
         <header class="l-header">
             <div class="l-header__inner clearfix">
                 <div class="c-header-icon js-hamburger" title="Open">
                     <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
                 </div>
-                
-                <div class="c-search add_search ">
-                    <!-- <input class="c-search__input u-input" placeholder="Search..." type="text" /> -->
-                    <input type="text" class="input_button" placeholder="Search.." name="search2">
-                    <button type="submit" class="search_button"><i class="fa fa-search"></i></button>
-                </div>
-                <div class="header-icons-group">
-                    <!-- <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div> -->
-                    <div class="c-header-icon has-dropdown">
+                <div class="c-header-icon has-dropdown">
                     <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i>
                     <div class="c-dropdown c-dropdown--notifications">
                         <div class="c-dropdown__header"></div>
                         <div class="c-dropdown__content"></div>
                     </div>
                 </div>
+                <div class="c-search">
+                    <input class="c-search__input u-input" placeholder="Search..." type="text" />
+                </div>
+                <div class="header-icons-group">
+                    <div class="c-header-icon basket"><span class=" c-badge--header-icon animated shake"></span><i class="fa fa-shopping-basket"></i></div>
                     <div class="dropdown">
                     <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><i class="glyphicon glyphicon-user" title="Admin"></i>
                     <div class="dropdown-content">
@@ -106,10 +81,11 @@
                             </div>
                         </a>
                     </div>
-                    </div>
-                    </div>
-                    </div>
-                    <!-- <div class="c-header-icon logout"><a href="<?//=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div> -->
+  
+  </div>
+  </div>
+    </div>
+                    <div class="c-header-icon logout"><a href="<?=base_url('index.php/admin/logout');?>"><i class="fa fa-power-off" title="Logout"></i></a></div>
                 </div>
             </div>
         </header>
@@ -119,51 +95,55 @@
             </div>
             <div class="l-sidebar__content">
                 <nav class="c-menu js-menu">
-                    <ul class="u-list site-menu">
+                    <ul class="u-list">
                         <li class="c-menu__item is-active" data-toggle="tooltip" title="Profile">
-                        <a href="<?=base_url('index.php/admin/dashboard')?>">
-                            <div class="c-menu__item__inner"><i class="fa fa-user"> <span class="icon-titles">&nbsp; &nbsp; Dashboard</span></i>
+                            <div class="c-menu__item__inner"><i class="fa fa-user"> <span class="icon-titles">&nbsp; &nbsp; Profile</span></i>
                                 <div class="c-menu-item__title"></div>
                             </div>
-                        </li>    
-                                <li class="site-menu-item"> <div class="c-menu__item__inner">
-                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; &nbsp;  Members</span></i>&nbsp; &nbsp; <i class="fa fa-angle-down"></i> 
+                        </li>
+                        <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Members">
+                                <div class="c-menu__item__inner"><i class="fa fa-users"> <span class="icon-titles">&nbsp; &nbsp;  Members</span></i>
+                                    <!-- <div class="c-menu-item__title"><span>Members</span></div> -->
                                 </div>
-                               
-                      <ul class="site-menu-sub">
-                          <li class="site-menu-item" title="All Member">  <a href="<?=base_url('index.php/member')?>">
-                                        <div class="c-menu__item__inner">
-                                        <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Members</span></i>
-                                        </div></a></li>
-                          <li class="site-menu-item" title="Add Member"> <a href="<?=base_url('index.php/member/add_member')?>">
+                                </li>
+                                <!-- <div class="c-menu-item__expand js-expand-submenu">
+                                <i class="fa fa-angle-down"></i>
+                                </div> -->
+                                
+                                <ul class="submenus">
+                                    <li class="c-menu__item "  title="All Member">
+                                     <a href="<?=base_url('index.php/member')?>">
+                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Members</span></i>
+                                             <!-- <div class="c-menu-item__title  sub-menus"><span>All Members</span></div> -->
+                                        </div></a>
+                                    </li>
+                                    <li class="c-menu__item" title="Add Member"> 
+                                    <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Member</span></i>
+                                            <!-- <div class="c-menu-item__title sub-menus"><span>Add Member</span></div> -->
                                         </div>
-                                        </a></li>
-                      </ul>
-                    </li>
-
-                         <li class="site-menu-item" title="Lead"> 
-                       <div class="c-menu__item__inner"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                
+                               
+                        
+                       
+                        <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Lead">
+                                <div class="c-menu__item__inner"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i>
                                     <!-- <div class="c-menu-item__title"><span>Lead</span></div> -->
                                 </div>
                         </li>
                         <ul class="submenus">
                                     <li class="c-menu__item "  title="All Lead">
-                                     <a href="<?=base_url('index.php/lead')?>">
+                                     <a href="#">
                                         <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"><span class="icon-titles">&nbsp; &nbsp; All Lead</span></i>
                                              <div class="c-menu-item__title  sub-menus"></div>
                                         </div></a>
                                     </li>
                                     <li class="c-menu__item" title="Add Lead"> 
-                                    <a href="<?=base_url('index.php/lead/add_lead')?>">
+                                    <a href="<?=base_url('index.php/lead')?>">
                                         <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Add Lead</span></i>
-                                            <!-- <div class="c-menu-item__title sub-menus"><span>Add Lead</span></div> -->
-                                        </div>
-                                        </a>
-                                    </li>
-                                    <li class="c-menu__item" title="Assign Lead"> 
-                                    <a href="<?=base_url('index.php/lead/assign_lead')?>">
-                                        <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Lead Assign</span></i>
                                             <!-- <div class="c-menu-item__title sub-menus"><span>Add Lead</span></div> -->
                                         </div>
                                         </a>
@@ -175,61 +155,13 @@
                                 <!-- <div class="c-menu-item__title"><span>Settings</span></div> -->
                             </div>
                         </li>
-                        <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
-                            <a href="<?=base_url('index.php/setting')?>">
+                        <!-- <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+                            <a href="http://127.0.0.1:5500/dashboard.html">
                                 <div class="c-menu__item__inner"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                                     <div class="c-menu-item__title"><span>Back</span></div>
                                 </div>
                             </a>
-                        </li>
-                        <!-- new -->
-                        <div class="site-menubar site-menubar-light site-menubar-light">
-    <div class="site-menubar-body" style="position: relative;">
-        <div style="height: 652px; width: 277px;">
-            <div style="width: 260px;">
-                <ul class="site-menu">
-                    <!-- <li class="site-menu-item"><a href="#"><i class="fa fa-tachometer site-menu-icon" aria-hidden="true"></i> 
-                      <span class="site-menu-title">Dashboard</span>
-                      <div class="site-menu-badge">
-                        <span class="badge badge-success">3</span>
-                      </div>
-                    </a> -->
-                      <!-- <ul class="site-menu-sub">
-                          <li class="site-menu-item"><a href="menu-collapsed.html"><span class="site-menu-title">item 1</span></a></li>
-                          <li class="site-menu-item"><a href="#"><span class="site-menu-title">item 2</span></a></li>
-                          <li class="site-menu-item"><a href="#"><span class="site-menu-title">item 3</span></a></li>
-                          <li class="site-menu-item"><a href="#"><span class="site-menu-title">item 4</span></a></li>
-                      </ul> -->
-                      <!-- <ul class="site-menu-sub">
-                          <li class="site-menu-item"><a href="menu-collapsed.html"><span class="site-menu-title">item 1</span></a></li>
-                          <li class="site-menu-item"><a href="#"><span class="site-menu-title">item 2</span></a></li>
-                          <li class="site-menu-item"><a href="#"><span class="site-menu-title">item 3</span></a></li>
-                          <li class="site-menu-item"><a href="#"><span class="site-menu-title">item 4</span></a></li>
-                      </ul>
-                    </li> -->
-                    <!-- <li class="site-menu-item"><a href="#">item 2</a>
-                      <ul class="site-menu-sub">
-                          <li class="site-menu-item"><a href="#">item 5</a></li>
-                          <li class="site-menu-item"><a href="#">item 6</a></li>
-                          <li class="site-menu-item"><a href="#">item 7</a></li>
-                          <li class="site-menu-item"><a href="#">item 8</a></li>
-
-                      </ul>
-                    </li> -->
-                    <!-- <li class="site-menu-item"><a href="#">item 3</a>
-                      <ul class="site-menu-sub">
-                          <li class="site-menu-item"><a href="#">item 9</a></li>
-                          <li class="site-menu-item"><a href="#">item 10</a></li>
-                          <li class="site-menu-item"><a href="#">item 10</a></li>
-                          <li class="site-menu-item"><a href="#">item 12</a></li>
-                      </ul>
-                    </li> -->
-                </ul>
-            </div>
-        </div>
-    </div>
-  </div>
-  <!--  -->
+                        </li> -->
                     </ul>
                 </nav>
             </div>
@@ -291,22 +223,18 @@
     //# sourceURL=pen.js
 </script>
 <script>
-$(function (event) {
-    $(document).ready(function() {
-        $('.site-menu li:has(ul)').click(function(e) {
-            e.preventDefault();
-            if ($(this).hasClass('active')) {
-                $(this).removeClass('active');
-                $(this).children('ul').slideUp();
-            }else{
-                $('.site-menu li ul').slideUp();
-                $('.site-menu li').removeClass('active');
-                $(this).addClass('active');
-                $(this).children('ul').slideDown();
-            }
-        });
-    });
-});
+/* navigation sub-menu display */
+
+// Change 'hover' to 'click' if you want to
+
+
+// $('.slideout-menu li').click(
+//         function() {
+//              $(this).children('.mobile-sub-menu').show();
+//         },
+//         function() {
+//               $(this).children('.mobile-sub-menu').hide();
+//     }); 
 </script>
 
 </html>
