@@ -37,14 +37,14 @@
 
 <style>
     .add_search{
-        margin-left:600px;
+        margin-left:450px;
         padding:12px; 
     }
     .search_button{
         border-radius:5px;
         border:1px solid white;
         background-color:transparent ;
-        width:90px;
+        width:60px;
     }
     .input_button{
         border-radius:5px;
@@ -55,7 +55,7 @@
         border:1px solid white;
         border-radius:3px;
         background: #0b7dda;
-        width:90px;
+        width:70px;
     }
 
 </style>
@@ -114,17 +114,17 @@
                 <nav class="c-menu js-menu">
                     <ul class="u-list site-menu">
                         <li class="c-menu__item is-active">
- 
+                            <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
                                 <div class="c-menu__item__inner menusss">
-
-                                    <i class="fa fa-user"> <span class="icon-titles">&nbsp; &nbsp; Dashboard</span></i>
+                                    <i class="fa fa-user"> <span class="icon-titles">&nbsp; Dashboard</span></i>
                                         <div class="c-menu-item__title"></div>
                                 </div>
                             </a>
                         </li>    
                         <li class="c-menu__item site-menu-item main-menu">
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; &nbsp;  Members</span></i>&nbsp; &nbsp; <i class="fa fa-angle-down"></i> 
+                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Members</span></i>
+                                <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i>  -->
                             </div>
                                
                             <ul class="site-menu-sub ">
@@ -145,54 +145,41 @@
                             </ul>
                         </li>
                         <li class="c-menu__item site-menu-item main-menu" title="Lead"> 
-                            <div class="c-menu__item__inner menusss"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i>&nbsp; &nbsp; <i class="fa fa-angle-down"></i>
-                        </div>
+                            <div class="c-menu__item__inner menusss">
+                                <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Lead</span></i>
+                                <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i> -->
+                            </div>
                         
                         <ul class="site-menu-sub ">
                             <li class="site-menu-item "  title="All Lead">
                                 <a href="<?=base_url('index.php/lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"><span class="icon-titles">&nbsp; &nbsp; All Lead</span></i>
-                                        <div class="c-menu-item__title  sub-menus"></div>
+                                    <div class="c-menu__item__inner">
+                                        <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">All Lead</span></i>
+                                        <!-- <div class="c-menu-item__title  sub-menus"></div> -->
                                     </div>
                                 </a>
                             </li>
                             <li class="site-menu-item" title="Add Lead"> 
                                 <a href="<?=base_url('index.php/lead/add_lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Add Lead</span></i></div>
+                                    <div class="c-menu__item__inner">
+                                        <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Add Lead</span></i>
+                                    </div>
                                 </a>
                             </li>
                             <li class="site-menu-item" title="Assign Lead"> 
                                 <a href="<?=base_url('index.php/lead/assign_lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Lead Assign</span></i></div>
-                                </a>
-                            </li>
-                        </ul>
-                        </li>
-                        <li class="site-menu-item" title="Lead"> 
-                            <div class="c-menu__item__inner"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i></div>
-                        </li>
-                        <ul class="submenus">
-                            <li class="c-menu__item "  title="All Lead">
-                                <a href="<?=base_url('index.php/lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"><span class="icon-titles">&nbsp; &nbsp; All Lead</span></i>
-                                        <div class="c-menu-item__title  sub-menus"></div>
+                                    <div class="c-menu__item__inner">
+                                        <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Lead Assign</span></i>
                                     </div>
                                 </a>
                             </li>
-                            <li class="c-menu__item" title="Add Lead"> 
-                                <a href="<?=base_url('index.php/lead/add_lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Add Lead</span></i></div>
-                                </a>
-                            </li>
-                            <li class="c-menu__item" title="Assign Lead"> 
-                                <a href="<?=base_url('index.php/lead/assign_lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Assign Lead</span></i></div>
-                                </a>
-                            </li>
                         </ul>
+                    </li>
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
                             <a href="<?=base_url('index.php/setting')?>">
-                                <div class="c-menu__item__inner menusss"><i class="fa fa-cogs">&nbsp; &nbsp;  <span class="icon-titles">Settings</span></i></div>
+                                <div class="c-menu__item__inner menusss">
+                                    <i class="fa fa-cogs">&nbsp;&nbsp;<span class="icon-titles">Settings</span></i>
+                                </div>
                             </a>
                         </li>
                     </ul>
