@@ -81,16 +81,17 @@ class Lead_model extends CI_Model {
     }
 
     function update_lead_assign_data(){
-
         $name = $this->input->post('lead_name');
-
         $data = $this->input->post('assign_lead');
-
         $this->db->set('assign_to', $data);
         $this->db->where('name', $name);
         return $this->db->update('sq_lead');
-
     }
 
+    function deassign_lead_data($id){
+        $this->db->set('assign_to',' ');
+        $this->db->where('id', $id);
+        return $this->db->update('sq_lead');
+    }
 
 }

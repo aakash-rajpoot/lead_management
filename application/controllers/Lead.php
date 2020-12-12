@@ -104,5 +104,12 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    function deassign_lead($id){
+        $this->load->view('templates/admin_header');
+        $this->lead_model->deassign_lead_data($id);
+        redirect('lead');
+        $this->load->view('templates/admin_footer');
+    }
+
 
 }

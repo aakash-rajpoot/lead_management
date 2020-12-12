@@ -1,9 +1,9 @@
-<html>
+<!-- <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"> -->
     <!-- custom css-->
-    <link rel="stylesheet" href="<?=base_url('css/style.css')?>">
+    <!-- <link rel="stylesheet" href="<?//=base_url('css/style.css')?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -11,8 +11,9 @@
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
 
-    <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
-    <style>
+    <script src='https://use.fontawesome.com/2188c74ac9.js'></script> -->
+
+<style>
    .ex1 {
  
   /* width: 100%; */
@@ -24,10 +25,9 @@
   overflow-y: scroll;
   height:600px;
 }
-    </style>
 
-</head>
-<body>
+</style>
+
 <div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="container">
@@ -48,6 +48,7 @@
                             <th class="th-sm">Other Information</th>
                             <th class="th-sm">Reference By</th>
                             <th class="th-sm">Action</th>
+                            <!-- <th class="th-sm">Lead Action</th> -->
                         </tr>
                     </thead>
                         <?php 
@@ -71,10 +72,15 @@
                             <td><?=$totallead['other_info']?></td>
                             <td><?=$totallead['reference']?></td>
                             <td class="edit-icon">
-                                <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o" data-toggle="modal" aria-hidden="true"></a>&nbsp
-                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a>
-                                <a href="#" onClick = "hardDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_hard_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash" aria-hidden="true"></a>
+                                <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit details"></a> <br/>
+                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4" aria-hidden="true" title="Soft Delete"></a> <br/>
+                                <a href="#" onClick = "hardDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_hard_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4" aria-hidden="true" title="Hard Delete"></a>
+                                <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="btn btn-primary mt-3">De-assign</a>
                             </td>
+                            <!-- <td>
+                                <a href="#" onClick = "deAssignLead(<?//=$totallead['id'];?>);" class="btn btn-primary mt-3">De-assign</a>
+                                <a href="<?//=base_url('index.php/lead/assign_lead')?>" class="btn btn-primary mt-4">Re-assign</a>
+                            </td> -->
                         </tr>
                     </tbody>
                     <?php } ?>
@@ -111,6 +117,12 @@
     function hardDelete(leadId) {
         if(confirm('Are you sure to delete permanentaly from records ?')) {
             window.location.replace('<?php echo base_url();?>index.php/lead/hard_delete_lead_data/'+leadId);
+        }
+    }
+
+    function deAssignLead(leadId) {
+        if(confirm('Are you sure to delete your assigned lead from records ?')) {
+            window.location.replace('<?php echo base_url();?>index.php/lead/deassign_lead/'+leadId);
         }
     }
 </script>
