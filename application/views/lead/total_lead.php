@@ -48,7 +48,7 @@
                             <th class="th-sm">Other Information</th>
                             <th class="th-sm">Reference By</th>
                             <th class="th-sm">Action</th>
-                            <!-- <th class="th-sm">Lead Action</th> -->
+                            <th class="th-sm">Lead Action</th>
                         </tr>
                     </thead>
                         <?php 
@@ -75,12 +75,11 @@
                                 <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit details"></a> <br/>
                                 <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4" aria-hidden="true" title="Soft Delete"></a> <br/>
                                 <a href="#" onClick = "hardDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_hard_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4" aria-hidden="true" title="Hard Delete"></a>
-                                <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="btn btn-primary mt-3">De-assign</a>
                             </td>
-                            <!-- <td>
-                                <a href="#" onClick = "deAssignLead(<?//=$totallead['id'];?>);" class="btn btn-primary mt-3">De-assign</a>
-                                <a href="<?//=base_url('index.php/lead/assign_lead')?>" class="btn btn-primary mt-4">Re-assign</a>
-                            </td> -->
+                            <td>
+                                <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="btn btn-primary mt-3">De-assign</a>
+                                <a href="<?=base_url('index.php/lead/reassign_lead/'.$totallead['id'])?>" class="btn btn-primary mt-4">Re-assign</a>
+                            </td>
                         </tr>
                     </tbody>
                     <?php } ?>

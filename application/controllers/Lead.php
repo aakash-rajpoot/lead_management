@@ -111,5 +111,23 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    function reassign_lead($id){
+        $this->load->view('templates/admin_header');
+
+        $data = $this->lead_model->fetch_lead_data();
+        $all_leads = $data->result_array();
+        $names['leads'] = $all_leads;
+
+        $data = $this->lead_model->reassign_lead_data($id);
+        $reassign = $data->result_array();
+        $names['rename'] = $reassign;
+        if(isset($_POST['lead_assign']) && $this->form_validation->run()){
+            $this->lead_model->update_lead_assign_data();
+            redirect('lead');
+        }
+        $this->load->view('lead/assign_lead',$names);
+        $this->load->view('templates/admin_footer');
+    }
+
 
 }

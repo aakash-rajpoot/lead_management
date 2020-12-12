@@ -85,6 +85,7 @@ class Lead_model extends CI_Model {
         $data = $this->input->post('assign_lead');
         $this->db->set('assign_to', $data);
         $this->db->where('name', $name);
+        $this->db->where('status', 1);
         return $this->db->update('sq_lead');
     }
 
@@ -92,6 +93,13 @@ class Lead_model extends CI_Model {
         $this->db->set('assign_to',' ');
         $this->db->where('id', $id);
         return $this->db->update('sq_lead');
+    }
+
+    function reassign_lead_data($id){
+        $this->db->select("name");
+        $this->db->from('sq_lead');
+        $this->db->where('id',$id);
+        return $this->db->get();
     }
 
 }

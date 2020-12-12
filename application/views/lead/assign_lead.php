@@ -1,6 +1,16 @@
 <div style="margin-left:200px; margin-top:150px;">
+
     <?=form_open('lead/assign_lead/',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
     <?=validation_errors(); ?> 
+    <?php if(!empty($rename)) { ?>
+        <?php 
+        foreach($rename as $renames ) { ?>
+        <div class="col-md-8 mb-3">
+            <label class="label-input" for="lead_name">Lead Name: </label>
+            <input class="custom-select d-block w-100" name="lead_name" id="lead_name" value="<?=$renames['name'];?>" readonly>
+        </div>
+        <?php } ?>
+    <?php } else { ?>
     <div class="col-md-8 mb-3">
         <label class="label-input" for="lead_name">Lead Name: </label>
         <select class="custom-select d-block w-100" name="lead_name" id="lead_name">
@@ -14,7 +24,7 @@
             Valid name is remark.
         </div> -->
     </div>
-
+    <?php } ?>
     <div class="col-md-8 mb-3">
         <label class="label-input" for="assign_lead">Lead Assign: </label>
         <select class="custom-select d-block w-100" name="assign_lead" id="assign_lead">
