@@ -1,5 +1,5 @@
-<div style="margin-left:200px; margin-top:150px;">
-
+<div style="margin-left:375px; margin-top:150px;">
+<div class="container">
     <?=form_open('lead/assign_lead/',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
     <?=validation_errors(); ?> 
     <?php if(!empty($rename)) { ?>
@@ -46,4 +46,5 @@
 
     
 <?=form_close();?>
+</div>
 </div>
