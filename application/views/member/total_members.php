@@ -69,7 +69,7 @@
                             <td class="edit-icon">
                                 <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"></a>&nbsp
                                 <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="Soft delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true"></a>
-                                <a href="#" onClick = "hardDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_hard_data/<?=$totalmember['id'];?>" title="Hard delete" id="delete-<?=$i?>" class="fa fa-trash hard-recode" aria-hidden="true"></a>
+                                <!-- <a href="#" onClick = "hardDelete(<?//=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_hard_data/<?//=$totalmember['id'];?>" title="Hard delete" id="delete-<?//=$i?>" class="fa fa-trash hard-recode" aria-hidden="true"></a> -->
                             </td>
                         </tr>
                     </tbody>
@@ -104,11 +104,11 @@
         }
     }
 
-    function hardDelete(memberId) {
-        if(confirm('Are you sure to delete permanentaly from records ?')) {
-            window.location.replace('<?php echo base_url();?>index.php/member/delete_member_hard_data/'+memberId);
-        }
-    }
+    // function hardDelete(memberId) {
+    //     if(confirm('Are you sure to delete permanentaly from records ?')) {
+    //         window.location.replace('<?//=base_url();?>index.php/member/delete_member_hard_data/'+memberId);
+    //     }
+    // }
 </script>
 
 </body>

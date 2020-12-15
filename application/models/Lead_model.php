@@ -34,10 +34,10 @@ class Lead_model extends CI_Model {
         return $this->db->update('sq_lead');
     }
 
-    function hard_delete_lead($id){
-    $this->db->where('id', $id);
-    return $this->db->delete('sq_lead');
-    }
+    // function hard_delete_lead($id){
+    //     $this->db->where('id', $id);
+    //     return $this->db->delete('sq_lead');
+    // }
 
     function update_lead_details($id){
 

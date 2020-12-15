@@ -33,10 +33,10 @@ class Member_model extends CI_Model {
         return $this->db->update('sq_members');
     }
 
-    function hard_delete_member($id){
-       $this->db->where('id', $id);
-       return $this->db->delete('sq_members');
-    }
+    // function hard_delete_member($id){
+    //    $this->db->where('id', $id);
+    //    return $this->db->delete('sq_members');
+    // }
 
     function update_member_details($id){
         $member = array(

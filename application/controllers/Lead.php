@@ -51,12 +51,12 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
-    function hard_delete_lead_data($id){
-        $this->load->view('templates/admin_header');
-        $this->lead_model->hard_delete_lead($id);
-        redirect('lead');
-        $this->load->view('templates/admin_footer');
-    }
+    // function hard_delete_lead_data($id){
+    //     $this->load->view('templates/admin_header');
+    //     $this->lead_model->hard_delete_lead($id);
+    //     redirect('lead');
+    //     $this->load->view('templates/admin_footer');
+    // }
 
     function update_lead($id){
         $this->load->view('templates/admin_header');
