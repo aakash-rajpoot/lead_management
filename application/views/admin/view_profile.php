@@ -5,6 +5,7 @@
   overflow-x: scroll;
   /* overflow-y: scroll;
   height:400px; */
+  
 }
 .ex2{
   overflow-y: scroll;
@@ -16,11 +17,11 @@ img.avatar.rounded-circle.profile_size.img-thumbnail {
     width: 230;
 }
     </style>
-<div class="container" style="margin-top:50px;">
+<div class="container" style="margin-top:50px; margin-left:170px;">
     <div class="row d-flex justify-content-center">
-        <div class="col-md-12 both-space">
-            <div class="card mt-3 mb-5 border-0 card-opacity shadow ">
-                <div class="card-body rounded-sm">
+        <div class="col-md-10 both-space">
+            <div class="mt-3 mb-5 border-0">
+                <div class="rounded-sm">
                     <div class="text-box ex2">
                     <h3 class="heading-title text-center mt-4 mb-5">Your Profile</h3>
                     <?php echo form_open('admin/view_profile',array('method'=>'post','novalidate'=>"novalidate",'enctype' => "multipart/form-data")); ?>

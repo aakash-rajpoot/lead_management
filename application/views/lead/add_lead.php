@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="wrap-career " style="margin-top:110px;margin-left:120px;">
+    <div class="wrap-career " style="margin-top:110px;margin-left:170px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Lead</h2>
         <?=form_open('lead/add_lead',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
         <?=validation_errors(); ?> 
