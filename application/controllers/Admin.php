@@ -20,6 +20,9 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'required|callback_validateUser[' . $query->num_rows() . ']');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        $this->form_validation->set_message('required', '* Please enter valid %s');
+
         if(isset($_POST['admin-login']) && $this->form_validation->run()){
             $user = $query->row_array();
 			if(!empty($user)) {
@@ -56,6 +59,9 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('old_pass', 'Old Password', 'required|callback_oldPassCheck');
     	$this->form_validation->set_rules('new_pass', 'New Password', 'required|min_length[8]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]');
 		$this->form_validation->set_rules('confirm_pass', 'Confirm Password', 'required|matches[new_pass]');
+
+        $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
+        $this->form_validation->set_message('required', '* Please enter valid %s');
 
 		if(isset($_POST['admin_change_password']) && $this->form_validation->run()){
                 $new_pass = md5($this->input->post('new_pass'));
@@ -99,8 +105,8 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('lname', 'Last name','min_length[2]|max_length[50]|regex_match[/^[A-Za-z]+$/]');
         $this->form_validation->set_rules('mobile', 'Mobile number','min_length[10]|max_length[12]|regex_match[/^[1]?[6789]\d{9}$/]');
 
-        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-        $this->form_validation->set_message('required', 'Enter %s');
+        $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
+        $this->form_validation->set_message('required', '* Please enter valid %s');
 
         if(isset($_POST['update_profile']) && $this->form_validation->run()){
             $this->admin_model->profile_update();

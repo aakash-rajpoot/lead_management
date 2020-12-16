@@ -36,12 +36,19 @@
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
 
 <style>
+<<<<<<< HEAD
   
+=======
+    .add_search{
+        margin-left:450px;
+        padding:12px; 
+    }
+>>>>>>> 63a40b636d2fdf58b3eedab7810d9db932018577
     .search_button{
         border-radius:5px;
         border:1px solid white;
         background-color:transparent ;
-        width:90px;
+        width:60px;
     }
     .input_button{
         border-radius:5px;
@@ -52,7 +59,7 @@
         border:1px solid white;
         border-radius:3px;
         background: #0b7dda;
-        width:90px;
+        width:70px;
     }
 
 </style>
@@ -110,18 +117,21 @@
             <div class="l-sidebar__content">
                 <nav class="c-menu js-menu">
                     <ul class="u-list site-menu">
-                        <li class="c-menu__item is-active" data-toggle="tooltip" title="Profile">
+                        <li class="c-menu__item is-active">
                             <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
                                 <div class="c-menu__item__inner menusss">
-                                    <i class="fa fa-user"> <span class="icon-titles">&nbsp; &nbsp; Dashboard</span></i>
+                                    <i class="fa fa-user"> <span class="icon-titles">&nbsp; Dashboard</span></i>
                                         <div class="c-menu-item__title"></div>
                                 </div>
                             </a>
                         </li>    
                         <li class="c-menu__item site-menu-item main-menu">
+                        <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; &nbsp;  Members</span></i>&nbsp; &nbsp; <i class="fa fa-angle-down"></i> 
+                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Members</span></i>
+                                <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i>  -->
                             </div>
+                        </a>
                                
                             <ul class="site-menu-sub ">
                                 <li class="site-menu-item" title="All Member">  
@@ -140,33 +150,43 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="c-menu__item site-menu-item main-menu" title="Lead"> 
-                            <div class="c-menu__item__inner menusss"><i class="fa fa-bar-chart"><span class="icon-titles">&nbsp; Lead</span></i>&nbsp; &nbsp; <i class="fa fa-angle-down"></i>
-                        </div>
-                        
+                        <li class="c-menu__item site-menu-item main-menu" title="Lead">
+                        <a href="<?=base_url('index.php/lead')?>"> 
+                            <div class="c-menu__item__inner menusss">
+                                <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Lead</span></i>
+                                <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i> --> 
+                            </div>
+                        </a>
                         <ul class="site-menu-sub ">
                             <li class="site-menu-item "  title="All Lead">
                                 <a href="<?=base_url('index.php/lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-universal-access" aria-hidden="true"><span class="icon-titles">&nbsp; &nbsp; All Lead</span></i>
-                                        <div class="c-menu-item__title  sub-menus"></div>
+                                    <div class="c-menu__item__inner">
+                                        <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">All Lead</span></i>
+                                        <!-- <div class="c-menu-item__title  sub-menus"></div> -->
                                     </div>
                                 </a>
                             </li>
                             <li class="site-menu-item" title="Add Lead"> 
                                 <a href="<?=base_url('index.php/lead/add_lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Add Lead</span></i></div>
+                                    <div class="c-menu__item__inner">
+                                        <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Add Lead</span></i>
+                                    </div>
                                 </a>
                             </li>
-                            <li class="site-menu-item" title="Assign Lead"> 
-                                <a href="<?=base_url('index.php/lead/assign_lead')?>">
-                                    <div class="c-menu__item__inner"><i class="fa fa-user-circle" aria-hidden="true"> <span class="icon-titles">&nbsp; &nbsp; Lead Assign</span></i></div>
+                            <!-- <li class="site-menu-item" title="Assign Lead"> 
+                                <a href="<?//=base_url('index.php/lead/assign_lead')?>">
+                                    <div class="c-menu__item__inner">
+                                        <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Lead Assign</span></i>
+                                    </div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
-                        </li>
+                    </li>
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
                             <a href="<?=base_url('index.php/setting')?>">
-                                <div class="c-menu__item__inner menusss"><i class="fa fa-cogs">&nbsp; &nbsp;  <span class="icon-titles">Settings</span></i></div>
+                                <div class="c-menu__item__inner menusss">
+                                    <i class="fa fa-cogs">&nbsp;&nbsp;<span class="icon-titles">Settings</span></i>
+                                </div>
                             </a>
                         </li>
                     </ul>
@@ -192,5 +212,14 @@ $(function (event) {
     });
 });
 </script> -->
+<script>
+ $('.site-menu li').removeClass('active');
+                $(this).addClass('active');
+                $(this).children('ul').slideDown();
+            }
+        });
+    });
+});
+</script>
 
 </html>

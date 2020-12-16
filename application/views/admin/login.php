@@ -6,7 +6,6 @@
 
 <head>
 
-
 <style>
 /*--------------------------------------------------------------
 # General
@@ -97,20 +96,23 @@ body {
   background-color: var(--secondary-color);
 }
 
+.php_error{
+  color:#d61323;
+  font-size:16px;
+}
 </style>
 </head>
 <body>
-<div class="container">
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-<?php echo form_open('',array('method' => 'post','novalidate'=>'novalidate')); ?>
-<div class="error_validation">
-        <?= validation_errors(); ?> 
-    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <?=form_open('',array('method' => 'post','novalidate'=>'novalidate')); ?>
+
+    
 <!-- login -->
 <div class="login-box">
   <h1>Admin Login</h1>
-
+  <?=validation_errors(); ?>
   <!-- ======= Username ======= -->
   <div class="textbox">
     <i class="fa fa-user" aria-hidden="true"></i>

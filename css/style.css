@@ -600,8 +600,6 @@ th.th-lg.sorting {
 
 /* Dropdown Button */
 
-.dropbtn {}
-
 .dropdown {
     position: relative;
     display: inline-block;
@@ -691,6 +689,7 @@ a.fa.fa-pencil-square-o {
     display: none;
 }
 
+<<<<<<< HEAD
 
 /* 16-12-2020*/
 
@@ -709,4 +708,12 @@ a.fa.fa-pencil-square-o {
 .add_search {
     border-right: 1px solid #ddd;
     margin-right: 300px;
+.php_error{
+    color:#d61323;
+    font-size:16px;
+  }
+
+  img.avatar.rounded-circle.profile_size.img-thumbnail {
+    height: 230;
+    width: 230;
 }
