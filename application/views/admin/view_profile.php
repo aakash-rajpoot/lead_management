@@ -6,10 +6,7 @@
   /* overflow-y: scroll;
   height:400px; */
 }
-.ex2{
-  overflow-y: scroll;
-  height:550px;
-}
+
 
 img.avatar.rounded-circle.profile_size.img-thumbnail {
     height: 230;

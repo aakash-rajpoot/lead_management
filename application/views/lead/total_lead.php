@@ -1,37 +1,11 @@
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <!-- custom css-->
-    <link rel="stylesheet" href="<?=base_url('css/style.css')?>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<div class="row">
+<div class="col-lg-9">
 
-
-    <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
-    <style>
-   .ex1 {
- 
-  /* width: 100%; */
-  overflow-x: scroll;
-  /* overflow-y: scroll;
-  height:400px; */
-}
-.ex2{
-  overflow-y: scroll;
-  height:600px;
-}
-    </style>
-
-</head>
-<body>
 <div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="container">
-            <div class="mt-5 ex1" style="margin-top:110px;margin-left:120px;">
+            <div class="mt-5 ex1" style="margin-top:110px;">
                 <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -83,7 +57,8 @@
     </div>
     </div>
 </div>
-
+</div>
+</div>
 <script>
     $(document).ready(function() {
         $('#dt-all-checkbox').dataTable({
@@ -112,7 +87,3 @@
         }
     }
 </script>
-
-</body>
-
-</html>

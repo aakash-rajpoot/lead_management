@@ -13,7 +13,7 @@ body {
     font-family: "Open Sans";
     font-size: 14px;
     font-weight: 400;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: #ececec;
     color: #102c58;
 }
@@ -283,7 +283,7 @@ h3 {
 
 .l-sidebar {
     width: 204px;
-    position: absolute;
+    position: fixed;
     z-index: 10;
     left: 0;
     top: 0;
@@ -694,6 +694,19 @@ a.fa.fa-pencil-square-o {
 
 /* 16-12-2020*/
 
-.dataTables_wrapper .dataTables_length {
-    position: fixed;
+.content-wrapper.content-wrapper--with-bg {
+    margin-top: 73px;
+    margin-left: 220px;
+}
+
+
+/* footer */
+
+.copyright.text-center {
+    padding-top: 150px;
+}
+
+.add_search {
+    border-right: 1px solid #ddd;
+    margin-right: 300px;
 }

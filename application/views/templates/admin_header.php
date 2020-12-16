@@ -36,10 +36,7 @@
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
 
 <style>
-    .add_search{
-        margin-left:600px;
-        padding:12px; 
-    }
+  
     .search_button{
         border-radius:5px;
         border:1px solid white;

@@ -25,7 +25,7 @@
 
 body {
   font-family: sans-serif;
-  background: url(https://picsum.photos/2500/1667?image=353) no-repeat;
+  background: url('./media/images/image-logo.jpg') no-repeat;
   background-size: auto;
   background-position-y: 30%;
 }
@@ -42,7 +42,7 @@ body {
   transform: translate(-50%, -50%);
 
   background-color:   #212529);
-  /* background-color: var(--bg-color); */
+  background-color: var(--bg-color);
   box-shadow: 0 15px 25px var(--bg-color);
   border-radius: 10px;
 }
@@ -114,13 +114,13 @@ body {
   <!-- ======= Username ======= -->
   <div class="textbox">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <input type="text" name="email" id="email"><sup class='error'>*</sup>
+    <input type="text" name="email" id="email" placeholder="Enter Your User Id"><sup class='error'>*</sup>
   </div>
 
   <!-- ======= Password ======= -->
   <div class="textbox">
     <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" name="password" id="password"><sup class='error'>*</sup>
+    <input type="password" name="password" id="password" placeholder="Enter Your Password"><sup class='error'>*</sup>
   </div>
 
   <!-- ======= Sign in ======= -->
