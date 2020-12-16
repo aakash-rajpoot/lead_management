@@ -12,7 +12,8 @@
 
 
 </style>
-
+<div class="container">
+            <div class="mt-5 ex1" style="margin-top:110px;margin-left:120px;">
 <h2 class="general">General Setting</h3>
 
 <div class="general_fields">
@@ -30,4 +31,6 @@
 <div class="general_fields">
     <label for="">Site Title: </label>
     <input type="text" id="site" name="site" >
+</div>
+</div>
 </div>

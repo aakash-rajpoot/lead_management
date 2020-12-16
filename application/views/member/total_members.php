@@ -19,6 +19,7 @@
   overflow-x: scroll;
   /* overflow-y: scroll;
   height:400px; */
+  
 }
 .ex2{
   overflow-y: scroll;

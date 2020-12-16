@@ -398,7 +398,7 @@ li a:hover {
 } */
 
 .c-menu>ul .c-menu__item i {
-    flex: 0 0 126px;
+    flex: 0 0 114px;
     font-size: 18px;
     font-weight: normal;
     text-align: center;
@@ -689,4 +689,11 @@ a.fa.fa-pencil-square-o {
 
 .nav .sub-menu {
     display: none;
+}
+
+
+/* 16-12-2020*/
+
+.dataTables_wrapper .dataTables_length {
+    position: fixed;
 }
