@@ -122,10 +122,12 @@
                             </a>
                         </li>    
                         <li class="c-menu__item site-menu-item main-menu">
+                        <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-users"> <span class="icon-titles">&nbsp; Members</span></i>
                                 <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i>  -->
                             </div>
+                        </a>
                                
                             <ul class="site-menu-sub ">
                                 <li class="site-menu-item" title="All Member">  
@@ -144,12 +146,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="c-menu__item site-menu-item main-menu" title="Lead"> 
+                        <li class="c-menu__item site-menu-item main-menu" title="Lead">
+                        <a href="<?=base_url('index.php/lead')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Lead</span></i>
-                                <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i> -->
+                                <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i> --> 
                             </div>
-                        
+                        </a>
                         <ul class="site-menu-sub ">
                             <li class="site-menu-item "  title="All Lead">
                                 <a href="<?=base_url('index.php/lead')?>">
@@ -166,13 +169,13 @@
                                     </div>
                                 </a>
                             </li>
-                            <li class="site-menu-item" title="Assign Lead"> 
-                                <a href="<?=base_url('index.php/lead/assign_lead')?>">
+                            <!-- <li class="site-menu-item" title="Assign Lead"> 
+                                <a href="<?//=base_url('index.php/lead/assign_lead')?>">
                                     <div class="c-menu__item__inner">
                                         <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Lead Assign</span></i>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">

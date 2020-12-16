@@ -12,10 +12,6 @@
   height:550px;
 }
 
-img.avatar.rounded-circle.profile_size.img-thumbnail {
-    height: 230;
-    width: 230;
-}
     </style>
 <div class="container" style="margin-top:50px; margin-left:170px;">
     <div class="row d-flex justify-content-center">
@@ -24,8 +20,8 @@ img.avatar.rounded-circle.profile_size.img-thumbnail {
                 <div class="rounded-sm">
                     <div class="text-box ex2">
                     <h3 class="heading-title text-center mt-4 mb-5">Your Profile</h3>
-                    <?php echo form_open('admin/view_profile',array('method'=>'post','novalidate'=>"novalidate",'enctype' => "multipart/form-data")); ?>
-                        <?php echo validation_errors(); ?>
+                    <?=form_open('admin/view_profile',array('method'=>'post','novalidate'=>"novalidate",'enctype' => "multipart/form-data")); ?>
+                        <?=validation_errors(); ?>
                         <?php if($profile_image == ''){
                             $profile_image = 'avatar.png';
                         } ?>
@@ -83,7 +79,7 @@ img.avatar.rounded-circle.profile_size.img-thumbnail {
                         <div class="d-flex justify-content-center mt-3 mb-4">
                             <button type="submit" class="btn btn-primary" title="update" name="update_profile">Update</button>
                         </div>
-                    <?php echo form_close(); ?>
+                    <?=form_close(); ?>
                 </div>
             </div>
         </div>

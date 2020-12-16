@@ -688,3 +688,13 @@ a.fa.fa-pencil-square-o {
 .nav .sub-menu {
     display: none;
 }
+
+.php_error{
+    color:#d61323;
+    font-size:16px;
+  }
+
+  img.avatar.rounded-circle.profile_size.img-thumbnail {
+    height: 230;
+    width: 230;
+}

@@ -6,7 +6,6 @@
 
 <head>
 
-
 <style>
 /*--------------------------------------------------------------
 # General
@@ -97,39 +96,44 @@ body {
   background-color: var(--secondary-color);
 }
 
+.php_error{
+  color:#d61323;
+  font-size:16px;
+}
 </style>
 </head>
 <body>
-<div class="container">
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-<?php echo form_open('',array('method' => 'post','novalidate'=>'novalidate')); ?>
-<div class="error_validation">
-        <?= validation_errors(); ?> 
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <?=form_open('',array('method' => 'post','novalidate'=>'novalidate')); ?>
+
+        <!-- login -->
+        <div class="login-box">
+          <div class="php_error">
+            <?=validation_errors(); ?>
+          </div>
+          <h1>Admin Login</h1>
+
+        <!-- ======= Username ======= -->
+          <div class="textbox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" name="email" id="email"><sup class='error'>*</sup>
+          </div>
+
+        <!-- ======= Password ======= -->
+          <div class="textbox">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" name="password" id="password"><sup class='error'>*</sup>
+          </div>
+
+        <!-- ======= Sign in ======= -->
+          <button type="submit" class="btn btn-primary" name="admin-login">Login</button>
+        </div>
+        <?=form_close(); ?>
+      </div>
     </div>
-<!-- login -->
-<div class="login-box">
-  <h1>Admin Login</h1>
-
-  <!-- ======= Username ======= -->
-  <div class="textbox">
-    <i class="fa fa-user" aria-hidden="true"></i>
-    <input type="text" name="email" id="email"><sup class='error'>*</sup>
   </div>
-
-  <!-- ======= Password ======= -->
-  <div class="textbox">
-    <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" name="password" id="password"><sup class='error'>*</sup>
-  </div>
-
-  <!-- ======= Sign in ======= -->
-  <button type="submit" class="btn btn-primary" name="admin-login">Login</button>
-</div>
-<?php echo form_close(); ?>
-</div>
-</div>
-</div>
-<script src='https://use.fontawesome.com/2188c74ac9.js'></script>
+  <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
 </body>
 </html>

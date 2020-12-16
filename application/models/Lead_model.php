@@ -13,9 +13,7 @@ class Lead_model extends CI_Model {
             'alt_phone' => $this->input->post('alt_phone'),
             'property_address' => $this->input->post('property_address'),
             'client_address' => $this->input->post('client_address'),
-            'role' => $this->input->post('role'),
             'remark' => $this->input->post('remark'),
-            'other_info' => $this->input->post('other_info'),
             'reference' => $this->input->post('reference')
         );
         $this->db->insert('sq_lead',$lead);
@@ -48,9 +46,7 @@ class Lead_model extends CI_Model {
         'alt_phone' => $this->input->post('alt_phone'),
         'property_address' => $this->input->post('property_address'),
         'client_address' => $this->input->post('client_address'),
-        'role' => $this->input->post('role'),
         'remark' => $this->input->post('remark'),
-        'other_info' => $this->input->post('other_info'),
         'reference' => $this->input->post('reference')
     );
         $this->db->set($lead);

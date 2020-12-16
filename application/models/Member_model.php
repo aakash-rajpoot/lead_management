@@ -14,8 +14,7 @@ class Member_model extends CI_Model {
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
             'role' => $this->input->post('role'),
-            'joining_date' => $this->input->post('joining_date'),
-            'other_info' => $this->input->post('other_info')
+            'joining_date' => $this->input->post('joining_date')
         );
         $this->db->insert('sq_members',$member);
    }
@@ -47,8 +46,7 @@ class Member_model extends CI_Model {
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
             'role' => $this->input->post('role'),
-            'joining_date' => $this->input->post('joining_date'),
-            'other_info' => $this->input->post('other_info')
+            'joining_date' => $this->input->post('joining_date')
         );
             $this->db->set($member);
             $this->db->where('id', $id);
