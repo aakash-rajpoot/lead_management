@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-lg-9">
+<div class="col-lg-10">
 <div class="content-wrapper content-wrapper--with-bg">
 <div class="container">
     <div class="wrap-career " style="margin-top:110px;">

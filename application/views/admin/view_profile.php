@@ -1,5 +1,8 @@
 
-<div class="container" style="margin-top:50px; margin-left:170px;">
+<div class="row">
+<div class="col-lg-10">
+<div class="content-wrapper content-wrapper--with-bg">
+<div class="container" style="margin-top:50px;">
     <div class="row d-flex justify-content-center">
         <div class="col-md-10 both-space">
             <div class="mt-3 mb-5 border-0">
@@ -14,7 +17,7 @@
                         <div class="text-center">
                             <img src="<?php echo base_url();?>/media/images/<?=$profile_image; ?>" class="avatar rounded-circle profile_size img-thumbnail" alt="avatar">
                         </div>  
-                        <div class="text-center pt-3 pb-5">
+                        <div class="profile-view pt-3 pb-5">
                             <input type="file" name="profile_image" />  
                         </div>
                         <div class="row">
@@ -70,5 +73,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 </div>

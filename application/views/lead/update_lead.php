@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-lg-9">
+<div class="col-lg-10">
 <div class="container">
     <div class="wrap-career " style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Update Member Details</h2>

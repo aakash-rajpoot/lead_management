@@ -180,7 +180,7 @@
         position: relative;
         display: flex;
         float: left;
-        width: 136px;
+        width: 91px;
         height: 100%;
         align-items: center;
         justify-content: center;
@@ -282,7 +282,7 @@
     }
     
     .l-sidebar {
-        width: 204px;
+        width: 160px;
         position: fixed;
         z-index: 10;
         left: 0;
@@ -509,7 +509,7 @@
     }
     
     .logo-img {
-        width: 203px;
+        width: 160px;
         height: 70px;
     }
     /* dashboard end */
@@ -653,7 +653,7 @@ tr {
     
     .content-wrapper.content-wrapper--with-bg {
         margin-top: 73px;
-        margin-left: 220px;
+        margin-left: 189px;
     }
     /* footer */
     
@@ -676,15 +676,12 @@ tr {
         width: 230;
     }
     
-    button:not(:disabled),
-    [type="button"]:not(:disabled),
-    [type="reset"]:not(:disabled),
-    [type="submit"]:not(:disabled) {
-        cursor: pointer;
-        border: none;
-        width: 70px;
+    ul.site-menu-sub {
+        margin-left: -30px!important;
     }
     
-    ul.site-menu-sub {
-        margin-left: -18px !important;
+    .profile-view {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
     }

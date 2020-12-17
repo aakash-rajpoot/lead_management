@@ -1,6 +1,6 @@
 
 <div class="row">
-<div class="col-lg-9">
+<div class="col-lg-10">
 
 <div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">

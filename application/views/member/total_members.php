@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-lg-9">
+<div class="col-lg-10">
 <div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="container">
@@ -29,7 +29,7 @@
                     <tbody class="table-bordered">
                         <tr>
                             <td><?=$i;?></td>
-                            <td><?=$totalmember['name']?></td>
+                            <td><a href="<?=base_url('index.php/member/agent_profile_details')?>"><?=$totalmember['name']?></a></td>
                             <td><?=$totalmember['email']?></td>
                             <td><?=$totalmember['phone']?></td>
                             <!-- <td><?//=$totalmember['alt_phone']?></td> -->

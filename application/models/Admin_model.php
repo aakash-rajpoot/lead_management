@@ -43,9 +43,13 @@ class Admin_model extends CI_Model {
             'mobile' => $this->input->post('mobile'),
             'dob' => $this->input->post('dob'),
             'address' => $this->input->post('address'),
-            'gender' => $this->input->post('gender'),
-            'profile_image' => $this->input->post('profile_image')
+            'gender' => $this->input->post('gender')
         ); 
+        if(!empty($this->input->post('profile_image'))) {
+            $data['profile_image'] = $this->input->post('profile_image');
+        }
+        
+        $profile = $this->input->post('profile_image');
         $this->db->set($data);
         $this->db->where('role_id', 1);
         return $this->db->update('sq_admin',$data);

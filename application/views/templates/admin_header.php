@@ -103,6 +103,8 @@
                 </div>
             </div>
         </header>
+        <div class="row">
+<div class="col-lg-2">
         <div class="l-sidebar">
             <div class="logo">
                 <div class="logo__txt"><img src="<?=base_url('media/kritak_logo.png')?>" class="logo-img" title="logo"></div>
@@ -121,7 +123,7 @@
                         <li class="c-menu__item site-menu-item main-menu">
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Members</span></i>
+                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Agents</span></i>
                                 <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i>  -->
                             </div>
                         </a>
@@ -130,14 +132,14 @@
                                 <li class="site-menu-item" title="All Member">  
                                     <a href="<?=base_url('index.php/member')?>">
                                         <div class="c-menu__item__inner">
-                                            <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Members</span></i>
+                                            <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Agents</span></i>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="site-menu-item" title="Add Member">
                                     <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner">
-                                            <i class="fa fa-user-circle" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Member</span></i>
+                                            <i class="fa fa-user-circle" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Agent</span></i>
                                         </div>
                                     </a>
                                 </li>
@@ -186,7 +188,8 @@
                 </nav>
             </div>
         </div>
-    </body>
+        </div>
+        </div>
 <!-- <script>
 $(function (event) {
     $(document).ready(function() {
@@ -214,5 +217,3 @@ $(function (event) {
     });
 });
 </script>
-
-</html>

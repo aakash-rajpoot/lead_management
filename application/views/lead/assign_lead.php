@@ -2,7 +2,7 @@
 
 
 <div class="row">
-<div class="col-lg-9">
+<div class="col-lg-10">
 <div class="content-wrapper content-wrapper--with-bg">
 <div style="margin-left:375px; margin-top:150px;">
 <div class="container">
