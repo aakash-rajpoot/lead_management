@@ -13,9 +13,9 @@
         font-family: "Open Sans";
         font-size: 14px;
         font-weight: 400;
-        /* overflow: hidden; */
         background-color: #ececec;
         color: #102c58;
+        width: 98%;
     }
     
     * {
@@ -570,10 +570,9 @@ tr {
         height: 230px;
     }
     /* 10-12-2020 */
-    
-    .submenus {
+    /* .submenus {
         margin-left: -25px;
-    }
+    } */
     /* add */
     /* Dropdown Button */
     
@@ -637,9 +636,12 @@ tr {
     .copyright {
         font-size: 16px;
     }
-    
-    .site-menu-sub .site-menu-item:hover {
+    /* .site-menu-sub .site-menu-item:hover {
         background-color: #1e3e6f;
+    } */
+    
+    .submenu-color:hover {
+        background-color: #1e3e6f!important;
     }
     
     .menusss:hover {
@@ -677,7 +679,7 @@ tr {
     }
     
     ul.site-menu-sub {
-        margin-left: -30px!important;
+        padding-left: 4px!important;
     }
     
     .profile-view {

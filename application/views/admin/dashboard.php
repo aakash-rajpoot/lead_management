@@ -1,7 +1,6 @@
 <div class="row">
 <div class="col-lg-10">
 <div class="wrap-career " style="margin-top:110px;">
-<main class="l-main">
     <div class="content-wrapper content-wrapper--with-bg">
         <h1 class="page-title">Dashboard</h1>
         <div class="page-content">Content goes here</div>
@@ -29,7 +28,6 @@
         </div>
         </div>
     </div>
-</main>
 </div>
 </div>
         </div>

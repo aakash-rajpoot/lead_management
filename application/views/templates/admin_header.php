@@ -104,7 +104,7 @@
             </div>
         </header>
         <div class="row">
-<div class="col-lg-2">
+      <div class="col-lg-2">
         <div class="l-sidebar">
             <div class="logo">
                 <div class="logo__txt"><img src="<?=base_url('media/kritak_logo.png')?>" class="logo-img" title="logo"></div>
@@ -129,16 +129,16 @@
                         </a>
                                
                             <ul class="site-menu-sub ">
-                                <li class="site-menu-item" title="All Member">  
+                                <li class="site-menu-item " title="All Member">  
                                     <a href="<?=base_url('index.php/member')?>">
-                                        <div class="c-menu__item__inner">
+                                        <div class="c-menu__item__inner submenu-color">
                                             <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Agents</span></i>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="site-menu-item" title="Add Member">
                                     <a href="<?=base_url('index.php/member/add_member')?>">
-                                        <div class="c-menu__item__inner">
+                                        <div class="c-menu__item__inner submenu-color">
                                             <i class="fa fa-user-circle" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Agent</span></i>
                                         </div>
                                     </a>
@@ -153,9 +153,9 @@
                             </div>
                         </a>
                         <ul class="site-menu-sub ">
-                            <li class="site-menu-item "  title="All Lead">
+                            <li class="site-menu-item"  title="All Lead">
                                 <a href="<?=base_url('index.php/lead')?>">
-                                    <div class="c-menu__item__inner">
+                                    <div class="c-menu__item__inner submenu-color">
                                         <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">All Lead</span></i>
                                         <!-- <div class="c-menu-item__title  sub-menus"></div> -->
                                     </div>
@@ -163,7 +163,7 @@
                             </li>
                             <li class="site-menu-item" title="Add Lead"> 
                                 <a href="<?=base_url('index.php/lead/add_lead')?>">
-                                    <div class="c-menu__item__inner">
+                                    <div class="c-menu__item__inner submenu-color">
                                         <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Add Lead</span></i>
                                     </div>
                                 </a>
@@ -177,7 +177,7 @@
                             </li> -->
                         </ul>
                     </li>
-                        <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+                        <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Settings">
                             <a href="<?=base_url('index.php/setting')?>">
                                 <div class="c-menu__item__inner menusss">
                                     <i class="fa fa-cogs">&nbsp;&nbsp;<span class="icon-titles">Settings</span></i>
