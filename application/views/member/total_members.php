@@ -29,7 +29,7 @@
                     <tbody class="table-bordered">
                         <tr>
                             <td><?=$i;?></td>
-                            <td><a href="<?=base_url('index.php/member/agent_profile_details')?>"><?=$totalmember['name']?></a></td>
+                            <td><?=$totalmember['name']?></td>
                             <td><?=$totalmember['email']?></td>
                             <td><?=$totalmember['phone']?></td>
                             <!-- <td><?//=$totalmember['alt_phone']?></td> -->

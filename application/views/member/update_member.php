@@ -5,7 +5,16 @@
     <div class="wrap-career " style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Update Agent Details</h2>
         <?php echo form_open('member/update_member/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
-        <?=validation_errors(); ?>     
+        <?=validation_errors(); ?>    
+            <?php //if($profile_image == ''){
+                    //$profile_image = 'avatar.png';
+            //} ?>
+            <div class="text-center">
+                <img src="<?=base_url('media/images/avatar.png');?>" class="avatar rounded-circle profile_size img-thumbnail" alt="avatar">
+            </div>  
+            <div class="profile-view pt-3 pb-5">
+                <input type="file" name="profile_image" />  
+            </div>  
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="name">Full Name: <span class="text-danger font-weight-medium">*</span></label>
@@ -66,6 +75,28 @@
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="joining_date">Date of Joining: </label>
                     <input type="date" class="form-control" name="joining_date" id="joining_date" value="<?=$joining_date;?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="label-input" for="aadhar">Aadhar Card:</label>
+                    <input type="file" class="form-control" name="aadhar" id="aadhar">
+                </div>
+            
+                <div class="col-md-6 mb-3">
+                    <label class="label-input" for="pan">Pan Card:</label>
+                    <input type="file" class="form-control" name="pan" id="pan">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="label-input" for="permanent">Permanent Address:</label>
+                    <textarea  class="form-control" cols = "50" name="permanent" id="permanent"></textarea>
+                </div>
+            
+                <div class="col-md-6 mb-3">
+                    <label class="label-input" for="correspondence">Correspondence Address:</label>
+                    <textarea class="form-control" cols = "50" name="correspondence" id="correspondence"></textarea>
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
