@@ -77,4 +77,10 @@ class Member extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    function agent_profile_details(){
+        $this->load->view('templates/admin_header');
+        $this->load->view('member/agent_profile');
+        $this->load->view('templates/admin_footer');
+    }
+
 }
