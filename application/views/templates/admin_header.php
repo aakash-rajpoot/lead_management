@@ -36,14 +36,7 @@
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
 
 <style>
-<<<<<<< HEAD
   
-=======
-    .add_search{
-        margin-left:450px;
-        padding:12px; 
-    }
->>>>>>> 63a40b636d2fdf58b3eedab7810d9db932018577
     .search_button{
         border-radius:5px;
         border:1px solid white;
@@ -121,7 +114,7 @@
                             <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
                                 <div class="c-menu__item__inner menusss">
                                     <i class="fa fa-user"> <span class="icon-titles">&nbsp; Dashboard</span></i>
-                                        <div class="c-menu-item__title"></div>
+                                        <!-- <div class="c-menu-item__title"></div> -->
                                 </div>
                             </a>
                         </li>    
