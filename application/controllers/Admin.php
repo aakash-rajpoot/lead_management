@@ -84,8 +84,8 @@ class Admin extends CI_Controller {
     function view_profile(){
         $this->load->view('templates/admin_header');
         $data = $this->admin_model->fetch_admin_profile_details();
- 
-        if($data['profile_image'] == ''){
+      
+        if(isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == '0'){
             $config['upload_path'] = './media/images';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['width']  = 150;
@@ -93,14 +93,14 @@ class Admin extends CI_Controller {
 
             $this->load->library('upload',$config);
             $this->upload->initialize($config);
-
+            
             if($this->upload->do_upload('profile_image')){
                 $_POST['profile_image'] = $this->upload->data('file_name');
             }else{
                 $error = array('error' => $this->upload->display_errors());
             }
         }
-   
+       
         $this->form_validation->set_rules('fname', 'First name','min_length[2]|max_length[50]|regex_match[/^[A-Za-z]+$/]');
         $this->form_validation->set_rules('lname', 'Last name','min_length[2]|max_length[50]|regex_match[/^[A-Za-z]+$/]');
         $this->form_validation->set_rules('mobile', 'Mobile number','min_length[10]|max_length[12]|regex_match[/^[1]?[6789]\d{9}$/]');
