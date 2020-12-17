@@ -689,8 +689,6 @@ a.fa.fa-pencil-square-o {
     display: none;
 }
 
-<<<<<<< HEAD
-
 /* 16-12-2020*/
 
 .content-wrapper.content-wrapper--with-bg {
@@ -708,6 +706,7 @@ a.fa.fa-pencil-square-o {
 .add_search {
     border-right: 1px solid #ddd;
     margin-right: 300px;
+}
 .php_error{
     color:#d61323;
     font-size:16px;
