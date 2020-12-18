@@ -4,7 +4,7 @@
     html,
     body {
         height: 100%;
-        width: 100%;
+        /* width: 100%; */
     }
     
     body {
@@ -15,7 +15,7 @@
         font-weight: 400;
         background-color: #ececec;
         color: #102c58;
-        width: 98%;
+        width: 90%;
     }
     
     * {
@@ -166,7 +166,7 @@
     
     .header-icons-group {
         display: flex;
-        order: 3;
+        border: 3;
         margin-left: auto;
         height: 100%;
         border-left: 1px solid #cccccc;
@@ -191,7 +191,7 @@
     
     .c-header-icon i {
         font-size: 18px;
-        line-height: 40px;
+        line-height: 15px;
     }
     
     .c-header-icon--in-circle {
@@ -200,7 +200,11 @@
     }
     
     .c-header-icon:hover i {
-        color: #23527c;
+        color: #95c41f;
+    }
+    
+    .view-heading:hover {
+        color: #95c41f;
     }
     
     .l-header {
@@ -641,11 +645,11 @@ tr {
     } */
     
     .submenu-color:hover {
-        background-color: #1e3e6f!important;
+        background-color: #95c41f!important;
     }
     
     .menusss:hover {
-        background-color: #1e3e6f;
+        background-color: #95c41f;
     }
     
     .nav .sub-menu {
@@ -655,7 +659,7 @@ tr {
     
     .content-wrapper.content-wrapper--with-bg {
         margin-top: 73px;
-        margin-left: 189px;
+        margin-left: 167px;
     }
     /* footer */
     
@@ -663,9 +667,23 @@ tr {
         padding-top: 150px;
     }
     
+    .copiyright-link {
+        color: #95c41f;
+    }
+    
+    .copiyright-link:hover {
+        color: #95c41f;
+        text-decoration: none;
+    }
+    
+    .button-hor:hover {
+        background-color: #95c41f!important;
+    }
+    
     .add_search {
         border-right: 1px solid #ddd;
         margin-right: 300px;
+        display: none;
     }
     
     .php_error {
@@ -679,7 +697,7 @@ tr {
     }
     
     ul.site-menu-sub {
-        padding-left: 4px!important;
+        padding-left: 9px!important;
     }
     
     .profile-view {

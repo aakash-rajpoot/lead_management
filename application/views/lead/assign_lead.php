@@ -1,11 +1,12 @@
 
 
 
-<div class="row">
-<div class="col-lg-10">
+
 <div class="content-wrapper content-wrapper--with-bg">
 <div style="margin-left:375px; margin-top:150px;">
 <div class="container">
+<div class="row">
+<div class="col-lg-12">
     <?=form_open('lead/assign_lead/',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
     <?=validation_errors(); ?> 
     <?php if(!empty($rename)) { ?>
@@ -47,7 +48,7 @@
         
     </div>
     <div class="d-flex justify-content-center mt-5 col-md-8 mb-3">
-        <button class="btn btn-primary btn-lg" name="lead_assign" type="submit">Assign</button>
+        <button class="btn btn-primary button-hor" name="lead_assign" type="submit">Assign</button>
     </div>
     </div>
     

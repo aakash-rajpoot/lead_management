@@ -126,7 +126,7 @@ body {
   </div>
 
   <!-- ======= Sign in ======= -->
-  <button type="submit" class="btn btn-primary" name="admin-login">Login</button>
+  <button type="submit" class="btn btn-primary button-hor" name="admin-login">Login</button>
 </div>
 <?php echo form_close(); ?>
 </div>
