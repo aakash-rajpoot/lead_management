@@ -47,11 +47,11 @@
                             <!-- <td><?//=$totallead['other_info']?></td> -->
                             <td><?=$totallead['reference']?></td>
                             <td class="edit-icon">
-                                <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit details"></a> <br/>
-                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4" aria-hidden="true" title="Soft Delete"></a> <br/>
+                                <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit details"> Edit </a> <br/>
+                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Soft Delete"> Delete</a> <br/>
                                 <!-- <a href="#" onClick = "hardDelete(<?//=$totallead['id'];?>);" name="delete" data-href="<?//=base_url();?>index.php/lead/delete_lead_hard_data/<?//=$totallead['id'];?>" id="delete-<?//=$i?>" class="fa fa-trash mt-4" aria-hidden="true" title="Hard Delete"></a> -->
-                                <a href="<?=base_url('index.php/lead/reassign_lead/'.$totallead['id'])?>" class="btn btn-primary mt-4">Assign</a>
-                                <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="btn btn-primary mt-3">De-assign</a>
+                                <a href="<?=base_url('index.php/lead/reassign_lead/'.$totallead['id'])?>" class="fa fa-pencil mt-3" aria-hidden="true" > Assign</a>
+                                <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="fa fa-pencil-square mt-3 text-warning" aria-hidden="true" > De-assign</a>
                             </td>
                         </tr>
                     </tbody>

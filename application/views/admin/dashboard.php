@@ -13,7 +13,7 @@
                         <h4 class="card-title">Translation By H. Rackham</h4>
                         <p class="card-text"> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
                             more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                        <a href="#" class="btn btn-primary view-more btn-md">View more <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                        <a href="#" title="view more" class="btn btn-primary button-hor view-more btn-md">View more <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                         <h4 class="card-title">Special title treatment</h4>
                         <p class="card-text"> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
                             more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                        <a href="#" class="btn btn-primary view-more btn-md">View more <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                        <a href="#" title="view more" class="btn btn-primary button-hor view-more btn-md">View more <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
                     </div>
                 </div>
             </div>

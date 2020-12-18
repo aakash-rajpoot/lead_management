@@ -39,8 +39,8 @@
                                 <td><?=$totalmember['joining_date']?></td>
                                 <td></td>
                                 <td class="edit-icon">
-                                    <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id']);?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"></a>&nbsp
-                                    <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="Soft delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true"></a>
+                                    <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id']);?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"> Edit</a>&nbsp;
+                                    <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="Soft delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true">Delete</a>
                                 </td>
                             </tr>
                         <?php }else{ ?>

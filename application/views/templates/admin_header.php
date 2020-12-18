@@ -113,7 +113,7 @@
             <div class="l-sidebar__content">
                 <nav class="c-menu js-menu">
                     <ul class="u-list site-menu">
-                        <li class="c-menu__item is-active">
+                        <li class="c-menu__item is-active" title="Dashboard">
                             <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
                                 <div class="c-menu__item__inner menusss">
                                     <i class="fa fa-user"> <span class="icon-titles">&nbsp; Dashboard</span></i>
@@ -121,7 +121,7 @@
                                 </div>
                             </a>
                         </li>    
-                        <li class="c-menu__item site-menu-item main-menu">
+                        <li class="c-menu__item site-menu-item main-menu" title="Agents">
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-users"> <span class="icon-titles">&nbsp; Agents</span></i>
@@ -130,14 +130,14 @@
                         </a>
                                
                             <ul class="site-menu-sub ">
-                                <li class="site-menu-item " title="All Member">  
+                                <li class="site-menu-item " title="All Agents">  
                                     <a href="<?=base_url('index.php/member')?>">
                                         <div class="c-menu__item__inner submenu-color">
                                             <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Agents</span></i>
                                         </div>
                                     </a>
                                 </li>
-                                <li class="site-menu-item" title="Add Member">
+                                <li class="site-menu-item" title="Add Agents">
                                     <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner submenu-color">
                                             <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Agent</span></i>
