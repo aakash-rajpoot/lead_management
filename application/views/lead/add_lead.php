@@ -29,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="property_address">Property of address: <span class="text-danger font-weight-medium">*</span></label>
+                    <label class="label-input" for="property_address">Project Name: <span class="text-danger font-weight-medium">*</span></label>
                     <textarea class="form-control" rows="3" name="property_address" id="property_address"></textarea>
                 </div>
                 <div class="col-md-6 mb-3">

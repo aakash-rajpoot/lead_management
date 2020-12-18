@@ -22,20 +22,58 @@ class Member extends CI_Controller {
 
     function add_member(){
         $this->load->view('templates/admin_header');
+        // if(isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == '0'){  
+    
+        if(isset($_POST['member_submit'])) { 
 
-        $this->form_validation->set_rules('name', 'Full name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
-        $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
-		$this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
-        $this->form_validation->set_rules('dob', 'Birth Date','required');
-        $this->form_validation->set_rules('role', 'Role','required');
-        
-        $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
-		$this->form_validation->set_message('required', '* Please enter valid %s');
+            $this->form_validation->set_rules('name', 'Full name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
+            $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+            $this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+            $this->form_validation->set_rules('dob', 'Birth Date','required');
+            $this->form_validation->set_rules('aadhar', 'Aadhar Card','required');
+            $this->form_validation->set_rules('pan', 'Pan Card','required');
+            $this->form_validation->set_rules('permanent', 'Permanent Address','required');
+            
+            $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
+            $this->form_validation->set_message('required', '* Please enter valid %s');
+            
+            $config1['upload_path'] = './media/aadhar';
+            $config1['allowed_types'] = 'pdf';
+            $config1['max_size']    = '15000000';
+            $config1['max_width'] = '1024';
+            $config1['max_height'] = '768';
 
-		if(isset($_POST['member_submit']) && $this->form_validation->run()) { 
-            $this->member_model->member_data();
-            redirect('member');
+            $this->load->library('upload',$config1);
+            $this->upload->initialize($config1);
+
+            if (!$this->upload->do_upload('aadhar')){
+                $error = array('error' => $this->upload->display_errors());
+            }
+            else {
+                $_POST['aadhar'] = $this->upload->data('file_name');
+            }
+
+            $config2['upload_path'] = './media/pan';
+            $config2['allowed_types'] = 'pdf';
+            $config2['max_size']    = '15000000';
+            $config2['max_width'] = '1024';
+            $config2['max_height'] = '768';
+
+            $this->load->library('upload',$config2);
+            $this->upload->initialize($config2);
+
+            if (!$this->upload->do_upload('pan')){
+                $error = array('error' => $this->upload->display_errors());
+            }
+            else {
+                $_POST['pan'] = $this->upload->data('file_name');
+            }
+
+            if($this->form_validation->run()) {
+                $this->member_model->member_data();
+                redirect('member');
+            }
         }
         $this->load->view('member/add_member');
         $this->load->view('templates/admin_footer');
@@ -59,56 +97,79 @@ class Member extends CI_Controller {
         $this->load->view('templates/admin_header');
         $data = $this->member_model->fetch_member_data($id);
         
-        $this->form_validation->set_rules('name', 'Full name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
-        $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
-		$this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
-        $this->form_validation->set_rules('dob', 'Birth Date','required');
-        $this->form_validation->set_rules('role', 'Role','required');
-        
-        $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
-		$this->form_validation->set_message('required', '* Please enter valid %s');
+        if(isset($_POST['member_update'])) { 
 
-		if(isset($_POST['member_update']) && $this->form_validation->run()) { 
+            $this->form_validation->set_rules('name', 'Full name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
+            $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+            $this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+            $this->form_validation->set_rules('dob', 'Birth Date','required');
+            $this->form_validation->set_rules('permanent', 'Permanent Address','required');
+            
+            $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
+            $this->form_validation->set_message('required', '* Please enter valid %s');
+            
+            if($this->form_validation->run()) {
+                if(isset($_FILES['aadhar']) && $_FILES['aadhar']['error'] == '0'){
+                    $config1['upload_path'] = './media/aadhar';
+                    $config1['allowed_types'] = 'pdf';
+                    $config1['max_size']    = '15000000';
+                    $config1['max_width'] = '1024';
+                    $config1['max_height'] = '768';
+
+                    $this->load->library('upload',$config1);
+                    $this->upload->initialize($config1);
+
+                    if (!$this->upload->do_upload('aadhar')){
+                        $error = array('error' => $this->upload->display_errors());
+                    }
+                    else {
+                        $_POST['aadhar'] = $this->upload->data('file_name');
+                    }
+                }
+                if(isset($_FILES['pan']) && $_FILES['pan']['error'] == '0'){
+                    $config2['upload_path'] = './media/pan';
+                    $config2['allowed_types'] = 'pdf';
+                    $config2['max_size']    = '15000000';
+                    $config2['max_width'] = '1024';
+                    $config2['max_height'] = '768';
+
+                    $this->load->library('upload',$config2);
+                    $this->upload->initialize($config2);
+
+                    if (!$this->upload->do_upload('pan')){
+                        $error = array('error' => $this->upload->display_errors());
+                    }
+                    else {
+                        $_POST['pan'] = $this->upload->data('file_name');
+                    }
+                }
+                if(isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == '0'){
+                    $config['upload_path'] = './media/agent_photo';
+                    $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                    $config['width']  = 150;
+                    $config['height'] = 50;
+        
+                    $this->load->library('upload',$config);
+                    $this->upload->initialize($config);
+                    
+                    if($this->upload->do_upload('profile_image')){
+                        $_POST['profile_image'] = $this->upload->data('file_name');
+                    }else{
+                        $error = array('error' => $this->upload->display_errors());
+                    }
+                }
             $this->member_model->update_member_details($id);
-            redirect('member');
+            redirect('member/update_member');
+            }
         }
         $this->load->view('member/update_member', $data);
         $this->load->view('templates/admin_footer');
     }
 
-    function agent_profile_details(){
+    function agent_profile_details($id) {
         $this->load->view('templates/admin_header');
-        $data = $this->member_model->fetch_agent_profile_details();
-      
-        if(isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == '0'){
-            $config['upload_path'] = './media/images';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $config['width']  = 150;
-            $config['height'] = 50;
-
-            $this->load->library('upload',$config);
-            $this->upload->initialize($config);
-            
-            if($this->upload->do_upload('profile_image')){
-                $_POST['profile_image'] = $this->upload->data('file_name');
-            }else{
-                $error = array('error' => $this->upload->display_errors());
-            }
-        }
-       
-        $this->form_validation->set_rules('fname', 'First name','min_length[2]|max_length[50]|regex_match[/^[A-Za-z]+$/]');
-        $this->form_validation->set_rules('lname', 'Last name','min_length[2]|max_length[50]|regex_match[/^[A-Za-z]+$/]');
-        $this->form_validation->set_rules('mobile', 'Mobile number','min_length[10]|max_length[12]|regex_match[/^[1]?[6789]\d{9}$/]');
-
-        $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
-        $this->form_validation->set_message('required', '* Please enter valid %s');
-
-        if(isset($_POST['update_profile']) && $this->form_validation->run()){
-            $this->admin_model->profile_update();
-            redirect('admin/view_profile');
-        }
-
+        $data = $this->member_model->fetch_agent_profile_details($id);
         $this->load->view('member/agent_profile',$data);
         $this->load->view('templates/admin_footer');
     }

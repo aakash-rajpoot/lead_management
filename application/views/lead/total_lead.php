@@ -15,7 +15,7 @@
                             <!-- <th class="th-sm">Email Id</th> -->
                             <th class="th-sm">Phone Number</th>
                             <!-- <th class="th-sm">Alternate Phone Number</th> -->
-                            <th class="th-sm">Property Of Address</th>
+                            <th class="th-sm">Project Name</th>
                             <th class="th-sm">Client Address</th>
                             <!-- <th class="th-sm">Role</th> -->
                             <th class="th-sm">Remark</th>

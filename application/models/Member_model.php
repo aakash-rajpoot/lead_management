@@ -13,8 +13,11 @@ class Member_model extends CI_Model {
             'alt_phone' => $this->input->post('alt_phone'),
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
-            'role' => $this->input->post('role'),
-            'joining_date' => $this->input->post('joining_date')
+            'joining_date' => $this->input->post('joining_date'),
+            'aadhar' => $this->input->post('aadhar'),
+            'pan' => $this->input->post('pan'),
+            'permanent' => $this->input->post('permanent'),
+            'correspondence' => $this->input->post('correspondence')
         );
         $this->db->insert('sq_members',$member);
    }
@@ -22,7 +25,6 @@ class Member_model extends CI_Model {
     function fetch_total_members(){
         $this->db->select("*");
         $this->db->from('sq_members');
-        $this->db->where('status',1);
         return $this->db->get();
     }
 
@@ -45,13 +47,24 @@ class Member_model extends CI_Model {
             'alt_phone' => $this->input->post('alt_phone'),
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
-            'role' => $this->input->post('role'),
-            'joining_date' => $this->input->post('joining_date')
+            'joining_date' => $this->input->post('joining_date'),
+            'permanent' => $this->input->post('permanent'),
+            'correspondence' => $this->input->post('correspondence')
         );
-            $this->db->set($member);
-            $this->db->where('id', $id);
-            return $this->db->update('sq_members',$member);
-   }
+        // if(!empty($this->input->post('aadhar'))){
+        //     $member['aadhar'] = $this->input->post('aadhar');
+        // }
+        // if(!empty($this->input->post('pan'))){
+        //     $member['pan'] = $this->input->post('pan');
+        // }
+        if(!empty($this->input->post('profile_image'))){
+            $member['profile_image'] = $this->input->post('profile_image');
+        }
+        
+        $this->db->set($member);
+        $this->db->where('id', $id);
+        return $this->db->update('sq_members',$member);
+    }
 
     function fetch_member_data($id){
         $this->db->select("*");
@@ -61,24 +74,11 @@ class Member_model extends CI_Model {
         return $query->row_array();
     }
 
-    function fetch_agent_profile_details(){
-        $data = array(
-            'name' => $this->input->post('name'),
-            'phone' => $this->input->post('phone'),
-            'email' => $this->input->post('email'),
-            'alt_phone' => $this->input->post('alt_phone'),
-            'gender' => $this->input->post('gender'),
-            'dob' => $this->input->post('dob'),
-            'role' => $this->input->post('role'),
-            'joining_date' => $this->input->post('joining_date')
-        ); 
-        if(!empty($this->input->post('profile_image'))) {
-            $data['profile_image'] = $this->input->post('profile_image');
-        }
-        
-        $profile = $this->input->post('profile_image');
-        $this->db->set($data);
-        $this->db->where('role_id', 1);
-        return $this->db->update('sq_admin',$data);
+    function fetch_agent_profile_details($id){
+        $this->db->select("*");
+        $this->db->from('sq_members');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+        return $query->row_array();
     }
 }

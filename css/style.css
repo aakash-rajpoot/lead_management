@@ -4,7 +4,7 @@
     html,
     body {
         height: 100%;
-        width: 100%;
+       
     }
     
     body {
@@ -686,4 +686,20 @@ tr {
         display: flex;
         justify-content: center;
         margin-bottom: 30px;
+    }
+
+    .upload_warning{
+        color:#d61323;
+    }
+
+    .upload_success{
+        color:green;
+    }
+
+    .active_agent{
+        background-color:#c5f8ae !important;
+    }
+
+    .inactive_agent{
+        background-color:#fca5a8 !important;
     }
