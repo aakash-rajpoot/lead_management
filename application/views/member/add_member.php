@@ -1,5 +1,4 @@
-<div class="row">
-<div class="col-lg-10">
+
 <div class="content-wrapper content-wrapper--with-bg">
 <div class="container">
     <div class="wrap-career" style="margin-top:110px;">
@@ -87,7 +86,7 @@
             
             
             <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-primary" name="member_submit" type="submit">Submit</button>
+                <button class="btn btn-primary button-hor" name="member_submit" type="submit">Submit</button>
             </div>
         <?=form_open();?>
     </div>

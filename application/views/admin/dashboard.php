@@ -1,7 +1,9 @@
-<div class="row">
-<div class="col-lg-10">
 <div class="wrap-career " style="margin-top:110px;">
     <div class="content-wrapper content-wrapper--with-bg">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-12">
+
         <h1 class="page-title">Dashboard</h1>
         <div class="page-content">Content goes here</div>
         <div class="row mt-4">
@@ -30,4 +32,5 @@
     </div>
 </div>
 </div>
+        </div>
         </div>

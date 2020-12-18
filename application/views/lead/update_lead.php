@@ -1,6 +1,7 @@
-<div class="row">
-<div class="col-lg-10">
+
 <div class="container">
+<div class="row">
+<div class="col-lg-12">
     <div class="wrap-career " style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Update Member Details</h2>
         <?php echo form_open('lead/update_lead/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
@@ -47,7 +48,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-primary" name="lead_update" type="submit">Update</button>
+                <button class="btn btn-primary button-hor" name="lead_update" type="submit">Update</button>
             </div>
         </form>
     </div>

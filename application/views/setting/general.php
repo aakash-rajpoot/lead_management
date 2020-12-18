@@ -13,7 +13,7 @@
 
 </style>
 <div class="row">
-   <div class="col-lg-10">
+   <div class="col-lg-12">
       <div class="content-wrapper content-wrapper--with-bg">
          <div class="container">
                      <div class="mt-5 ex1" style="margin-top:110px;">

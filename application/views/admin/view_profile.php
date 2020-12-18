@@ -1,6 +1,6 @@
-
+<div class="container">
 <div class="row">
-<div class="col-lg-10">
+<div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
 <div class="container" style="margin-top:50px;">
     <div class="row d-flex justify-content-center">
@@ -66,13 +66,14 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-3 mb-4">
-                            <button type="submit" class="btn btn-primary" title="update" name="update_profile">Update</button>
+                            <button type="submit" class="btn btn-primary button-hor" title="update" name="update_profile">Update</button>
                         </div>
                     <?=form_close(); ?>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 </div>

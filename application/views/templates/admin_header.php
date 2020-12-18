@@ -83,17 +83,17 @@
                     <div class="row">
                         <a href="<?=base_url('index.php/admin/view_profile');?>">
                             <div class="col-md-12 mb-1 pt-2">
-                                <h5>View Profile</h5>
+                                <h6 class="view-heading" title="view profile"><i class="fa fa-user" aria-hidden="true"></i> View Profile</h6>
                             </div>
                         </a>
                         <a href="<?=base_url('index.php/admin/change_pass');?>">
                             <div class="col-md-12 mb-1">
-                                <h5>Change Password</h5>
+                                <h6 class="view-heading" title="change password"><i class="fa fa-key" aria-hidden="true"></i> Change Password</h6>
                             </div>
                         </a>
                         <a href="<?=base_url('index.php/admin/logout');?>">
                             <div class="col-md-12 mb-1">
-                                <h5>Logout</h5>
+                                <h6 class="view-heading" title="logout"><i class="fa fa-lock" aria-hidden="true"></i> Logout</h6>
                             </div>
                         </a>
                     </div>
@@ -103,12 +103,13 @@
                 </div>
             </div>
         </header>
-        <div class="row">
-      <div class="col-lg-2">
+      
         <div class="l-sidebar">
             <div class="logo">
-                <div class="logo__txt"><img src="<?=base_url('media/kritak_logo.png')?>" class="logo-img" title="logo"></div>
+                <div class="logo__txt"><img src="<?=base_url('media/kritak_logo.png')?>" class="logo-img" title="Kritak"></div>
             </div>
+            <div class="row">
+      <div class="col-lg-12">
             <div class="l-sidebar__content">
                 <nav class="c-menu js-menu">
                     <ul class="u-list site-menu">
@@ -139,7 +140,7 @@
                                 <li class="site-menu-item" title="Add Member">
                                     <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner submenu-color">
-                                            <i class="fa fa-user-circle" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Agent</span></i>
+                                            <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Agent</span></i>
                                         </div>
                                     </a>
                                 </li>
@@ -164,7 +165,7 @@
                             <li class="site-menu-item" title="Add Lead"> 
                                 <a href="<?=base_url('index.php/lead/add_lead')?>">
                                     <div class="c-menu__item__inner submenu-color">
-                                        <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Add Lead</span></i>
+                                        <i class="fa fa-id-badge" aria-hidden="true">&nbsp; <span class="icon-titles">Add Lead</span></i>
                                     </div>
                                 </a>
                             </li>

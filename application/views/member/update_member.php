@@ -1,7 +1,8 @@
-<div class="row">
-<div class="col-lg-10">
+
 <div class="content-wrapper content-wrapper--with-bg">
 <div class="container">
+<div class="row">
+<div class="col-lg-12">
     <div class="wrap-career " style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Update Agent Details</h2>
         <?php echo form_open('member/update_member/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
@@ -95,7 +96,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-primary" name="member_update" type="submit">Update</button>
+                <button class="btn btn-primary button-hor" name="member_update" type="submit">Update</button>
             </div>
         </form>
     </div>
