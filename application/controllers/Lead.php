@@ -28,11 +28,17 @@ class Lead extends CI_Controller {
 		$this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
 		$this->form_validation->set_rules('property_address', 'Property of Address','required');
         $this->form_validation->set_rules('client_address', 'Client Address','required');
-        
+        $this->form_validation->set_rules('unit', 'Type of units','required');
+
         $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
 		$this->form_validation->set_message('required', '* Please enter valid %s');
 
+        // $array = $this->input->post('unit');
+        // $_POST['units'] = implode(',',$array);
+
 		if(isset($_POST['lead_submit']) && $this->form_validation->run()) { 
+            // echo '<pre>';
+            // print_r($_POST);die;
             $this->lead_model->lead_data();
             redirect('lead');
         }

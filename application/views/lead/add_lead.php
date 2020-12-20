@@ -1,3 +1,10 @@
+<style>
+#checkboxes label{
+    padding-right:30px;
+}
+</style>
+
+
 
 <div class="content-wrapper content-wrapper--with-bg">
 <div class="container">
@@ -38,14 +45,29 @@
                     <textarea class="form-control" rows="3" name="client_address" id="client_address"></textarea>
                 </div>
             </div>
-            <!-- <div class="row">
+
+            <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="other_info">Any Other Information: </label>
-                    <input type="email" class="form-control" name="other_info" id="other_info">
+                    <label class="label-input">Type of units: </label>
+                    <div id="checkboxes">
+                        <label for="1rk">
+                            <input type="checkbox" name="unit[]" class="form-control" id="1rk" />1RK</label>
+                        <label for="1bhk">
+                            <input type="checkbox" name="unit[]" class="form-control" id="1bhk" />1BHK</label>
+                        <label for="2bhk">
+                            <input type="checkbox" name="unit[]" class="form-control" id="2bhk" />2BHK</label>
+                        <label for="3bhk">
+                            <input type="checkbox" name="unit[]" class="form-control" id="3bhk" />3BHK</label>
+                        <label for="4bhk">
+                            <input type="checkbox" name="unit[]" class="form-control" id="4bhk" />4BHK</label>
+                        <label for="p_house">
+                            <input type="checkbox" name="unit[]" class="form-control" id="p_house" />P.House</label>
+                        <label for="villa">
+                            <input type="checkbox" name="unit[]" class="form-control" id="villa" />Villa</label>
+                    </div>
                 </div>
-            
-                
-            </div> -->
+            </div>
+
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="remark">Remark:</label>
