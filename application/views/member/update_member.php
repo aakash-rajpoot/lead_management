@@ -1,7 +1,7 @@
+<div class="wrap-career " style="margin-top:73px;">
 <div class="row">
 <div class="col-lg-12">
-   <div class="content-wrapper content-wrapper--with-bg">
-    <div class="wrap-career " style="margin-top:110px;">
+<div class="content-wrapper content-wrapper--with-bg">  
         <h2 class="font-weight-medium text-center mt-2 mb-5">Update Agent Details</h2>
         <?php echo form_open('member/update_member/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
         <?=validation_errors(); ?>    

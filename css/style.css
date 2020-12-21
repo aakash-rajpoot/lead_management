@@ -729,3 +729,33 @@ tr {
     .multi-checkboxss {
         width: 400px!important;
     }
+    /* 21/12/2020 */
+    
+    .search_button {
+        border-radius: 5px;
+        border: 1px solid white;
+        background-color: transparent;
+        width: 60px;
+    }
+    
+    .input_button {
+        border-radius: 5px;
+        border: 1px solid white;
+        width: 100%;
+    }
+    
+    .search_button:hover {
+        border: 1px solid white;
+        border-radius: 3px;
+        background: #0b7dda;
+        width: 70px;
+    }
+    
+    .img-profile {
+        height: 166px!important;
+        width: 167px!important;
+    }
+    
+    .caret {
+        display: none!important;
+    }
