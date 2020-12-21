@@ -34,14 +34,12 @@
 
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
-<script src="script.js"></script>
-
 </head>
     <body class="sidebar-is-reduced">
         <header class="l-header">
@@ -154,13 +152,13 @@
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li class="site-menu-item" title="Assign Lead"> 
-                                <a href="<?//=base_url('index.php/lead/assign_lead')?>">
-                                    <div class="c-menu__item__inner">
-                                        <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Lead Assign</span></i>
+                            <li class="site-menu-item" title="Add Unit"> 
+                                <a href="<?=base_url('index.php/lead/add_unit')?>">
+                                    <div class="c-menu__item__inner submenu-color">
+                                        <i class="fa fa-id-badge" aria-hidden="true">&nbsp; <span class="icon-titles">Add Unit</span></i>
                                     </div>
                                 </a>
-                            </li> -->
+                            </li>
                         </ul>
                     </li>
                         <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Settings">

@@ -750,6 +750,15 @@ tr {
         width: 70px;
     }
     
+<<<<<<< HEAD
+    .img-profile {
+        height: 166px!important;
+        width: 167px!important;
+    }
+    
+    .caret {
+        display: none!important;
+=======
     .caret {
         display: none!important;
     }
@@ -757,4 +766,5 @@ tr {
     .profile-agent {
         width: 167px!important;
         height: 163px!important;
+>>>>>>> square1
     }
