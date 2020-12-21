@@ -1,10 +1,14 @@
-
 <div class="mt-5 ex1" style="margin-top:110px;">
 <div class="row">
    <div class="col-lg-12">
       <div class="content-wrapper content-wrapper--with-bg">
+<<<<<<< HEAD
                          <h2 class="general text-center mb-3">General Setting</h2>
                             <div class="row mt-5">
+=======
+                         <h2 class="text-center  mb-5">General Setting</h3>
+                            <div class="row mt-3">
+>>>>>>> square1
                                     <div class="col-lg-6 col-md-6 mb-3">
                                         <label for="site">Site Title: </label>
                                         <input type="text" class="form-control"  id="site" name="site">
