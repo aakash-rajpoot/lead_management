@@ -4,7 +4,7 @@
 <div class="content-wrapper content-wrapper--with-bg">
    
         <h2 class="font-weight-medium text-center mt-2 mb-5">Your Profile</h2>
-        <?php echo form_open('member/agent_profile_details',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
+        <?=form_open('member/agent_profile_details',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
             <?=validation_errors(); ?>
             <?php if($profile_image == ''){
                 $profile_image = 'avatar.png';
@@ -71,7 +71,7 @@
                 </div>
                 </div>
             </div>
-        <?php echo form_close();?>
+        <?=form_close();?>
     </div>
 </div>
 </div>
