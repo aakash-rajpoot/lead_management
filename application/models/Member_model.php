@@ -16,12 +16,9 @@ class Member_model extends CI_Model {
             'aadhar' => $this->input->post('aadhar'),
             'pan' => $this->input->post('pan'),
             'permanent' => $this->input->post('permanent'),
-            //'joining_date' => $this->input->post('joining_date'),
             'correspondence' => $this->input->post('correspondence')
         );
-        if(!empty($this->input->post('joining_date'))){
-            $member['joining_date'] = $this->input->post('joining_date');
-        } else{
+        if(empty($this->input->post('joining_date'))){
             $member['joining_date'] = date('d-m-Y');
         }
         $this->db->insert('sq_members',$member);
@@ -53,15 +50,8 @@ class Member_model extends CI_Model {
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
             'permanent' => $this->input->post('permanent'),
-            'joining_date' => $this->input->post('joining_date'),
             'correspondence' => $this->input->post('correspondence')
         );
-        // if(!empty($this->input->post('aadhar'))){
-        //     $member['aadhar'] = $this->input->post('aadhar');
-        // }
-        // if(!empty($this->input->post('pan'))){
-        //     $member['pan'] = $this->input->post('pan');
-        // }
         if(!empty($this->input->post('profile_image'))){
             $member['profile_image'] = $this->input->post('profile_image');
         }
