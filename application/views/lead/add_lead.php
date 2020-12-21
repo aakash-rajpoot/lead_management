@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input">Type of units: </label>
                     <div class="form-group">
@@ -51,7 +51,7 @@
                         </select>	
                     </div>	
                 </div>
-            </div>
+            </div> -->
 
             <div class="row">
                 <div class="col-md-6 mb-3">

@@ -13,7 +13,7 @@
                             $profile_image = 'avatar.png';
                         } ?>
                         <div class="text-center">
-                            <img src="<?php echo base_url();?>/media/agent_photo/<?=$profile_image; ?>" class="avatar rounded-circle profile_size img-thumbnail" alt="avatar">
+                            <img src="<?=base_url();?>media/agent_photo/<?=$profile_image; ?>" class="avatar rounded-circle profile_size img-thumbnail" alt="avatar">
                         </div>  
                         <div class="profile-view pt-3 pb-5">
                             <input type="file" name="profile_image" />  
