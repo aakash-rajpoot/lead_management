@@ -152,13 +152,13 @@
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li class="site-menu-item" title="Assign Lead"> 
-                                <a href="<?//=base_url('index.php/lead/assign_lead')?>">
-                                    <div class="c-menu__item__inner">
-                                        <i class="fa fa-user-circle" aria-hidden="true">&nbsp; <span class="icon-titles">Lead Assign</span></i>
+                            <li class="site-menu-item" title="Add Unit"> 
+                                <a href="<?=base_url('index.php/lead/add_unit')?>">
+                                    <div class="c-menu__item__inner submenu-color">
+                                        <i class="fa fa-id-badge" aria-hidden="true">&nbsp; <span class="icon-titles">Add Unit</span></i>
                                     </div>
                                 </a>
-                            </li> -->
+                            </li>
                         </ul>
                     </li>
                         <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Settings">

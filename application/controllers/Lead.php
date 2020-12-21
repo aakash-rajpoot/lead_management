@@ -127,5 +127,11 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    function add_unit(){
+        $this->load->view('templates/admin_header');
+        $this->load->view('lead/add_unit');
+        $this->load->view('templates/admin_footer');
+    }
+
 
 }
