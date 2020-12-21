@@ -662,8 +662,7 @@ tr {
     
     .content-wrapper.content-wrapper--with-bg {
         margin-top: 73px;
-        /* margin-left: 167px; */
-        padding-left: 167px;
+        padding-left: 180px;
     }
     /* footer */
     
@@ -751,6 +750,7 @@ tr {
         width: 70px;
     }
     
+<<<<<<< HEAD
     .img-profile {
         height: 166px!important;
         width: 167px!important;
@@ -758,4 +758,13 @@ tr {
     
     .caret {
         display: none!important;
+=======
+    .caret {
+        display: none!important;
+    }
+    
+    .profile-agent {
+        width: 167px!important;
+        height: 163px!important;
+>>>>>>> square1
     }

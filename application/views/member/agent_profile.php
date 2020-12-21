@@ -1,7 +1,8 @@
+<div class="wrap-career " style="margin-top:50px;">
 <div class="row">
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
-    <div class="wrap-career " style="margin-top:110px;">
+   
         <h2 class="font-weight-medium text-center mt-2 mb-5">Your Profile</h2>
         <?php echo form_open('member/agent_profile_details',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
             <?=validation_errors(); ?>
@@ -32,8 +33,9 @@
                     <label class="label-input" for="dob">Birth Date: </label>&nbsp; <?=$dob;?>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="gender">Gender: </label>&nbsp; <?=$gender;?>
-                    
+                <div class=" form-control">
+                    <label class="label-input" for="gender">Gender: </label>&nbsp;&nbsp;&nbsp; <?=$gender;?>
+                </div>   
                 </div>
             </div>
             
@@ -56,6 +58,7 @@
                     <label class="label-input" for="pan">Pan Card:</label>&nbsp;
                     <a href="<?=base_url();?>media/pan/<?=$pan;?>" target="_blank"><?=$pan;?></a>
                 </div>
+                </div>
             </div>
             <div class="row">
                 <!-- <div class="col-md-6 mb-3">
@@ -63,11 +66,13 @@
                     
                 </div> -->
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="joining_date">Date of Joining: </label>&nbsp; <?=$joining_date;?>
+                <div class=" form-control">
+                    <label class="label-input" for="joining_date">Date of Joining: </label>&nbsp;&nbsp;&nbsp; <?=$joining_date;?>
+                </div>
                 </div>
             </div>
-        </div> 
         <?php echo form_close();?>
     </div>
+</div>
 </div>
 </div>

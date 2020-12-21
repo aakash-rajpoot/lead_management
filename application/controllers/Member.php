@@ -49,8 +49,7 @@ class Member extends CI_Controller {
 
             if (!$this->upload->do_upload('aadhar')){
                 $error = array('error' => $this->upload->display_errors());
-            }
-            else {
+            } else {
                 $_POST['aadhar'] = $this->upload->data('file_name');
             }
 
@@ -102,7 +101,7 @@ class Member extends CI_Controller {
             $this->form_validation->set_rules('name', 'Full name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
             $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
-            $this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+            // $this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
             $this->form_validation->set_rules('dob', 'Birth Date','required');
             $this->form_validation->set_rules('permanent', 'Permanent Address','required');
             

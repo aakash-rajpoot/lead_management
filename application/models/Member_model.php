@@ -13,12 +13,17 @@ class Member_model extends CI_Model {
             'alt_phone' => $this->input->post('alt_phone'),
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
-            'joining_date' => $this->input->post('joining_date'),
             'aadhar' => $this->input->post('aadhar'),
             'pan' => $this->input->post('pan'),
             'permanent' => $this->input->post('permanent'),
+            //'joining_date' => $this->input->post('joining_date'),
             'correspondence' => $this->input->post('correspondence')
         );
+        if(!empty($this->input->post('joining_date'))){
+            $member['joining_date'] = $this->input->post('joining_date');
+        } else{
+            $member['joining_date'] = date('d-m-Y');
+        }
         $this->db->insert('sq_members',$member);
    }
 
@@ -47,8 +52,8 @@ class Member_model extends CI_Model {
             'alt_phone' => $this->input->post('alt_phone'),
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
-            'joining_date' => $this->input->post('joining_date'),
             'permanent' => $this->input->post('permanent'),
+            'joining_date' => $this->input->post('joining_date'),
             'correspondence' => $this->input->post('correspondence')
         );
         // if(!empty($this->input->post('aadhar'))){
@@ -60,7 +65,9 @@ class Member_model extends CI_Model {
         if(!empty($this->input->post('profile_image'))){
             $member['profile_image'] = $this->input->post('profile_image');
         }
-        
+        if(empty($this->input->post('joining_date'))){
+            $member['joining_date'] = date('d-m-Y');
+        }
         $this->db->set($member);
         $this->db->where('id', $id);
         return $this->db->update('sq_members',$member);

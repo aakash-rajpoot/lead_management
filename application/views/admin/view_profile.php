@@ -1,10 +1,8 @@
-<div class="container">
 <div class="row">
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
-<div class="container" style="margin-top:50px;">
     <div class="row d-flex justify-content-center">
-        <div class="col-md-10 both-space">
+        <div class="col-md-12 both-space">
             <div class="mt-3 mb-5 border-0">
                 <div class="rounded-sm">
                     <div class="text-box ex2">
@@ -73,8 +71,6 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -28,7 +28,7 @@
                         <?php if($totalmember['status'] == 1) { ?>
                             <tr class="active_agent">
                                 <td><?=$i;?></td>
-                                <td><?="Emp-".$totalmember['id']?></td>
+                                <td><?="Emp".$totalmember['id']?></td>
                                 <td><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['name']?></a></td>
                                 <td><?=$totalmember['email']?></td>
                                 <td><?=$totalmember['phone']?></td>
@@ -37,7 +37,7 @@
                                 <td><?=$totalmember['joining_date']?></td>
                                 <td></td>
                                 <td class="edit-icon">
-                                    <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id']);?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true">edit</a><br/><br/>
+                                    <a href="<?=base_url();?>index.php/member/update_member/<?=$totalmember['id'];?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true">edit</a><br/><br/>
                                     <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true">delete</a>
                                 </td>
                             </tr>
