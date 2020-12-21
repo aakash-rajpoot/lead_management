@@ -8,7 +8,7 @@
                         <?=validation_errors(); ?>  
 
                         <?php if($profile_image == ''){
-                                $profile_image = 'avatar.png';
+                            $profile_image = 'avatar.png';
                         } ?>
                         
                         <div class="text-center">
