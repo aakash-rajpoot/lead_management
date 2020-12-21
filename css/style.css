@@ -662,8 +662,7 @@ tr {
     
     .content-wrapper.content-wrapper--with-bg {
         margin-top: 73px;
-        /* margin-left: 167px; */
-        padding-left: 167px;
+        padding-left: 180px;
     }
     /* footer */
     
@@ -728,4 +727,34 @@ tr {
     
     .multi-checkboxss {
         width: 400px!important;
+    }
+    /* 21/12/2020 */
+    
+    .search_button {
+        border-radius: 5px;
+        border: 1px solid white;
+        background-color: transparent;
+        width: 60px;
+    }
+    
+    .input_button {
+        border-radius: 5px;
+        border: 1px solid white;
+        width: 100%;
+    }
+    
+    .search_button:hover {
+        border: 1px solid white;
+        border-radius: 3px;
+        background: #0b7dda;
+        width: 70px;
+    }
+    
+    .caret {
+        display: none!important;
+    }
+    
+    .profile-agent {
+        width: 167px!important;
+        height: 163px!important;
     }

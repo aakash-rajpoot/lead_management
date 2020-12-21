@@ -7,7 +7,7 @@
                 <div class="col-md-8 both-space">
                     <div class="rounded-sm">
                         <div class="text-box">
-                            <h3 class="text-center mt-3 mb-4">Change Password</h3>
+                            <h3 class="text-center mt-3 mb-5">Change Password</h3>
                             <?=form_open('admin/change_pass',array('class' => 'needs-validation','method' => 'post','novalidate'=>'novalidate')); ?>
                             <?=validation_errors();?>
                                 <div class="row">

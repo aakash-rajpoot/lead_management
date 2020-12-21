@@ -88,7 +88,7 @@
             <div class="d-flex justify-content-center mt-3">
                 <button class="btn btn-primary button-hor" name="member_submit" type="submit">Submit</button>
             </div>
-        <?=form_open();?>
+        <?=form_close();?>
     </div>
 </div>
 </div>
