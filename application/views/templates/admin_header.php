@@ -34,35 +34,12 @@
 
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
-<script src="script.js"></script>
-<style>
-  
-    .search_button{
-        border-radius:5px;
-        border:1px solid white;
-        background-color:transparent ;
-        width:60px;
-    }
-    .input_button{
-        border-radius:5px;
-        border:1px solid white;
-        width:100%;
-    }
-    .search_button:hover{
-        border:1px solid white;
-        border-radius:3px;
-        background: #0b7dda;
-        width:70px;
-    }
-
-</style>
-
 </head>
     <body class="sidebar-is-reduced">
         <header class="l-header">

@@ -1,6 +1,7 @@
 
 <div class="row">
 <div class="col-lg-12">
+<div class="content-wrapper content-wrapper--with-bg"> 
     <div class="wrap-career " style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Update Member Details</h2>
         <?=form_open('lead/update_lead/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
@@ -51,5 +52,6 @@
             </div>
         <?=form_close();?>
     </div>
+</div>
 </div>
 </div>
