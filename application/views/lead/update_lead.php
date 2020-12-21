@@ -1,5 +1,4 @@
 
-<div class="container">
 <div class="row">
 <div class="col-lg-12">
     <div class="wrap-career " style="margin-top:110px;">
@@ -52,6 +51,5 @@
             </div>
         </form>
     </div>
-</div>
 </div>
 </div>
