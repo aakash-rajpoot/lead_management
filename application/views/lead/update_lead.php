@@ -4,8 +4,8 @@
 <div class="content-wrapper content-wrapper--with-bg"> 
     <div class="wrap-career " style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Update Member Details</h2>
-        <?php echo form_open('lead/update_lead/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
-        <?php echo validation_errors(); ?> 
+        <?=form_open('lead/update_lead/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
+        <?=validation_errors(); ?> 
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="name">Lead Name: <span class="text-danger font-weight-medium">*</span></label>
@@ -50,7 +50,7 @@
             <div class="d-flex justify-content-center mt-3">
                 <button class="btn btn-primary button-hor" name="lead_update" type="submit">Update</button>
             </div>
-        </form>
+        <?=form_close();?>
     </div>
 </div>
 </div>
