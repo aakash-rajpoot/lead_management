@@ -22,7 +22,6 @@ class Member extends CI_Controller {
 
     function add_member(){
         $this->load->view('templates/admin_header');
-        // if(isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == '0'){  
     
         if(isset($_POST['member_submit'])) { 
 
@@ -64,8 +63,7 @@ class Member extends CI_Controller {
 
             if (!$this->upload->do_upload('pan')){
                 $error = array('error' => $this->upload->display_errors());
-            }
-            else {
+            } else {
                 $_POST['pan'] = $this->upload->data('file_name');
             }
 
@@ -158,8 +156,8 @@ class Member extends CI_Controller {
                         $error = array('error' => $this->upload->display_errors());
                     }
                 }
-            $this->member_model->update_member_details($id);
-            redirect('member/update_member');
+                $this->member_model->update_member_details($id);
+                redirect('member/update_member');
             }
         }
         $this->load->view('member/update_member', $data);
