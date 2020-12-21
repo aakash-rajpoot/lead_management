@@ -34,7 +34,13 @@
 
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
-
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+<script src="script.js"></script>
 <style>
   
     .search_button{
@@ -218,3 +224,11 @@ $(function (event) {
     });
 });
 </script>
+<script>
+$(document).ready(function() {       
+	$('#checkbox').multiselect({		
+		nonSelectedText: 'Select '				
+	});
+});
+</script>
+

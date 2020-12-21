@@ -4,7 +4,7 @@
     html,
     body {
         height: 100%;
-        /* width: 100%; */
+        width: 99.23%;
     }
     
     body {
@@ -15,7 +15,6 @@
         font-weight: 400;
         background-color: #ececec;
         color: #102c58;
-        width: 90%;
     }
     
     * {
@@ -663,7 +662,8 @@ tr {
     
     .content-wrapper.content-wrapper--with-bg {
         margin-top: 73px;
-        margin-left: 167px;
+        /* margin-left: 167px; */
+        padding-left: 167px;
     }
     /* footer */
     
@@ -724,4 +724,8 @@ tr {
     
     .inactive_agent {
         background-color: #fca5a8 !important;
+    }
+    
+    .multi-checkboxss {
+        width: 400px!important;
     }

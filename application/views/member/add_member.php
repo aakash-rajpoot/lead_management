@@ -1,6 +1,7 @@
-
+<div class="row">
+<div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
-<div class="container">
+
     <div class="wrap-career" style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Agent</h2>
         <?=form_open('member/add_member',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
@@ -89,7 +90,6 @@
             </div>
         <?=form_open();?>
     </div>
-</div>
 </div>
 </div>
 </div>

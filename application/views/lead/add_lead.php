@@ -5,11 +5,10 @@
 </style>
 
 
-
-<div class="content-wrapper content-wrapper--with-bg">
-<div class="container">
 <div class="row">
 <div class="col-lg-12">
+<div class="content-wrapper content-wrapper--with-bg">
+
     <div class="wrap-career " style="margin-top:110px;">
 
         <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Lead</h2>
@@ -66,6 +65,20 @@
                             <input type="checkbox" name="unit[]" class="form-control" id="villa" />Villa</label>
                     </div>
                 </div>
+                <div class="col-md-6 mb-3">
+                <label class="label-input">Type of units: </label>
+                <div class="form-group">
+			<select id="checkbox"  multiple >						    
+				<option value="php" class="form-control" id="1rk" name="unit[]">1RK</option>
+				<option value="python" class="form-control" id="1rk" name="unit[]">1BHK</option>		
+				<option value="javascript" class="form-control" id="2bhk" name="unit[]">2BHK</option>
+				<option value="java" class="form-control" id="3bhk" name="unit[]">3BHK</option>
+				<option value="c" class="form-control" id="4bhk" name="unit[]">4BHK</option>	
+                <option value="java" class="form-control" id="p_house" name="unit[]">P.House</option>
+				<option value="c" class="form-control" id="4bhk" name="unit[]">Villa</option>				
+			</select>	
+		</div>	
+                </div>
             </div>
 
             <div class="row">
@@ -86,4 +99,4 @@
 </div>
 </div>
 </div>
-</div>
+

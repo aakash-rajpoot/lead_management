@@ -1,11 +1,10 @@
 
-
-
-<div id="table1" class="ex2">
+<div class="row">
+  <div class="col-lg-12"> 
+     <div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">
-        <div class="container">
-        <div class="row">
-          <div class="col-lg-12">   
+
+          
             <div class="mt-5 ex1" style="margin-top:110px;">
                 <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
                     <thead>
@@ -64,7 +63,7 @@
     </div>
 </div>
 </div>
-</div>
+
 <script>
     $(document).ready(function() {
         $('#dt-all-checkbox').dataTable({

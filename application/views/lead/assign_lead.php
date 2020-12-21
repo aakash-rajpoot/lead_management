@@ -4,7 +4,7 @@
 
 <div class="content-wrapper content-wrapper--with-bg">
 <div style="margin-left:375px; margin-top:150px;">
-<div class="container">
+
 <div class="row">
 <div class="col-lg-12">
     <?=form_open('lead/assign_lead/',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
@@ -55,6 +55,4 @@
 <?=form_close();?>
 </div>
 </div>
-</div>
-
 </div>
