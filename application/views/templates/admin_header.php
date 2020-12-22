@@ -3,12 +3,15 @@
 <head>
 
     <meta charset='UTF-8'>
-    <title>Kritak</title>
+    <title><?=$site;?></title>
     <meta name="keywords" content="dummy content">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Favicon-->
-    <link rel="icon" href="<?=base_url('media/kritak_logo.png')?>" type="image/x-icon" size="">
+    <?php if($logo == ""){
+        $logo = 'kritak_logo.png';
+    } ?>
+    <link rel="icon" href="<?=base_url('media/logo/'.$logo)?>" type="image/x-icon">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
@@ -35,11 +38,11 @@
 
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
 </head>
     <body class="sidebar-is-reduced">
         <header class="l-header">
@@ -89,7 +92,7 @@
       
         <div class="l-sidebar">
             <div class="logo">
-                <div class="logo__txt"><img src="<?=base_url('media/kritak_logo.png')?>" class="logo-img" title="Kritak"></div>
+                <div class="logo__txt"><img src="<?=base_url('media/logo/'.$logo)?>" class="logo-img" title="<?=$site;?> (<?=$tagline;?>)"></div>
             </div>
             <div class="row">
       <div class="col-lg-12">

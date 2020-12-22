@@ -15,6 +15,7 @@ class Member_model extends CI_Model {
             'dob' => $this->input->post('dob'),
             'aadhar' => $this->input->post('aadhar'),
             'pan' => $this->input->post('pan'),
+            'joining_date' => $this->input->post('joining_date'),
             'permanent' => $this->input->post('permanent'),
             'correspondence' => $this->input->post('correspondence')
         );
@@ -49,6 +50,7 @@ class Member_model extends CI_Model {
             'alt_phone' => $this->input->post('alt_phone'),
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
+            'joining_date' => $this->input->post('joining_date'),
             'permanent' => $this->input->post('permanent'),
             'correspondence' => $this->input->post('correspondence')
         );

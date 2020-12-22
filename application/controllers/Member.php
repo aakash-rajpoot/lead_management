@@ -6,13 +6,14 @@ class Member extends CI_Controller {
     public function __construct() {
         parent::__construct();
         
-        $this->load->model('member_model');
+        $this->load->model(array('member_model','setting_model'));
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('form_validation','session'));
     }
     
     public function index(){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $query = $this->member_model->fetch_total_members();
         $all_members = $query->result_array();
         $total_members['total_member'] = $all_members;
@@ -21,7 +22,8 @@ class Member extends CI_Controller {
     }
 
     function add_member(){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
     
         if(isset($_POST['member_submit'])) { 
 
@@ -77,7 +79,8 @@ class Member extends CI_Controller {
     }
 
     function delete_member_soft_data($id){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $this->member_model->soft_delete_member($id);
         redirect('member');
         $this->load->view('templates/admin_footer');
@@ -91,7 +94,8 @@ class Member extends CI_Controller {
     // }
 
     function update_member($id){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $data = $this->member_model->fetch_member_data($id);
         
         if(isset($_POST['member_update'])) { 
@@ -157,7 +161,7 @@ class Member extends CI_Controller {
                     }
                 }
                 $this->member_model->update_member_details($id);
-                redirect('member/update_member');
+                redirect('member');
             }
         }
         $this->load->view('member/update_member', $data);
@@ -165,7 +169,8 @@ class Member extends CI_Controller {
     }
 
     function agent_profile_details($id) {
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $data = $this->member_model->fetch_agent_profile_details($id);
         $this->load->view('member/agent_profile',$data);
         $this->load->view('templates/admin_footer');

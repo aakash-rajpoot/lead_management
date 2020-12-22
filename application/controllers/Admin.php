@@ -6,16 +6,14 @@ class Admin extends CI_Controller {
     public function __construct() {
         parent::__construct();
         
-        $this->load->model('admin_model');
+        $this->load->model(array('admin_model','setting_model'));
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('form_validation','session'));
     }
     
     public function index(){
 
-        $email = $this->input->post('email');
-        $password = md5($this->input->post('password'));
-        $query = $this->admin_model->login_verification($email,$password);
+        $query = $this->admin_model->login_verification();
 
         $this->form_validation->set_rules('email', 'Email', 'required|callback_validateUser[' . $query->num_rows() . ']');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -43,7 +41,8 @@ class Admin extends CI_Controller {
     }
 
     function admin_dashboard(){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $this->load->view('admin/dashboard');
         $this->load->view('templates/admin_footer');
     }
@@ -54,7 +53,8 @@ class Admin extends CI_Controller {
     }
 
     function change_pass(){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         
 		$this->form_validation->set_rules('old_pass', 'Old Password', 'required|callback_oldPassCheck');
     	$this->form_validation->set_rules('new_pass', 'New Password', 'required|min_length[8]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]');
@@ -82,7 +82,8 @@ class Admin extends CI_Controller {
     }
 
     function view_profile(){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $data = $this->admin_model->fetch_admin_profile_details();
       
         if(isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == '0'){
