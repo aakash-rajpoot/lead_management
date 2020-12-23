@@ -6,12 +6,13 @@ class Lead extends CI_Controller {
     public function __construct() {
         parent::__construct();
         
-        $this->load->model('lead_model');
+        $this->load->model(array('lead_model','setting_model'));
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('form_validation','session'));
     }
     public function index(){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $query = $this->lead_model->fetch_total_lead();
         $all_leads = $query->result_array();
         $total_leads['total_lead'] = $all_leads;
@@ -20,7 +21,8 @@ class Lead extends CI_Controller {
     }
 
     function add_lead(){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
 
         $this->form_validation->set_rules('name', 'Lead name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
         $this->form_validation->set_rules('email', 'Email', 'valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
@@ -47,7 +49,8 @@ class Lead extends CI_Controller {
     }
 
     function soft_delete_lead_data($id){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $this->lead_model->soft_delete_lead($id);
         redirect('lead');
         $this->load->view('templates/admin_footer');
@@ -61,7 +64,8 @@ class Lead extends CI_Controller {
     // }
 
     function update_lead($id){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $data = $this->lead_model->fetch_all_lead($id);
         
         $this->form_validation->set_rules('name', 'Full name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
@@ -103,14 +107,16 @@ class Lead extends CI_Controller {
     // }
 
     function deassign_lead($id){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $this->lead_model->deassign_lead_data($id);
         redirect('lead');
         $this->load->view('templates/admin_footer');
     }
 
     function reassign_lead($id){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
 
         $data = $this->lead_model->fetch_lead_data();
         $all_leads = $data->result_array();
@@ -128,7 +134,8 @@ class Lead extends CI_Controller {
     }
 
     function add_unit(){
-        $this->load->view('templates/admin_header');
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
         $this->load->view('lead/add_unit');
         $this->load->view('templates/admin_footer');
     }

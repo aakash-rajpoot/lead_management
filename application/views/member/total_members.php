@@ -44,7 +44,7 @@
                         <?php }else{ ?>
                             <tr class="inactive_agent">
                                 <td><?=$i;?></td>
-                                <td><?="Emp-".$totalmember['id']?></td>
+                                <td><?="Emp".$totalmember['id']?></td>
                                 <td><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['name']?></a></td>
                                 <td><?=$totalmember['email']?></td>
                                 <td><?=$totalmember['phone']?></td>
