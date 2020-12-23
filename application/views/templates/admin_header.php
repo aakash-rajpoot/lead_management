@@ -67,7 +67,7 @@
                         $profile_image = 'avatar.png';
                     } ?>
                     <div class="dropdown">
-                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><img src="<?=base_url('media/images/'.$profile_image)?>" class="avatar rounded-circle" width="30" height="30" >
+                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><img src="<?=base_url('media/images/'.$profile_image)?>" class="avatar rounded-circle admin_header_image">
                     <div class="dropdown-content">
                     <div class="row">
                         <a href="<?=base_url('index.php/admin/view_profile');?>">
