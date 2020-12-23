@@ -40,6 +40,7 @@ class Setting_model extends CI_Model {
     function fetch_setting_details(){
         $this->db->select('*');
         $this->db->from('sq_setting');
+        $this->db->from('sq_admin');
         $query = $this->db->get();
         return $query->row_array();
     }
