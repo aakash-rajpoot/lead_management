@@ -95,11 +95,11 @@ body {
   color: var(--primary-color);
   background-color: var(--secondary-color);
 }
-
-.php_error{
-  color:#d61323;
-  font-size:16px;
+.php_error {
+  color: #ba2d31 !important;
+  font-size: 16px;
 }
+
 </style>
 </head>
 <body>
@@ -107,31 +107,30 @@ body {
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <?=form_open('',array('method' => 'post','novalidate'=>'novalidate')); ?>
-
-    
+        
 <!-- login -->
-<div class="login-box">
-  <h1>Admin Login</h1>
-  <?=validation_errors(); ?>
-  <!-- ======= Username ======= -->
-  <div class="textbox">
-    <i class="fa fa-user" aria-hidden="true"></i>
-    <input type="text" name="email" id="email" placeholder="Enter Your User Id"><sup class='error'>*</sup>
-  </div>
+        <div class="login-box">
+          <h1>Admin Login</h1>
+          <?=validation_errors();?>
+          <!-- ======= Username ======= -->
+          <div class="textbox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" name="email" id="email" placeholder="Enter Your User Id"><sup class='error'>*</sup>
+          </div>
 
-  <!-- ======= Password ======= -->
-  <div class="textbox">
-    <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" name="password" id="password" placeholder="Enter Your Password"><sup class='error'>*</sup>
-  </div>
+          <!-- ======= Password ======= -->
+          <div class="textbox">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" name="password" id="password" placeholder="Enter Your Password"><sup class='error'>*</sup>
+          </div>
 
-  <!-- ======= Sign in ======= -->
-  <button type="submit" class="btn btn-primary button-hor" name="admin-login">Login</button>
-</div>
-<?php echo form_close(); ?>
-</div>
-</div>
-</div>
+          <!-- ======= Sign in ======= -->
+          <button type="submit" class="btn btn-primary button-hor" name="admin-login">Login</button>
+        </div>
+        <?=form_close(); ?>
+      </div>
+    </div>
+  </div>
 <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
 </body>
 </html>

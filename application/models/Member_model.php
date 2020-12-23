@@ -15,13 +15,15 @@ class Member_model extends CI_Model {
             'dob' => $this->input->post('dob'),
             'aadhar' => $this->input->post('aadhar'),
             'pan' => $this->input->post('pan'),
-            'joining_date' => $this->input->post('joining_date'),
             'permanent' => $this->input->post('permanent'),
             'correspondence' => $this->input->post('correspondence')
         );
         if(empty($this->input->post('joining_date'))){
-            $member['joining_date'] = date('d-m-Y');
+            $member['joining_date'] = date('Y-m-d');
+        }else{
+            $member['joining_date'] = $this->input->post('joining_date');
         }
+
         $this->db->insert('sq_members',$member);
    }
 
@@ -50,16 +52,20 @@ class Member_model extends CI_Model {
             'alt_phone' => $this->input->post('alt_phone'),
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
-            'joining_date' => $this->input->post('joining_date'),
             'permanent' => $this->input->post('permanent'),
             'correspondence' => $this->input->post('correspondence')
         );
+        
         if(!empty($this->input->post('profile_image'))){
             $member['profile_image'] = $this->input->post('profile_image');
         }
+
         if(empty($this->input->post('joining_date'))){
-            $member['joining_date'] = date('d-m-Y');
+            $member['joining_date'] = date('Y-m-d');
+        }else{
+            $member['joining_date'] = $this->input->post('joining_date');
         }
+
         $this->db->set($member);
         $this->db->where('id', $id);
         return $this->db->update('sq_members',$member);

@@ -573,8 +573,8 @@ tr {
     }
     
     .profile_size {
-        width: 230px;
-        height: 230px;
+        width: 220px!important;
+        height: 220px!important;
     }
     /* 10-12-2020 */
     /* .submenus {
@@ -690,14 +690,14 @@ tr {
     }
     
     .php_error {
-        color: #d61323;
+        color: #d61323!important;
         font-size: 16px;
     }
     
-    img.avatar.rounded-circle.profile_size.img-thumbnail {
+    /* img.avatar.rounded-circle.profile_size.img-thumbnail {
         height: 230;
         width: 230;
-    }
+    } */
     
     ul.site-menu-sub {
         padding-left: 12px!important;
@@ -750,17 +750,12 @@ tr {
         width: 70px;
     }
     
-    .img-profile {
-        height: 166px!important;
-        width: 167px!important;
-    }
-    
     .caret {
         display: none!important;
     }
     .profile-agent {
-        width: 167px!important;
-        height: 163px!important;
+        width: 220px!important;
+        height: 220px!important;
     }
 
     .admin_header_image{

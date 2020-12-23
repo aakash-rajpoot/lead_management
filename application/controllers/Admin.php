@@ -12,20 +12,21 @@ class Admin extends CI_Controller {
     }
     
     public function index(){
+        if(isset($_POST['admin-login'])) {
+            $query = $this->admin_model->login_verification();
 
-        $query = $this->admin_model->login_verification();
+            $this->form_validation->set_rules('email', 'Email', 'required|callback_validateUser[' . $query->num_rows() . ']');
+            $this->form_validation->set_rules('password', 'Password', 'required');
 
-        $this->form_validation->set_rules('email', 'Email', 'required|callback_validateUser[' . $query->num_rows() . ']');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
+            $this->form_validation->set_message('required', '* Please enter valid %s');
 
-        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-        $this->form_validation->set_message('required', '* Please enter valid %s');
-
-        if(isset($_POST['admin-login']) && $this->form_validation->run()){
-            $user = $query->row_array();
-			if(!empty($user)) {
-                $this->session->set_userdata($user);
-				redirect('admin/admin_dashboard');
+            if($this->form_validation->run()){
+                $user = $query->row_array();
+                if(!empty($user)) {
+                    $this->session->set_userdata($user);
+                    redirect('admin/admin_dashboard');
+                }
             }
         }
         $this->load->view('admin/login');

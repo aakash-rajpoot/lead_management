@@ -13,7 +13,7 @@
                             $profile_image = 'avatar.png';
                         } ?>
                         <div class="text-center">
-                            <img src="<?=base_url();?>media/agent_photo/<?=$profile_image; ?>" class="avatar rounded-circle profile_size img-thumbnail" alt="avatar">
+                            <img src="<?=base_url();?>media/images/<?=$profile_image; ?>" class="avatar rounded-circle profile_size img-thumbnail" alt="avatar">
                         </div>  
                         <div class="profile-view pt-3 pb-5">
                             <input type="file" name="profile_image" />  
@@ -52,7 +52,7 @@
                             <div class="col-md-6 mb-3">
                                 <label class="label-input">Gender:</label>
                                 <select class="custom-select d-block w-100" name="gender" id="gender">
-                                    <option> ---Select--- </option>
+                                    <option value=""> ---select gender--- </option>
                                     <option <?php if(trim(strtolower($gender)) === trim(strtolower("Male"))){ echo 'Selected'; } ?>>Male</option>
                                     <option <?php if(trim(strtolower($gender)) === trim(strtolower("Female"))){ echo 'Selected'; } ?>>Female</option>
                                     <option <?php if(trim(strtolower($gender)) === trim(strtolower("Other"))){ echo 'Selected'; } ?>>other</option>

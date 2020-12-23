@@ -10,7 +10,7 @@
                 $profile_image = 'avatar.png';
             } ?>
             <div class="text-center">
-                <img src="<?php echo base_url();?>media/agent_photo/<?=$profile_image;?>" class="avatar rounded-circle profile_size img-thumbnail profile-agent mb-5" alt="avatar">
+                <img src="<?=base_url();?>media/agent_photo/<?=$profile_image;?>" class="avatar rounded-circle profile_size img-thumbnail profile-agent mb-5" alt="avatar">
             </div>   
             <div class="row mt-3">
                 <div class="col-md-6 mb-3">
