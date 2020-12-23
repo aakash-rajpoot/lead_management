@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<title> square</title>
+<title><?=$site;?></title>
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="icon" href="<?=base_url('media/logo/'.$logo)?>" type="image/x-icon">
 
 <head>
 
