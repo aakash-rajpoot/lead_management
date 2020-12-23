@@ -51,12 +51,12 @@
             
             <div class="row">
                 <div class="col-md-6 mb-3">
-                <div class=" form-control">
+                <div class=" form-control  address-box">
                     <label class="label-input" for="permanent">Permanent Address:</label>&nbsp;&nbsp;&nbsp; <?=$permanent;?>
                 </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                <div class=" form-control">
+                <div class=" form-control address-box">
                     <label class="label-input" for="correspondence">Correspondence Address:</label>&nbsp;&nbsp;&nbsp; <?=$correspondence;?>
                 </div>
                 </div>

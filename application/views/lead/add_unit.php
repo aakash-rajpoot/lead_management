@@ -1,10 +1,13 @@
 <div class="content-wrapper content-wrapper--with-bg">
+<div style="margin-top:100px;">
+<div class="row">
+<div class="col-lg-12">
     <div class="wrap-career">
         <h2 class="font-weight-medium text-center mt-5 mb-5">Add Available Units</h2>
         <?=form_open('lead/add_unit',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
         <?=validation_errors(); ?> 
         <div class="row">
-            <div class="col-md-4 mb-3 ml-5">
+            <div class="col-md-5 mb-3 ml-5">
                 <label class="label-input">Type of units: </label>
                 <div class="form-group">
                     <select id="checkbox"  multiple >						    
@@ -18,7 +21,7 @@
                     </select>	
                 </div>	
             </div>
-            <div class="col-md-2 mb-3">
+            <div class="col-md-3 mb-3">
                 <label class="label-input" for="unit_size">Unit Size: </label>
                 <input type="text" class="form-control" name="unit_size">
                 <div id="newElementId"></div>
@@ -32,6 +35,9 @@
         </div>
         <?=form_close();?>
     </div>
+</div>
+</div>
+</div>
 </div>
 <script type="text/JavaScript">
     function createNewElement() {
