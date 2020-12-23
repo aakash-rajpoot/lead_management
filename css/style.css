@@ -573,8 +573,8 @@ tr {
             }
             
             .profile_size {
-                width: 230px;
-                height: 230px;
+                width: 220px!important;
+                height: 220px!important;
             }
             /* 10-12-2020 */
             /* .submenus {
@@ -762,4 +762,121 @@ tr {
             .profile-agent {
                 width: 167px!important;
                 height: 163px!important;
+            }
+            
+            .submenu-color:hover {
+                background-color: #95c41f!important;
+            }
+            
+            .menusss:hover {
+                background-color: #95c41f;
+            }
+            
+            .nav .sub-menu {
+                display: none;
+            }
+            /* 16-12-2020*/
+            
+            .content-wrapper.content-wrapper--with-bg {
+                margin-top: 73px;
+                padding-left: 180px;
+            }
+            /* footer */
+            
+            .copyright.text-center {
+                padding-top: 150px;
+            }
+            
+            .copiyright-link {
+                color: #95c41f;
+            }
+            
+            .copiyright-link:hover {
+                color: #95c41f;
+                text-decoration: none;
+            }
+            
+            .button-hor:hover {
+                background-color: #95c41f!important;
+            }
+            
+            .add_search {
+                border-right: 1px solid #ddd;
+                margin-right: 300px;
+                display: none;
+            }
+            
+            .php_error {
+                color: #d61323!important;
+                font-size: 16px;
+            }
+            
+            ul.site-menu-sub {
+                padding-left: 12px!important;
+            }
+            
+            .profile-view {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 30px;
+            }
+            
+            .upload_warning {
+                color: #d61323;
+            }
+            
+            .upload_success {
+                color: green;
+            }
+            
+            .active_agent {
+                background-color: #c5f8ae !important;
+            }
+            
+            .inactive_agent {
+                background-color: #fca5a8 !important;
+            }
+            
+            .multi-checkboxss {
+                width: 400px!important;
+            }
+            /* 21/12/2020 */
+            
+            .search_button {
+                border-radius: 5px;
+                border: 1px solid white;
+                background-color: transparent;
+                width: 60px;
+            }
+            
+            .input_button {
+                border-radius: 5px;
+                border: 1px solid white;
+                width: 100%;
+            }
+            
+            .search_button:hover {
+                border: 1px solid white;
+                border-radius: 3px;
+                background: #0b7dda;
+                width: 70px;
+            }
+            
+            .caret {
+                display: none!important;
+            }
+            
+            .profile-agent {
+                width: 220px!important;
+                height: 220px!important;
+            }
+            
+            .admin_header_image {
+                width: 35px;
+                height: 35px;
+            }
+            /* 23/12/2020 */
+            
+            .address-box {
+                height: 83px!important;
             }

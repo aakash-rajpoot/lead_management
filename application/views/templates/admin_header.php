@@ -106,7 +106,6 @@
                             <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
                                 <div class="c-menu__item__inner menusss">
                                     <i class="fa fa-user"> <span class="icon-titles">&nbsp; Dashboard</span></i>
-                                        <!-- <div class="c-menu-item__title"></div> -->
                                 </div>
                             </a>
                         </li>    
@@ -114,7 +113,6 @@
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-users"> <span class="icon-titles">&nbsp; Agents</span></i>
-                                <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i>  -->
                             </div>
                         </a>
                                
@@ -139,7 +137,6 @@
                         <a href="<?=base_url('index.php/lead')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Lead</span></i>
-                                <!-- &nbsp; &nbsp; <i class="fa fa-angle-down"></i> --> 
                             </div>
                         </a>
                         <ul class="site-menu-sub ">
@@ -147,7 +144,6 @@
                                 <a href="<?=base_url('index.php/lead')?>">
                                     <div class="c-menu__item__inner submenu-color">
                                         <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">All Lead</span></i>
-                                        <!-- <div class="c-menu-item__title  sub-menus"></div> -->
                                     </div>
                                 </a>
                             </li>
@@ -180,24 +176,6 @@
         </div>
         </div>
         </div>
-<!-- <script>
-$(function (event) {
-    $(document).ready(function() {
-        $('.site-menu li:has(ul)').click(function(e) {
-            e.preventDefault();
-            if ($(this).hasClass('active')) {
-                $(this).removeClass('active');
-                $(this).children('ul').slideUp();
-            }else{
-                $('.site-menu li ul').slideUp();
-                $('.site-menu li').removeClass('active');
-                $(this).addClass('active');
-                $(this).children('ul').slideDown();
-            }
-        });
-    });
-});
-</script> -->
 <script>
  $('.site-menu li').removeClass('active');
                 $(this).addClass('active');

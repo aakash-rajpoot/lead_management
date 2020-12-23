@@ -10,7 +10,7 @@
                 $profile_image = 'avatar.png';
             } ?>
             <div class="text-center">
-                <img src="<?php echo base_url();?>media/agent_photo/<?=$profile_image;?>" class="avatar rounded-circle profile_size img-thumbnail profile-agent mb-5" alt="avatar">
+                <img src="<?=base_url();?>media/agent_photo/<?=$profile_image;?>" class="avatar rounded-circle profile_size img-thumbnail profile-agent mb-5" alt="avatar">
             </div>   
             <div class="row mt-3">
                 <div class="col-md-6 mb-3">
@@ -51,12 +51,12 @@
             
             <div class="row">
                 <div class="col-md-6 mb-3">
-                <div class=" form-control form-control-lg">
+                <div class=" form-control  address-box">
                     <label class="label-input" for="permanent">Permanent Address:</label>&nbsp;&nbsp;&nbsp; <?=$permanent;?>
                 </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                <div class=" form-control form-control-lg">
+                <div class=" form-control address-box">
                     <label class="label-input" for="correspondence">Correspondence Address:</label>&nbsp;&nbsp;&nbsp; <?=$correspondence;?>
                 </div>
                 </div>

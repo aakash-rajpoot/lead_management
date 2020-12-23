@@ -34,7 +34,7 @@
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="gender">Gender: </label>
                     <select class="custom-select d-block w-100" name="gender" id="gender">
-                        <option value="">--Select your Gender--</option>
+                        <option value="">--select gender--</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>    
@@ -65,20 +65,7 @@
                     <p class="upload_warning"> * Only pdf format is allowed.</p>
                 </div>
             </div>
-            <div class="row">
-                <!-- <div class="col-md-6 mb-3">
-                    <label class="label-input" for="role">Role: <span class="text-danger font-weight-medium">*</span></label>
-                    <select class="custom-select d-block w-100" name="role" id="role">
-                        <option value="">--Select your Role--</option>
-                        <option value="Supervisors">Supervisors</option>
-                        <option value="Manager">Manager</option>
-                        <option value="Team Leader">Team Leader</option>
-                        <option value="Department Head">Department Head</option>
-                        <option value="Advisors">Advisors</option>
-                        <option value="Sales">Sales</option>      
-                    </select>
-                </div> -->
-                
+            <div class="row">                
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="joining_date">Date of Joining: </label>
                     <input type="date" class="form-control" name="joining_date" id="joining_date">
