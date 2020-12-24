@@ -35,24 +35,18 @@
                     <textarea class="form-control" rows="3" name="client_address" id="client_address"></textarea>
                 </div>
             </div>
-
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input">Type of units: </label>
+                    <label class="label-input">Available units: </label>
                     <div class="form-group">
-                        <select id="checkbox" multiple>	
-                            <option class="form-control" id="1rk" name="unit[]">1RK</option>
-                            <option class="form-control" id="1bhk" name="unit[]">1BHK</option>		
-                            <option class="form-control" id="2bhk" name="unit[]">2BHK</option>
-                            <option class="form-control" id="3bhk" name="unit[]">3BHK</option>
-                            <option class="form-control" id="4bhk" name="unit[]">4BHK</option>	
-                            <option class="form-control" id="p_house" name="unit[]">P.House</option>
-                            <option class="form-control" id="villa" name="unit[]">Villa</option>				
+                        <select id="checkbox" name="available_unit[]" multiple>		
+                            <?php foreach($units as $unit ) { ?>		    
+                                <option class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].')'; ?></option>
+                            <?php } ?>			
                         </select>	
                     </div>	
-                </div>
-            </div> -->
-
+                </div>   
+            </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="remark">Remark:</label>

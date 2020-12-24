@@ -14,8 +14,11 @@ class Lead_model extends CI_Model {
             'property_address' => $this->input->post('property_address'),
             'client_address' => $this->input->post('client_address'),
             'remark' => $this->input->post('remark'),
-            'reference' => $this->input->post('reference')
+            'reference' => $this->input->post('reference'),
         );
+        
+        $lead['available_unit'] = implode( ", ", $this->input->post('available_unit')); 
+
         $this->db->insert('sq_lead',$lead);
     }
 
@@ -32,23 +35,21 @@ class Lead_model extends CI_Model {
         return $this->db->update('sq_lead');
     }
 
-    // function hard_delete_lead($id){
-    //     $this->db->where('id', $id);
-    //     return $this->db->delete('sq_lead');
-    // }
-
     function update_lead_details($id){
 
-    $lead = array(
-        'name' => $this->input->post('name'),
-        'phone' => $this->input->post('phone'),
-        'email' => $this->input->post('email'),
-        'alt_phone' => $this->input->post('alt_phone'),
-        'property_address' => $this->input->post('property_address'),
-        'client_address' => $this->input->post('client_address'),
-        'remark' => $this->input->post('remark'),
-        'reference' => $this->input->post('reference')
-    );
+        $lead = array(
+            'name' => $this->input->post('name'),
+            'phone' => $this->input->post('phone'),
+            'email' => $this->input->post('email'),
+            'alt_phone' => $this->input->post('alt_phone'),
+            'property_address' => $this->input->post('property_address'),
+            'client_address' => $this->input->post('client_address'),
+            'remark' => $this->input->post('remark'),
+            'reference' => $this->input->post('reference'),
+        );
+        $list = $this->input->post('available_unit');
+        $lead['available_unit'] = implode( ", ", $list ); 
+    
         $this->db->set($lead);
         $this->db->where('id', $id);
         return $this->db->update('sq_lead',$lead);
@@ -63,23 +64,26 @@ class Lead_model extends CI_Model {
     }
 
     function fetch_lead_data(){
-        $this->db->select("name,role");
+        $this->db->select("name");
         $this->db->from('sq_members');
         $this->db->where('status',1);
         return $this->db->get();
     }
 
-    function fetch_lead_name(){
-        $this->db->select("name");
+    function fetch_lead_name($id){
+        $this->db->select("name,id");
         $this->db->from('sq_lead');
+        $this->db->where('id',$id);
         $this->db->where('status',1);
         return $this->db->get();
     }
 
-    function update_lead_assign_data(){
+    function lead_assign_data(){
         $name = $this->input->post('lead_name');
         $data = $this->input->post('assign_lead');
+        $date = date('Y-m-d');
         $this->db->set('assign_to', $data);
+        $this->db->set('assign_date', $date);
         $this->db->where('name', $name);
         $this->db->where('status', 1);
         return $this->db->update('sq_lead');
@@ -91,10 +95,17 @@ class Lead_model extends CI_Model {
         return $this->db->update('sq_lead');
     }
 
-    function reassign_lead_data($id){
-        $this->db->select("name");
-        $this->db->from('sq_lead');
-        $this->db->where('id',$id);
+    function add_unit_details() {
+        $unit = array(
+            'unit_type' => $this->input->post('unit_type'),
+            'unit_size' => $this->input->post('unit_size')
+        );
+        $this->db->insert('sq_lead_unit',$unit);
+    }
+
+    function fetch_unit_data(){
+        $this->db->select("*");
+        $this->db->from('sq_lead_unit');
         return $this->db->get();
     }
 

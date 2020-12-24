@@ -36,7 +36,20 @@
                     <textarea class="form-control" rows="3" name="client_address" id="client_address" ><?=$client_address;?></textarea>
                 </div>
             </div>
-        
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="label-input">Available units: </label>
+                    <div class="form-group">
+                        <select id="checkbox" name="available_unit[]" multiple>		
+                            <?php foreach($units as $unit ) {  ?>
+                                <?php $available = explode( ", ", $available_unit ); ?>
+                                <option <?php if(($available) === ($unit['unit_type'].' ('.$unit['unit_size'].')')){ echo 'Selected'; } ?> class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].')'; ?></option>
+                            <?php } ?>			
+                        </select>	
+                    </div>	
+                </div>   
+            </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="remark">Remark: </label>

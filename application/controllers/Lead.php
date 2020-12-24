@@ -24,27 +24,26 @@ class Lead extends CI_Controller {
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
 
+        $query = $this->lead_model->fetch_unit_data();
+        $data1 = $query->result_array();
+        $data2['units'] = $data1;
+
         $this->form_validation->set_rules('name', 'Lead name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
         $this->form_validation->set_rules('email', 'Email', 'valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
         $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
 		$this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
 		$this->form_validation->set_rules('property_address', 'Property of Address','required');
         $this->form_validation->set_rules('client_address', 'Client Address','required');
-        $this->form_validation->set_rules('unit', 'Type of units','required');
+        // $this->form_validation->set_rules('unit', 'Type of units','required');
 
         $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
 		$this->form_validation->set_message('required', '* Please enter valid %s');
 
-        // $array = $this->input->post('unit');
-        // $_POST['units'] = implode(',',$array);
-
 		if(isset($_POST['lead_submit']) && $this->form_validation->run()) { 
-            // echo '<pre>';
-            // print_r($_POST);die;
             $this->lead_model->lead_data();
             redirect('lead');
         }
-        $this->load->view('lead/add_lead');
+        $this->load->view('lead/add_lead',$data2);
         $this->load->view('templates/admin_footer');
     }
 
@@ -56,17 +55,14 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
-    // function hard_delete_lead_data($id){
-    //     $this->load->view('templates/admin_header');
-    //     $this->lead_model->hard_delete_lead($id);
-    //     redirect('lead');
-    //     $this->load->view('templates/admin_footer');
-    // }
-
     function update_lead($id){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $data = $this->lead_model->fetch_all_lead($id);
+
+        $query = $this->lead_model->fetch_unit_data();
+        $data1 = $query->result_array();
+        $data['units'] = $data1;
         
         $this->form_validation->set_rules('name', 'Full name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
@@ -82,29 +78,10 @@ class Lead extends CI_Controller {
             $this->lead_model->update_lead_details($id);
             redirect('lead');
         }
+
         $this->load->view('lead/update_lead', $data);
         $this->load->view('templates/admin_footer');
     }
-
-    // function assign_lead(){
-    //     $this->load->view('templates/admin_header');
-    //     $data = $this->lead_model->fetch_lead_data();
-    //     $all_leads = $data->result_array();
-    //     $data = $this->lead_model->fetch_lead_name();
-    //     $lead_name = $data->result_array();
-    //     $names['names'] = $lead_name;
-    //     $names['leads'] = $all_leads;
-    
-    //     $this->form_validation->set_rules('lead_name', 'Lead Name','required');
-    //     $this->form_validation->set_rules('assign_lead', 'Assign Lead','required');
-
-    //     if(isset($_POST['lead_assign']) && $this->form_validation->run()){
-    //         $this->lead_model->update_lead_assign_data();
-    //         redirect('lead');
-    //     }
-    //     $this->load->view('lead/assign_lead',$names);
-    //     $this->load->view('templates/admin_footer');
-    // }
 
     function deassign_lead($id){
         $data = $this->setting_model->fetch_setting_details();
@@ -114,21 +91,23 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
-    function reassign_lead($id){
+    function assign_lead($id){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
 
-        $data = $this->lead_model->fetch_lead_data();
-        $all_leads = $data->result_array();
+        $data1 = $this->lead_model->fetch_lead_data();
+        $all_leads = $data1->result_array();
         $names['leads'] = $all_leads;
 
-        $data = $this->lead_model->reassign_lead_data($id);
-        $reassign = $data->result_array();
-        $names['rename'] = $reassign;
-        if(isset($_POST['lead_assign']) && $this->form_validation->run()){
-            $this->lead_model->update_lead_assign_data();
+        $data2 = $this->lead_model->fetch_lead_name($id);
+        $assign = $data2->result_array();
+        $names['rename'] = $assign;
+        
+        if(isset($_POST['lead_assign'])){
+            $this->lead_model->lead_assign_data();
             redirect('lead');
         }
+
         $this->load->view('lead/assign_lead',$names);
         $this->load->view('templates/admin_footer');
     }
@@ -136,6 +115,11 @@ class Lead extends CI_Controller {
     function add_unit(){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
+
+        if(isset($_POST['unit_submit'])) { 
+            $this->lead_model->add_unit_details();
+            redirect('lead/add_unit');
+        }
         $this->load->view('lead/add_unit');
         $this->load->view('templates/admin_footer');
     }
