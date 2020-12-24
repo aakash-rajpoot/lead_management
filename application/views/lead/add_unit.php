@@ -10,14 +10,14 @@
             <div class="col-md-5 mb-3 ml-5">
                 <label class="label-input">Type of units: </label>
                 <div class="form-group">
-                    <select id="checkbox"  multiple >						    
-                        <option value="php" class="form-control" id="1rk" name="unit[]">1RK</option>
-                        <option value="python" class="form-control" id="1rk" name="unit[]">1BHK</option>		
-                        <option value="javascript" class="form-control" id="2bhk" name="unit[]">2BHK</option>
-                        <option value="java" class="form-control" id="3bhk" name="unit[]">3BHK</option>
-                        <option value="c" class="form-control" id="4bhk" name="unit[]">4BHK</option>	
-                        <option value="java" class="form-control" id="p_house" name="unit[]">P.House</option>
-                        <option value="c" class="form-control" id="4bhk" name="unit[]">Villa</option>				
+                    <select id="checkbox" name="unit_type" multiple>						    
+                        <option value="1rk" class="form-control" id="1rk" name="unit[]">1RK</option>
+                        <option value="1bhk" class="form-control" id="1bhk" name="unit[]">1BHK</option>		
+                        <option value="2bhk" class="form-control" id="2bhk" name="unit[]">2BHK</option>
+                        <option value="3bhk" class="form-control" id="3bhk" name="unit[]">3BHK</option>
+                        <option value="4bhk" class="form-control" id="4bhk" name="unit[]">4BHK</option>	
+                        <option value="p_house" class="form-control" id="p_house" name="unit[]">P.House</option>
+                        <option value="villa" class="form-control" id="villa" name="unit[]">Villa</option>				
                     </select>	
                 </div>	
             </div>
