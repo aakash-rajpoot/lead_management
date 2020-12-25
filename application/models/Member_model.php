@@ -34,7 +34,9 @@ class Member_model extends CI_Model {
     }
 
     function soft_delete_member($id){
+        $date = date('Y-m-d');
         $this->db->set('status',0);
+        $this->db->set('resignation_date', $date);
         $this->db->where('id', $id);
         return $this->db->update('sq_members');
     }
@@ -55,7 +57,7 @@ class Member_model extends CI_Model {
             'permanent' => $this->input->post('permanent'),
             'correspondence' => $this->input->post('correspondence')
         );
-        
+
         if(!empty($this->input->post('profile_image'))){
             $member['profile_image'] = $this->input->post('profile_image');
         }
