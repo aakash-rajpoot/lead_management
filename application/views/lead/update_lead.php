@@ -1,11 +1,11 @@
 
 <div class="row">
 <div class="col-lg-12">
-<div class="content-wrapper content-wrapper--with-bg"> 
+<div class="content-wrapper content-wrapper--with-bg">
     <div class="wrap-career " style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Update Member Details</h2>
         <?=form_open('lead/update_lead/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
-        <?=validation_errors(); ?> 
+        <?=validation_errors(); ?>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="name">Lead Name: <span class="text-danger font-weight-medium">*</span></label>
@@ -36,20 +36,29 @@
                     <textarea class="form-control" rows="3" name="client_address" id="client_address" ><?=$client_address;?></textarea>
                 </div>
             </div>
-            
+
+            <?php $explode_data = explode(",",$available_unit); ?>
+            <?php $trimmed_array = array_map('trim', $explode_data); ?>
+
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input">Available units: </label>
                     <div class="form-group">
-                        <select id="checkbox" name="available_unit[]" multiple>		
-                            <?php foreach($units as $unit ) {  ?>
-                                <?php $available = explode( ", ", $available_unit ); ?>
-                                <option <?php if(($available) === ($unit['unit_type'].' ('.$unit['unit_size'].')')){ echo 'Selected'; } ?> class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].')'; ?></option>
-                            <?php } ?>			
-                        </select>	
-                    </div>	
-                </div>   
+
+                        <select id="checkbox" name="available_unit[]" multiple>
+
+                            <?php for($i = 0 ; $i < sizeof($trimmed_array); $i++) { ?>
+                                <?php for($j = 0 ; $j < sizeof($units); $j++) { ?>
+                                    <?php if(trim(strtolower($units[$j]['unit_type'].' ('.$units[$j]['unit_size'].')')) == trim(strtolower($explode_data[$i]))){ ?>
+                                        <option <?php if(trim(strtolower($units[$j]['unit_type'].' ('.$units[$j]['unit_size'].')')) == trim(strtolower($explode_data[$i]))){ echo 'Selected'; }?> class="form-control"><?=$units[$j]['unit_type'].' ('.$units[$j]['unit_size'].')'; ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
             </div>
+
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="remark">Remark: </label>

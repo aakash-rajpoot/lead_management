@@ -4,7 +4,7 @@
     <div class="wrap-career " style="margin-top:110px;">
         <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Lead</h2>
         <?=form_open('lead/add_lead',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
-        <?=validation_errors(); ?> 
+        <?=validation_errors(); ?>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="name">Lead Name: <span class="text-danger font-weight-medium">*</span></label>
@@ -39,13 +39,13 @@
                 <div class="col-md-6 mb-3">
                     <label class="label-input">Available units: </label>
                     <div class="form-group">
-                        <select id="checkbox" name="available_unit[]" multiple>		
-                            <?php foreach($units as $unit ) { ?>		    
+                        <select id="checkbox" name="available_unit[]" multiple>
+                            <?php foreach($units as $unit ) { ?>
                                 <option class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].')'; ?></option>
-                            <?php } ?>			
-                        </select>	
-                    </div>	
-                </div>   
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
