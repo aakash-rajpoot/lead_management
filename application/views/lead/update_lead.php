@@ -46,7 +46,6 @@
                     <div class="form-group">
 
                         <select id="checkbox" name="available_unit[]" multiple>
-
                             <?php for($i = 0 ; $i < sizeof($trimmed_array); $i++) { ?>
                                 <?php for($j = 0 ; $j < sizeof($units); $j++) { ?>
                                     <?php if(trim(strtolower($units[$j]['unit_type'].' ('.$units[$j]['unit_size'].')')) == trim(strtolower($explode_data[$i]))){ ?>
