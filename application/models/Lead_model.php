@@ -91,6 +91,7 @@ class Lead_model extends CI_Model {
 
     function deassign_lead_data($id){
         $this->db->set('assign_to',' ');
+        $this->db->set('assign_date',' ');
         $this->db->where('id', $id);
         return $this->db->update('sq_lead');
     }

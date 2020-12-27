@@ -39,17 +39,16 @@
 
             <?php $explode_data = explode(",",$available_unit); ?>
             <?php $trimmed_array = array_map('trim', $explode_data); ?>
-
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input">Available units: </label>
                     <div class="form-group">
 
                         <select id="checkbox" name="available_unit[]" multiple>
-                            <?php for($i = 0 ; $i < sizeof($trimmed_array); $i++) { ?>
-                                <?php for($j = 0 ; $j < sizeof($units); $j++) { ?>
-                                    <?php if(trim(strtolower($units[$j]['unit_type'].' ('.$units[$j]['unit_size'].')')) == trim(strtolower($explode_data[$i]))){ ?>
-                                        <option <?php if(trim(strtolower($units[$j]['unit_type'].' ('.$units[$j]['unit_size'].')')) == trim(strtolower($explode_data[$i]))){ echo 'Selected'; }?> class="form-control"><?=$units[$j]['unit_type'].' ('.$units[$j]['unit_size'].')'; ?></option>
+                            <?php for($j = 0 ; $j < sizeof($units); $j++) { ?>
+                                <?php for($i = 0 ; $i < sizeof($trimmed_array); $i++) { ?>
+                                    <?php if(trim(strtolower($units[$j]['unit_type'].' ('.$units[$j]['unit_size'].' '.$units[$j]['size_measure'].')')) == trim(strtolower($explode_data[$i]))){ ?>
+                                        <option <?='Selected';?> class="form-control"> <?=$units[$j]['unit_type'].' ('.$units[$j]['unit_size'].' '.$units[$j]['size_measure'].')';?> </option>
                                     <?php } ?>
                                 <?php } ?>
                             <?php } ?>

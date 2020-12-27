@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <select id="checkbox" name="available_unit[]" multiple>
                             <?php foreach($units as $unit ) { ?>
-                                <option class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].')'; ?></option>
+                                <option class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].' '.$unit['size_measure'].')'; ?></option>
                             <?php } ?>
                         </select>
                     </div>
