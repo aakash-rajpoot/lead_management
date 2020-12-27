@@ -54,13 +54,13 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="aadhar">Aadhar Card:</label>
+                    <label class="label-input" for="aadhar">Aadhar Card: <span class="text-danger font-weight-medium">*</span></label>
                     <input type="file" class="form-control" name="aadhar" id="aadhar">
                     <p class="upload_warning"> * Only pdf format is allowed.</p>
                 </div>
             
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="pan">Pan Card:</label>
+                    <label class="label-input" for="pan">Pan Card: <span class="text-danger font-weight-medium">*</span></label>
                     <input type="file" class="form-control" name="pan" id="pan">
                     <p class="upload_warning"> * Only pdf format is allowed.</p>
                 </div>

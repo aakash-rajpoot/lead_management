@@ -95,18 +95,4 @@ class Lead_model extends CI_Model {
         return $this->db->update('sq_lead');
     }
 
-    function add_unit_details() {
-        $unit = array(
-            'unit_type' => $this->input->post('unit_type'),
-            'unit_size' => $this->input->post('unit_size')
-        );
-        $this->db->insert('sq_lead_unit',$unit);
-    }
-
-    function fetch_unit_data(){
-        $this->db->select("*");
-        $this->db->from('sq_lead_unit');
-        return $this->db->get();
-    }
-
 }

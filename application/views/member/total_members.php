@@ -38,6 +38,7 @@
                                 <td></td>
                                 <td class="edit-icon">
                                     <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true">edit</a><br/><br/>
+                                    <a href="#" data-href="<?=base_url('index.php/member/resign_agent/'.$totalmember['id'])?>" onClick = "resignAgent(<?=$totalmember['id'];?>);" class="fa fa-pencil-square-o" title="Resign" data-toggle="modal" aria-hidden="true">resign</a><br/><br/>
                                     <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true">delete</a>
                                 </td>
                             </tr>
@@ -86,10 +87,10 @@
         }
     }
 
-    // function hardDelete(memberId) {
-    //     if(confirm('Are you sure to delete permanentaly from records ?')) {
-    //         window.location.replace('<?//=base_url();?>index.php/member/delete_member_hard_data/'+memberId);
-    //     }
-    // }
+    function resignAgent(memberId) {
+        if(confirm('Are you sure to resign permanentaly from here ?')) {
+            window.location.replace('<?=base_url();?>index.php/member/resign_agent/'+memberId);
+        }
+    }
 </script>
 

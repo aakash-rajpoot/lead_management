@@ -6,7 +6,7 @@ class Lead extends CI_Controller {
     public function __construct() {
         parent::__construct();
 
-        $this->load->model(array('lead_model','setting_model'));
+        $this->load->model(array('lead_model','setting_model','unit_model'));
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('form_validation','session'));
     }
@@ -24,7 +24,7 @@ class Lead extends CI_Controller {
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
 
-        $query = $this->lead_model->fetch_unit_data();
+        $query = $this->unit_model->fetch_unit_data();
         $data1 = $query->result_array();
         $data2['units'] = $data1;
 
@@ -34,7 +34,6 @@ class Lead extends CI_Controller {
 		$this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
 		$this->form_validation->set_rules('property_address', 'Property of Address','required');
         $this->form_validation->set_rules('client_address', 'Client Address','required');
-        // $this->form_validation->set_rules('unit', 'Type of units','required');
 
         $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
 		$this->form_validation->set_message('required', '* Please enter valid %s');
@@ -59,12 +58,7 @@ class Lead extends CI_Controller {
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $data = $this->lead_model->fetch_all_lead($id);
-
-//print_r($data['available_unit']);
-// $explode_data = explode(",",$data['available_unit']);
-// print_r($explode_data);
-// die;
-        $query = $this->lead_model->fetch_unit_data();
+        $query = $this->unit_model->fetch_unit_data();
         $data1 = $query->result_array();
         $data['units'] = $data1;
 
@@ -76,7 +70,7 @@ class Lead extends CI_Controller {
         $this->form_validation->set_rules('client_address', 'Client Address','required');
 
         $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
-		$this->form_validation->set_message('required', 'Enter %s');
+		$this->form_validation->set_message('required', '* Please enter valid %s');
 
 		if(isset($_POST['lead_update']) && $this->form_validation->run()) {
             $this->lead_model->update_lead_details($id);
@@ -116,16 +110,5 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
-    function add_unit(){
-        $data = $this->setting_model->fetch_setting_details();
-        $this->load->view('templates/admin_header',$data);
-
-        if(isset($_POST['unit_submit'])) {
-            $this->lead_model->add_unit_details();
-            redirect('lead/add_unit');
-        }
-        $this->load->view('lead/add_unit');
-        $this->load->view('templates/admin_footer');
-    }
 
 }

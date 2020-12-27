@@ -86,12 +86,13 @@ class Member extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
-    // function delete_member_hard_data($id){
-    //     $this->load->view('templates/admin_header');
-    //     $this->member_model->hard_delete_member($id);
-    //     redirect('member');
-    //     $this->load->view('templates/admin_footer');
-    // }
+    function resign_agent($id){
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
+        $this->member_model->resign_agent_here($id);
+        redirect('member');
+        $this->load->view('templates/admin_footer');
+    }
 
     function update_member($id){
         $data = $this->setting_model->fetch_setting_details();

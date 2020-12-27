@@ -830,11 +830,11 @@ tr {
             }
 
             .active_agent {
-                background-color: #c5f8ae !important;
+                background-color: #d9fac9 !important;
             }
 
             .inactive_agent {
-                background-color: #fca5a8 !important;
+                background-color: #faccce !important;
             }
 
             .multi-checkboxss {

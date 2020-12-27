@@ -34,17 +34,9 @@ class Member_model extends CI_Model {
     }
 
     function soft_delete_member($id){
-        $date = date('Y-m-d');
-        $this->db->set('status',0);
-        $this->db->set('resignation_date', $date);
         $this->db->where('id', $id);
-        return $this->db->update('sq_members');
+        return $this->db->delete('sq_members');
     }
-
-    // function hard_delete_member($id){
-    //    $this->db->where('id', $id);
-    //    return $this->db->delete('sq_members');
-    // }
 
     function update_member_details($id){
         $member = array(
@@ -87,5 +79,13 @@ class Member_model extends CI_Model {
         $this->db->where('id',$id);
         $query = $this->db->get();
         return $query->row_array();
+    }
+
+    function resign_agent_here($id){
+        $date = date('Y-m-d');
+        $this->db->set('status',0);
+        $this->db->set('resignation_date', $date);
+        $this->db->where('id', $id);
+        return $this->db->update('sq_members');
     }
 }

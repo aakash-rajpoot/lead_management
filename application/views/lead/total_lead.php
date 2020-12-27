@@ -37,9 +37,10 @@
                             <td><?=$totallead['property_address']?></td>
                             <td><?=$totallead['client_address']?></td>
                             <td>
-                                <button type="button" class="btn add_new_remark" onclick="createNewElement();">+</button>
-                                <input type='text' class='form-control' id='newInputBox' value="<?=$totallead['remark']?>" />
-                                <div id="newElementId"></div>
+                                <!-- <button type="button" class="btn add_new_remark" onclick="createNewElement();">+</button>
+                                <input type='text' class='form-control' id='newInputBox' value="<?//=$totallead['remark']?>" />
+                                <div id="newElementId"></div> -->
+                                <?=$totallead['remark']?>
                             </td>
                             <td><?=$totallead['reference']?></td>
                             <td class="edit-icon">
@@ -82,12 +83,6 @@
         }
     }
 
-    // function hardDelete(leadId) {
-    //     if(confirm('Are you sure to delete permanentaly from records ?')) {
-    //         window.location.replace('<?//=base_url();?>index.php/lead/hard_delete_lead_data/'+leadId);
-    //     }
-    // }
-
     function deAssignLead(leadId) {
         if(confirm('Are you sure to delete your assigned lead from records ?')) {
             window.location.replace('<?php echo base_url();?>index.php/lead/deassign_lead/'+leadId);
@@ -95,7 +90,7 @@
     }
 
 </script>
-<script type="text/JavaScript">
+<!-- <script type="text/JavaScript">
     function createNewElement() {
 
         var txtNewInputBox = document.createElement('div');
@@ -104,4 +99,4 @@
 
         document.getElementById("newElementId").appendChild(txtNewInputBox);
     }
-</script>
+</script> -->
