@@ -12,6 +12,8 @@ class Admin extends CI_Controller {
     }
     
     public function index(){
+        $data = $this->setting_model->fetch_setting_details();
+
         if(isset($_POST['admin-login'])) {
             $query = $this->admin_model->login_verification();
 
@@ -29,7 +31,7 @@ class Admin extends CI_Controller {
                 }
             }
         }
-        $this->load->view('admin/login');
+        $this->load->view('admin/login',$data);
     }
 
     function validateUser($email,$recordCount){
@@ -50,7 +52,7 @@ class Admin extends CI_Controller {
 
     function logout(){
         $this->session->sess_destroy();
-		redirect('admin');
+		redirect('');
     }
 
     function change_pass(){

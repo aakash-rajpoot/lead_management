@@ -52,12 +52,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="label-input" for="joining_date">Date of Joining: </label>
-                                <input type="date" class="form-control" name="joining_date" id="joining_date" value="<?=$joining_date;?>">
-                            </div>
-                        </div>
+                        
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="aadhar">Aadhar Card: <span class="text-danger font-weight-medium">*</span></label>
@@ -82,6 +77,12 @@
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="correspondence">Correspondence Address:</label>
                                 <textarea class="form-control" cols = "50" name="correspondence" id="correspondence"><?=$correspondence;?></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-input" for="joining_date">Date of Joining: </label>
+                                <input type="date" class="form-control" name="joining_date" id="joining_date" value="<?=$joining_date;?>">
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-3">

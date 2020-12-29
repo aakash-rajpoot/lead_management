@@ -64,7 +64,7 @@
                         $profile_image = 'avatar.png';
                     } ?>
                     <div class="dropdown">
-                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><img src="<?=base_url('media/images/'.$profile_image)?>" class="avatar rounded-circle admin_header_image">
+                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><a href="<?=base_url('index.php/admin/view_profile');?>"><img src="<?=base_url('media/images/'.$profile_image)?>" class="avatar rounded-circle admin_header_image"></a>
                     <div class="dropdown-content">
                     <div class="row">
                         <a href="<?=base_url('index.php/admin/view_profile');?>">
@@ -151,8 +151,25 @@
                                     </div>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+
+                    <li class="c-menu__item site-menu-item main-menu" title="Unit">
+                        <a href="<?=base_url('index.php/unit')?>"> 
+                            <div class="c-menu__item__inner menusss">
+                                <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Property Unit</span></i>
+                            </div>
+                        </a>
+                        <ul class="site-menu-sub ">
+                            <li class="site-menu-item"  title="All unit">
+                                <a href="<?=base_url('index.php/unit')?>">
+                                    <div class="c-menu__item__inner submenu-color">
+                                        <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">All Units</span></i>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="site-menu-item" title="Add Unit"> 
-                                <a href="<?=base_url('index.php/lead/add_unit')?>">
+                                <a href="<?=base_url('index.php/unit/add_unit')?>">
                                     <div class="c-menu__item__inner submenu-color">
                                         <i class="fa fa-id-badge" aria-hidden="true">&nbsp; <span class="icon-titles">Add Unit</span></i>
                                     </div>
@@ -160,6 +177,7 @@
                             </li>
                         </ul>
                     </li>
+
                         <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Settings">
                             <a href="<?=base_url('index.php/setting')?>">
                                 <div class="c-menu__item__inner menusss">
