@@ -91,7 +91,9 @@
       
         <div class="l-sidebar">
             <div class="logo">
+            <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
                 <div class="logo__txt"><img src="<?=base_url('media/logo/'.$logo)?>" class="logo-img" title="<?=$site;?> (<?=$tagline;?>)"></div>
+            </a>
             </div>
             <div class="row">
       <div class="col-lg-12">
