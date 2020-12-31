@@ -3,7 +3,7 @@
  <div class="col-lg-12">
     <div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">    
-                <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
+                <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>S.No</th>

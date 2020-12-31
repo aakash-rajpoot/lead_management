@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="dob">Birth Date: <span class="text-danger font-weight-medium">*</span></label>
-                    <input type="date" class="form-control" rows="3" name="dob" id="dob"/>
+                    <input type="date" class="form-control"  name="dob" id="dob"/>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="gender">Gender: </label>
