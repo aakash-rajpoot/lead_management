@@ -29,7 +29,7 @@
 					                    <input class="form-control form-control-sm" type="password" name="confirm_pass" id="confirm_pass"><br/><br />
                                 </div>
                             </div> 
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex">
 								<input type="submit" name="admin_change_password" value="Change Password" class="btn btn-primary button-hor" />
                             </div>
 							<?=form_close(); ?>

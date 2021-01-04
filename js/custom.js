@@ -6,7 +6,7 @@ $(document).ready(function() {
             className: 'select-checkbox select-checkbox-all',
             targets: 0
         }],
-        select: {
+        Select: {
             style: 'multi',
             selector: 'td:first-child'
         }

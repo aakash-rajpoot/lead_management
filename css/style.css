@@ -888,3 +888,24 @@ tr {
             .heading-dashboard {
                 color: #95c41f;
             }
+            /* 4/01/2021 */
+            
+            label {
+                font-size: 13px;
+            }
+            
+            .fa-trash:before {
+                color: red;
+            }
+            
+            .edit-icon {
+                font-size: 18px;
+            }
+            
+            .btn-group>.btn:first-child {
+                min-width: 180px;
+            }
+            
+            .btn-group>.btn:first-child {
+                max-width: 550px;
+            }

@@ -3,7 +3,7 @@
      <div class="col-lg-12">
         <div id="table1" class="ex2">
             <div class="content-wrapper content-wrapper--with-bg">
-                <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
+                <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>S.No</th>
@@ -28,8 +28,8 @@
                             <td>&#x20B9; <?=$totalunit['unit_range']?></td>
                             <td><?=$totalunit['unit_remark']?></td>
                             <td class="edit-icon">
-                                <a href="<?=base_url('index.php/unit/update_unit/'.$totalunit['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit">edit </a> <br/>
-                                <a href="#" onClick = "unitDelete(<?=$totalunit['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/unit/delete_unit/<?=$totalunit['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Delete">delete</a> <br/>
+                                <a href="<?=base_url('index.php/unit/update_unit/'.$totalunit['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a><br/>
+                                <a href="#" onClick = "unitDelete(<?=$totalunit['id'];?>);"  data-href="<?php echo base_url();?>index.php/unit/delete_unit/<?=$totalunit['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Delete"></a><br/>
                             </td>
                         </tr>
                     </tbody>
@@ -41,8 +41,6 @@
     </div>
     </div>
 </div>
-</div>
-
 <script>
     $(document).ready(function() {
         $('#dt-all-checkbox').dataTable({

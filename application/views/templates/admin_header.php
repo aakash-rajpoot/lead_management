@@ -204,7 +204,7 @@
 <script>
 $(document).ready(function() {       
 	$('#checkbox').multiselect({		
-		nonSelectedText: 'Select '				
+		nonSelectedText: 'Select Unit '				
 	});
 });
 </script>
