@@ -1,8 +1,7 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-    <meta charset='UTF-8'>
+<meta charset="UTF-8">
     <title><?=$site;?></title>
     <meta name="keywords" content="dummy content">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +63,7 @@
                         $profile_image = 'avatar.png';
                     } ?>
                     <div class="dropdown">
-                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><a href="<?=base_url('index.php/admin/view_profile');?>"><img src="<?=base_url('media/images/'.$profile_image)?>" class="avatar rounded-circle admin_header_image"></a>
+                    <div class="c-header-icon user dropbtn"><span class=" c-badge--header-icon animated shake" ></span><a href="<?=base_url('index.php/admin/view_profile');?>"><img src="<?=base_url('media/images/'.$profile_image)?>" alt="round cricle image" class="avatar rounded-circle admin_header_image"></a>
                     <div class="dropdown-content">
                     <div class="row">
                         <a href="<?=base_url('index.php/admin/view_profile');?>">
@@ -205,7 +204,7 @@
 <script>
 $(document).ready(function() {       
 	$('#checkbox').multiselect({		
-		nonSelectedText: 'Select '				
+		nonSelectedText: 'Select Unit '				
 	});
 });
 </script>

@@ -34,7 +34,7 @@
                             <input type="text" class="form-control" name="unit_remark" value="<?=$unit_remark;?>"> <br>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center mt-5">
+                    <div class="d-flex  mt-5">
                         <button class="btn btn-primary button-hor" name="unit_update" type="submit">Update</button>
                     </div>
                     <?=form_close();?>

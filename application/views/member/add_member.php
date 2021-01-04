@@ -3,7 +3,7 @@
 <div class="content-wrapper content-wrapper--with-bg">
 
     <div class="wrap-career" style="margin-top:110px;">
-        <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Agent</h2>
+        <h2 class="font-weight-medium mt-2 mb-5">Add New Agent</h2>
         <?=form_open('member/add_member',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
             <?=validation_errors(); ?>     
             <div class="row">
@@ -29,12 +29,12 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="dob">Birth Date: <span class="text-danger font-weight-medium">*</span></label>
-                    <input type="date" class="form-control" rows="3" name="dob" id="dob"/>
+                    <input type="date" class="form-control"  name="dob" id="dob"/>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="gender">Gender: </label>
                     <select class="custom-select d-block w-100" name="gender" id="gender">
-                        <option value="">--select gender--</option>
+                        <option value=""> Select Gender </option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>    
@@ -72,7 +72,7 @@
                 </div>
             </div>
             
-            <div class="d-flex justify-content-center mt-3">
+            <div class="d-flex  mt-3">
                 <button class="btn btn-primary button-hor" name="member_submit" type="submit">Submit</button>
             </div>
         <?=form_close();?>

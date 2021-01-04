@@ -19,7 +19,7 @@
                         <?php } ?>
                     </select>      
                 </div>
-                <div class="d-flex justify-content-center mt-5 col-md-8 mb-3">
+                <div class="d-flex  mt-5 col-md-8 mb-3">
                     <button class="btn btn-primary button-hor" name="lead_assign" type="submit">Assign</button>
                 </div>
             </div>

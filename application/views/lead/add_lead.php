@@ -2,7 +2,7 @@
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
     <div class="wrap-career " style="margin-top:110px;">
-        <h2 class="font-weight-medium text-center mt-2 mb-5">Add New Lead</h2>
+        <h2 class="font-weight-medium mt-2 mb-5">Add New Lead</h2>
         <?=form_open('lead/add_lead',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
         <?=validation_errors(); ?>
             <div class="row">
@@ -46,18 +46,19 @@
                         </select>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="label-input" for="remark">Remark:</label>
-                    <textarea type="text" row="3" class="form-control" name="remark" id="remark"> </textarea>
-                </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="reference">Lead Source By:</label>
                     <input type="text" class="form-control" name="reference" id="reference">
                 </div>
             </div>
-            <div class="d-flex justify-content-center mt-3">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="label-input" for="remark">Remark:</label>
+                    <textarea class="form-control"   name="remark" id="remark"></textarea>
+                </div>
+                
+            </div>
+            <div class="d-flex mt-3">
                 <button class="btn btn-primary button-hor" name="lead_submit" type="submit">Submit</button>
             </div>
         <?=form_close();?>

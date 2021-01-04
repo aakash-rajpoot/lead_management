@@ -63,7 +63,7 @@
                                 <textarea class="form-control" row="2" type="text" name="address" id="address"><?=$address;?></textarea>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center mt-3 mb-4">
+                        <div class="d-flex mt-3 mb-4">
                             <button type="submit" class="btn btn-primary button-hor" title="update" name="update_profile">Update</button>
                         </div>
                     <?=form_close(); ?>

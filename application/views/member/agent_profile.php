@@ -15,36 +15,36 @@
             <div class="row mt-3">
                 <div class="col-md-6 mb-3">
                 <div class=" form-control">
-                    <label class="label-input " for="name">Agent Name: </label>&nbsp;&nbsp;&nbsp; <?=$name;?>
+                    <label class="label-input">Agent Name: </label>&nbsp;&nbsp;&nbsp; <?=$name;?>
                 </div>
                 </div>
                 <div class="col-md-6 mb-3">
                 <div class=" form-control">
-                    <label class="label-input" for="email">Email-Id: </label>&nbsp;&nbsp;&nbsp; <?=$email;?>
+                    <label class="label-input">Email Id: </label>&nbsp;&nbsp;&nbsp; <?=$email;?>
                 </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                 <div class=" form-control">
-                    <label class="label-input" for="phone">Phone: </label>&nbsp;&nbsp;&nbsp; <?=$phone;?>
+                    <label class="label-input">Phone: </label>&nbsp;&nbsp;&nbsp; <?=$phone;?>
                 </div>
                 </div>
                 <div class="col-md-6 mb-3">
                 <div class=" form-control">
-                    <label class="label-input" for="alt_phone">Alternate Phone Number:</label>&nbsp;&nbsp;&nbsp; <?=$alt_phone;?>
+                    <label class="label-input">Alternate Phone Number:</label>&nbsp;&nbsp;&nbsp; <?=$alt_phone;?>
                 </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                 <div class=" form-control">
-                    <label class="label-input" for="dob">Birth Date: </label>&nbsp;&nbsp;&nbsp; <?=$dob;?>
+                    <label class="label-input">Birth Date: </label>&nbsp;&nbsp;&nbsp; <?=$dob;?>
                 </div>
                 </div>
                 <div class="col-md-6 mb-3">
                 <div class=" form-control">
-                    <label class="label-input" for="gender">Gender: </label>&nbsp;&nbsp;&nbsp; <?=$gender;?>
+                    <label class="label-input">Gender: </label>&nbsp;&nbsp;&nbsp; <?=$gender;?>
                 </div>   
                 </div>
             </div>
@@ -52,25 +52,25 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                 <div class=" form-control  address-box">
-                    <label class="label-input" for="permanent">Permanent Address:</label>&nbsp;&nbsp;&nbsp; <?=$permanent;?>
+                    <label class="label-input">Permanent Address:</label>&nbsp;&nbsp;&nbsp; <?=$permanent;?>
                 </div>
                 </div>
                 <div class="col-md-6 mb-3">
                 <div class=" form-control address-box">
-                    <label class="label-input" for="correspondence">Correspondence Address:</label>&nbsp;&nbsp;&nbsp; <?=$correspondence;?>
+                    <label class="label-input">Correspondence Address:</label>&nbsp;&nbsp;&nbsp; <?=$correspondence;?>
                 </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3 ">
                 <div class=" form-control">
-                    <label class="label-input" for="aadhar">Aadhar Card:</label>&nbsp;&nbsp;&nbsp;
+                    <label class="label-input">Aadhar Card:</label>&nbsp;&nbsp;&nbsp;
                     <a href="<?=base_url();?>media/aadhar/<?=$aadhar;?>" target="_blank"><?=$aadhar;?></a>
                 </div>
                 </div>
                 <div class="col-md-6 mb-3">
                 <div class=" form-control">
-                    <label class="label-input" for="pan">Pan Card:</label>&nbsp;&nbsp;&nbsp;
+                    <label class="label-input">Pan Card:</label>&nbsp;&nbsp;&nbsp;
                     <a href="<?=base_url();?>media/pan/<?=$pan;?>" target="_blank"><?=$pan;?></a>
                 </div>
                 </div>
@@ -82,7 +82,7 @@
                 </div> -->
                 <div class="col-md-6 mb-3">
                 <div class=" form-control">
-                    <label class="label-input" for="joining_date">Date of Joining: </label>&nbsp;&nbsp;&nbsp; <?=$joining_date;?>
+                    <label class="label-input">Date of Joining: </label>&nbsp;&nbsp;&nbsp; <?=$joining_date;?>
                 </div>
                 </div>
             </div>

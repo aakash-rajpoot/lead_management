@@ -3,7 +3,7 @@
  <div class="col-lg-12">
     <div id="table1" class="ex2">
     <div class="content-wrapper content-wrapper--with-bg">    
-                <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
+                <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>S.No</th>
@@ -37,9 +37,9 @@
                                 <td><?=$totalmember['joining_date']?></td>
                                 <td></td>
                                 <td class="edit-icon">
-                                    <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true">edit</a><br/><br/>
-                                    <a href="#" data-href="<?=base_url('index.php/member/resign_agent/'.$totalmember['id'])?>" onClick = "resignAgent(<?=$totalmember['id'];?>);" class="fa fa-pencil-square-o" title="Resign" data-toggle="modal" aria-hidden="true">resign</a><br/><br/>
-                                    <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" name="delete" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true">delete</a>
+                                    <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"></a><br/><br/>
+                                    <a href="#" data-href="<?=base_url('index.php/member/resign_agent/'.$totalmember['id'])?>" onClick = "resignAgent(<?=$totalmember['id'];?>);" class="fa fa-pencil-square-o" title="Resign" data-toggle="modal" aria-hidden="true"></a><br/><br/>
+                                    <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true"></a>
                                 </td>
                             </tr>
                         <?php }else{ ?>

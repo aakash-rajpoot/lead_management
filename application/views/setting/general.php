@@ -2,7 +2,7 @@
 <div class="row">
    <div class="col-lg-12">
       <div class="content-wrapper content-wrapper--with-bg">
-         <h2 class="general text-center mb-3">General Setting</h2>
+         <h2 class="general mb-3">General Setting</h2>
          <?=form_open('setting',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
          <div class="row mt-5">
             <div class="col-lg-6 col-md-6 mb-3">
@@ -34,7 +34,7 @@
                <input type="text" class="form-control" id="time_zone" name="time_zone" >
             </div>
          </div>
-         <div class="d-flex justify-content-center mt-3">
+         <div class="d-flex  mt-3">
             <button class="btn btn-primary" name="save" type="submit">Save</button>
          </div>
         <?=form_close();?>

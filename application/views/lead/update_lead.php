@@ -60,14 +60,14 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="remark">Remark: </label>
-                    <textarea type="text" row="2" class="form-control" name="remark" id="remark"><?=$remark;?></textarea>
+                    <textarea class="form-control"    name="remark" id="remark"><?=$remark;?></textarea>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="reference">Reference by – only for sales team: </label>
                     <input type="email" class="form-control" name="reference" id="reference" value="<?=$reference;?>">
                 </div>
             </div>
-            <div class="d-flex justify-content-center mt-3">
+            <div class="d-flex  mt-3">
                 <button class="btn btn-primary button-hor" name="lead_update" type="submit">Update</button>
             </div>
         <?=form_close();?>

@@ -4,7 +4,7 @@
         <div class="col-lg-12">
 
         <h1 class="page-title">Dashboard</h1>
-        <div class="page-content">WELCOME TO<b style="color:95c41f"> KRITAK</b></div>
+        <div class="page-content">WELCOME TO<b class="heading-dashboard"> KRITAK</b></div>
         <div class="row mt-4">
             <div class="col-sm-6">
                 <div class="card">

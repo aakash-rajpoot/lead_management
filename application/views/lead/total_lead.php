@@ -3,7 +3,7 @@
      <div class="col-lg-12">
         <div id="table1" class="ex2">
             <div class="content-wrapper content-wrapper--with-bg">
-                <table id="dt-all-checkbox" class="table table-bordered" cellspacing="0" width="100%">
+                <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>S.No</th>
@@ -45,10 +45,10 @@
                             </td>
                             <td><?=$totallead['reference']?></td>
                             <td class="edit-icon">
-                                <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit">edit </a> <br/>
-                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);" name="delete" data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Delete">delete</a> <br/>
-                                <a href="<?=base_url('index.php/lead/assign_lead/'.$totallead['id'])?>" class="fa fa-pencil mt-3" aria-hidden="true" title="Assign"  >assign</a>
-                                <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="fa fa-pencil-square mt-3 text-warning" aria-hidden="true" title="De-Assign" >deassign</a>
+                                <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a> <br/>
+                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);"  data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Delete"></a> <br/>
+                                <a href="<?=base_url('index.php/lead/assign_lead/'.$totallead['id'])?>" class="fa fa-pencil mt-3" aria-hidden="true" title="Assign"></a><br/>
+                                <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="fa fa-pencil-square mt-3 text-warning" aria-hidden="true" title="De-Assign"></a>
                             </td>
                         </tr>
                     </tbody>
@@ -60,7 +60,7 @@
     </div>
     </div>
 </div>
-</div>
+
 
 <script>
     $(document).ready(function() {
@@ -91,13 +91,3 @@
     }
 
 </script>
-<!-- <script type="text/JavaScript">
-    function createNewElement() {
-
-        var txtNewInputBox = document.createElement('div');
-
-        txtNewInputBox.innerHTML = "<input type='text' class='form-control' id='newInputBox'>";
-
-        document.getElementById("newElementId").appendChild(txtNewInputBox);
-    }
-</script> -->
