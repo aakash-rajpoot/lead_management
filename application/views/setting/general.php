@@ -35,7 +35,7 @@
             </div>
          </div>
          <div class="d-flex  mt-3">
-            <button class="btn btn-primary" name="save" type="submit">Save</button>
+            <button class="btn btn-primary button-hor" name="save" type="submit">Save</button>
          </div>
         <?=form_close();?>
       </div>

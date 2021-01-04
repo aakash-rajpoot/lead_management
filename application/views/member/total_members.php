@@ -38,7 +38,7 @@
                                 <td></td>
                                 <td class="edit-icon">
                                     <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"></a><br/><br/>
-                                    <a href="#" data-href="<?=base_url('index.php/member/resign_agent/'.$totalmember['id'])?>" onClick = "resignAgent(<?=$totalmember['id'];?>);" class="fa fa-pencil-square-o" title="Resign" data-toggle="modal" aria-hidden="true"></a><br/><br/>
+                                    <a href="#" data-href="<?=base_url('index.php/member/resign_agent/'.$totalmember['id'])?>" onClick = "resignAgent(<?=$totalmember['id'];?>);" class="fa fa-plus-circle text-success" title="Resign" data-toggle="modal" aria-hidden="true"></a><br/><br/>
                                     <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true"></a>
                                 </td>
                             </tr>

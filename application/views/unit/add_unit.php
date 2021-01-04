@@ -34,7 +34,7 @@
                             <input type="text" class="form-control" name="unit_remark">
                         </div>
                     </div>
-                    <div class="d-flex mt-5">
+                    <div class="d-flex mt-2">
                         <button class="btn btn-primary button-hor" name="unit_submit" type="submit">Submit</button>
                     </div>
                     <?=form_close();?>
@@ -43,3 +43,4 @@
         </div>
     </div>
 </div>
+
