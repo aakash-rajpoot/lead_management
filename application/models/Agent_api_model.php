@@ -29,7 +29,7 @@ class Agent_api_model extends CI_Model {
         //     $agent['joining_date'] = $this->input->post('joining_date');
         // }
 
-        $this->db->insert('sq_members',$agent);
+        return $this->db->insert('sq_members',$agent);
     }
 
     // function fetch_agent_mobile_data($id){
@@ -37,11 +37,15 @@ class Agent_api_model extends CI_Model {
     // }
 
     function agent_mobile_put($id,$input) {
-        $this->db->update('sq_members', $input, array('id'=>$id));
+        return $this->db->update('sq_members', $input, array('id'=>$id));
     }
 
     function agent_mobile_delete($id) {
-        $this->db->delete('sq_members', array('id'=>$id));
+        return $this->db->delete('sq_members', array('id'=>$id));
     }
+
+    // function reset_agent_password($email){
+    //     return $this->db->get_where("sq_members", ['email' => $email,'status'=>'1'])->row_array();
+    // }
     
 }

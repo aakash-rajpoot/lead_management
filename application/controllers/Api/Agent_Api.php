@@ -7,8 +7,8 @@ class Agent_Api extends REST_Controller {
         parent::__construct();
 
         $this->load->model('agent_api_model');
-		$this->load->helper(array('form','url','html'));
-		$this->load->library(array('form_validation','session'));
+		$this->load->helper(array('form','url','html','string'));
+		$this->load->library(array('form_validation','session','email'));
     }
 
 	public function index_get() {
@@ -97,4 +97,7 @@ class Agent_Api extends REST_Controller {
             $this->response(['Error Found.'], REST_Controller::HTTP_OK);
         }
     }
+
+    
+    
 }

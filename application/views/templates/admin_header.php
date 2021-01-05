@@ -202,4 +202,20 @@
     $( "#dob" ).datepicker({dateFormat:'dd-mm-yy'});
   });
   </script>
+  <script>
+ $('.site-menu li').removeClass('active');
+                $(this).addClass('active');
+                $(this).children('ul').slideDown();
+            }
+        });
+    });
+});
+</script>
+<script>
+$(document).ready(function() {       
+	$('#checkbox').multiselect({		
+		nonSelectedText: 'Select Unit '				
+	});
+});
+</script>
 
