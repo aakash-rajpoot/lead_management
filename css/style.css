@@ -789,6 +789,7 @@ tr {
             
             .copiyright-link {
                 color: #95c41f;
+                font-weight: bold;
             }
             
             .copiyright-link:hover {
@@ -899,7 +900,8 @@ tr {
             }
             
             .edit-icon {
-                font-size: 18px;
+                font-size: 20px;
+                text-align: center;
             }
             
             .btn-group>.btn:first-child {
@@ -908,4 +910,13 @@ tr {
             
             .btn-group>.btn:first-child {
                 max-width: 550px;
+            }
+            
+            .text-danger {
+                color: red!important;
+            }
+            
+            a:hover {
+                text-decoration: none !important;
+                list-style: none !important;
             }

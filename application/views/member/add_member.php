@@ -32,8 +32,8 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="label-input" for="dob">Birth Date: <span class="text-danger font-weight-medium">*</span></label>
-                    <input type="date" class="form-control"  name="dob" id="dob"/>
+                    <label class="label-input" for="dob">Birth Date: <span class="text-danger font-weight-medium" >*</span></label>
+                    <input type="text" class="form-control"  placeholder="dd-mm-yy" name="dob" id="dob"/ >
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="gender">Gender: </label>
@@ -72,7 +72,7 @@
             <div class="row">                
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="joining_date">Date of Joining: </label>
-                    <input type="date" class="form-control" name="joining_date" id="joining_date">
+                    <input type="text" class="form-control" name="joining_date" id="joining_date" placeholder="dd-mm-yy">
                 </div>
             </div>
             

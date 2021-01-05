@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="remark">Remark:</label>
-                    <textarea class="form-control"   name="remark" id="remark"></textarea>
+                    <textarea class="form-control"  rows="3"  name="remark" id="remark"></textarea>
                 </div>
                 
             </div>
