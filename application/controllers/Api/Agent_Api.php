@@ -44,7 +44,7 @@ class Agent_Api extends REST_Controller {
                 $this->response(['status'=>true,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_OK);
             }
         } else {
-            $this->response(['status'=>false,'message'=>'Please enter valid email.'], REST_Controller::HTTP_OK);
+            $this->response(['status'=>false,'message'=>'Please enter valid email.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
     
@@ -54,7 +54,7 @@ class Agent_Api extends REST_Controller {
         if($status > 0){
             $this->response(['status'=>true,'message'=>'Agent updated successfully.'], REST_Controller::HTTP_OK);
         }else{
-            $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_OK);
+            $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
 
@@ -63,7 +63,7 @@ class Agent_Api extends REST_Controller {
         if($status > 0){
             $this->response(['status'=>true,'message'=>'Agent deleted successfully.'], REST_Controller::HTTP_OK);
         }else{
-            $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_OK);
+            $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
 
@@ -93,7 +93,7 @@ class Agent_Api extends REST_Controller {
                 $this->agent_api_model->update_otp_status($data);
                 $this->response(['status'=>true,'message'=>'OTP has been verified.'], REST_Controller::HTTP_OK);
             }else{
-                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_OK);
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
             }
         }  
     }
@@ -112,7 +112,7 @@ class Agent_Api extends REST_Controller {
             if($status > 0){
                 $this->response(['status'=>true,'message'=>'Your password has been created successfully.'], REST_Controller::HTTP_OK);
             }else{
-                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_OK);
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
             }
 		}else{
             echo validation_errors();
@@ -137,10 +137,10 @@ class Agent_Api extends REST_Controller {
                 if($status > 0){
                     $this->response(['status'=>true,'message'=>'Password has successfully changed.'], REST_Controller::HTTP_OK);
                 }else{
-                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_OK);
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
             }else{
-                $this->response(['status'=>false,'message'=>'Old password doesn\'t match.'], REST_Controller::HTTP_OK);
+                $this->response(['status'=>false,'message'=>'Old password doesn\'t match.'], REST_Controller::HTTP_BAD_REQUEST);
             }
         }else{
             echo validation_errors();
