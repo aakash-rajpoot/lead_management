@@ -1,3 +1,7 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  
+
 <div class="row">
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
@@ -23,7 +27,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="alt_phone">Alternate Phone Number:</label>
-                    <input type="number" class="form-control" name="alt_phone" id="alt_phone">
+                    <input type="number" data-date-format="dd-mm-yyyy" class="form-control" name="alt_phone" id="alt_phone">
                 </div>
             </div>
             <div class="row">

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <title><?=$site;?></title>
+
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <link rel="icon" href="<?=base_url('media/logo/'.$logo)?>" type="image/x-icon">
 
-<head>
+
 
 <style>
 /*--------------------------------------------------------------
@@ -40,8 +42,7 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  background-color:   #212529);
+  background-color: #212529;
   background-color: var(--bg-color);
   box-shadow: 0 15px 25px var(--bg-color);
   border-radius: 10px;

@@ -45,9 +45,9 @@
                             </td>
                             <td><?=$totallead['reference']?></td>
                             <td class="edit-icon">
-                                <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a> <br/>
-                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);"  data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Delete"></a> <br/>
-                                <a href="<?=base_url('index.php/lead/assign_lead/'.$totallead['id'])?>" class="fa fa-plus-circle text-success mt-3" aria-hidden="true" title="Assign"></a><br/>
+                                <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a>
+                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);"  data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Delete"></a>
+                                <a href="<?=base_url('index.php/lead/assign_lead/'.$totallead['id'])?>" class="fa fa-plus-circle text-success mt-3" aria-hidden="true" title="Assign"></a>
                                 <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="fa fa-minus-circle mt-3 text-danger" aria-hidden="true" title="De-Assign"></a>
                             </td>
                         </tr>

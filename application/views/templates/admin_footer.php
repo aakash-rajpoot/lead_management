@@ -9,20 +9,5 @@
 </div>
 </div>
 </div>
-<script>
- $('.site-menu li').removeClass('active');
-                $(this).addClass('active');
-                $(this).children('ul').slideDown();
-            }
-        });
-    });
-});
-</script>
-<script>
-$(document).ready(function() {       
-	$('#checkbox').multiselect({		
-		nonSelectedText: 'Select Unit '				
-	});
-});
-</body>
+ </body>
 </html>
