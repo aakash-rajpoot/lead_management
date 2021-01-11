@@ -25,7 +25,7 @@
                             <td><?=$i;?></td>
                             <td><?=$totalunit['unit_type']?></td>
                             <td><?=$totalunit['unit_size'].' '.$totalunit['size_measure']?></td>
-                            <td>&#x20B9; <?=$totalunit['unit_range']?></td>
+                            <td><?=$totalunit['unit_range']." "." INR"?></td>
                             <td><?=$totalunit['unit_remark']?></td>
                             <td class="edit-icon">
                                 <a href="<?=base_url('index.php/unit/update_unit/'.$totalunit['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a><br/>
