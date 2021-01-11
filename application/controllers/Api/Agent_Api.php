@@ -27,7 +27,8 @@ class Agent_Api extends REST_Controller {
 
             case 'change_password':
                 $this->change_password();
-                break;    
+                break;  
+                
             }
     }
 
@@ -38,7 +39,8 @@ class Agent_Api extends REST_Controller {
             $data = $this->agent_api_model->agent_mobile_post($email);
             if($data['pass'] == ''){
                 $login_otp = rand(000000,999999);
-                $this->agent_api_model->save_login_otp($login_otp,$data);
+                $token =  $this->generate_auth_token($data);
+                $this->agent_api_model->save_login_otp($login_otp,$data,$token);
                 $this->email_config($email,$login_otp);
             }else{
                 $this->response(['status'=>true,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_OK);
@@ -145,6 +147,16 @@ class Agent_Api extends REST_Controller {
         }else{
             echo validation_errors();
         }
+    }
+
+    public function generate_auth_token($data) {
+        $auth_key = getallheaders();
+        $token['id'] = $data['id'];
+        $token['email'] = $data['email'];
+        $date = new DateTime();
+        $token['iat'] = $date->getTimestamp();
+        $token['exp'] = $date->getTimestamp() + 60*60*5; 
+        return JWT::encode($token,$auth_key['Authorization']); 
     }
     
     

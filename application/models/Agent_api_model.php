@@ -18,8 +18,9 @@ class Agent_api_model extends CI_Model {
         return $this->db->delete('sq_members', array('id'=>$id));
     }
 
-    function save_login_otp($login_otp,$data){
-        return $this->db->insert('sq_otp_verification',['otp'=>$otp,'agent_id'=>$data['id']]);
+    function save_login_otp($login_otp,$data,$token){
+        $this->db->insert('sq_otp_verification',['otp'=>$login_otp,'agent_id'=>$data['id']]);
+        return $this->db->update('sq_members',['auth_token'=>$token],array('email'=>$data['email'],'status'=>1));
     }
 
     function verify_sent_otp($otp,$email){
