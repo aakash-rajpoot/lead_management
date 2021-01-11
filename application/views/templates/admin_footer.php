@@ -24,7 +24,5 @@ $(document).ready(function() {
 		nonSelectedText: 'Select Unit '				
 	});
 });
-
-
 </body>
 </html>
