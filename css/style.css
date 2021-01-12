@@ -789,7 +789,7 @@ tr {
             
             .copiyright-link {
                 color: #95c41f;
-                font-weight: bold;
+                font-weight: bold!important;
             }
             
             .copiyright-link:hover {

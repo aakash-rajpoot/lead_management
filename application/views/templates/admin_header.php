@@ -110,7 +110,7 @@
                         <li class="c-menu__item site-menu-item main-menu" title="Agents">
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Agents</span></i>
+                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales</span></i>
                             </div>
                         </a>
                                
@@ -118,14 +118,14 @@
                                 <li class="site-menu-item " title="All Agents">  
                                     <a href="<?=base_url('index.php/member')?>">
                                         <div class="c-menu__item__inner submenu-color">
-                                            <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Agents</span></i>
+                                            <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Sales Team</span></i>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="site-menu-item" title="Add Agents">
                                     <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner submenu-color">
-                                            <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Agent</span></i>
+                                            <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Sales Team</span></i>
                                         </div>
                                     </a>
                                 </li>
