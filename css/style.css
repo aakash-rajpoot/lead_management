@@ -899,11 +899,6 @@ tr {
                 color: red;
             }
             
-            .edit-icon {
-                font-size: 20px;
-                text-align: center;
-            }
-            
             .btn-group>.btn:first-child {
                 min-width: 180px;
             }
@@ -919,4 +914,10 @@ tr {
             a:hover {
                 text-decoration: none !important;
                 list-style: none !important;
+            }
+            /* 11/01/2021 */
+            
+            .edit-icon {
+                font-size: 20px!important;
+                text-align: center!important;
             }

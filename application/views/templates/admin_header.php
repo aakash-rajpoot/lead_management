@@ -28,9 +28,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
    <!--Bootstrap css-->
-   <link rel="stylesheet" href="http://square-lead.kanvan.in/vendor/bootstrap/css/bootstrap3.7.css">
+   <!-- <link rel="stylesheet" href="http://square-lead.kanvan.in/vendor/bootstrap/css/bootstrap3.7.css"> -->
    <!-- font -->
-   <script src="http://square-lead.kanvan.in/vendor/others/js/fontawesome.js"></script>
+   <!-- <script src="http://square-lead.kanvan.in/vendor/others/js/fontawesome.js"></script> -->
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
