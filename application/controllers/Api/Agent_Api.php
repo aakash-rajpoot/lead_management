@@ -6,7 +6,7 @@ class Agent_Api extends REST_Controller {
     public function __construct() {
         parent::__construct();
 
-        $this->load->model('agent_api_model');
+        $this->load->model('api_model/agent_api_model');
 		$this->load->helper(array('form','url','html','string'));
         $this->load->library(array('form_validation','session','email'));
     }
