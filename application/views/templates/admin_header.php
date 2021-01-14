@@ -28,9 +28,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
    <!--Bootstrap css-->
-   <link rel="stylesheet" href="http://square-lead.kanvan.in/vendor/bootstrap/css/bootstrap3.7.css">
+   <!-- <link rel="stylesheet" href="http://square-lead.kanvan.in/vendor/bootstrap/css/bootstrap3.7.css"> -->
    <!-- font -->
-   <script src="http://square-lead.kanvan.in/vendor/others/js/fontawesome.js"></script>
+   <!-- <script src="http://square-lead.kanvan.in/vendor/others/js/fontawesome.js"></script> -->
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -110,7 +110,7 @@
                         <li class="c-menu__item site-menu-item main-menu" title="Agents">
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Agents</span></i>
+                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales</span></i>
                             </div>
                         </a>
                                
@@ -118,14 +118,14 @@
                                 <li class="site-menu-item " title="All Agents">  
                                     <a href="<?=base_url('index.php/member')?>">
                                         <div class="c-menu__item__inner submenu-color">
-                                            <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Agents</span></i>
+                                            <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Sales Team</span></i>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="site-menu-item" title="Add Agents">
                                     <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner submenu-color">
-                                            <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Agent</span></i>
+                                            <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Sales Team</span></i>
                                         </div>
                                     </a>
                                 </li>
