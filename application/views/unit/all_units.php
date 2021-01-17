@@ -1,3 +1,21 @@
+<style>
+    .edit-icon {
+      font-size: 20px!important;
+      text-align: center!important;
+  }
+  .delete{
+      color:red!important;
+  }
+  .sorting {
+      text-align: center!important;
+  }
+  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    vertical-align: middle!important;
+   }
+   td {
+    text-align: center;
+}
+    </style>
 <div class="mt-5 ex1" style="margin-top:110px;">
     <div class="row">
      <div class="col-lg-12">
@@ -29,7 +47,7 @@
                             <td><?=$totalunit['unit_remark']?></td>
                             <td class="edit-icon">
                                 <a href="<?=base_url('index.php/unit/update_unit/'.$totalunit['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a><br/>
-                                <a href="#" onClick = "unitDelete(<?=$totalunit['id'];?>);"  data-href="<?php echo base_url();?>index.php/unit/delete_unit/<?=$totalunit['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Delete"></a><br/>
+                                <a href="#" onClick = "unitDelete(<?=$totalunit['id'];?>);"  data-href="<?php echo base_url();?>index.php/unit/delete_unit/<?=$totalunit['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 delete" aria-hidden="true" title="Delete"></a><br/>
                             </td>
                         </tr>
                     </tbody>

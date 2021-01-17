@@ -1,4 +1,9 @@
-
+<style>
+    .copiyright-link {
+      color: #3e4095;
+      font-weight: bold!important;
+  }
+    </style>
 <div class="content-wrapper content-wrapper--with-bg">
 <div class="row">
 <div class="col-lg-12">

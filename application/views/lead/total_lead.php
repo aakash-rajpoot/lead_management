@@ -1,3 +1,22 @@
+<style>
+    .edit-icon {
+      font-size: 20px!important;
+      text-align: center!important;
+  }
+  .delete{
+      color:red!important;
+  }
+  .sorting {
+      text-align: center!important;
+  }
+  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    vertical-align: middle!important;
+   
+}
+td {
+    text-align: center;
+}
+    </style>
 <div class="mt-5 ex1" style="margin-top:110px;">
     <div class="row">
      <div class="col-lg-12">
@@ -46,7 +65,7 @@
                             <td><?=$totallead['reference']?></td>
                             <td class="edit-icon">
                                 <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a>
-                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);"  data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 " aria-hidden="true" title="Delete"></a>
+                                <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);"  data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash delete mt-4 " aria-hidden="true" title="Delete"></a>
                                 <a href="<?=base_url('index.php/lead/assign_lead/'.$totallead['id'])?>" class="fa fa-plus-circle text-success mt-3" aria-hidden="true" title="Assign"></a>
                                 <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="fa fa-minus-circle mt-3 text-danger" aria-hidden="true" title="De-Assign"></a>
                             </td>
