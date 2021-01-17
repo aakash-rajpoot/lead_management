@@ -111,7 +111,7 @@
                         <li class="c-menu__item site-menu-item main-menu" title="Agents">
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales</span></i>
+                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales Team</span></i>
                             </div>
                         </a>
                                
