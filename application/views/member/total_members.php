@@ -1,3 +1,21 @@
+<style>
+    .edit-icon {
+      font-size: 20px!important;
+      text-align: center!important;
+  }
+  .delete{
+      color:red!important;
+  }
+  .sorting {
+      text-align: center!important;
+  }
+  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    vertical-align: middle!important; 
+}
+td {
+    text-align: center;
+}
+    </style>
 <div class="mt-5 ex1" style="margin-top:110px;">
 <div class="row">
  <div class="col-lg-12">
@@ -38,8 +56,8 @@
                                 <td></td>
                                 <td class="edit-icon">
                                     <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"></a><br/>
-                                    <a href="#" data-href="<?=base_url('index.php/member/resign_agent/'.$totalmember['id'])?>" onClick = "resignAgent(<?=$totalmember['id'];?>);" class="fa fa-plus-circle text-success" title="Resign" data-toggle="modal" aria-hidden="true"></a><br/>
-                                    <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode" aria-hidden="true"></a>
+                                    <a href="#" data-href="<?=base_url('index.php/member/resign_agent/'.$totalmember['id'])?>" onClick = "resignAgent(<?=$totalmember['id'];?>);" class="fa fa-sign-out " title="Resign" data-toggle="modal" aria-hidden="true"></a><br/>
+                                    <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode delete" aria-hidden="true"></a>
                                 </td>
                             </tr>
                         <?php }else{ ?>

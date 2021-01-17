@@ -1,3 +1,10 @@
+<style>
+    .custom-select{
+        font-size:13px;
+        font-weight:bold;
+    }
+ 
+</style>
 <div class="content-wrapper content-wrapper--with-bg">
     <div style="margin-top:100px;">
         <div class="row">

@@ -11,13 +11,14 @@
         $logo = 'kritak_logo.png';
     } ?>
     <link rel="icon" href="<?=base_url('media/logo/'.$logo)?>" type="image/x-icon">
+    <!-- custom css-->
+    <link rel="stylesheet" href="http://square-lead.kanvan.in/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <!-- custom css-->
-    <link rel="stylesheet" href="http://square-lead.kanvan.in/css/style.css">
+    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
