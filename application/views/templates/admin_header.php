@@ -193,22 +193,23 @@
         </div>
         </div>
         </div>
-        <script>
+
+<script>
   $( function() {
     $( "#joining_date" ).datepicker({dateFormat:'dd-mm-yy'});
     // $( "#joining_date" ).datepicker('show');
     $( "#dob" ).datepicker({dateFormat:'dd-mm-yy'});
   });
   </script>
-  <script>
+  <!-- <script>
  $('.site-menu li').removeClass('active');
                 $(this).addClass('active');
                 $(this).children('ul').slideDown();
-            }
+
         });
     });
 });
-</script>
+</script> -->
 <script>
 $(document).ready(function() {       
 	$('#checkbox').multiselect({		
