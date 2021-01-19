@@ -41,7 +41,11 @@ class Agent_Api extends REST_Controller {
                 $login_otp = rand(000000,999999);
                 $token =  $this->generate_auth_token($data);
                 $this->agent_api_model->save_login_otp($login_otp,$data,$token);
-                $this->email_config($email,$login_otp);
+                $status = $this->email_config($email,$login_otp);
+                if($status) {
+                    $this->response(['status'=>true,'message'=>'OTP has been sent to your email id.','auth_token'=>$token], REST_Controller::HTTP_OK);
+       
+                }
             }else{
                 $this->response(['status'=>true,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_OK);
             }
@@ -78,14 +82,15 @@ class Agent_Api extends REST_Controller {
         $this->email->message('This OTP '.$login_otp.' ia valid within 10 minutes only. Use this OTP to create your password.');
 
         if ($this->email->send()) {
-            $this->response(['Your OTP has been sent to your entered email.'], REST_Controller::HTTP_OK);
+            return true;    
         } else {
-            show_error($this->email->print_debugger());
+            return false;
         }
 
     }
 
     function verify_otp(){
+        $this->verify_token();
         $otp = $this->input->post('otp');
         $email = $this->input->post('email');
 
@@ -150,13 +155,23 @@ class Agent_Api extends REST_Controller {
     }
 
     public function generate_auth_token($data) {
-        $auth_key = getallheaders();
+        $auth_key = AUTH_KEY;
         $token['id'] = $data['id'];
         $token['email'] = $data['email'];
         $date = new DateTime();
         $token['iat'] = $date->getTimestamp();
         $token['exp'] = $date->getTimestamp() + 60*60*5; 
-        return JWT::encode($token,$auth_key['Authorization']); 
+        return JWT::encode($token,$auth_key); 
+    }
+
+    public function verify_token() {
+        $headers = getallheaders();
+        if (isset($headers['Authorization']) && !empty($headers['Authorization'])) {
+            if (preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
+                $token = $matches[1];
+            }
+            echo $token; 
+        }
     }
     
     
