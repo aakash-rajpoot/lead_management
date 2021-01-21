@@ -15,6 +15,9 @@
 td {
     text-align: center;
 }
+.dataTables_empty {
+    display: none;
+  }
     </style>
 <div class="mt-5 ex1" style="margin-top:110px;">
 <div class="row">
@@ -24,7 +27,7 @@ td {
                 <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>S.No</th>
+                            <th >S.No</th>
                             <th class="th-sm">Agent-Id</th>
                             <th class="th-sm">Agent Name</th>
                             <th class="th-sm">Email Id</th>
@@ -63,9 +66,9 @@ td {
                         <?php }else{ ?>
                             <tr class="inactive_agent">
                                 <td><?=$i;?></td>
-                                <td><?="Emp".$totalmember['id']?></td>
-                                <td><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['name']?></a></td>
-                                <td><?=$totalmember['email']?></td>
+                                <td data-search="{{ hit['_source']['filter'] }}"><?="Emp".$totalmember['id']?></td>
+                                <td data-search="{{ hit['_source']['filter'] }}"><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['name']?></a></td>
+                                <td data-search="{{ hit['_source']['filter'] }}"><?=$totalmember['email']?></td>
                                 <td><?=$totalmember['phone']?></td>
                                 <td><?=$totalmember['gender']?></td>
                                 <td><?=$totalmember['permanent']?></td>
