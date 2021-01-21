@@ -43,10 +43,14 @@ class Agent_api_model extends CI_Model {
     }
     
     function fetch_oldPass($email){
-        return $this->db->get_where("sq_members", ['email' => $email,'status'=>'1'])->row_array();
+        return $this->db->get_where("sq_members", ['email' => $email,'status'=>'1'])->row()->pass;
     }
 
     function change_pass($email,$new_pass){
         return $this->db->update('sq_members', ['pass'=>$new_pass], array('email'=>$email,'status'=>'1'));
+    }
+
+    function get_auth_token($email){
+        return $this->db->get_where("sq_members", ['email' => $email,'status'=>'1'])->row()->auth_token;
     }
 }

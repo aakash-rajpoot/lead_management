@@ -11,11 +11,6 @@ class Unit_Api extends REST_Controller {
 		$this->load->library(array('form_validation','session'));
     }
 
-    public function index_get(){
-        $input = $this->unit_api_model->fetch_all_units_data();
-        print_r($input);
-    }
-
     function index_post(){
         $this->form_validation->set_rules('unit_type', 'Types of units','required');
         $this->form_validation->set_rules('unit_size', 'Unit size','required');
