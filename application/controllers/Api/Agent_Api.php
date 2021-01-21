@@ -29,10 +29,10 @@ class Agent_Api extends REST_Controller {
                 $this->change_password();
                 break;
                 
-            // case 'verify_token':
-            //     $this->verify_token();
-            //     break;    
-                
+            case 'agent_login':
+                $this->agent_login();
+                break;
+
             }
     }
 
@@ -143,6 +143,7 @@ class Agent_Api extends REST_Controller {
         
         $this->form_validation->set_error_delimiters('', '');
         $this->form_validation->set_message('required', '* Please enter valid %s');
+
         $token = $this->verify_token($email);
         if($token){
             if($this->form_validation->run()){
@@ -185,6 +186,24 @@ class Agent_Api extends REST_Controller {
                 return true;
             }else{
                 $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
+
+    public function agent_login(){
+        $email = $this->input->post('email');
+        $password = md5($this->input->post('password'));
+
+        $data = $this->agent_api_model->check_agent_login_details($email,$password);
+        if(!empty($data)){
+            $token = $this->generate_auth_token($data);
+            if($token){
+                $status = $this->agent_api_model->save_login_auth_token($email,$token);
+                if($status > 0){
+                    $this->response(['status'=>true,'message'=>'Login Successfully.'], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                }
             }
         }
     }

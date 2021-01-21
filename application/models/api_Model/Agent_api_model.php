@@ -53,4 +53,13 @@ class Agent_api_model extends CI_Model {
     function get_auth_token($email){
         return $this->db->get_where("sq_members", ['email' => $email,'status'=>'1'])->row()->auth_token;
     }
+
+    function check_agent_login_details($email,$password){
+        return $this->db->get_where("sq_members", ['email' => $email,'pass' => $password,'status'=>'1'])->row_array();
+    }
+
+    public function save_login_auth_token($email,$token) {
+        return $this->db->update('sq_members', ['auth_token'=>$token], array('email'=>$email,'status'=>'1'));
+    }
+
 }
