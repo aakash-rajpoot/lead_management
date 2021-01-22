@@ -1,19 +1,25 @@
 <style>
     .edit-icon {
-      font-size: 20px!important;
-      text-align: center!important;
-  }
-  .delete{
-      color:red!important;
-  }
-  .sorting {
-      text-align: center!important;
-  }
-  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    vertical-align: middle!important; 
-}
-td {
-    text-align: center;
+        font-size: 20px!important;
+        text-align: center!important;
+    }
+    .delete{
+        color:red!important;
+    }
+    .sorting {
+        text-align: center!important;
+    }
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+        vertical-align: middle!important; 
+    }
+    td {
+        text-align: center;
+    }
+    input.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
 }
 .dataTables_empty {
     display: none;
@@ -86,6 +92,9 @@ td {
     </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+
 <script>
     $(document).ready(function() {
         $('#dt-all-checkbox').dataTable({
@@ -104,7 +113,7 @@ td {
 
     function softDelete(memberId) {
         if(confirm('Are you sure to remove this record ?')) {
-            window.location.replace('<?php echo base_url();?>index.php/member/delete_member_soft_data/'+memberId);
+            window.location.replace('<?=base_url();?>index.php/member/delete_member_soft_data/'+memberId);
         }
     }
 
@@ -113,5 +122,13 @@ td {
             window.location.replace('<?=base_url();?>index.php/member/resign_agent/'+memberId);
         }
     }
+    $('#iconified').on('keyup', function() {
+    var input = $(this);
+    if(input.val().length === 0) {
+        input.addClass('empty');
+    } else {
+        input.removeClass('empty');
+    }
+});
 </script>
 

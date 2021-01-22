@@ -114,7 +114,7 @@
                         <li class="c-menu__item site-menu-item main-menu" title="Sales">
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales</span></i>
+                                <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales Team</span></i>
                             </div>
                         </a>
                                
@@ -196,22 +196,23 @@
         </div>
         </div>
         </div>
-        <script>
+
+<script>
   $( function() {
     $( "#joining_date" ).datepicker({dateFormat:'dd-mm-yy'});
     // $( "#joining_date" ).datepicker('show');
     $( "#dob" ).datepicker({dateFormat:'dd-mm-yy'});
   });
   </script>
-  <script>
+  <!-- <script>
  $('.site-menu li').removeClass('active');
                 $(this).addClass('active');
                 $(this).children('ul').slideDown();
-            }
+
         });
     });
 });
-</script>
+</script> -->
 <script>
 $(document).ready(function() {       
 	$('#checkbox').multiselect({		

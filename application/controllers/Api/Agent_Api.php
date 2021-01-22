@@ -27,8 +27,12 @@ class Agent_Api extends REST_Controller {
 
             case 'change_password':
                 $this->change_password();
-                break;  
+                break;
                 
+            case 'agent_login':
+                $this->agent_login();
+                break;
+
             }
     }
 
@@ -41,7 +45,11 @@ class Agent_Api extends REST_Controller {
                 $login_otp = rand(000000,999999);
                 $token =  $this->generate_auth_token($data);
                 $this->agent_api_model->save_login_otp($login_otp,$data,$token);
-                $this->email_config($email,$login_otp);
+                $status = $this->email_config($email,$login_otp);
+                if($status) {
+                    $this->response(['status'=>true,'message'=>'OTP has been sent to your email id.','auth_token'=>$token], REST_Controller::HTTP_OK);
+       
+                }
             }else{
                 $this->response(['status'=>true,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_OK);
             }
@@ -78,9 +86,9 @@ class Agent_Api extends REST_Controller {
         $this->email->message('This OTP '.$login_otp.' ia valid within 10 minutes only. Use this OTP to create your password.');
 
         if ($this->email->send()) {
-            $this->response(['Your OTP has been sent to your entered email.'], REST_Controller::HTTP_OK);
+            return true;    
         } else {
-            show_error($this->email->print_debugger());
+            return false;
         }
 
     }
@@ -88,16 +96,18 @@ class Agent_Api extends REST_Controller {
     function verify_otp(){
         $otp = $this->input->post('otp');
         $email = $this->input->post('email');
-
-        if(!empty($otp)){
-            $data = $this->agent_api_model->verify_sent_otp($otp,$email);
-            if(!empty($data)){
-                $this->agent_api_model->update_otp_status($data);
-                $this->response(['status'=>true,'message'=>'OTP has been verified.'], REST_Controller::HTTP_OK);
-            }else{
-                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
-            }
-        }  
+        $token = $this->verify_token($email);
+        if($token){
+            if(!empty($otp)){
+                $data = $this->agent_api_model->verify_sent_otp($otp,$email);
+                if(!empty($data)){
+                    $this->agent_api_model->update_otp_status($data);
+                    $this->response(['status'=>true,'message'=>'OTP has been verified.'], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                }
+            }  
+        }
     }
 
     function create_password(){
@@ -107,17 +117,20 @@ class Agent_Api extends REST_Controller {
         $this->form_validation->set_error_delimiters('', '');
         $this->form_validation->set_message('required', '* Please enter valid %s');
 
-		if($this->form_validation->run()){
-            $email = $this->input->post('email');
-            $pwd = md5($this->input->post('password'));
-            $status = $this->agent_api_model->create_agent_pass($pwd,$email);
-            if($status > 0){
-                $this->response(['status'=>true,'message'=>'Your password has been created successfully.'], REST_Controller::HTTP_OK);
+        $email = $this->input->post('email');
+        $token = $this->verify_token($email);
+        if($token){
+            if($this->form_validation->run()){
+                $pwd = md5($this->input->post('password'));
+                $status = $this->agent_api_model->create_agent_pass($pwd,$email);
+                if($status > 0){
+                    $this->response(['status'=>true,'message'=>'Your password has been created successfully.'], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                }
             }else{
-                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                echo validation_errors();
             }
-		}else{
-            echo validation_errors();
         }
     }
 
@@ -130,33 +143,69 @@ class Agent_Api extends REST_Controller {
         
         $this->form_validation->set_error_delimiters('', '');
         $this->form_validation->set_message('required', '* Please enter valid %s');
-        
-		if($this->form_validation->run()){
-            $row = $this->agent_api_model->fetch_oldPass($email);
-            if($row['pass'] == md5($oldpass)){
-                $new_pass = md5($this->input->post('newpass'));
-                $status = $this->agent_api_model->change_pass($email,$new_pass);
-                if($status > 0){
-                    $this->response(['status'=>true,'message'=>'Password has successfully changed.'], REST_Controller::HTTP_OK);
+
+        $token = $this->verify_token($email);
+        if($token){
+            if($this->form_validation->run()){
+                $row = $this->agent_api_model->fetch_oldPass($email);
+                if($row == md5($oldpass)){
+                    $new_pass = md5($this->input->post('newpass'));
+                    $status = $this->agent_api_model->change_pass($email,$new_pass);
+                    if($status > 0){
+                        $this->response(['status'=>true,'message'=>'Password has successfully changed.'], REST_Controller::HTTP_OK);
+                    }else{
+                        $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                    }
                 }else{
-                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                    $this->response(['status'=>false,'message'=>'Old password doesn\'t match.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
             }else{
-                $this->response(['status'=>false,'message'=>'Old password doesn\'t match.'], REST_Controller::HTTP_BAD_REQUEST);
+                echo validation_errors();
             }
-        }else{
-            echo validation_errors();
         }
     }
 
     public function generate_auth_token($data) {
-        $auth_key = getallheaders();
+        $auth_key = AUTH_KEY;
         $token['id'] = $data['id'];
         $token['email'] = $data['email'];
         $date = new DateTime();
         $token['iat'] = $date->getTimestamp();
         $token['exp'] = $date->getTimestamp() + 60*60*5; 
-        return JWT::encode($token,$auth_key['Authorization']); 
+        return JWT::encode($token,$auth_key); 
+    }
+
+    public function verify_token($email) {
+        $headers = getallheaders();
+        if (isset($headers['Authorization']) && !empty($headers['Authorization'])) {
+            if (preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
+                $token = $matches[1];
+            }
+            $auth_token = $this->agent_api_model->get_auth_token($email);
+            if($token === $auth_token){
+                return true;
+            }else{
+                $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
+
+    public function agent_login(){
+        $email = $this->input->post('email');
+        $password = md5($this->input->post('password'));
+
+        $data = $this->agent_api_model->check_agent_login_details($email,$password);
+        if(!empty($data)){
+            $token = $this->generate_auth_token($data);
+            if($token){
+                $status = $this->agent_api_model->save_login_auth_token($email,$token);
+                if($status > 0){
+                    $this->response(['status'=>true,'message'=>'Login Successfully.'], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                }
+            }
+        }
     }
     
     
