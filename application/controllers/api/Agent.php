@@ -51,7 +51,7 @@ class Agent extends REST_Controller {
        
                 }
             }else{
-                $this->response(['status'=>true,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_OK);
+                $this->response(['status'=>false,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_OK);
             }
         } else {
             $this->response(['status'=>false,'message'=>'Please enter valid email.'], REST_Controller::HTTP_BAD_REQUEST);
@@ -129,7 +129,7 @@ class Agent extends REST_Controller {
                     $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
             }else{
-                echo validation_errors();
+                $this->response(['status'=>false,'message'=>'Password and Confirm password doesn\'t match. '], REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }
@@ -160,7 +160,7 @@ class Agent extends REST_Controller {
                     $this->response(['status'=>false,'message'=>'Old password doesn\'t match.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
             }else{
-                echo validation_errors();
+                $this->response(['status'=>false,'message'=>'New Password and Confirm password doesn\'t match. '], REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }
@@ -200,11 +200,13 @@ class Agent extends REST_Controller {
             if($token){
                 $status = $this->agent_api_model->save_login_auth_token($email,$token);
                 if($status > 0){
-                    $this->response(['status'=>true,'message'=>'Login Successfully.'], REST_Controller::HTTP_OK);
+                    $this->response(['status'=>true,'message'=>'Login Successfully.','token'=>$token], REST_Controller::HTTP_OK);
                 }else{
                     $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
             }
+        }else{
+            $this->response(['status'=>false,'message'=>'Please Enter Valid Crediantials.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
     
