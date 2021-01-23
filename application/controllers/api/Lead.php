@@ -1,7 +1,7 @@
 <?php
 require APPPATH . '/libraries/REST_Controller.php';
      
-class Lead_Api extends REST_Controller {
+class Lead extends REST_Controller {
 
     public function __construct() {
         parent::__construct();
