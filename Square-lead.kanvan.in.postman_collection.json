@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "f3a32aad-6877-4050-bf0e-a6900d01b440",
+		"name": "Square-lead.kanvan.in",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Send OTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/send_otp",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"send_otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify OTP",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzMzQ4LCJleHAiOjE2MTE0NDEzNDh9.GXu81zXoitbOV-567EAd2X67Krg6ibcoMTyHliP9CEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "otp",
+							"value": "170109",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/verify_otp",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"verify_otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzMzQ4LCJleHAiOjE2MTE0NDEzNDh9.GXu81zXoitbOV-567EAd2X67Krg6ibcoMTyHliP9CEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Abcd@1234",
+							"type": "text"
+						},
+						{
+							"key": "confpass",
+							"value": "Abcd@1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/create_password",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"create_password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agent Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDE1NTMyLCJleHAiOjE2MTE0MzM1MzJ9.fpC0eFATHdzjBZC30yuE7GdH4mAyNTdX7Ud6-6Vzenw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Abcd@1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/agent_login",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"agent_login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "oldpass",
+							"value": "Aakash@123",
+							"type": "text"
+						},
+						{
+							"key": "newpass",
+							"value": "Abcd@123",
+							"type": "text"
+						},
+						{
+							"key": "confpass",
+							"value": "Abcd@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/change_password",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"change_password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot password send OTP",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/forgotpassword",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"forgotpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Forgot password OTP",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "reset_otp",
+							"value": "189152",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/verify_reset_otp",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"verify_reset_otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "newpass",
+							"value": "Aakash@123",
+							"type": "text"
+						},
+						{
+							"key": "confpass",
+							"value": "Aakash@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/update_password",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"update_password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All leads",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/lead/all_lead",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"lead",
+						"all_lead"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Lead",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "janta apartment",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "8984586445",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/lead/add_lead",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"lead",
+						"add_lead"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

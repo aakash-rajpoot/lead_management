@@ -1,0 +1,4 @@
+
+-----------(26/01/20210)--------DataBase-------------
+
+ALTER TABLE sq_otp_verification ADD reset_otp int NOT NULL;

@@ -6,32 +6,58 @@ class Lead extends REST_Controller {
     public function __construct() {
         parent::__construct();
 
-        $this->load->model('api_model/lead_api_model');
+        $this->load->model(array('api_model/lead_api_model','api_model/agent_api_model'));
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('form_validation','session'));
     }
 
-    public function index_get(){
-        $input = $this->lead_api_model->fetch_all_lead_data();
-        print_r($input);
+    public function index_post($action = '') {
+        switch($action) {
+            case 'all_lead':
+                $this->all_lead();
+                break;
+
+            case 'add_lead':
+                $this->add_lead();
+                break;
+
+        }
     }
 
-    public function index_post(){
-        $this->form_validation->set_rules('name', 'Lead name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
-        $this->form_validation->set_rules('email', 'Email', 'valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
-        $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
-    
-		if($this->form_validation->run()) {
-            $status = $this->lead_api_model->add_lead_data();
-            if($status == "1"){
-                $this->response(['Lead created successfully.'], REST_Controller::HTTP_OK);
-            }else{
-                $this->response(['Error Found.'], REST_Controller::HTTP_OK);
-            }
-        }else{
-            $this->response(['Please check your lead validations.'], REST_Controller::HTTP_OK);
-        }
+    public function all_lead(){
+        $email = $this->input->post('email');
 
+        $token = $this->verify_token($email);
+        if($token) {
+            $input = $this->lead_api_model->fetch_all_lead_data($email);
+            if($input > 0){
+                $this->response(['status'=>true,'all_leads'=>$input,'message'=>'All leads fetch successfully.'], REST_Controller::HTTP_OK);
+            }else{
+                $this->response(['status'=>false,'Leads are not available.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
+
+    public function add_lead(){
+        $email = $this->input->post('email');
+
+        $token = $this->verify_token($email);
+        if($token) {
+            $this->form_validation->set_rules('name', 'Lead name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
+            $this->form_validation->set_rules('email', 'Email', 'valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
+            $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+        
+            if($this->form_validation->run()) {
+                $status = $this->lead_api_model->add_lead_data();
+                if($status == "1"){
+                    $this->response(['Lead created successfully.'], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                }
+            }else{
+                $this->response(['Please check your lead validations.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
     }
 
     public function index_put($id){
@@ -40,7 +66,7 @@ class Lead extends REST_Controller {
         if($status == "1"){
             $this->response(['Lead updated successfully.'], REST_Controller::HTTP_OK);
         }else{
-            $this->response(['Error Found.'], REST_Controller::HTTP_OK);
+            $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
 
@@ -49,7 +75,22 @@ class Lead extends REST_Controller {
         if($status == "1"){
             $this->response(['Lead deleted successfully.'], REST_Controller::HTTP_OK);
         }else{
-            $this->response(['Error Found.'], REST_Controller::HTTP_OK);
+            $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+
+    public function verify_token($email) {
+        $headers = getallheaders();
+        if (isset($headers['Authorization']) && !empty($headers['Authorization'])) {
+            if (preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
+                $token = $matches[1];
+            }
+            $auth_token = $this->agent_api_model->get_auth_token($email);
+            if($token === $auth_token){
+                return true;
+            }else{
+                $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+            }
         }
     }
 

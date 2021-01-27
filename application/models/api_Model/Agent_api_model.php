@@ -62,4 +62,28 @@ class Agent_api_model extends CI_Model {
         return $this->db->update('sq_members', ['auth_token'=>$token], array('email'=>$email,'status'=>'1'));
     }
 
+    function save_reset_otp($reset_otp,$data) {
+        $this->db->insert('sq_otp_verification',['reset_otp'=>$reset_otp,'agent_id'=>$data['id']]);
+    }
+
+    public function verify_reset_pass_otp($reset_otp,$email) {
+        $this->db->select('*');
+        $this->db->from('sq_members as u');
+        $this->db->join('sq_otp_verification as o', 'u.id = o.agent_id', 'inner');
+        $this->db->where('u.email',$email);
+        $this->db->where('o.reset_otp',$reset_otp);
+        $this->db->where('o.status','0');
+        return $this->db->get()->row_array();
+    }
+
+    public function update_reset_otp_status($data) {
+        return $this->db->update('sq_otp_verification', ['status'=>1], array('agent_id'=>$data['agent_id']));
+    }
+    
+    public function update_agent_password($email,$newpass) {
+        return $this->db->update('sq_members', ['pass'=>$newpass], array('email'=>$email,'status'=>'1'));
+    }
+
+
+
 }

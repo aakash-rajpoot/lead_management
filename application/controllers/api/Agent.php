@@ -33,7 +33,20 @@ class Agent extends REST_Controller {
                 $this->agent_login();
                 break;
 
-            }
+            case 'forgotpassword':
+                $this->forgotpassword();
+                break;    
+
+            case 'verify_reset_otp':
+                $this->verify_reset_otp();
+                break; 
+
+            case 'update_password':
+                $this->update_password();
+                break;     
+
+        }
+
     }
 
     public function send_otp(){
@@ -48,7 +61,6 @@ class Agent extends REST_Controller {
                 $status = $this->email_config($email,$login_otp);
                 if($status) {
                     $this->response(['status'=>true,'message'=>'OTP has been sent to your email id.','auth_token'=>$token], REST_Controller::HTTP_OK);
-       
                 }
             }else{
                 $this->response(['status'=>false,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_OK);
@@ -136,19 +148,20 @@ class Agent extends REST_Controller {
 
     function change_password(){
         $email = $this->input->post('email');
-        $oldpass = $this->input->post('oldpass');
-        $this->form_validation->set_rules('oldpass', 'Old Password', 'required');
-        $this->form_validation->set_rules('newpass', 'New Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]|min_length[8]');
-        $this->form_validation->set_rules('confpass', 'Confirm Password', 'required|matches[newpass]');
-        
-        $this->form_validation->set_error_delimiters('', '');
-        $this->form_validation->set_message('required', '* Please enter valid %s');
 
         $token = $this->verify_token($email);
         if($token){
+            $oldpass = md5($this->input->post('oldpass'));
+            $this->form_validation->set_rules('oldpass', 'Old Password', 'required');
+            $this->form_validation->set_rules('newpass', 'New Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]|min_length[8]');
+            $this->form_validation->set_rules('confpass', 'Confirm Password', 'required|matches[newpass]');
+            
+            $this->form_validation->set_error_delimiters('', '');
+            $this->form_validation->set_message('required', '* Please enter valid %s');
+
             if($this->form_validation->run()){
                 $row = $this->agent_api_model->fetch_oldPass($email);
-                if($row == md5($oldpass)){
+                if($row == $oldpass){
                     $new_pass = md5($this->input->post('newpass'));
                     $status = $this->agent_api_model->change_pass($email,$new_pass);
                     if($status > 0){
@@ -209,6 +222,73 @@ class Agent extends REST_Controller {
             $this->response(['status'=>false,'message'=>'Please Enter Valid Crediantials.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
+
+    public function forgotpassword() {
+        $email = $this->input->post('email');
+
+        $data = $this->agent_api_model->agent_mobile_post($email);
+
+        if (!empty($data)) {
+            $reset_otp = rand(000000,999999);
+            $this->agent_api_model->save_reset_otp($reset_otp,$data);
+
+            $this->email->from('info@Kritak.com', 'KRITAK INFRA PVT.LTD.');
+            $this->email->reply_to('noreply@gmail.com', 'No Reply');
+            $this->email->to($email);
+            $this->email->subject('Kritak|Password reset request');
+            $mail_message = 'Dear ' . $data['name'] . ',' . "<br>\r\n";
+            $mail_message .= 'Thanks for contacting regarding to forgot password. <br>Enter this OTP '.$reset_otp.' to reset your password.</b>'."\r\n";
+            $mail_message .= '<br>Please Update your password.';
+            $mail_message .= '<br>Thanks & Regards';
+            $mail_message .= '<br>KRITAK INFRA PVT.LTD.';
+    
+            $this->email->message($mail_message);
+    
+            if ($this->email->send()) {
+                $this->response(['status'=>true,'message'=>'Forgot password OTP has been send in your email.'], REST_Controller::HTTP_OK);
+            } else {
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }else{
+            $this->response(['status'=>false,'message'=>'Enter valid email.'], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+
+    public function verify_reset_otp(){
+        $reset_otp = $this->input->post('reset_otp');
+        $email = $this->input->post('email');
+
+        if(!empty($reset_otp)){
+            $data = $this->agent_api_model->verify_reset_pass_otp($reset_otp,$email);
+            if(!empty($data)){
+                $this->agent_api_model->update_reset_otp_status($data);
+                $this->response(['status'=>true,'message'=>'OTP has been verified.'], REST_Controller::HTTP_OK);
+            }else{
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }else{
+            $this->response(['status'=>false,'message'=>'Enter the password reset OTP.'], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+    
+    public function update_password() {
+        $email = $this->input->post('email');
+        $newpass = md5($this->input->post('newpass'));
+
+        $this->form_validation->set_rules('newpass', 'New Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]|min_length[8]');
+        $this->form_validation->set_rules('confpass', 'Confirm Password', 'required|matches[newpass]');
+
+        if($this->form_validation->run()){
+            $data = $this->agent_api_model->update_agent_password($email,$newpass);
+            if($data > 0){
+                $this->response(['status'=>true,'message'=>'Password has been successfully changed.'], REST_Controller::HTTP_OK);
+            }
+        }else{
+            $this->response(['status'=>false,'message'=>'New Password and Confirm password doesn\'t match. '], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+    
+
     
     
 }
