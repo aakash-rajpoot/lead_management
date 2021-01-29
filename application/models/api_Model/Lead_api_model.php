@@ -14,7 +14,13 @@ class Lead_api_model extends CI_Model {
         $lead = array(
             'name' => $this->input->post('name'),
             'phone' => $this->input->post('phone'),
-            'email' => $this->input->post('email')
+            'email' => $this->input->post('email'),
+            'alt_phone' => $this->input->post('alt_phone'),
+            'property_address' => $this->input->post('property_address'),
+            'client_address' => $this->input->post('client_address'),
+            'remark' => $this->input->post('remark'),
+            'reference' => $this->input->post('reference'),
+            'available_unit' => $this->input->post('available_unit')
         );
         return $this->db->insert('sq_lead',$lead);
     }
@@ -25,6 +31,10 @@ class Lead_api_model extends CI_Model {
 
     public function delete_lead_data($id){
         return $this->db->delete('sq_lead', array('id'=>$id));
+    }
+
+    public function available_units_detail(){
+        return $this->db->get_where("sq_lead_unit",['status'=>'1'])->result();
     }
 
 

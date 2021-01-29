@@ -45,6 +45,10 @@ class Agent extends REST_Controller {
                 $this->update_password();
                 break;     
 
+            case 'profile':
+                $this->profile();
+                break;
+                
         }
 
     }
@@ -90,7 +94,6 @@ class Agent extends REST_Controller {
     }
 
     function email_config($email,$login_otp){
-
         $this->email->from('info@Kritak.com', 'KRITAK INFRA PVT.LTD.');
         $this->email->reply_to('noreply@gmail.com', 'No Reply');
         $this->email->to($email);
@@ -102,7 +105,6 @@ class Agent extends REST_Controller {
         } else {
             return false;
         }
-
     }
 
     function verify_otp(){
@@ -150,6 +152,7 @@ class Agent extends REST_Controller {
         $email = $this->input->post('email');
 
         $token = $this->verify_token($email);
+        
         if($token){
             $oldpass = md5($this->input->post('oldpass'));
             $this->form_validation->set_rules('oldpass', 'Old Password', 'required');
@@ -195,6 +198,7 @@ class Agent extends REST_Controller {
                 $token = $matches[1];
             }
             $auth_token = $this->agent_api_model->get_auth_token($email);
+            
             if($token === $auth_token){
                 return true;
             }else{
@@ -285,6 +289,21 @@ class Agent extends REST_Controller {
             }
         }else{
             $this->response(['status'=>false,'message'=>'New Password and Confirm password doesn\'t match. '], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+
+    public function profile(){
+        $email = $this->input->post('email');
+        $token = $this->verify_token($email);
+        if($token){
+            $data = $this->agent_api_model->fetch_profile_details($email);
+            if(!empty($data)){
+                $this->response(['status'=>true,'message'=>'Profile details are here.','Profile details'=>$data], REST_Controller::HTTP_OK);
+            }else{
+                $this->response(['status'=>false,'message'=>'New Password and Confirm password doesn\'t match. '], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }else{
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
     

@@ -13,18 +13,22 @@ class Lead extends REST_Controller {
 
     public function index_post($action = '') {
         switch($action) {
-            case 'all_lead':
-                $this->all_lead();
+            case 'my_leads':
+                $this->my_leads();
                 break;
 
             case 'add_lead':
                 $this->add_lead();
                 break;
 
+            case 'available_units':
+                $this->available_units();
+                break;
+                
         }
     }
 
-    public function all_lead(){
+    public function my_leads(){
         $email = $this->input->post('email');
 
         $token = $this->verify_token($email);
@@ -46,10 +50,12 @@ class Lead extends REST_Controller {
             $this->form_validation->set_rules('name', 'Lead name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
             $this->form_validation->set_rules('email', 'Email', 'valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
             $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
-        
+            $this->form_validation->set_rules('property_address', 'Property of Address','required');
+            $this->form_validation->set_rules('client_address', 'Client Address','required');
+
             if($this->form_validation->run()) {
                 $status = $this->lead_api_model->add_lead_data();
-                if($status == "1"){
+                if($status > 0){
                     $this->response(['Lead created successfully.'], REST_Controller::HTTP_OK);
                 }else{
                     $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
@@ -91,6 +97,15 @@ class Lead extends REST_Controller {
             }else{
                 $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
             }
+        }
+    }
+
+    public function available_units(){
+        $units = $this->lead_api_model->available_units_detail();
+        if($units){
+            $this->response(['status'=>true,'message'=>'Lead deleted successfully.','available_units'=>$units], REST_Controller::HTTP_OK);
+        }else{
+            $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
 
