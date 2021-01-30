@@ -88,5 +88,14 @@ class Agent_api_model extends CI_Model {
         return $this->db->get_where("sq_members", ['email' => $email,'status'=>'1'])->row_array();
     }
 
+    public function update_agent_profile($email){
+        $data = array(
+            'name' => $this->input->post('name'),
+            'phone' => $this->input->post('phone'),
+            'permanent' => $this->input->post('permanent')
+        );
+        return $this->db->update('sq_members',$data, array('email'=>$email,'status'=>'1'));
+    }
+    
 
 }

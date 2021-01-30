@@ -49,6 +49,9 @@ class Agent extends REST_Controller {
                 $this->profile();
                 break;
                 
+            case 'update_profile':
+                $this->update_profile();
+                break;   
         }
 
     }
@@ -150,9 +153,7 @@ class Agent extends REST_Controller {
 
     function change_password(){
         $email = $this->input->post('email');
-
         $token = $this->verify_token($email);
-        
         if($token){
             $oldpass = md5($this->input->post('oldpass'));
             $this->form_validation->set_rules('oldpass', 'Old Password', 'required');
@@ -198,8 +199,8 @@ class Agent extends REST_Controller {
                 $token = $matches[1];
             }
             $auth_token = $this->agent_api_model->get_auth_token($email);
-            
-            if($token === $auth_token){
+            // print_r($auth_token);die;
+            if($token == $auth_token){
                 return true;
             }else{
                 $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
@@ -304,6 +305,24 @@ class Agent extends REST_Controller {
             }
         }else{
             $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+
+    function update_profile(){
+        $email = $this->input->post('email');
+        $token = $this->verify_token($email);
+        if($token){
+            $this->form_validation->set_rules('name', 'Full name','required|min_length[2]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
+            $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+            $this->form_validation->set_rules('permanent', 'Permanent Address','required');
+            if($this->form_validation->run()) {
+                $data = $this->agent_api_model->update_agent_profile($email);
+                if($data > 0){
+                    $this->response(['status'=>true,'message'=>'Profile updated successfully.'], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                }
+            }
         }
     }
     

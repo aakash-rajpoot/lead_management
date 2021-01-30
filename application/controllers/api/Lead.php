@@ -109,4 +109,13 @@ class Lead extends REST_Controller {
         }
     }
 
+    public function assigned_leads(){
+        $email = $this->input->post('email');
+        $token = $this->verify_token($email);
+        if($token) {
+
+        }
+    }
+
+
 }
