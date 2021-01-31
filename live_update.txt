@@ -2,3 +2,9 @@
 -----------(26/01/20210)--------DataBase-------------
 
 ALTER TABLE sq_otp_verification ADD reset_otp int NOT NULL;
+
+
+-----------(31/01/20210)--------DataBase-------------
+
+ALTER TABLE sq_lead ADD assign_to_email varchar NOT NULL;
+

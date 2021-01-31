@@ -24,27 +24,29 @@ class Lead extends REST_Controller {
             case 'available_units':
                 $this->available_units();
                 break;
+
+            case 'assigned_leads':
+                $this->assigned_leads();
+                break;
                 
         }
     }
 
     public function my_leads(){
         $email = $this->input->post('email');
-
         $token = $this->verify_token($email);
         if($token) {
             $input = $this->lead_api_model->fetch_all_lead_data($email);
             if($input > 0){
                 $this->response(['status'=>true,'all_leads'=>$input,'message'=>'All leads fetch successfully.'], REST_Controller::HTTP_OK);
             }else{
-                $this->response(['status'=>false,'Leads are not available.'], REST_Controller::HTTP_BAD_REQUEST);
+                $this->response(['status'=>false,'message'=>'Leads are not available.'], REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }
 
     public function add_lead(){
         $email = $this->input->post('email');
-
         $token = $this->verify_token($email);
         if($token) {
             $this->form_validation->set_rules('name', 'Lead name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
@@ -56,34 +58,34 @@ class Lead extends REST_Controller {
             if($this->form_validation->run()) {
                 $status = $this->lead_api_model->add_lead_data();
                 if($status > 0){
-                    $this->response(['Lead created successfully.'], REST_Controller::HTTP_OK);
+                    $this->response(['status'=>true,'message'=>'Lead created successfully.'], REST_Controller::HTTP_OK);
                 }else{
-                    $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
             }else{
-                $this->response(['Please check your lead validations.'], REST_Controller::HTTP_BAD_REQUEST);
+                $this->response(['status'=>false,'message'=>'Please check your lead validations.'], REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }
 
-    public function index_put($id){
-        $lead = $this->put();
-        $status = $this->lead_api_model->update_lead_data($id,$lead);
-        if($status == "1"){
-            $this->response(['Lead updated successfully.'], REST_Controller::HTTP_OK);
-        }else{
-            $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
-        }
-    }
+    // public function index_put($id){
+    //     $lead = $this->put();
+    //     $status = $this->lead_api_model->update_lead_data($id,$lead);
+    //     if($status == "1"){
+    //         $this->response(['status'=>true,'message'=>'Lead updated successfully.'], REST_Controller::HTTP_OK);
+    //     }else{
+    //         $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+    //     }
+    // }
 
-    public function index_delete($id) {
-        $status = $this->lead_api_model->delete_lead_data($id);
-        if($status == "1"){
-            $this->response(['Lead deleted successfully.'], REST_Controller::HTTP_OK);
-        }else{
-            $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
-        }
-    }
+    // public function index_delete($id) {
+    //     $status = $this->lead_api_model->delete_lead_data($id);
+    //     if($status == "1"){
+    //         $this->response(['status'=>true,'message'=>'Lead deleted successfully.'], REST_Controller::HTTP_OK);
+    //     }else{
+    //         $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+    //     }
+    // }
 
     public function verify_token($email) {
         $headers = getallheaders();
@@ -92,6 +94,7 @@ class Lead extends REST_Controller {
                 $token = $matches[1];
             }
             $auth_token = $this->agent_api_model->get_auth_token($email);
+            // print_r($auth_token);die;
             if($token === $auth_token){
                 return true;
             }else{
@@ -105,7 +108,7 @@ class Lead extends REST_Controller {
         if($units){
             $this->response(['status'=>true,'message'=>'Lead deleted successfully.','available_units'=>$units], REST_Controller::HTTP_OK);
         }else{
-            $this->response(['Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+            $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
 
@@ -113,7 +116,12 @@ class Lead extends REST_Controller {
         $email = $this->input->post('email');
         $token = $this->verify_token($email);
         if($token) {
-
+            $leads = $this->lead_api_model->assigned_units_detail($email);
+            if($leads){
+                $this->response(['status'=>true,'message'=>'All Assigned Lead.','assigned leads'=>$leads], REST_Controller::HTTP_OK);
+            }else{
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
         }
     }
 

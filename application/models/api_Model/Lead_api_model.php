@@ -37,5 +37,15 @@ class Lead_api_model extends CI_Model {
         return $this->db->get_where("sq_lead_unit",['status'=>'1'])->result();
     }
 
+    public function assigned_units_detail($email){
+        // return $this->db->get_where("sq_lead",['assign_to_email'=>$email,'status'=>1])->row_array();
+
+        $this->db->select("*");
+        $this->db->from('sq_lead');
+        $this->db->where('assign_to_email',$email);
+        $this->db->where('status',1);
+        print_r($this->db->get()->row_array());die;
+    }
+
 
 }

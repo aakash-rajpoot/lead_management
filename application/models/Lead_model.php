@@ -64,14 +64,14 @@ class Lead_model extends CI_Model {
     }
 
     function fetch_lead_data(){
-        $this->db->select("name");
+        $this->db->select("*");
         $this->db->from('sq_members');
         $this->db->where('status',1);
         return $this->db->get();
     }
 
     function fetch_lead_name($id){
-        $this->db->select("name,id");
+        $this->db->select("*");
         $this->db->from('sq_lead');
         $this->db->where('id',$id);
         $this->db->where('status',1);
@@ -80,10 +80,16 @@ class Lead_model extends CI_Model {
 
     function lead_assign_data(){
         $name = $this->input->post('lead_name');
-        $data = $this->input->post('assign_lead');
-        $date = date('Y-m-d');
-        $this->db->set('assign_to', $data);
-        $this->db->set('assign_date', $date);
+        $data = array(
+            'assign_to' => $this->input->post('assign_lead'),
+            'assign_date' => date('Y-m-d')
+        );
+        $assign_email = $data['assign_to'];
+        preg_match('#\[(.*?)\]#', $assign_email, $match);
+
+        $data['assign_to_email'] = $match[1]."\n";
+
+        $this->db->set($data);
         $this->db->where('name', $name);
         $this->db->where('status', 1);
         return $this->db->update('sq_lead');
@@ -95,5 +101,6 @@ class Lead_model extends CI_Model {
         $this->db->where('id', $id);
         return $this->db->update('sq_lead');
     }
+
 
 }
