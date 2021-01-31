@@ -86,7 +86,6 @@ class Lead_model extends CI_Model {
         );
         $assign_email = $data['assign_to'];
         preg_match('#\[(.*?)\]#', $assign_email, $match);
-
         $data['assign_to_email'] = $match[1]."\n";
 
         $this->db->set($data);

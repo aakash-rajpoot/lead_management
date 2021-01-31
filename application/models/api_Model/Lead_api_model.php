@@ -38,13 +38,14 @@ class Lead_api_model extends CI_Model {
     }
 
     public function assigned_units_detail($email){
-        // return $this->db->get_where("sq_lead",['assign_to_email'=>$email,'status'=>1])->row_array();
+        return $this->db->get_where("sq_lead",['assign_to_email'=>$email,'status'=>1])->result();
+    }
 
-        $this->db->select("*");
-        $this->db->from('sq_lead');
-        $this->db->where('assign_to_email',$email);
-        $this->db->where('status',1);
-        print_r($this->db->get()->row_array());die;
+    public function all_agent_leads($email){
+        $returnData = [];
+        $returnData['create-leads'] = $this->db->get_where("sq_lead",['email'=>$email,'status'=>1])->result();
+        $returnData['assigned-leads'] = $this->db->get_where("sq_lead",['assign_to_email'=>$email,'status'=>1])->result();
+        return $returnData;
     }
 
 

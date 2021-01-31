@@ -28,6 +28,10 @@ class Lead extends REST_Controller {
             case 'assigned_leads':
                 $this->assigned_leads();
                 break;
+
+            case 'all_leads':
+                $this->all_leads();
+                break;
                 
         }
     }
@@ -106,7 +110,7 @@ class Lead extends REST_Controller {
     public function available_units(){
         $units = $this->lead_api_model->available_units_detail();
         if($units){
-            $this->response(['status'=>true,'message'=>'Lead deleted successfully.','available_units'=>$units], REST_Controller::HTTP_OK);
+            $this->response(['status'=>true,'message'=>'All Available Units.','available_units'=>$units], REST_Controller::HTTP_OK);
         }else{
             $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
         }
@@ -118,7 +122,20 @@ class Lead extends REST_Controller {
         if($token) {
             $leads = $this->lead_api_model->assigned_units_detail($email);
             if($leads){
-                $this->response(['status'=>true,'message'=>'All Assigned Lead.','assigned leads'=>$leads], REST_Controller::HTTP_OK);
+                $this->response(['status'=>true,'message'=>'All Assigned Leads.','assigned leads'=>$leads], REST_Controller::HTTP_OK);
+            }else{
+                $this->response(['status'=>false,'message'=>'Leads are not assigned to you.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
+
+    function all_leads(){
+        $email = $this->input->post('email');
+        $token = $this->verify_token($email);
+        if($token) {
+            $leads = $this->lead_api_model->all_agent_leads($email);
+            if($leads){
+                $this->response(['status'=>true,'message'=>'All Leads.','all leads'=>$leads], REST_Controller::HTTP_OK);
             }else{
                 $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
             }
