@@ -19,7 +19,7 @@
                         <option>---Select---</option>
                         <?php if(!empty($leads)){
                             foreach($leads as $lead ) { ?>
-                                <option value="<?=$lead['name'].' ['.$lead['email'].']'?>" > <?=$lead['name'].' ['.$lead['email'].']'?></option>
+                                <option value="<?=$lead['id']?>"> <?=$lead['name'].' ['.$lead['email'].']'?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>      

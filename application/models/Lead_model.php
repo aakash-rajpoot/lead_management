@@ -15,6 +15,7 @@ class Lead_model extends CI_Model {
             'client_address' => $this->input->post('client_address'),
             'remark' => $this->input->post('remark'),
             'reference' => $this->input->post('reference'),
+            // 'created_by'=>$_SESSION['id']
         );
         
         $lead['available_unit'] = implode( ", ", $this->input->post('available_unit')); 
@@ -84,9 +85,6 @@ class Lead_model extends CI_Model {
             'assign_to' => $this->input->post('assign_lead'),
             'assign_date' => date('Y-m-d')
         );
-        $assign_email = $data['assign_to'];
-        preg_match('#\[(.*?)\]#', $assign_email, $match);
-        $data['assign_to_email'] = $match[1]."\n";
 
         $this->db->set($data);
         $this->db->where('name', $name);

@@ -6,11 +6,11 @@ class Lead_api_model extends CI_Model {
         $this->load->database();
     }
 
-    public function fetch_all_lead_data($email){
-        return $this->db->get_where("sq_lead",['email'=>$email,'status'=>'1'])->result();
-    }
+    // public function fetch_all_lead_data($email){
+    //     return $this->db->get_where("sq_lead",['email'=>$email,'status'=>'1'])->result();
+    // }
 
-    public function add_lead_data(){
+    public function add_lead_data($userData){
         $lead = array(
             'name' => $this->input->post('name'),
             'phone' => $this->input->post('phone'),
@@ -20,31 +20,25 @@ class Lead_api_model extends CI_Model {
             'client_address' => $this->input->post('client_address'),
             'remark' => $this->input->post('remark'),
             'reference' => $this->input->post('reference'),
-            'available_unit' => $this->input->post('available_unit')
+            'available_unit' => $this->input->post('available_unit'),
+            'created_by'=> $userData['id'],
+            'user_type' => '2'
         );
         return $this->db->insert('sq_lead',$lead);
-    }
-
-    public function update_lead_data($id,$lead){
-        return $this->db->update('sq_lead', $lead, array('id'=>$id));
-    }
-
-    public function delete_lead_data($id){
-        return $this->db->delete('sq_lead', array('id'=>$id));
     }
 
     public function available_units_detail(){
         return $this->db->get_where("sq_lead_unit",['status'=>'1'])->result();
     }
 
-    public function assigned_units_detail($email){
-        return $this->db->get_where("sq_lead",['assign_to_email'=>$email,'status'=>1])->result();
-    }
+    // public function assigned_units_detail($userData){
+    //     return $this->db->get_where("sq_lead",['assign_to'=>$userData['id'],'status'=>1])->result();
+    // }
 
-    public function all_agent_leads($email){
+    public function all_agent_leads($userData){
         $returnData = [];
-        $returnData['create-leads'] = $this->db->get_where("sq_lead",['email'=>$email,'status'=>1])->result();
-        $returnData['assigned-leads'] = $this->db->get_where("sq_lead",['assign_to_email'=>$email,'status'=>1])->result();
+        $returnData['create-leads'] = $this->db->get_where("sq_lead",['created_by'=>$userData['id'],'user_type'=>2,'status'=>1])->result();
+        $returnData['assigned-leads'] = $this->db->get_where("sq_lead",['assign_to'=>$userData['id'],'status'=>1])->result();
         return $returnData;
     }
 

@@ -8,7 +8,7 @@ class Admin_model extends CI_Model {
    function login_verification(){
         $email = $this->input->post('email');
         $password = md5($this->input->post('password'));
-        $this->db->select("username,email");
+        $this->db->select("id,username,email");
         $this->db->from('sq_admin');
         $this->db->where(array('email'=>$email,'password'=>$password,'role_id'=>'1'));
         return $this->db->get();
