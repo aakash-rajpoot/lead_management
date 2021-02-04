@@ -119,6 +119,4 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/view_profile', $data);
 		$this->load->view('templates/admin_footer');	
 	}
-
-
 }
