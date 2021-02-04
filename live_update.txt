@@ -1,10 +1,120 @@
-
------------(26/01/20210)--------DataBase-------------
-
-ALTER TABLE sq_otp_verification ADD reset_otp int NOT NULL;
+-----------(03/02/20210)--------DataBase-------------
 
 
------------(31/01/20210)--------DataBase-------------
 
-ALTER TABLE sq_lead ADD assign_to_email varchar NOT NULL;
+1. ALTER TABLE sq_admin ADD id int NOT NULL;
+
+
+
+2. UPDATE sq_admin SET id= 1;
+
+
+
+
+
+3. CREATE TABLE `sq_status` (
+
+  `id` int(11) NOT NULL,
+
+  `name` varchar(100) NOT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+4. INSERT INTO `sq_status` (`id`, `name`) VALUES
+
+(1, 'Pending'),
+
+(2, 'Incomplete'),
+
+(3, 'Complete');
+
+
+
+5. ALTER TABLE `sq_status`
+
+  ADD PRIMARY KEY (`id`);
+
+COMMIT;
+
+
+
+
+
+6. DROP TABLE sq_lead;
+
+
+
+7. CREATE TABLE `sq_lead` (
+
+  `id` int(11) NOT NULL,
+
+  `name` varchar(500) NOT NULL,
+
+  `assign_to` int(11) NOT NULL,
+
+  `created_by` int(11) NOT NULL,
+
+  `user_type` int(11) NOT NULL DEFAULT 1,
+
+  `assign_date` date DEFAULT NULL,
+
+  `email` varchar(500) NOT NULL,
+
+  `phone` bigint(20) NOT NULL,
+
+  `alt_phone` bigint(20) NOT NULL,
+
+  `property_address` text NOT NULL,
+
+  `client_address` text NOT NULL,
+
+  `available_unit` varchar(1000) NOT NULL,
+
+  `remark` text NOT NULL,
+
+  `reference` text NOT NULL,
+
+  `lead_date` timestamp NOT NULL DEFAULT current_timestamp(),
+
+  `assign_lead_status` int(11) DEFAULT NULL,
+
+  `status` int(11) NOT NULL DEFAULT 1
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
+
+8. INSERT INTO `sq_lead` (`id`, `name`, `assign_to`, `created_by`, `user_type`, `assign_date`, `email`, `phone`, `alt_phone`, `property_address`, `client_address`, `available_unit`, `remark`, `reference`, `lead_date`, `assign_lead_status`, `status`) VALUES
+
+(4, 'Aakash shishodia11', 21, 0, 1, '2021-01-31', 'aakash143only4u@gmail.com', 9643293056, 9643293056, 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1BHK (1234 sq.ft), 1BHK (400 sq.yard), 1BHK (450 sq.ft)', 'rtrtt5t5tfg', 'aaaaaaaaaaaaaa', '2020-12-24 12:59:45', 0, 1),
+
+(5, 'supertech', 0, 0, 1, '2021-01-31', 'aakash143only4u@gmail.com', 8859423143, 0, 'noida ', 'Village-Sapnawat ,Block- Dhaulana, District - Hapur, State - UP\r\nSector -34, Noida, UP', '', ' ', '', '2020-12-24 15:31:23', 0, 1),
+
+(6, 'Aakash shishodia', 15, 0, 1, '2021-02-02', 'aakash143123only4u@gmail.com', 9643293056, 0, 'migsun', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1BHK (400 sq.yard), 1BHK (450 sq.ft), 2BHK (1000 sq.ft)', ' ', '', '2020-12-27 12:08:32', 0, 1),
+
+(8, 'Aakash shishodia112', 25, 0, 1, '2021-02-02', 'aakash143only4u@gmail.com', 9643293056, 0, 'sdsfdsf', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1, 2, 4', '', '', '2021-01-05 12:53:48', 0, 1),
+
+(9, 'Aakash shishodia', 15, 1, 1, '2021-02-02', 'aakash143only4u@gmail.com', 9643293056, 0, 'efewf', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '2, 3', '', '', '2021-02-02 17:51:37', 0, 1),
+
+(10, 'edfewfef', 0, 21, 2, NULL, 'dsdefe@gmail.com', 8765432123, 8767897654, 'efrrrrrrrrrrrrrrrrrrr', 'erererererere', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 0, 1);
+
+
+
+
+
+
+
+9. ALTER TABLE `sq_lead`
+
+  ADD PRIMARY KEY (`id`);
+
+
+
+
+
+
 

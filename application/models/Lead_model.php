@@ -15,7 +15,6 @@ class Lead_model extends CI_Model {
             'client_address' => $this->input->post('client_address'),
             'remark' => $this->input->post('remark'),
             'reference' => $this->input->post('reference'),
-            // 'created_by'=>$_SESSION['id']
         );
         
         $lead['available_unit'] = implode( ", ", $this->input->post('available_unit')); 
@@ -26,12 +25,12 @@ class Lead_model extends CI_Model {
     function fetch_total_lead(){
         $this->db->select("*");
         $this->db->from('sq_lead');
-        $this->db->where('status',1);
+        $this->db->where('active',1);
         return $this->db->get();
     }
 
     function soft_delete_lead($id){
-        $this->db->set('status',0);
+        $this->db->set('active',0);
         $this->db->where('id', $id);
         return $this->db->update('sq_lead');
     }
@@ -67,7 +66,7 @@ class Lead_model extends CI_Model {
     function fetch_lead_data(){
         $this->db->select("*");
         $this->db->from('sq_members');
-        $this->db->where('status',1);
+        $this->db->where('active',1);
         return $this->db->get();
     }
 
@@ -75,7 +74,7 @@ class Lead_model extends CI_Model {
         $this->db->select("*");
         $this->db->from('sq_lead');
         $this->db->where('id',$id);
-        $this->db->where('status',1);
+        $this->db->where('active',1);
         return $this->db->get();
     }
 
@@ -83,12 +82,13 @@ class Lead_model extends CI_Model {
         $name = $this->input->post('lead_name');
         $data = array(
             'assign_to' => $this->input->post('assign_lead'),
-            'assign_date' => date('Y-m-d')
+            'assign_date' => date('Y-m-d'),
+            'status' => 1
         );
 
         $this->db->set($data);
         $this->db->where('name', $name);
-        $this->db->where('status', 1);
+        $this->db->where('active', 1);
         return $this->db->update('sq_lead');
     }
 

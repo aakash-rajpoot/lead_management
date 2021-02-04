@@ -57,11 +57,6 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "email",
-							"value": "aakash143only4u@gmail.com",
-							"type": "text"
-						},
-						{
 							"key": "otp",
 							"value": "170109",
 							"type": "text"
@@ -104,11 +99,6 @@
 				"body": {
 					"mode": "formdata",
 					"formdata": [
-						{
-							"key": "email",
-							"value": "aakash143only4u@gmail.com",
-							"type": "text"
-						},
 						{
 							"key": "password",
 							"value": "Abcd@1234",
@@ -195,7 +185,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjI4IiwiZW1haWwiOiJzdWZ5YW4uc2hlaWtoNzc5MkBnbWFpbC5jb20iLCJpYXQiOjE2MTE4NjA1NjMsImV4cCI6MTYxMTg3ODU2M30.UmqAyUSOSkrgowaHKhQFr8t4AyjE6ugDkfnD4qpc4Nk",
 							"type": "string"
 						}
 					]
@@ -206,23 +196,18 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "email",
-							"value": "aakash143only4u@gmail.com",
-							"type": "text"
-						},
-						{
 							"key": "oldpass",
-							"value": "Aakash@123",
+							"value": "Abcd@1234",
 							"type": "text"
 						},
 						{
 							"key": "newpass",
-							"value": "Abcd@123",
+							"value": "Aakash@123",
 							"type": "text"
 						},
 						{
 							"key": "confpass",
-							"value": "Abcd@123",
+							"value": "Aakash@123",
 							"type": "text"
 						}
 					]
@@ -390,14 +375,14 @@
 			"response": []
 		},
 		{
-			"name": "All leads",
+			"name": "My leads",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExODUxMzg1LCJleHAiOjE2MTE4NjkzODV9.Je2ECMQZh6rnVl5BKaLr0tV2PVZzeH-T5wfuDfS1w08",
 							"type": "string"
 						}
 					]
@@ -415,7 +400,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://square-lead.kanvan.in/index.php/api/lead/all_lead",
+					"raw": "http://square-lead.kanvan.in/index.php/api/lead/my_leads",
 					"protocol": "http",
 					"host": [
 						"square-lead",
@@ -426,7 +411,7 @@
 						"index.php",
 						"api",
 						"lead",
-						"all_lead"
+						"my_leads"
 					]
 				}
 			},
@@ -440,7 +425,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjExNDIzODIwLCJleHAiOjE2MTE0NDE4MjB9.nVxQ7pkul188NkE4gGEWF-EoeK9cqHRJl6pPpOpoeCk",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjEyMDM5MzQxLCJleHAiOjE2MTIwNTczNDF9.Tc5b10pj8rolxRH4QdECWIic5JQtW-Q5y4c7lrLSvjY",
 							"type": "string"
 						}
 					]
@@ -452,17 +437,42 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "janta apartment",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "aakash143only4u@gmail.com",
+							"value": "gandhi apartment",
 							"type": "text"
 						},
 						{
 							"key": "phone",
 							"value": "8984586445",
+							"type": "text"
+						},
+						{
+							"key": "alt_phone",
+							"value": "6545678855",
+							"type": "text"
+						},
+						{
+							"key": "property_address",
+							"value": "erewerfrefrefrf",
+							"type": "text"
+						},
+						{
+							"key": "client_address",
+							"value": "fewert443r4r",
+							"type": "text"
+						},
+						{
+							"key": "remark",
+							"value": "dfdsfarg",
+							"type": "text"
+						},
+						{
+							"key": "available_unit",
+							"value": "API",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "Lead Source By",
 							"type": "text"
 						}
 					]
@@ -480,6 +490,250 @@
 						"api",
 						"lead",
 						"add_lead"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Available Units",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjEyMDM5MzQxLCJleHAiOjE2MTIwNTczNDF9.Tc5b10pj8rolxRH4QdECWIic5JQtW-Q5y4c7lrLSvjY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/lead/available_units",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"lead",
+						"available_units"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjEyMDM5MzQxLCJleHAiOjE2MTIwNTczNDF9.Tc5b10pj8rolxRH4QdECWIic5JQtW-Q5y4c7lrLSvjY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/profile",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjEyMDIxMTA4LCJleHAiOjE2MTIwMzkxMDh9.g6f84KguM3xUV_vp1OT6cEvVCRiFqkvsH03Wj9j7Lj0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Ansh",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "9784747473",
+							"type": "text"
+						},
+						{
+							"key": "permanent",
+							"value": "sdfsfdfdfd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/agent/update_profile",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"agent",
+						"update_profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assigned Leads",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjEyMDM5MzQxLCJleHAiOjE2MTIwNTczNDF9.Tc5b10pj8rolxRH4QdECWIic5JQtW-Q5y4c7lrLSvjY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aakash143only4u@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/lead/assigned_leads",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"lead",
+						"assigned_leads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Leads",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjEyMDM5MzQxLCJleHAiOjE2MTIwNTczNDF9.Tc5b10pj8rolxRH4QdECWIic5JQtW-Q5y4c7lrLSvjY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/lead/all_leads",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"lead",
+						"all_leads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIxIiwiZW1haWwiOiJhYWthc2gxNDNvbmx5NHVAZ21haWwuY29tIiwiaWF0IjoxNjEyMDM5MzQxLCJleHAiOjE2MTIwNTczNDF9.Tc5b10pj8rolxRH4QdECWIic5JQtW-Q5y4c7lrLSvjY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://square-lead.kanvan.in/index.php/api/lead/all_status",
+					"protocol": "http",
+					"host": [
+						"square-lead",
+						"kanvan",
+						"in"
+					],
+					"path": [
+						"index.php",
+						"api",
+						"lead",
+						"all_status"
 					]
 				}
 			},

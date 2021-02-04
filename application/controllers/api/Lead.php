@@ -13,9 +13,6 @@ class Lead extends REST_Controller {
 
     public function index_post($action = '') {
         switch($action) {
-            // case 'my_leads':
-            //     $this->my_leads();
-            //     break;
 
             case 'add_lead':
                 $this->add_lead();
@@ -25,28 +22,20 @@ class Lead extends REST_Controller {
                 $this->available_units();
                 break;
 
-            // case 'assigned_leads':
-            //     $this->assigned_leads();
-            //     break;
-
             case 'all_leads':
                 $this->all_leads();
                 break;
-                
+
+            case 'all_status':
+                $this->all_status();
+                break;
+
+            case 'lead_status':
+                $this->lead_status();
+                break;
+                  
         }
     }
-
-    // public function my_leads(){
-    //     $userData = $this->verify_token();
-    //     if(!empty($userData)) {
-    //         $input = $this->lead_api_model->fetch_all_lead_data($userData);
-    //         if($input > 0){
-    //             $this->response(['status'=>true,'all_leads'=>$input,'message'=>'All leads fetch successfully.'], REST_Controller::HTTP_OK);
-    //         }else{
-    //             $this->response(['status'=>false,'message'=>'Leads are not available.'], REST_Controller::HTTP_BAD_REQUEST);
-    //         }
-    //     }
-    // }
 
     public function add_lead(){
         $userData = $this->verify_token();
@@ -97,18 +86,6 @@ class Lead extends REST_Controller {
         }
     }
 
-    // public function assigned_leads(){
-    //     $userData = $this->verify_token();
-    //     if(!empty($userData)) {
-    //         $leads = $this->lead_api_model->assigned_units_detail($userData);
-    //         if($leads){
-    //             $this->response(['status'=>true,'message'=>'All Assigned Leads.','assigned leads'=>$leads], REST_Controller::HTTP_OK);
-    //         }else{
-    //             $this->response(['status'=>false,'message'=>'Leads are not assigned to you.'], REST_Controller::HTTP_BAD_REQUEST);
-    //         }
-    //     }
-    // }
-
     function all_leads(){
         $userData = $this->verify_token();
         if(!empty($userData)) {
@@ -120,6 +97,34 @@ class Lead extends REST_Controller {
             }
         }
     }
+
+    function all_status(){
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
+            $status = $this->lead_api_model->get_all_status();
+            if($status){
+                $this->response(['status'=>true,'message'=>'All status.','all status'=>$status], REST_Controller::HTTP_OK);
+            }else{
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
+
+    public function lead_status(){
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
+            $status = $this->input->post('status');
+            if($status){
+                $data = $this->lead_api_model->update_status($status);
+                if($data){
+                    $this->response(['status'=>true,'message'=>'You have successfully changed assigned lead status. '], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                }
+            }
+        }
+    }
+
 
 
 }

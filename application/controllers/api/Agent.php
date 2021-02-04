@@ -76,25 +76,6 @@ class Agent extends REST_Controller {
             $this->response(['status'=>false,'message'=>'Please enter valid email.'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
-    
-    public function index_put($id) {
-        $input = $this->put();
-        $status = $this->agent_api_model->agent_mobile_put($id,$input);
-        if($status > 0){
-            $this->response(['status'=>true,'message'=>'Agent updated successfully.'], REST_Controller::HTTP_OK);
-        }else{
-            $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
-        }
-    }
-
-    public function index_delete($id) {
-        $this->agent_api_model->agent_mobile_delete($id);
-        if($status > 0){
-            $this->response(['status'=>true,'message'=>'Agent deleted successfully.'], REST_Controller::HTTP_OK);
-        }else{
-            $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
-        }
-    }
 
     function email_config($email,$login_otp){
         $this->email->from('info@Kritak.com', 'KRITAK INFRA PVT.LTD.');
@@ -112,18 +93,17 @@ class Agent extends REST_Controller {
 
     function verify_otp(){
         $otp = $this->input->post('otp');
-        $email = $this->input->post('email');
-        $token = $this->verify_token($email);
-        if($token){
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
             if(!empty($otp)){
-                $data = $this->agent_api_model->verify_sent_otp($otp,$email);
+                $data = $this->agent_api_model->verify_sent_otp($otp,$userData);
                 if(!empty($data)){
                     $this->agent_api_model->update_otp_status($data);
                     $this->response(['status'=>true,'message'=>'OTP has been verified.'], REST_Controller::HTTP_OK);
                 }else{
                     $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
-            }  
+            }
         }
     }
 
@@ -134,12 +114,11 @@ class Agent extends REST_Controller {
         $this->form_validation->set_error_delimiters('', '');
         $this->form_validation->set_message('required', '* Please enter valid %s');
 
-        $email = $this->input->post('email');
-        $token = $this->verify_token($email);
-        if($token){
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
             if($this->form_validation->run()){
                 $pwd = md5($this->input->post('password'));
-                $status = $this->agent_api_model->create_agent_pass($pwd,$email);
+                $status = $this->agent_api_model->create_agent_pass($pwd,$userData);
                 if($status > 0){
                     $this->response(['status'=>true,'message'=>'Your password has been created successfully.'], REST_Controller::HTTP_OK);
                 }else{
@@ -152,9 +131,8 @@ class Agent extends REST_Controller {
     }
 
     function change_password(){
-        $email = $this->input->post('email');
-        $token = $this->verify_token($email);
-        if($token){
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
             $oldpass = md5($this->input->post('oldpass'));
             $this->form_validation->set_rules('oldpass', 'Old Password', 'required');
             $this->form_validation->set_rules('newpass', 'New Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]|min_length[8]');
@@ -164,10 +142,10 @@ class Agent extends REST_Controller {
             $this->form_validation->set_message('required', '* Please enter valid %s');
 
             if($this->form_validation->run()){
-                $row = $this->agent_api_model->fetch_oldPass($email);
-                if($row == $oldpass){
+                $row = $this->agent_api_model->fetch_oldPass($userData);
+                if($row== $oldpass){
                     $new_pass = md5($this->input->post('newpass'));
-                    $status = $this->agent_api_model->change_pass($email,$new_pass);
+                    $status = $this->agent_api_model->change_pass($userData,$new_pass);
                     if($status > 0){
                         $this->response(['status'=>true,'message'=>'Password has successfully changed.'], REST_Controller::HTTP_OK);
                     }else{
@@ -192,16 +170,15 @@ class Agent extends REST_Controller {
         return JWT::encode($token,$auth_key); 
     }
 
-    public function verify_token($email) {
+    public function verify_token() {
         $headers = getallheaders();
         if (isset($headers['Authorization']) && !empty($headers['Authorization'])) {
             if (preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
                 $token = $matches[1];
             }
-            $auth_token = $this->agent_api_model->get_auth_token($email);
-            // print_r($auth_token);die;
-            if($token == $auth_token){
-                return true;
+            $userData = $this->agent_api_model->get_auth_token($token);
+            if(!empty($userData)){
+                return $userData;
             }else{
                 $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
             }
@@ -294,10 +271,9 @@ class Agent extends REST_Controller {
     }
 
     public function profile(){
-        $email = $this->input->post('email');
-        $token = $this->verify_token($email);
-        if($token){
-            $data = $this->agent_api_model->fetch_profile_details($email);
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
+            $data = $this->agent_api_model->fetch_profile_details($userData);
             if(!empty($data)){
                 $this->response(['status'=>true,'message'=>'Profile details are here.','Profile details'=>$data], REST_Controller::HTTP_OK);
             }else{
@@ -309,14 +285,13 @@ class Agent extends REST_Controller {
     }
 
     function update_profile(){
-        $email = $this->input->post('email');
-        $token = $this->verify_token($email);
-        if($token){
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
             $this->form_validation->set_rules('name', 'Full name','required|min_length[2]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
             $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
             $this->form_validation->set_rules('permanent', 'Permanent Address','required');
             if($this->form_validation->run()) {
-                $data = $this->agent_api_model->update_agent_profile($email);
+                $data = $this->agent_api_model->update_agent_profile($userData);
                 if($data > 0){
                     $this->response(['status'=>true,'message'=>'Profile updated successfully.'], REST_Controller::HTTP_OK);
                 }else{
