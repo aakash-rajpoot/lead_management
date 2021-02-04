@@ -8,7 +8,9 @@ class Unit extends CI_Controller {
 
         $this->load->model(array('unit_model','setting_model'));
 		$this->load->helper(array('form','url','html'));
-		$this->load->library(array('form_validation','session'));
+        $this->load->library(array('form_validation','session'));
+        
+        $this->isUserLoggedIn = $this->session->userdata('isUserLoggedIn'); 
     }
     public function index(){
         $data = $this->setting_model->fetch_setting_details();

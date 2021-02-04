@@ -6,25 +6,44 @@ class Lead_api_model extends CI_Model {
         $this->load->database();
     }
 
-    function fetch_all_lead_data(){
-        return $this->db->get_where("sq_lead",['status'=>'1'])->result();
-    }
-
-    function add_lead_data(){
+    public function add_lead_data($userData){
         $lead = array(
             'name' => $this->input->post('name'),
             'phone' => $this->input->post('phone'),
-            'email' => $this->input->post('email')
+            'email' => $this->input->post('email'),
+            'alt_phone' => $this->input->post('alt_phone'),
+            'property_address' => $this->input->post('property_address'),
+            'client_address' => $this->input->post('client_address'),
+            'remark' => $this->input->post('remark'),
+            'reference' => $this->input->post('reference'),
+            'available_unit' => $this->input->post('available_unit'),
+            'created_by'=> $userData['id'],
+            'user_type' => '2'
         );
         return $this->db->insert('sq_lead',$lead);
     }
 
-    function update_lead_data($id,$lead){
-        return $this->db->update('sq_lead', $lead, array('id'=>$id));
+    public function available_units_detail(){
+        return $this->db->get_where("sq_lead_unit",['active'=>'1'])->result();
     }
 
-    function delete_lead_data($id){
-        return $this->db->delete('sq_lead', array('id'=>$id));
+    public function all_agent_leads($userData){
+        $member_id = $userData['id'];
+        $this->db->select("name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,remark,reference,status_name, IF(created_by=$member_id,1,0) lead_origin")
+            ->from("sq_lead")
+            ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
+            ->where('created_by',$member_id)
+            ->or_where('assign_to',$member_id)
+            ->where('active',1);
+            return $this->db->get()->result_array();
+    }
+
+    public function get_all_status(){
+        return $this->db->get_where("sq_status")->result();
+    }
+
+    public function update_status($status,$id){
+        return $this->db->update('sq_lead', ['status'=>$status], array('id'=>$id,'active'=>'1'));
     }
 
 

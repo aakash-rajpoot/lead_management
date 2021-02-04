@@ -44,10 +44,14 @@ class Admin extends CI_Controller {
     }
 
     function admin_dashboard(){
-        $data = $this->setting_model->fetch_setting_details();
-        $this->load->view('templates/admin_header',$data);
-        $this->load->view('admin/dashboard');
-        $this->load->view('templates/admin_footer');
+        if(isset($_SESSION)){
+            $data = $this->setting_model->fetch_setting_details();
+            $this->load->view('templates/admin_header',$data);
+            $this->load->view('admin/dashboard');
+            $this->load->view('templates/admin_footer');
+        }else{
+            redirect('admin');
+        }
     }
 
     function logout(){

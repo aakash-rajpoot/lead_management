@@ -11,12 +11,11 @@
   }
   .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     vertical-align: middle!important;
-   
-}
-td {
-    text-align: center;
-}
-    </style>
+   }
+    td {
+        text-align: center;
+    }
+</style>
 <div class="mt-5 ex1" style="margin-top:110px;">
     <div class="row">
      <div class="col-lg-12">
@@ -51,7 +50,7 @@ td {
                         <tr>
                             <td><?=$i;?></td>
                             <td><?=$totallead['name']?></td>
-                            <td><?=$totallead['assign_to']?></td>
+                            <td><?='Emp'.$totallead['assign_to']?></td>
                             <td><?=$totallead['assign_date']?></td>
                             <td><?=$totallead['phone']?></td>
                             <td><?=$totallead['property_address']?></td>
