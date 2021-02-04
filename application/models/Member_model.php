@@ -83,7 +83,7 @@ class Member_model extends CI_Model {
 
     function resign_agent_here($id){
         $date = date('Y-m-d');
-        $this->db->set('status',0);
+        $this->db->set('active',0);
         $this->db->set('resignation_date', $date);
         $this->db->where('id', $id);
         return $this->db->update('sq_members');

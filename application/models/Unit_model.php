@@ -19,7 +19,7 @@ class Unit_model extends CI_Model {
     function fetch_unit_data(){
         $this->db->select("*");
         $this->db->from('sq_lead_unit');
-        $this->db->where('status',1);
+        $this->db->where('active',1);
         return $this->db->get();
     }
 
@@ -27,7 +27,7 @@ class Unit_model extends CI_Model {
         $this->db->select("*");
         $this->db->from('sq_lead_unit');
         $this->db->where('id',$id);
-        $this->db->where('status',1);
+        $this->db->where('active',1);
         $query = $this->db->get();
         return $query->row_array();
     }
@@ -46,7 +46,7 @@ class Unit_model extends CI_Model {
     }
 
     function delete_unit_data($id){
-        $this->db->set('status',0);
+        $this->db->set('active',0);
         $this->db->where('id', $id);
         return $this->db->update('sq_lead_unit');
     }

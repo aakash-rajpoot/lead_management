@@ -52,7 +52,7 @@
                                     $i++; 
                         ?>
                     <tbody class="table-bordered">
-                        <?php if($totalmember['status'] == 1) { ?>
+                        <?php if($totalmember['active'] == 1) { ?>
                             <tr class="active_agent">
                                 <td><?=$i;?></td>
                                 <td><?="Emp".$totalmember['id']?></td>
