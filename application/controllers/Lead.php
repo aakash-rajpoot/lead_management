@@ -20,7 +20,7 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
-    function add_lead(){
+    public function add_lead(){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
 

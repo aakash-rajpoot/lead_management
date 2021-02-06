@@ -1,0 +1,39 @@
+<?php
+require APPPATH . '/libraries/REST_Controller.php';
+     
+class Chat extends REST_Controller {
+
+    public function __construct() {
+        parent::__construct();
+
+        $this->load->model(array('api_model/chat_model'));
+		$this->load->helper(array('form','url','html'));
+		$this->load->library(array('form_validation','session'));
+    }
+
+    public function index_post($action = '') {
+        switch($action) {
+
+            case 'agent_chat':
+                $this->agent_chat();
+                break;
+
+            case 'admin_chat':
+                $this->admin_chat();
+                break;
+
+        }
+    }
+
+    public function agent_chat(){
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
+            $agent_msg = $this->input->post('');
+        }
+
+    }
+
+
+
+
+}

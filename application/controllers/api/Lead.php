@@ -33,6 +33,10 @@ class Lead extends REST_Controller {
             case 'lead_status':
                 $this->lead_status();
                 break;
+
+            case 'dashboard_status':
+                $this->dashboard_status();
+                break;   
                   
         }
     }
@@ -113,14 +117,38 @@ class Lead extends REST_Controller {
     public function lead_status(){
         $userData = $this->verify_token();
         if(!empty($userData)) {
+            $id = $this->input->post('id');
             $status = $this->input->post('status');
+            $remark = $this->input->post('status_remark');
             if($status){
-                $data = $this->lead_api_model->update_status($status);
+                $data = $this->lead_api_model->update_status($status,$id,$remark);
                 if($data){
                     $this->response(['status'=>true,'message'=>'You have successfully changed assigned lead status. '], REST_Controller::HTTP_OK);
-                }else{
+                } else {
                     $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
+            }
+        }
+    }
+
+    public function dashboard_status(){
+        $userData = $this->verify_token();
+        if(!empty($userData)) {
+            $pending = $incomplete = $complete = 0;
+            $data = $this->lead_api_model->get_status_count();
+            if($data){
+                foreach ($data as $key => $item) {
+                    if($item->status == 1){
+                        $pending += 1;
+                    }else if($item->status == 2){
+                        $incomplete += 1;
+                    }else if($item->status == 3){
+                        $complete += 1;
+                    }
+                }
+                $this->response(['status'=>true,'message'=>'Status of all the assigned leads.','Pending'=>$pending,'Incomplete'=>$incomplete,'Complete'=>$complete], REST_Controller::HTTP_OK);
+            } else {
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }
