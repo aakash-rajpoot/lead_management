@@ -57,14 +57,15 @@
                     </div>
 
                     <div class="panel-footer">
-                        <form method="post">
+                    <?=form_open(null,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
+                        <?=validation_errors(); ?>     
                         <div class="input-group">
                             <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." />
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-warning btn-sm" name="chat_button" id="btn-chat">Send</button>
                             </span>
                         </div>
-                        </form>
+                        <?=form_close();?>
                     </div>
                 </div>
             </div>
