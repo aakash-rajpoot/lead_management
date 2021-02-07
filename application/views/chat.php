@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="content-wrapper content-wrapper--with-bg">
-            <div class="wrap-career " style="margin-top:110px;">
+            <div class="wrap-career " style="margin-top:63px;">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-comment"></span> Chat
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" id="messagesBody">
                         <?php if($data) {
                             foreach($data as $value){ ?>
                                         <?php
@@ -60,9 +60,9 @@
                     <?=form_open(null,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
                         <?=validation_errors(); ?>     
                         <div class="input-group">
-                            <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." />
+                            <input id="btn-input" type="text" name="message" class="form-control input-lg" placeholder="Type your message here..." />
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-warning btn-sm" name="chat_button" id="btn-chat">Send</button>
+                                <button type="submit" class="btn btn-primary button-hor btn-lg" name="chat_button" id="btn-chat">Send</button>
                             </span>
                         </div>
                         <?=form_close();?>
@@ -72,3 +72,35 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+  var action = true // defaul value
+  setInterval(function() {
+
+    /*$('#messagesBody').load("get-messages.php? 
+    employee_id="+employee_id);*/
+
+    if (action === true) { // if scroll is down, do this
+      $("#messagesBody").scrollTop($("#messagesBody")[0].scrollHeight);
+    }
+
+    console.log(action);
+  }, 1000);
+
+
+  $("#messagesBody").scroll(function() {
+    var height = $(this).height();
+
+    if ($(this).scrollTop() < height) { // if user scrolled to top
+      action = false; // disable your action
+    } else {
+      action = true; // else, re enable your aciton
+    }
+  });
+
+});
+
+</script>
+<script>
+    $("#messagesBody").animate({ scrollTop: 20000000 }, "slow");
+</script>

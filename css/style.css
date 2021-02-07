@@ -837,6 +837,10 @@ background-color: #1e3e6f;
       height: 83px!important;
   }
   
+  .btn .btn-primary {
+      color: white!important;
+  }
+  
   .add_new_remark {
       padding: 1px 4px !important;
   }
@@ -867,64 +871,215 @@ background-color: #1e3e6f;
       list-style: none !important;
   }
   /* 11/01/2021 */
-  
-
   /* chat */
-
-.chat {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.chat li {
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px dotted #B3A9A9;
-}
-
-.chat li.left .chat-body {
-    margin-left: 60px;
-}
-
-.chat li.right .chat-body {
-    margin-right: 60px;
-}
-
-.chat li .chat-body p {
-    margin: 0;
-    color: #777777;
-}
-
-.panel .slidedown .glyphicon,
-.chat .glyphicon {
-    margin-right: 5px;
-}
-
-.panel-body {
-    overflow-y: scroll;
-    height: 250px;
-    list-style: none;
-}
-
- ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #F5F5F5;
-}
-
- ::-webkit-scrollbar {
-    width: 12px;
-    background-color: #F5F5F5;
-}
-
- ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #555;
-}
- ul li {
-    list-style: none!important;
-}
-ul li .chat {
-    list-style: none!important;
-}
-/* chat end */
+  
+  .chat {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+  
+  .chat li {
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px dotted #B3A9A9;
+  }
+  
+  .chat li.left .chat-body {
+      margin-left: 60px;
+  }
+  
+  .chat li.right .chat-body {
+      margin-right: 60px;
+  }
+  
+  .chat li .chat-body p {
+      margin: 0;
+      color: #777777;
+  }
+  
+  .panel .slidedown .glyphicon,
+  .chat .glyphicon {
+      margin-right: 5px;
+  }
+  
+  .panel-body {
+      overflow-y: scroll;
+      /* height: 350px; */
+      list-style: none;
+  }
+  
+  #messagesBody {
+      height: 350px;
+  }
+  
+   ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #F5F5F5;
+  }
+  
+   ::-webkit-scrollbar {
+      width: 12px;
+      background-color: #F5F5F5;
+  }
+  
+   ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      background-color: #555;
+  }
+  
+  ul li {
+      list-style: none!important;
+  }
+  
+  ul li .chat {
+      list-style: none!important;
+  }
+  /* chat end */
+  /* new table 07/02/2021 */
+  
+  .all-icon {
+      width: 150px;
+  }
+  
+  th.th-sm {
+      text-align: center;
+  }
+  /* dashboard card */
+  
+  .card-counter {
+      box-shadow: 2px 2px 10px #DADADA;
+      margin: 5px;
+      padding: 20px 10px;
+      background-color: #fff;
+      height: 148px;
+      border-radius: 5px;
+      transition: .3s linear all;
+  }
+  
+  .card-counter:hover {
+      box-shadow: 4px 4px 20px #DADADA;
+      transition: .3s linear all;
+  }
+  
+  .card-counter.primary {
+      background-color: #007bff;
+      color: #FFF;
+  }
+  
+  .card-counter.danger {
+      background-color: #ef5350;
+      color: #FFF;
+  }
+  
+  .card-counter.success {
+      background-color: #66bb6a;
+      color: #FFF;
+  }
+  
+  .card-counter.info {
+      background-color: #26c6da;
+      color: #FFF;
+  }
+  
+  .card-counter i {
+      font-size: 5em;
+      opacity: 0.2;
+  }
+  
+  .card-counter .count-numbers {
+      position: absolute;
+      right: 35px;
+      top: 20px;
+      font-size: 32px;
+      display: block;
+  }
+  
+  .card-counter .count-name {
+      position: absolute;
+      right: 35px;
+      top: 65px;
+      font-style: italic;
+      text-transform: capitalize;
+      opacity: 0.5;
+      display: block;
+      font-size: 18px;
+  }
+  /* dashboard card end */
+  /* pie chart */
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id] li:nth-child(0) {
+      color: blue;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id] li:nth-child(1) {
+      color: #4d00ff;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id] li:nth-child(2) {
+      color: #9900ff;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id] li:nth-child(3) {
+      color: #e500ff;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id] li:nth-child(4) {
+      color: #ff00cc;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id] li:nth-child(5) {
+      color: #ff0080;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id] li:nth-child(6) {
+      color: #ff0033;
+  }
+  /* line 26, ../sass/pizza.scss */
+  
+  ul[data-pie-id] {
+      list-style: none;
+      padding: 10px;
+  }
+  
+  [data-pie-id='my-cool-chart'] li:nth-child(0) {
+      color: #d84200;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id='my-cool-chart'] li:nth-child(1) {
+      color: #fc4d00;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id='my-cool-chart'] li:nth-child(2) {
+      color: #ff6420;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id='my-cool-chart'] li:nth-child(3) {
+      color: #ff7d44;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id='my-cool-chart'] li:nth-child(4) {
+      color: #ff9668;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id='my-cool-chart'] li:nth-child(5) {
+      color: #ffaf8b;
+  }
+  /* line 20, ../sass/pizza.scss */
+  
+  [data-pie-id='my-cool-chart'] li:nth-child(6) {
+      color: #ffc8af;
+  }
+  /* chart end */
