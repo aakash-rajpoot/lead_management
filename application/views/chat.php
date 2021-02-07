@@ -9,20 +9,7 @@
                     <div class="panel-body" id="messagesBody">
                         <?php if($data) {
                             foreach($data as $value){ ?>
-                                        <?php
-                                            // $date1 = date("Y-m-d h:i:sa");
-                                            // $date2 = $value['date_time'];
-                                            // $date1 = date("Y-m-d",strtotime($_POST['customer_birth']));
-                                            // $date2 = date("Y-m-d",strtotime($_POST['customer_marriage']));
-                                            // echo timespan($date2, $date1); die;
-                                            // $diff = abs($date2, $date1);
-                                            // echo $diff; die;
-
-                                            // $years = floor($diff / (365*60*60*24));
-                                            // $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-                                            // $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24)); 
-                                            // print_r($days);die;
-                                        ?>
+                            
                         <ul class="chat">
                             <?php if($value['type'] == 1){ ?>
                                 <li class="left clearfix">

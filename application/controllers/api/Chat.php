@@ -18,17 +18,18 @@ class Chat extends REST_Controller {
                 $this->agent_chat();
                 break;
 
-            case 'admin_chat':
-                $this->admin_chat();
-                break;
-
         }
     }
 
     public function agent_chat(){
         $userData = $this->verify_token();
         if(!empty($userData)) {
-            $agent_msg = $this->input->post('');
+            $agent_msg = $this->input->post('message');
+            $this->form_validation->set_rules('message', 'Message','required');
+            if($this->form_validation->run()){
+                $chat = $this->chat_model->agent_chat_upload($agent_msg,$userData);
+                
+            }
         }
 
     }
