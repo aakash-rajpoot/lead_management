@@ -1,51 +1,36 @@
-<style>
-     .title-heading {
-      margin-bottom: 0.75rem;
-      color: #3e4095!important;
-      font-weight: bold!important;
-  }
-</style>
 <div class="wrap-career " style="margin-top:110px;">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="row">
         <div class="col-lg-12">
         <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
     <a href="<?=base_url('index.php/member')?>"> 
     <div class="card-counter primary">
         <i class="fa fa-code-fork"></i>
         <span class="count-numbers">12</span>
-        <span title="Agent" class="count-name">Agent</span>
+        <span title="Agent" class="count-name">Agents</span>
       </div>
    </a>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
     <a href="<?=base_url('index.php/lead')?>"> 
       <div class="card-counter danger">
         <i class="fa fa-ticket"></i>
         <span class="count-numbers">599</span>
-        <span  title="Lead" class="count-name">Lead</span>
+        <span  title="Lead" class="count-name">Leads</span>
       </div>
   </a>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
     <a href="<?=base_url('index.php/unit')?>"> 
       <div class="card-counter success">
         <i class="fa fa-database"></i>
         <span class="count-numbers">6875</span>
-        <span title="Unit" class="count-name">Unit</span>
+        <span title="Unit" class="count-name">Units</span>
       </div>
     </a>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card-counter info">
-        <i class="fa fa-users"></i>
-        <span class="count-numbers">35</span>
-        <span class="count-name">Users</span>
-      </div>
     </div>
     <div class="container">
     <div class="row mt-5">
