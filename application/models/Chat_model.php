@@ -15,14 +15,12 @@ class Chat_model extends CI_Model {
         $this->db->insert('sq_chat',$chat_data);
     }
     
-    function get_chat_data(){
+    function get_chat_data($agent_id){
         $this->db->select("sm.name as agent_name,sa.username as admin_name,sc.message,sc.type,sc.date_time")
             ->from("sq_chat as sc")
             ->join('sq_admin as sa', 'sc.admin_id = sa.id', 'inner')
-            ->join('sq_members as sm', 'sc.agent_id = sm.id', 'inner');
-            ->where('agent_id',$member_id)
-            // ->or_where('assign_to',$member_id)
-            // ->where('active',1);
+            ->join('sq_members as sm', 'sc.agent_id = sm.id', 'inner')
+            ->where('agent_id',$agent_id);
             return $this->db->get()->result_array();
     
     }

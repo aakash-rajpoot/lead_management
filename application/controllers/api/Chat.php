@@ -6,7 +6,7 @@ class Chat extends REST_Controller {
     public function __construct() {
         parent::__construct();
 
-        $this->load->model(array('api_model/chat_model'));
+        $this->load->model(array('chat_model'));
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('form_validation','session'));
     }
@@ -27,7 +27,7 @@ class Chat extends REST_Controller {
             $agent_msg = $this->input->post('message');
             $this->form_validation->set_rules('message', 'Message','required');
             if($this->form_validation->run()){
-                $chat = $this->chat_model->agent_chat_upload($agent_msg,$userData);
+                $chat = $this->chat_model->add_chat($agent_msg,$userData);
                 
             }
         }

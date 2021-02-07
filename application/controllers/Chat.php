@@ -14,7 +14,7 @@ class Chat extends CI_Controller {
     public function index($agent_id){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-        $chat['data'] = $this->chat_model->get_chat_data();
+        $chat['data'] = $this->chat_model->get_chat_data($agent_id);
 
         $this->form_validation->set_rules('message', 'Message','required');
 
