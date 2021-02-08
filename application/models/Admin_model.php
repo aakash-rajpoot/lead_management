@@ -57,6 +57,13 @@ class Admin_model extends CI_Model {
         return $this->db->update('sq_admin',$data);
     }
 
+    function fetch_all_counter(){
+        $counter=[];
+        $counter['members']=$this->db->get_where("sq_members",['active'=>'1'])->num_rows();
+        $counter['leads']=$this->db->get_where("sq_lead",['active'=>'1'])->num_rows();
+        $counter['units']=$this->db->get_where("sq_lead_unit",['active'=>'1'])->num_rows();
+        return $counter;
+    }
 
 
 

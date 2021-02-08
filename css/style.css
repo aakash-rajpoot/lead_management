@@ -1044,10 +1044,10 @@ background-color: #1e3e6f;
   }
   /* line 26, ../sass/pizza.scss */
   
-  ul[data-pie-id] {
+    ul[data-pie-id] {
       list-style: none;
       padding: 10px;
-  }
+    }
   
   [data-pie-id='my-cool-chart'] li:nth-child(0) {
       color: #d84200;
