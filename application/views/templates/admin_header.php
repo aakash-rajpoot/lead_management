@@ -50,8 +50,7 @@
                 </div>
                 <div class="header-icons-group">
                     <div class="c-header-icon has-dropdown">
-                    <a href="<?=base_url('index.php/chat');?>">
-                    <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i> </a>
+                    <span class=" c-badge--header-icon animated shake"></span><i class="fa fa-bell" title="Notification"></i>
                     <div class="c-dropdown c-dropdown--notifications">
                         <div class="c-dropdown__header"></div>
                         <div class="c-dropdown__content"></div>

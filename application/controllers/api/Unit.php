@@ -7,7 +7,7 @@ class Unit extends REST_Controller {
         parent::__construct();
 
         $this->load->model('api_model/unit_api_model');
-		$this->load->helper(array('form','url','html'));
+		$this->load->helper(array('form','url','html','jwt_helper'));
 		$this->load->library(array('form_validation','session'));
     }
 

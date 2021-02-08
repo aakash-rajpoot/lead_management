@@ -7,7 +7,7 @@ class Lead extends REST_Controller {
         parent::__construct();
 
         $this->load->model(array('api_model/lead_api_model','api_model/agent_api_model'));
-		$this->load->helper(array('form','url','html'));
+		$this->load->helper(array('form','url','html','jwt_helper'));
 		$this->load->library(array('form_validation','session'));
     }
 
@@ -42,8 +42,10 @@ class Lead extends REST_Controller {
     }
 
     public function add_lead(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $this->form_validation->set_rules('name', 'Lead name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
             $this->form_validation->set_rules('email', 'Email', 'valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
             $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
@@ -63,24 +65,11 @@ class Lead extends REST_Controller {
         }
     }
 
-    public function verify_token() {
-        $headers = getallheaders();
-        if (isset($headers['Authorization']) && !empty($headers['Authorization'])) {
-            if (preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
-                $token = $matches[1];
-            }
-            $userData = $this->agent_api_model->get_auth_token($token);
-            if(!empty($userData)){
-                return $userData;
-            }else{
-                $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
-            }
-        }
-    }
-
     public function available_units(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $units = $this->lead_api_model->available_units_detail();
             if($units){
                 $this->response(['status'=>true,'message'=>'All Available Units.','available_units'=>$units], REST_Controller::HTTP_OK);
@@ -91,8 +80,10 @@ class Lead extends REST_Controller {
     }
 
     function all_leads(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $leads = $this->lead_api_model->all_agent_leads($userData);
             if($leads){
                 $this->response(['status'=>true,'message'=>'All Leads.','all leads'=>$leads], REST_Controller::HTTP_OK);
@@ -103,8 +94,10 @@ class Lead extends REST_Controller {
     }
 
     function all_status(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $status = $this->lead_api_model->get_all_status();
             if($status){
                 $this->response(['status'=>true,'message'=>'All status.','all status'=>$status], REST_Controller::HTTP_OK);
@@ -115,8 +108,10 @@ class Lead extends REST_Controller {
     }
 
     public function lead_status(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $id = $this->input->post('id');
             $status = $this->input->post('status');
             $remark = $this->input->post('status_remark');
@@ -132,8 +127,10 @@ class Lead extends REST_Controller {
     }
 
     public function dashboard_status(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $pending = $incomplete = $complete = 0;
             $data = $this->lead_api_model->get_status_count();
             if($data){
