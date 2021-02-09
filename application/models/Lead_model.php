@@ -1,6 +1,7 @@
 <?php
 class Lead_model extends CI_Model {
 
+    protected $table = 'sq_lead';
     public function __construct() {
         $this->load->database();
     }
@@ -16,10 +17,21 @@ class Lead_model extends CI_Model {
             'remark' => $this->input->post('remark'),
             'reference' => $this->input->post('reference'),
         );
-        
-        $lead['available_unit'] = implode( ", ", $this->input->post('available_unit')); 
-
-        $this->db->insert('sq_lead',$lead);
+        $units = $this->input->post('available_unit');
+        $lead['available_unit'] = implode( ",",$units); 
+        $insert_status = $this->db->insert('sq_lead',$lead);
+        $insert_id = $this->db->insert_id();
+        $unit_data = array();
+        if(!empty($units) && !empty($insert_id)) {
+            foreach ($units as $key => $value) {
+                $unit_data[] = [
+                    'unit_id'=>$value,
+                    'lead_id'=>$insert_id
+                ];
+            }
+            $this->db->insert_batch('sq_lead_unit', $unit_data);   
+        }
+        return $insert_status;
     }
 
     function fetch_total_lead(){
@@ -47,9 +59,22 @@ class Lead_model extends CI_Model {
             'remark' => $this->input->post('remark'),
             'reference' => $this->input->post('reference'),
         );
-        $list = $this->input->post('available_unit');
-        $lead['available_unit'] = implode( ", ", $list ); 
-    
+        $units = $this->input->post('available_unit');
+        $lead['available_unit'] = implode( ",",$units); 
+        $this->db->where('lead_id',$id);
+        $this->db->delete('sq_lead_unit');  
+
+        $unit_data = array();
+        if(!empty($units)) {
+            foreach ($units as $key => $value) {
+                $unit_data[] = [
+                    'unit_id'=>$value,
+                    'lead_id'=>$id
+                ];
+            }
+            $this->db->insert_batch('sq_lead_unit', $unit_data);   
+        }
+        
         $this->db->set($lead);
         $this->db->where('id', $id);
         return $this->db->update('sq_lead',$lead);
@@ -97,6 +122,49 @@ class Lead_model extends CI_Model {
         $this->db->set('assign_date',' ');
         $this->db->where('id', $id);
         return $this->db->update('sq_lead');
+    }
+
+    public function get_count() {
+        return $this->db->where('active','1')->count_all($this->table);
+    }
+
+    public function get_leads($limit, $start) {
+        
+        $name = $this->input->get('name', TRUE); 
+        $email = $this->input->get('email', TRUE); 
+        $phone = $this->input->get('phone', TRUE); 
+        $property_address = $this->input->get('property_address', TRUE); 
+        $client_address = $this->input->get('client_address', TRUE); 
+        $available_unit = $this->input->get('available_unit', TRUE); 
+        $where = "active = '1' ";
+        if(!empty($name)) {
+            $where.= " AND name like '%$name%'";
+        }
+        if(!empty($email)) {
+            $where.= " AND email like '%$email%'";
+        }
+        if(!empty($phone)) {
+            $where.= " AND phone like '%$phone%'";
+        }
+        if(!empty($property_address)) {
+            $where.= " AND property_address like '%$property_address%'";
+        }
+        if(!empty($client_address)) {
+            $where.= " AND client_address like '%$client_address%'";
+        }
+        if(!empty($available_unit)) {
+            $where.= " AND u.unit_id='$available_unit'";
+        }
+
+        $query = $this->db->limit($limit, $start)
+        ->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,status,status_name,color_code,lead_date")
+        ->from($this->table)
+        ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
+        ->join('sq_lead_unit as u', 'sq_lead.id = u.lead_id', 'left')
+        ->where($where)
+        ->get();
+
+        return $query->result();
     }
 
 
