@@ -88,6 +88,32 @@ class Agent_api_model extends CI_Model {
         );
         return $this->db->update('sq_members',$data, array('email'=>$userData['email'],'active'=>'1'));
     }
+
+    public function verify_token() {
+
+        $headers = getallheaders();
+        if (isset($headers['Authorization']) && !empty($headers['Authorization'])) {
+            if (preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
+                $token = $matches[1];
+            }
+            $userData = $this->get_auth_token($token);
+            if(!empty($userData)){
+                return $userData;
+            }else{
+                return false;
+            }
+        }
+    }
+
+    public function generate_auth_token($data) {
+        $auth_key = AUTH_KEY;
+        $token['id'] = $data['id'];
+        $token['email'] = $data['email'];
+        $date = new DateTime();
+        $token['iat'] = $date->getTimestamp();
+        $token['exp'] = $date->getTimestamp() + 60*60*5; 
+        return JWT::encode($token,$auth_key); 
+    }
     
 
 }

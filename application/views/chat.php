@@ -9,7 +9,30 @@
                     <div class="panel-body" id="messagesBody">
                         <?php if($data) {
                             foreach($data as $value){ ?>
-                            
+                                        <?php
+                                        $date_expire = $value['date_time'];    
+                                        $date = new DateTime($date_expire);
+                                        $now = new DateTime();
+                                        $date_string = "";
+                                        $days = $date->diff($now)->format("%d");
+                                        $hours = $date->diff($now)->format("%H");
+                                        $minutes = $date->diff($now)->format("%i");
+                                        $seconds = $date->diff($now)->format("%s");
+                                        if($days>0) {
+                                            $date_string = $days >= 1 ? "{$days}days ":'{$days}day ';
+                                        }
+                                        elseif($hours > 0 && $days < 1) {
+                                            $date_string = $hours > 1 ? "{$hours}hours ":'{$hours}hour ';
+                                        }
+                                        elseif($minutes > 0 && $hours < 1) {
+                                            $date_string = "{$minutes}min ";
+                                        }
+                                        elseif($seconds>0 && $minutes < 1) {
+                                            $date_string = "{$seconds}sec ";
+                                        } else {
+                                            $date_string = "0sec";
+                                        }
+                                        ?>
                         <ul class="chat">
                             <?php if($value['type'] == 1){ ?>
                                 <li class="left clearfix">
@@ -20,7 +43,7 @@
                                         <div class="header">
                                             <strong class="primary-font"><?=ucwords($value['agent_name']);?></strong> <small class="pull-right text-muted">
 
-                                            <span class="glyphicon glyphicon-time"></span><?=$value['date_time'];?></small>
+                                            <span class="glyphicon glyphicon-time"></span><?=$date_string?> ago</small>
                                         </div>
                                         <p><?=$value['message'];?></p>
                                     </div>
@@ -31,7 +54,7 @@
                                 </span>
                                     <div class="chat-body clearfix">
                                         <div class="header">
-                                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span><?=$date_string?> ago</small>
                                             <strong class="pull-right primary-font"><?=$value['admin_name'];?></strong>
                                         </div>
                                         <p> <?=$value['message'];?></p>

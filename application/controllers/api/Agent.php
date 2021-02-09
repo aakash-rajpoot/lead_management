@@ -7,7 +7,7 @@ class Agent extends REST_Controller {
         parent::__construct();
 
         $this->load->model('api_model/agent_api_model');
-		$this->load->helper(array('form','url','html','string'));
+		$this->load->helper(array('form','url','html','string','jwt_helper'));
         $this->load->library(array('form_validation','session','email'));
     }
 
@@ -70,7 +70,7 @@ class Agent extends REST_Controller {
                     $this->response(['status'=>true,'message'=>'OTP has been sent to your email id.','auth_token'=>$token], REST_Controller::HTTP_OK);
                 }
             }else{
-                $this->response(['status'=>false,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_OK);
+                $this->response(['status'=>false,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_BAD_REQUEST);
             }
         } else {
             $this->response(['status'=>false,'message'=>'Please enter valid email.'], REST_Controller::HTTP_BAD_REQUEST);
@@ -93,8 +93,10 @@ class Agent extends REST_Controller {
 
     function verify_otp(){
         $otp = $this->input->post('otp');
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             if(!empty($otp)){
                 $data = $this->agent_api_model->verify_sent_otp($otp,$userData);
                 if(!empty($data)){
@@ -114,8 +116,10 @@ class Agent extends REST_Controller {
         $this->form_validation->set_error_delimiters('', '');
         $this->form_validation->set_message('required', '* Please enter valid %s');
 
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             if($this->form_validation->run()){
                 $pwd = md5($this->input->post('password'));
                 $status = $this->agent_api_model->create_agent_pass($pwd,$userData);
@@ -131,8 +135,10 @@ class Agent extends REST_Controller {
     }
 
     function change_password(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $oldpass = md5($this->input->post('oldpass'));
             $this->form_validation->set_rules('oldpass', 'Old Password', 'required');
             $this->form_validation->set_rules('newpass', 'New Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]|min_length[8]');
@@ -148,39 +154,14 @@ class Agent extends REST_Controller {
                     $status = $this->agent_api_model->change_pass($userData,$new_pass);
                     if($status > 0){
                         $this->response(['status'=>true,'message'=>'Password has successfully changed.'], REST_Controller::HTTP_OK);
-                    }else{
+                    } else {
                         $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
                     }
-                }else{
+                } else {
                     $this->response(['status'=>false,'message'=>'Old password doesn\'t match.'], REST_Controller::HTTP_BAD_REQUEST);
                 }
-            }else{
+            } else {
                 $this->response(['status'=>false,'message'=>'New Password and Confirm password doesn\'t match. '], REST_Controller::HTTP_BAD_REQUEST);
-            }
-        }
-    }
-
-    public function generate_auth_token($data) {
-        $auth_key = AUTH_KEY;
-        $token['id'] = $data['id'];
-        $token['email'] = $data['email'];
-        $date = new DateTime();
-        $token['iat'] = $date->getTimestamp();
-        $token['exp'] = $date->getTimestamp() + 60*60*5; 
-        return JWT::encode($token,$auth_key); 
-    }
-
-    public function verify_token() {
-        $headers = getallheaders();
-        if (isset($headers['Authorization']) && !empty($headers['Authorization'])) {
-            if (preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
-                $token = $matches[1];
-            }
-            $userData = $this->agent_api_model->get_auth_token($token);
-            if(!empty($userData)){
-                return $userData;
-            }else{
-                $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }
@@ -191,7 +172,7 @@ class Agent extends REST_Controller {
 
         $data = $this->agent_api_model->check_agent_login_details($email,$password);
         if(!empty($data)){
-            $token = $this->generate_auth_token($data);
+            $token = $this->agent_api_model->generate_auth_token($data);
             if($token){
                 $status = $this->agent_api_model->save_login_auth_token($email,$token);
                 if($status > 0){
@@ -207,9 +188,7 @@ class Agent extends REST_Controller {
 
     public function forgotpassword() {
         $email = $this->input->post('email');
-
         $data = $this->agent_api_model->agent_mobile_post($email);
-
         if (!empty($data)) {
             $reset_otp = rand(000000,999999);
             $this->agent_api_model->save_reset_otp($reset_otp,$data);
@@ -271,22 +250,24 @@ class Agent extends REST_Controller {
     }
 
     public function profile(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $data = $this->agent_api_model->fetch_profile_details($userData);
             if(!empty($data)){
                 $this->response(['status'=>true,'message'=>'Profile details are here.','Profile details'=>$data], REST_Controller::HTTP_OK);
             }else{
                 $this->response(['status'=>false,'message'=>'New Password and Confirm password doesn\'t match. '], REST_Controller::HTTP_BAD_REQUEST);
             }
-        }else{
-            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
 
-    function update_profile(){
-        $userData = $this->verify_token();
-        if(!empty($userData)) {
+    function update_profile() {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
             $this->form_validation->set_rules('name', 'Full name','required|min_length[2]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
             $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
             $this->form_validation->set_rules('permanent', 'Permanent Address','required');
@@ -302,6 +283,5 @@ class Agent extends REST_Controller {
     }
     
 
-    
-    
+
 }

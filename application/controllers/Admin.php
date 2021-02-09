@@ -47,7 +47,8 @@ class Admin extends CI_Controller {
         if(isset($_SESSION)){
             $data = $this->setting_model->fetch_setting_details();
             $this->load->view('templates/admin_header',$data);
-            $this->load->view('admin/dashboard');
+            $list = $this->admin_model->fetch_all_counter();
+            $this->load->view('admin/dashboard',$list);
             $this->load->view('templates/admin_footer');
         }else{
             redirect('admin');
@@ -81,7 +82,6 @@ class Admin extends CI_Controller {
 	
 	function oldPassCheck($old_pass) {
         $password = $this->admin_model->check_old_password();
-     
 		if($password['password'] == md5($old_pass)){
 			return true;
 		}

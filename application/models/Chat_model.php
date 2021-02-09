@@ -7,12 +7,13 @@ class Chat_model extends CI_Model {
 
     function add_chat($admin_id,$agent_id){
         $chat_data = array( 
-            'date_time' => date("Y-m-d h:i:sa"),
+            'date_time' => date("Y-m-d H:i:s"),
             'message' => $this->input->post('message'),
+            'type' => $this->input->post('type'),
             'admin_id' => $admin_id,
             'agent_id' => $agent_id
         );
-        $this->db->insert('sq_chat',$chat_data);
+        return $this->db->insert('sq_chat',$chat_data);
     }
     
     function get_chat_data($agent_id){
@@ -22,7 +23,6 @@ class Chat_model extends CI_Model {
             ->join('sq_members as sm', 'sc.agent_id = sm.id', 'inner')
             ->where('agent_id',$agent_id);
             return $this->db->get()->result_array();
-    
     }
 
 

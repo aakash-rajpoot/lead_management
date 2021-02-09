@@ -20,6 +20,7 @@ class Chat extends CI_Controller {
 
         if($this->form_validation->run()){
             $admin_id = $_SESSION['id'];
+            $_POST['type'] = 0;
             $this->chat_model->add_chat($admin_id,$agent_id);
             redirect('chat/index/'.$agent_id);
         }
