@@ -738,7 +738,7 @@ background-color: #1e3e6f;
   /* 16-12-2020*/
   
   .content-wrapper.content-wrapper--with-bg {
-      margin-top: 73px;
+      margin-top: 50px;
       padding-left: 180px;
   }
   /* footer */
@@ -1081,5 +1081,22 @@ background-color: #1e3e6f;
   
   [data-pie-id='my-cool-chart'] li:nth-child(6) {
       color: #ffc8af;
+  }
+
+  .edit-icon {
+      font-size: 20px!important;
+      text-align: center!important;
+  }
+  .delete{
+      color:red!important;
+  }
+  .sorting {
+      text-align: center!important;
+  }
+  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    vertical-align: middle!important;
+  }
+    td {
+        text-align: center;
   }
   /* chart end */

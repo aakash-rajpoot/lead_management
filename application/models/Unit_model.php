@@ -13,19 +13,19 @@ class Unit_model extends CI_Model {
             'unit_range' => $this->input->post('unit_range'),
             'unit_remark' => $this->input->post('unit_remark')
         );
-        $this->db->insert('sq_lead_unit',$unit);
+        $this->db->insert('sq_unit',$unit);
     }
 
     function fetch_unit_data(){
         $this->db->select("*");
-        $this->db->from('sq_lead_unit');
+        $this->db->from('sq_unit');
         $this->db->where('active',1);
         return $this->db->get();
     }
 
     function get_unit_data($id){
         $this->db->select("*");
-        $this->db->from('sq_lead_unit');
+        $this->db->from('sq_unit');
         $this->db->where('id',$id);
         $this->db->where('active',1);
         $query = $this->db->get();
@@ -42,13 +42,13 @@ class Unit_model extends CI_Model {
         );
         $this->db->set($unit);
         $this->db->where('id', $id);
-        return $this->db->update('sq_lead_unit',$unit);
+        return $this->db->update('sq_unit',$unit);
     }
 
     function delete_unit_data($id){
         $this->db->set('active',0);
         $this->db->where('id', $id);
-        return $this->db->update('sq_lead_unit');
+        return $this->db->update('sq_unit');
     }
 
 }

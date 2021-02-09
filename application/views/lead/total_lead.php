@@ -1,21 +1,3 @@
-<style>
-    .edit-icon {
-      font-size: 20px!important;
-      text-align: center!important;
-  }
-  .delete{
-      color:red!important;
-  }
-  .sorting {
-      text-align: center!important;
-  }
-  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    vertical-align: middle!important;
-   }
-    td {
-        text-align: center;
-    }
-</style>
 <div class="mt-5 ex1" style="margin-top:110px;">
     <div class="row">
      <div class="col-lg-12">

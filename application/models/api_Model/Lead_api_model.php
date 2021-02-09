@@ -24,7 +24,7 @@ class Lead_api_model extends CI_Model {
     }
 
     public function available_units_detail(){
-        return $this->db->get_where("sq_lead_unit",['active'=>'1'])->result();
+        return $this->db->get_where("sq_unit",['active'=>'1'])->result();
     }
 
     public function all_agent_leads($userData){

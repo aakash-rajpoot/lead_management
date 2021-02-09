@@ -85,10 +85,10 @@ INSERT INTO `sq_lead` (`id`, `name`, `assign_to`, `assign_date`, `email`, `phone
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sq_lead_unit`
+-- Table structure for table `sq_unit`
 --
 
-CREATE TABLE `sq_lead_unit` (
+CREATE TABLE `sq_unit` (
   `id` int(11) NOT NULL,
   `unit_type` varchar(255) NOT NULL,
   `unit_size` varchar(300) NOT NULL,
@@ -99,10 +99,10 @@ CREATE TABLE `sq_lead_unit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sq_lead_unit`
+-- Dumping data for table `sq_unit`
 --
 
-INSERT INTO `sq_lead_unit` (`id`, `unit_type`, `unit_size`, `size_measure`, `unit_range`, `unit_remark`, `status`) VALUES
+INSERT INTO `sq_unit` (`id`, `unit_type`, `unit_size`, `size_measure`, `unit_range`, `unit_remark`, `status`) VALUES
 (1, '1BHK', '1234', 'sq.ft', '0', '', 1),
 (2, '1BHK', '400', 'sq.yard', '10000', '', 1),
 (3, '1BHK', '450', 'sq.ft', '(6000-10000)', 'best', 1),
@@ -204,9 +204,9 @@ ALTER TABLE `sq_lead`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sq_lead_unit`
+-- Indexes for table `sq_unit`
 --
-ALTER TABLE `sq_lead_unit`
+ALTER TABLE `sq_unit`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -238,9 +238,9 @@ ALTER TABLE `sq_lead`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `sq_lead_unit`
+-- AUTO_INCREMENT for table `sq_unit`
 --
-ALTER TABLE `sq_lead_unit`
+ALTER TABLE `sq_unit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
