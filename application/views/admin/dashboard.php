@@ -31,11 +31,11 @@
             </a>
           </div>
           
-          <div class="container">
+          <!-- <div class="container">
             <div class="row">
               <div id="piechart3d" style="width:80rem;height:80rem;"></div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
