@@ -29,7 +29,31 @@
 <div class="row">
  <div class="col-lg-12">
     <div id="table1" class="ex2">
-    <div class="content-wrapper content-wrapper--with-bg">    
+    <div class="content-wrapper content-wrapper--with-bg">  
+    <?=form_open(null, array('method'=>'get')); ?>
+                <div class="row inventory-filter">
+                    <div class="col-md-3 mb-3">
+                        <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control" value="<?=isset($_GET['email']) ? $_GET['email'] :''?>" name="email" id="email" placeholder="Email">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control" value="<?=isset($_GET['phone']) ? $_GET['phone'] :''?>" name="phone" id="phone" placeholder="Phone">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control" value="<?=isset($_GET['property_address']) ? $_GET['property_address'] :''?>" name="property_address" id="property_address" placeholder="Joining Date">
+                    </div>
+                    <!-- <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control" name="client_address" id="client_address" placeholder="Client Address">
+                    </div> -->
+                    <div class="col-md-3 mb-3">
+                        <input type="submit" class="btn btn-success" name="inventory_filter" value="Submit">
+                        <a href="<?=base_url().'member/total_members'?>" class="btn btn-default">Reset</a>
+                    </div>
+                </div>
+                <?=form_close();?>
+  
                 <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
@@ -97,21 +121,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#dt-all-checkbox').dataTable({
-
-            columnDefs: [{
-                orderable: false,
-                className: 'select-checkbox select-checkbox-all',
-                targets: 0
-            }],
-            select: {
-                style: 'multi',
-                selector: 'td:first-child'
-            }
-        });
-    });
-
     function softDelete(memberId) {
         if(confirm('Are you sure to remove this record ?')) {
             window.location.replace('<?=base_url();?>index.php/member/delete_member_soft_data/'+memberId);
@@ -123,13 +132,14 @@
             window.location.replace('<?=base_url();?>index.php/member/resign_agent/'+memberId);
         }
     }
+
     $('#iconified').on('keyup', function() {
-    var input = $(this);
-    if(input.val().length === 0) {
-        input.addClass('empty');
-    } else {
-        input.removeClass('empty');
-    }
-});
+        var input = $(this);
+        if(input.val().length === 0) {
+            input.addClass('empty');
+        } else {
+            input.removeClass('empty');
+        }
+    });
 </script>
 

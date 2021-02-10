@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
     public function __construct() {
         parent::__construct();
         
-        $this->load->model(array('admin_model','setting_model'));
+        $this->load->model(array('admin_model','setting_model','lead_model'));
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('form_validation','session'));
     }
@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
         if(isset($_SESSION)){
             $data = $this->setting_model->fetch_setting_details();
             $this->load->view('templates/admin_header',$data);
-            $list = $this->admin_model->fetch_all_counter();
+            $list = $this->lead_model->fetch_all_counter();
             $this->load->view('admin/dashboard',$list);
             $this->load->view('templates/admin_footer');
         }else{

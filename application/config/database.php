@@ -154,9 +154,9 @@ $db['default'] = array(
 
 	'hostname' => '127.0.0.1',
 
-	'username' => 'dealer_finance',
+	'username' => 'root',
 
-	'password' => 'dealer_finance@321',
+	'password' => '',
 
 	'database' => 'square',
 
