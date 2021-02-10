@@ -81,6 +81,15 @@ body {
                             <?php } ?>
                         </select>
                     </div>
+                    <div class="col-md-3 mb-3">
+                        <select  class="form-control" name="status">
+                            <option value="">Select Status</option>
+                            <?php foreach($statuses as $status) {  ?>
+                                <option style="color:<?=$status['color_code']?>;" value="<?=$status['id']?>" class="form-control"><?=$status['status_name']?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
                     
                     <div class="col-md-3 mb-3">
                         <input type="submit" class="btn btn-success" name="inventory_filter" value="Submit">
@@ -105,23 +114,3 @@ body {
     </div>
     </div>
 </div>
-
-
-<script>
-    $(document).ready(function() {
-       
-    });
-
-    function softDelete(leadId) {
-        if(confirm('Are you sure to remove this record ?')) {
-            window.location.replace('<?php echo base_url();?>index.php/lead/soft_delete_lead_data/'+leadId);
-        }
-    }
-
-    function deAssignLead(leadId) {
-        if(confirm('Are you sure to delete your assigned lead from records ?')) {
-            window.location.replace('<?php echo base_url();?>index.php/lead/deassign_lead/'+leadId);
-        }
-    }
-
-</script>
