@@ -60,16 +60,16 @@ body {
                 <?=form_open(null, array('method'=>'get')); ?>
                 <div class="row inventory-filter">
                     <div class="col-md-3 mb-3">
-                        <input type="tel" class="form-control" name="name" id="name" placeholder="Name">
+                        <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
                     </div>
                     <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                        <input type="text" class="form-control" value="<?=isset($_GET['email']) ? $_GET['email'] :''?>" name="email" id="email" placeholder="Email">
                     </div>
                     <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone">
+                        <input type="text" class="form-control" value="<?=isset($_GET['phone']) ? $_GET['phone'] :''?>" name="phone" id="phone" placeholder="Phone">
                     </div>
                     <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" name="property_address" id="property_address" placeholder="Property Address">
+                        <input type="text" class="form-control" value="<?=isset($_GET['property_address']) ? $_GET['property_address'] :''?>" name="property_address" id="property_address" placeholder="Property Address">
                     </div>
                     <div class="col-md-3 mb-3">
                         <input type="text" class="form-control" name="client_address" id="client_address" placeholder="Client Address">
@@ -77,7 +77,7 @@ body {
                     <div class="col-md-3 mb-3">
                         <select  class="form-control" name="available_unit">
                             <?php foreach($units as $unit ) { ?>
-                                <option value="<?=$unit['id']?>" class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].' '.$unit['size_measure'].')'; ?></option>
+                                <option <?=isset($_GET['available_unit']) && $_GET['available_unit'] ==  $unit['id']? 'selected' :''?>  value="<?=$unit['id']?>" class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].' '.$unit['size_measure'].')'; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -85,17 +85,14 @@ body {
                         <select  class="form-control" name="status">
                             <option value="">Select Status</option>
                             <?php foreach($statuses as $status) {  ?>
-                                <option style="color:<?=$status['color_code']?>;" value="<?=$status['id']?>" class="form-control"><?=$status['status_name']?></option>
+                                <option <?=isset($_GET['status']) && $_GET['status'] ==  $status['id']? 'selected' :''?> style="color:<?=$status['color_code']?>;" value="<?=$status['id']?>" class="form-control"><?=$status['status_name']?></option>
                             <?php } ?>
                         </select>
                     </div>
-
-                    
                     <div class="col-md-3 mb-3">
                         <input type="submit" class="btn btn-success" name="inventory_filter" value="Submit">
                         <a href="<?=base_url().'lead/inventory'?>" class="btn btn-default">Reset</a>
                     </div>
-                    
                 </div>
                 <?=form_close();?>
                 <div class="row">
