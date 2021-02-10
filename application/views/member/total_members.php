@@ -32,21 +32,18 @@
     <div class="content-wrapper content-wrapper--with-bg">  
     <?=form_open(null, array('method'=>'get')); ?>
                 <div class="row inventory-filter">
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-2 mb-3">
                         <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-2 mb-3">
                         <input type="text" class="form-control" value="<?=isset($_GET['email']) ? $_GET['email'] :''?>" name="email" id="email" placeholder="Email">
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-2 mb-3">
                         <input type="text" class="form-control" value="<?=isset($_GET['phone']) ? $_GET['phone'] :''?>" name="phone" id="phone" placeholder="Phone">
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" value="<?=isset($_GET['property_address']) ? $_GET['property_address'] :''?>" name="property_address" id="property_address" placeholder="Joining Date">
+                    <div class="col-md-2 mb-3">
+                        <input type="text" class="form-control" value="<?=isset($_GET['joining_date']) ? $_GET['joining_date'] :''?>" name="joining_date" id="joining_date" placeholder="Joining Date">
                     </div>
-                    <!-- <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" name="client_address" id="client_address" placeholder="Client Address">
-                    </div> -->
                     <div class="col-md-3 mb-3">
                         <input type="submit" class="btn btn-success" name="inventory_filter" value="Submit">
                         <a href="<?=base_url().'member/total_members'?>" class="btn btn-default">Reset</a>
