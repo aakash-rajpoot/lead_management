@@ -125,6 +125,7 @@ class Lead extends CI_Controller {
         $data["links"] = $this->pagination->create_links();
         $data['inventories'] = $this->lead_model->get_leads($config["per_page"], $page);
         $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
+        $data['statuses'] = $this->lead_model->get_status();
         $this->load->view('lead/inventory',$data);
         $this->load->view('templates/admin_footer');
     }

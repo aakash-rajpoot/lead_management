@@ -136,6 +136,7 @@ class Lead_model extends CI_Model {
         $property_address = $this->input->get('property_address', TRUE); 
         $client_address = $this->input->get('client_address', TRUE); 
         $available_unit = $this->input->get('available_unit', TRUE); 
+        $status = $this->input->get('status', TRUE); 
         $where = "active = '1' ";
         if(!empty($name)) {
             $where.= " AND name like '%$name%'";
@@ -154,6 +155,9 @@ class Lead_model extends CI_Model {
         }
         if(!empty($available_unit)) {
             $where.= " AND u.unit_id='$available_unit'";
+        }
+        if(!empty($status)) {
+            $where.= " AND status='$status'";
         }
 
         $query = $this->db->limit($limit, $start)
@@ -184,5 +188,13 @@ class Lead_model extends CI_Model {
         $counter['units']=$this->db->get_where("sq_unit")->num_rows();
         return $counter;
     }
+    public function get_status() {
+        
+        $query = $this->db->from('sq_status')->get();
+
+        return $query->result_array();
+    }
+
+
 
 }
