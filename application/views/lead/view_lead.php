@@ -27,9 +27,17 @@
                         <label class="label-input" for="client_address">Client Address: </label> <?=$data['client_address'];?>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="label-input">Available units: </label> <?=$data['available_unit'];?>
+                        <label class="label-input">Available units: </label> 
+                        <?php 
+                        $i = 1;
+                        foreach ($units as $key => $unit) {
+                            echo $unit['unit_type']." ".$unit['unit_type']. " ".$unit['size_measure'];
+                            if($i < count($units)) echo " , ";
+                            $i++;
+                        } ?>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="label-input" for="remark">Color Code: </label> <?=$data['color_code'];?>

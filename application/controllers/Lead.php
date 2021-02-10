@@ -134,6 +134,10 @@ class Lead extends CI_Controller {
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $lead['data'] = $this->lead_model->view_lead_details($id);
+        if(!empty($lead['data'])) {
+            $units = explode(",",$lead['data']['available_unit']);
+            $lead['units'] = $this->unit_model->fetch_unit_data($units)->result_array();    
+        }
         $this->load->view('lead/view_lead',$lead);
         $this->load->view('templates/admin_footer');
     }

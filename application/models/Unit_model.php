@@ -16,7 +16,14 @@ class Unit_model extends CI_Model {
         $this->db->insert('sq_unit',$unit);
     }
 
-    function fetch_unit_data(){
+    function fetch_unit_data($units = ''){
+        if(!empty($units)) {
+            if(is_array($units)) {
+                $this->db->where_in('id',$units);
+            } else {
+                $this->db->where('id',$units);
+            }
+        }
         $this->db->select("*");
         $this->db->from('sq_unit');
         $this->db->where('active',1);
