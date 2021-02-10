@@ -10,8 +10,6 @@
   padding: 10px;
   height: 200px; /* Should be removed. Only for demonstration */
 }
-
-
 </style>
 <style>
 * {
@@ -76,6 +74,7 @@ body {
                     </div>
                     <div class="col-md-3 mb-3">
                         <select  class="form-control" name="available_unit">
+                            <option value="">Select Unit</option>
                             <?php foreach($units as $unit ) { ?>
                                 <option value="<?=$unit['id']?>" class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].' '.$unit['size_measure'].')'; ?></option>
                             <?php } ?>
@@ -92,14 +91,14 @@ body {
                 <div class="row">
                   <?php foreach ($inventories as $inventory): ?>
                     <div class="column" onclick="openTab('b1');" style="background:<?=$inventory->color_code?>;">
-                        <a href="<?=$inventory->id?>">
+                        <a href="<?=base_url('index.php/lead/view_lead/').$inventory->id?>">
                             <p class="title"><?=$inventory->name?></p>
                             <p class="lead-des"><?=$inventory->property_address?></p>
                             <p class="lead-des"><?=$inventory->available_unit?></p>
                         </a>
                     </div>
                 <?php endforeach; ?>
-                <p><?php echo $links; ?></p>
+                <p><?=$links; ?></p>
             </div>
         </div>
     </div>

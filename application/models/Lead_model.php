@@ -167,5 +167,22 @@ class Lead_model extends CI_Model {
         return $query->result();
     }
 
+    function view_lead_details($id){
+        $query = $this->db->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,status,status_name,color_code,lead_date,reference,remark")
+        ->from($this->table)
+        ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
+        ->join('sq_lead_unit as u', 'sq_lead.id = u.lead_id', 'left')
+        ->where('sq_lead.id',$id)
+        ->get();
+        return $query->row_array();
+    }
+
+    function fetch_all_counter(){
+        $counter=[];
+        $counter['members']=$this->db->get_where("sq_members",['active'=>'1'])->num_rows();
+        $counter['leads']=$this->db->get_where("sq_lead",['active'=>'1'])->num_rows();
+        $counter['units']=$this->db->get_where("sq_unit")->num_rows();
+        return $counter;
+    }
 
 }

@@ -129,5 +129,13 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    function view_lead($id){
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
+        $lead['data'] = $this->lead_model->view_lead_details($id);
+        $this->load->view('lead/view_lead',$lead);
+        $this->load->view('templates/admin_footer');
+    }
+
 
 }
