@@ -109,6 +109,7 @@
                     <?php } ?>
                     <?php } ?>
                 </table>
+                <p><?=$links; ?></p>
             </div>
         </div>
     </div>
