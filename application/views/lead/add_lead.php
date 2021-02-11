@@ -1,7 +1,7 @@
 <div class="row">
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
-    <div class="wrap-career " style="margin-top:110px;">
+    <div class="wrap-career  top-space-hea">
         <h2 class="font-weight-medium mt-2 mb-5">Add New Lead</h2>
         <?=form_open('lead/add_lead',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
         <?=validation_errors(); ?>

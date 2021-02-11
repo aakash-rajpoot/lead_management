@@ -6,7 +6,7 @@
  
 </style>
 <div class="content-wrapper content-wrapper--with-bg">
-    <div style="margin-top:100px;">
+    <div class="top-space-hea">
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrap-career">

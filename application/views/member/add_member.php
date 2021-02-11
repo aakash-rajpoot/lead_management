@@ -1,12 +1,12 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>   -->
 
 <div class="row">
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
 
-    <div class="wrap-career" style="margin-top:110px;">
+    <div class="wrap-career top-space-hea">
         <h2 class="font-weight-medium mt-2 mb-5">Add New Agent</h2>
         <?=form_open('member/add_member',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
             <?=validation_errors(); ?>     
@@ -23,11 +23,11 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="phone">Phone: <span class="text-danger font-weight-medium">*</span></label>
-                    <input type="number" class="form-control" name="phone" id="phone">
+                    <input type="text" class="form-control" name="phone" id="phone">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="alt_phone">Alternate Phone Number:</label>
-                    <input type="number" data-date-format="dd-mm-yyyy" class="form-control" name="alt_phone" id="alt_phone">
+                    <input type="text" data-date-format="dd-mm-yyyy" class="form-control" name="alt_phone" id="alt_phone">
                 </div>
             </div>
             <div class="row">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="gender">Gender: </label>
-                    <select class="custom-select d-block w-100" name="gender" id="gender">
+                    <select class="custom-select d-block w-100 gender-custom" name="gender" id="gender">
                         <option value=""> Select Gender </option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
