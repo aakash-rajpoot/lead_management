@@ -1,4 +1,4 @@
-<div class="wrap-career " style="margin-top:110px;">
+<div class="wrap-career top-space-hea">
   <div class="content-wrapper content-wrapper--with-bg">
     <div class="row">
       <div class="col-lg-12">

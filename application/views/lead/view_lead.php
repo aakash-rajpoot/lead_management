@@ -1,7 +1,7 @@
 <div class="row">
 <div class="col-lg-12">
     <div class="content-wrapper content-wrapper--with-bg">
-        <div class="wrap-career " style="margin-top:110px;">
+        <div class="wrap-career top-space-hea">
             <h2 class="font-weight-medium mt-2 mb-5">Your Lead</h2>
                 <div class="row">
                     <div class="col-md-6 mb-3">

@@ -50,29 +50,29 @@ body {
     padding-right: 0px;
 }
 </style>
-<div class="mt-5 ex1" style="margin-top:110px;">
+<div class="mt-5 ex1 top-space-hea" >
     <div class="row">
      <div class="col-lg-12">
         <div id="table1" class="ex2">
             <div class="content-wrapper content-wrapper--with-bg">
                 <?=form_open(null, array('method'=>'get')); ?>
                 <div class="row inventory-filter">
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="text" class="form-control" value="<?=isset($_GET['email']) ? $_GET['email'] :''?>" name="email" id="email" placeholder="Email">
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="text" class="form-control" value="<?=isset($_GET['phone']) ? $_GET['phone'] :''?>" name="phone" id="phone" placeholder="Phone">
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="text" class="form-control" value="<?=isset($_GET['property_address']) ? $_GET['property_address'] :''?>" name="property_address" id="property_address" placeholder="Property Address">
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="text" class="form-control" name="client_address" id="client_address" placeholder="Client Address">
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 top-data">
                         <select  class="form-control" name="available_unit">
                             <option value="">Select Unit</option>
                             <?php foreach($units as $unit ) { ?>
@@ -80,7 +80,7 @@ body {
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 top-data">
                         <select  class="form-control" name="status">
                             <option value="">Select Status</option>
                             <?php foreach($statuses as $status) {  ?>
@@ -104,9 +104,10 @@ body {
                         </a>
                     </div>
                 <?php endforeach; ?>
-                <p><?=$links; ?></p>
+                <div class="pagination-inv"><?=$links; ?></div>
             </div>
         </div>
     </div>
     </div>
 </div>
+
