@@ -8,16 +8,29 @@ class Member extends CI_Controller {
         
         $this->load->model(array('member_model','setting_model'));
 		$this->load->helper(array('form','url','html','date'));
-		$this->load->library(array('form_validation','session'));
+		$this->load->library(array('form_validation','session','pagination'));
     }
     
     public function index(){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
+
+        $config = array();
+        $config["base_url"] = base_url().'member/index';
+        $config["total_rows"] = $this->member_model->get_count();
+        $config["per_page"] = 2;
+        $config["uri_segment"] = 2;
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = round($choice);
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $this->pagination->initialize($config);
+        $page = (!isset($_GET['member_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $data["links"] = $this->pagination->create_links();
         $query = $this->member_model->fetch_total_members();
         $all_members = $query->result_array();
-        $total_members['total_member'] = $all_members;
-        $this->load->view('member/total_members',$total_members);
+        $data['total_member'] = $all_members;
+        $this->load->view('member/total_members',$data);
         $this->load->view('templates/admin_footer');
     }
 
@@ -174,6 +187,29 @@ class Member extends CI_Controller {
         $this->load->view('templates/admin_header',$data);
         $data = $this->member_model->fetch_agent_profile_details($id);
         $this->load->view('member/agent_profile',$data);
+        $this->load->view('templates/admin_footer');
+    }
+
+
+    function inventory() {
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
+        $config = array();
+        $config["base_url"] = base_url().'lead/inventory';
+        $config["total_rows"] = $this->lead_model->get_count();
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = round($choice);
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $this->pagination->initialize($config);
+        $page = (!isset($_GET['inventory_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $data["links"] = $this->pagination->create_links();
+        $data['inventories'] = $this->lead_model->get_leads($config["per_page"], $page);
+        $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
+        $data['statuses'] = $this->lead_model->get_status();
+        $this->load->view('lead/inventory',$data);
         $this->load->view('templates/admin_footer');
     }
 

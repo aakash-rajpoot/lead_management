@@ -103,30 +103,7 @@ class Lead extends CI_Controller {
             $this->lead_model->lead_assign_data();
             redirect('lead');
         }
-
         $this->load->view('lead/assign_lead',$names);
-        $this->load->view('templates/admin_footer');
-    }
-
-    function inventory() {
-        $data = $this->setting_model->fetch_setting_details();
-        $this->load->view('templates/admin_header',$data);
-        $config = array();
-        $config["base_url"] = base_url().'lead/inventory';
-        $config["total_rows"] = $this->lead_model->get_count();
-        $config["per_page"] = 20;
-        $config["uri_segment"] = 3;
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = round($choice);
-        $config['next_link'] = 'Next';
-        $config['prev_link'] = 'Prev';
-        $this->pagination->initialize($config);
-        $page = (!isset($_GET['inventory_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
-        $data["links"] = $this->pagination->create_links();
-        $data['inventories'] = $this->lead_model->get_leads($config["per_page"], $page);
-        $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
-        $data['statuses'] = $this->lead_model->get_status();
-        $this->load->view('lead/inventory',$data);
         $this->load->view('templates/admin_footer');
     }
 

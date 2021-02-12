@@ -88,4 +88,8 @@ class Member_model extends CI_Model {
         $this->db->where('id', $id);
         return $this->db->update('sq_members');
     }
+
+    public function get_count() {
+        return $this->db->where('active','1')->count_all('sq_members');
+    }
 }

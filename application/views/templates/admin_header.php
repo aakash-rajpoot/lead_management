@@ -187,7 +187,6 @@
                             </li>
                         </ul>
                     </li>
-
                         <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Settings">
                             <a href="<?=base_url('index.php/setting')?>">
                                 <div class="c-menu__item__inner menusss">
@@ -209,15 +208,6 @@
     $( "#dob" ).datepicker({dateFormat:'dd-mm-yy'});
   });
   </script>
-  <!-- <script>
- $('.site-menu li').removeClass('active');
-                $(this).addClass('active');
-                $(this).children('ul').slideDown();
-
-        });
-    });
-});
-</script> -->
 <script>
 $(document).ready(function() {       
 	$('#checkbox').multiselect({		
