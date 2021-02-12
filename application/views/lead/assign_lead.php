@@ -15,7 +15,7 @@
             <?php } ?>
                 <div class="col-md-8 mb-3">
                     <label class="label-input" for="assign_lead">Lead Assign: </label>
-                    <select class="custom-select d-block w-100" name="assign_lead" id="assign_lead">
+                    <select class="custom-select d-block  form-control" name="assign_lead" id="assign_lead">
                         <option>---Select---</option>
                         <?php if(!empty($leads)){
                             foreach($leads as $lead ) { ?>
@@ -24,8 +24,8 @@
                         <?php } ?>
                     </select>      
                 </div>
-                <div class="d-flex  mt-5 col-md-8 mb-3">
-                    <button class="btn btn-primary button-hor" name="lead_assign" type="submit">Assign</button>
+                <div class="d-flex  mt-5 mb-5 col-md-8 mb-3">
+                    <button class="btn  button-sub button-hor" name="lead_assign" type="submit">Assign</button>
                 </div>
             </div>
         </div>   

@@ -291,7 +291,8 @@
       left: 0;
       top: 0;
       bottom: 0;
-      background: #212529;
+      /* background: #212529; */
+      background: rgba(31, 34, 62, 0.9) none repeat scroll 0 0;
       -webkit-transition: width 0.5s ease-in-out;
       -moz-transition: width 0.5s ease-in-out;
       -ms-transition: width 0.5s ease-in-out;
@@ -1144,6 +1145,7 @@ background-color: #1e3e6f;
       background-color: #ddd;
       display: flex;
       margin-top: 20px;
+      line-height: 3.1;
   }
   
   .pagination-inv p,
@@ -1154,12 +1156,16 @@ background-color: #1e3e6f;
   .pagination-inv a {
       position: relative;
       display: block;
-      padding: .5rem .75rem;
+      padding: .7rem .75rem;
       margin-left: -1px;
-      line-height: 0.6;
+      line-height: 1.8;
       color: #007bff;
       background-color: #fff;
       border: 1px solid #dee2e6;
       display: flex;
       font-size: 14px!important;
+  }
+  
+  .button-sub {
+      background: #c5c5c5 !important;
   }

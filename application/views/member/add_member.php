@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="gender">Gender: </label>
-                    <select class="custom-select d-block w-100 gender-custom" name="gender" id="gender">
+                    <select class="custom-select d-block w-100 gender-custom form-control" name="gender" id="gender">
                         <option value=""> Select Gender </option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -76,8 +76,8 @@
                 </div>
             </div>
             
-            <div class="d-flex  mt-3">
-                <button class="btn btn-primary button-hor" name="member_submit" type="submit">Submit</button>
+            <div class="d-flex  mt-3 mb-5">
+                <button class="btn button-hor button-sub" name="member_submit" type="submit">Submit</button>
             </div>
         <?=form_close();?>
     </div>
