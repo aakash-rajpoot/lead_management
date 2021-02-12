@@ -150,7 +150,7 @@
                     <li class="c-menu__item site-menu-item main-menu" title="Lead">
                         <a href="<?=base_url('index.php/lead/inventory')?>"> 
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Inventory</span></i>
+                                <i class="fa fa-industry">&nbsp;&nbsp;<span class="icon-titles">Inventory</span></i>
                             </div>
                         </a>
                         <!-- <ul class="site-menu-sub ">
