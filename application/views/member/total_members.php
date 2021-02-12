@@ -45,7 +45,7 @@
                         <input type="text" class="form-control" value="<?=isset($_GET['joining_date']) ? $_GET['joining_date'] :''?>" name="joining_date" id="joining_date" placeholder="Joining Date">
                     </div>
                     <div class="col-md-3 mb-3 top-data">
-                        <input type="submit" class="btn btn-success" name="inventory_filter" value="Submit">
+                        <input type="submit" class="btn btn-success" name="member_filter" value="Submit">
                         <a href="<?=base_url().'member/total_members'?>" class="btn btn-default">Reset</a>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                     <?php } ?>
                     <?php } ?>
                 </table>
-                <p><?=$links; ?></p>
+                <div class="pagination-inv"><?=$links; ?></div>
             </div>
         </div>
     </div>

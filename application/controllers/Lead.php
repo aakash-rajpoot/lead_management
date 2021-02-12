@@ -103,7 +103,6 @@ class Lead extends CI_Controller {
             $this->lead_model->lead_assign_data();
             redirect('lead');
         }
-
         $this->load->view('lead/assign_lead',$names);
         $this->load->view('templates/admin_footer');
     }

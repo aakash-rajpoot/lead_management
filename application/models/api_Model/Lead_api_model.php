@@ -29,13 +29,43 @@ class Lead_api_model extends CI_Model {
 
     public function all_agent_leads($userData){
         $member_id = $userData['id'];
-        $this->db->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,remark,reference,status_name,lead_date, IF(created_by=$member_id,1,0) lead_origin, IF(created_by=assign_to AND assign_to=$member_id,1,0) origin_and_assigned")
-            ->from("sq_lead")
-            ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
-            ->where('created_by',$member_id)
-            ->or_where('assign_to',$member_id)
-            ->where('active',1);
-            return $this->db->get()->result_array();
+        $name = $this->input->get('name', TRUE); 
+        $email = $this->input->get('email', TRUE); 
+        $phone = $this->input->get('phone', TRUE); 
+        $property_address = $this->input->get('property_address', TRUE); 
+        $client_address = $this->input->get('client_address', TRUE); 
+        $available_unit = $this->input->get('available_unit', TRUE); 
+        $status = $this->input->get('status', TRUE); 
+        $where = "active = '1' ";
+        if(!empty($name)) {
+            $where.= " AND name like '%$name%'";
+        }
+        if(!empty($email)) {
+            $where.= " AND email like '%$email%'";
+        }
+        if(!empty($phone)) {
+            $where.= " AND phone like '%$phone%'";
+        }
+        if(!empty($property_address)) {
+            $where.= " AND property_address like '%$property_address%'";
+        }
+        if(!empty($client_address)) {
+            $where.= " AND client_address like '%$client_address%'";
+        }
+        if(!empty($available_unit)) {
+            $where.= " AND u.unit_id='$available_unit'";
+        }
+        if(!empty($status)) {
+            $where.= " AND status='$status'";
+        }
+
+        $this->db->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,remark,reference,status_name,lead_date, IF(created_by=$member_id,1,0) lead_origin, IF(created_by=assign_to AND assign_to=$member_id,1,0) origin_and_assigned,sq_status.status_name,sq_status.color_code")
+        ->from("sq_lead")
+        ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
+        ->where('created_by',$member_id)
+        ->or_where('assign_to',$member_id)
+        ->where($where);
+        return $this->db->get()->result_array();
     }
 
     public function get_all_status(){
