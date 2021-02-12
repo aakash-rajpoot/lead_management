@@ -91,8 +91,8 @@
             <div class="row">
       <div class="col-lg-12">
             <div class="l-sidebar__content">
-                <nav class="c-menu js-menu">
-                    <ul class="u-list site-menu">
+                <nav class="c-menu js-menu navigation">
+                    <ul class="u-list site-menu mainmenu">
                         <li class="c-menu__item is-active" title="Dashboard">
                             <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
                                 <div class="c-menu__item__inner menusss">
@@ -107,15 +107,15 @@
                             </div>
                         </a>
                                
-                            <ul class="site-menu-sub ">
-                                <li class="site-menu-item " title="All Sales Team">  
+                            <ul class="site-menu-sub limain submenu ">
+                                <li class="site-menu-item lichild" title="All Sales Team">  
                                     <a href="<?=base_url('index.php/member')?>">
                                         <div class="c-menu__item__inner submenu-color">
                                             <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Sales Team</span></i>
                                         </div>
                                     </a>
                                 </li>
-                                <li class="site-menu-item" title="Add Sales Team">
+                                <li class="site-menu-item lichild" title="Add Sales Team">
                                     <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner submenu-color">
                                             <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Sales Team</span></i>
@@ -130,7 +130,7 @@
                                 <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Lead</span></i>
                             </div>
                         </a>
-                        <ul class="site-menu-sub ">
+                        <ul class="site-menu-sub submenu ">
                             <li class="site-menu-item"  title="All Lead">
                                 <a href="<?=base_url('index.php/lead')?>">
                                     <div class="c-menu__item__inner submenu-color">
@@ -170,7 +170,7 @@
                                 <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Property Unit</span></i>
                             </div>
                         </a>
-                        <ul class="site-menu-sub ">
+                        <ul class="site-menu-sub submenu">
                             <li class="site-menu-item"  title="All unit">
                                 <a href="<?=base_url('index.php/unit')?>">
                                     <div class="c-menu__item__inner submenu-color">
@@ -301,4 +301,21 @@ chart.draw(data, options);
 
 
 });
+</script>
+<script>
+//* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
 </script>
