@@ -6,9 +6,9 @@ class Admin extends CI_Controller {
     public function __construct() {
         parent::__construct();
         
-        $this->load->model(array('admin_model','setting_model','lead_model'));
+        $this->load->model(array('admin_model','setting_model','lead_model','unit_model'));
 		$this->load->helper(array('form','url','html'));
-		$this->load->library(array('form_validation','session'));
+		$this->load->library(array('form_validation','session','pagination'));
     }
     
     public function index(){
@@ -44,15 +44,25 @@ class Admin extends CI_Controller {
     }
 
     function admin_dashboard(){
-        if(isset($_SESSION)){
-            $data = $this->setting_model->fetch_setting_details();
-            $this->load->view('templates/admin_header',$data);
-            $list = $this->lead_model->fetch_all_counter();
-            $this->load->view('admin/dashboard',$list);
-            $this->load->view('templates/admin_footer');
-        }else{
-            redirect('admin');
-        }
+        $data = $this->setting_model->fetch_setting_details();
+        $this->load->view('templates/admin_header',$data);
+        $config = array();
+        $config["base_url"] = base_url().'admin/admin_dashboard';
+        $config["total_rows"] = $this->lead_model->get_count();
+        $config["per_page"] = 30;
+        $config["uri_segment"] = 3;
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = round($choice);
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $this->pagination->initialize($config);
+        $page = (!isset($_GET['inventory_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $data["links"] = $this->pagination->create_links();
+        $data['inventories'] = $this->lead_model->get_leads($config["per_page"], $page);
+        $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
+        $data['statuses'] = $this->lead_model->get_status();
+        $this->load->view('admin/dashboard',$data);
+        $this->load->view('templates/admin_footer');
     }
 
     function logout(){

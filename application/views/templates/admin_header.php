@@ -147,23 +147,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="c-menu__item site-menu-item main-menu" title="Lead">
-                        <a href="<?=base_url('index.php/lead/inventory')?>"> 
-                            <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Inventory</span></i>
-                            </div>
-                        </a>
-                        <!-- <ul class="site-menu-sub ">
-                            <li class="site-menu-item"  title="Inventory">
-                                <a href="<?=base_url('index.php/lead/inventory')?>">
-                                    <div class="c-menu__item__inner submenu-color">
-                                        <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">Inventory</span></i>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul> -->
-                    </li>
-
                     <li class="c-menu__item site-menu-item main-menu" title="Unit">
                         <a href="<?=base_url('index.php/unit')?>"> 
                             <div class="c-menu__item__inner menusss">
@@ -187,7 +170,6 @@
                             </li>
                         </ul>
                     </li>
-
                         <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Settings">
                             <a href="<?=base_url('index.php/setting')?>">
                                 <div class="c-menu__item__inner menusss">
@@ -209,15 +191,6 @@
     $( "#dob" ).datepicker({dateFormat:'dd-mm-yy'});
   });
   </script>
-  <!-- <script>
- $('.site-menu li').removeClass('active');
-                $(this).addClass('active');
-                $(this).children('ul').slideDown();
-
-        });
-    });
-});
-</script> -->
 <script>
 $(document).ready(function() {       
 	$('#checkbox').multiselect({		
