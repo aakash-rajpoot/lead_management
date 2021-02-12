@@ -72,7 +72,7 @@
                         <div class="input-group">
                             <input id="btn-input" type="text" name="message" class="form-control input-lg" placeholder="Type your message here..." />
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-primary button-hor btn-lg" name="chat_button" id="btn-chat">Send</button>
+                                <button type="submit" class="btn button-sub button-hor btn-lg" name="chat_button" id="btn-chat">Send</button>
                             </span>
                         </div>
                         <?=form_close();?>
