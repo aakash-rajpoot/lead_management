@@ -1198,6 +1198,15 @@ background-color: #1e3e6f;
       display: block;
       max-height: 200px;
   }
+  
+  .mainmenu li.active>a {
+      background-color: #95c41f;
+  }
+  
+  .mainmenu li.active .submenu {
+      display: block;
+      max-height: 200px;
+  }
   /*  
     we now overwrite the background-color for .submenu links only.
     CSS reads down the page, so code at the bottom will overwrite the code at the top.
@@ -1213,13 +1222,5 @@ background-color: #1e3e6f;
   .submenu {
       overflow: hidden;
       max-height: 0;
-      -webkit-transition: all 0.10s ease-out;
-  }
-  
-  .nav-link[data-toggle].collapsed:before {
-      content: " ▾";
-  }
-  
-  .nav-link[data-toggle]:not(.collapsed):before {
-      content: " ▴";
+      -webkit-transition: all 0.50s ease-out;
   }

@@ -36,6 +36,7 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 </head>
+<?php print_r($this->uri->segment(1)); ?>
     <body class="sidebar-is-reduced">
         <header class="l-header">
             <div class="l-header__inner clearfix">
@@ -103,7 +104,7 @@
                                 </div>
                             </a>
                         </li>    
-                        <li class="c-menu__item site-menu-item main-menu" title="Sales">
+                        <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'member' ? 'active' : ''; ?>" title="Sales">
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales Team</span></i>
@@ -127,7 +128,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="c-menu__item site-menu-item main-menu" title="Lead">
+                        <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'lead' ? 'active' : ''; ?>" title="Lead">
                         <a href="<?=base_url('index.php/lead')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Manage Leads</span></i>
@@ -150,7 +151,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="c-menu__item site-menu-item main-menu" title="Lead">
+                    <li class="c-menu__item site-menu-item main-menu  <?php echo $this->uri->segment(1) == 'inventory' ? 'active' : ''; ?>" title="Lead">
                         <a href="<?=base_url('index.php/lead/inventory')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-industry">&nbsp;&nbsp;<span class="icon-titles">Inventory</span></i>
@@ -167,7 +168,7 @@
                         </ul> -->
                     </li>
 
-                    <li class="c-menu__item site-menu-item main-menu" title="Unit">
+                    <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'unit' ? 'active' : ''; ?>" title="Unit">
                         <a href="<?=base_url('index.php/unit')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Property Unit</span></i>
@@ -294,25 +295,7 @@ chart.draw(data, options);
 
 
 });
-</script>
-<script>
-//* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
 
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
-}
-</script>
-<script>
 $(function () {
   $("#datepicker").datepicker({ 
         autoclose: true, 
@@ -320,12 +303,5 @@ $(function () {
   }).datepicker('update', new Date());
 });
 </script>
-<script>
-$(function () {
-  $("#datepicker1").datepicker({ 
-        autoclose: true, 
-        todayHighlight: true
-  }).datepicker('update', new Date());
-});
-</script>
+
 

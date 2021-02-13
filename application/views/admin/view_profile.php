@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="label-input">Gender:</label>
-                                <select class="custom-select d-block w-100" name="gender" id="gender">
+                                <select class="custom-select d-block w-100 form-control" name="gender" id="gender">
                                     <option value=""> ---select gender--- </option>
                                     <option <?php if(trim(strtolower($gender)) === trim(strtolower("Male"))){ echo 'Selected'; } ?>>Male</option>
                                     <option <?php if(trim(strtolower($gender)) === trim(strtolower("Female"))){ echo 'Selected'; } ?>>Female</option>
