@@ -108,14 +108,13 @@ class Member extends CI_Controller {
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $data = $this->member_model->fetch_member_data($id);
-        
+
         if(isset($_POST['member_update'])) { 
 
             $this->form_validation->set_rules('name', 'Full name','required|min_length[2]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[sq_members.email]|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
             $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
-            // $this->form_validation->set_rules('alt_phone', 'Alternate Phone number','min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
             $this->form_validation->set_rules('dob', 'Birth Date','required');
+            $this->form_validation->set_rules('role', 'User Role','required');
             $this->form_validation->set_rules('permanent', 'Permanent Address','required');
             
             $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
@@ -175,6 +174,7 @@ class Member extends CI_Controller {
                 redirect('member');
             }
         }
+        $data['roles'] = $this->member_model->get_roles();
         $this->load->view('member/update_member', $data);
         $this->load->view('templates/admin_footer');
     }

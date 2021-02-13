@@ -1,7 +1,3 @@
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>   -->
-
 <div class="row">
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
@@ -34,9 +30,9 @@
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="dob">Birth Date: <span class="text-danger font-weight-medium" >*</span></label>
                     <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                    <input type="text" class="form-control"  placeholder="dd-mm-yy" name="dob" id="dob"/ >
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-               </div>
+                        <input type="text" class="form-control"  placeholder="dd-mm-yy" name="dob" id="dob" >
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
                </div>
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="gender">Gender: </label>
@@ -85,7 +81,7 @@
                     <div class="form-group">
                         <select name="role" class="form-control">
                             <?php foreach($roles as $role ) { ?>
-                                <option value="<?=$role['id']?>" class="form-control"><?=$role['role'];?></option>
+                                <option value="<?=$role['role_id']?>" class="form-control"><?=$role['role'];?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -93,7 +89,7 @@
             </div>
             <div class="row">
                 <input type="checkbox" name="approval" value="1">
-                <label for="approval"> I have a boat</label><br>
+                <label for="approval">Give permission to add own team.</label><br>
             </div>
             <div class="d-flex  mt-3 mb-5">
                 <button class="btn button-hor btn-success" name="member_submit" type="submit">Submit</button>
