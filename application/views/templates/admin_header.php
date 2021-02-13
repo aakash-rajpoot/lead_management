@@ -254,16 +254,16 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
 
 var data = google.visualization.arrayToDataTable([
-['Task', 'Hours per Day'],
-['Study', 11],
-['Playing', 2],
-['Watch TV', 2],
-['Tution', 2],
-['Sleep', 7]
+['Task', 'Status'],
+// ['Study', 11],
+['Panding', 7],
+// ['Watch TV', 2],
+['Progress', 18],
+['Booked', 9]
 ]);
 
 var options = {
-title: 'My Day Schedule',
+title: 'Status',
 is3D:true
 };
 

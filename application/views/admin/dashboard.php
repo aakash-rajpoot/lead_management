@@ -51,7 +51,7 @@ body {
 }
 </style>
 
-<div class="wrap-career top-space-hea">
+<div class="wrap-career ">
   <div class="content-wrapper content-wrapper--with-bg">
     <div class="row">
       <div class="col-lg-12">
@@ -83,14 +83,13 @@ body {
               </div>
             </a>
           </div>
-          
-          <div class="container">
             <div class="row">
-              <div id="piechart3d" style="width:80rem;height:80rem;"></div>
+                <div class="col-lg-12">
+                <div id="piechart3d" style="width:80rem;height:45rem; margin-bottom:-136px;">
+                </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </div>
