@@ -33,7 +33,10 @@ class Member_model extends CI_Model {
         $email = $this->input->get('email', TRUE); 
         $phone = $this->input->get('phone', TRUE); 
         $joining_date = $this->input->get('joining_date', TRUE);  
-        $where = "active = '1' ";
+        $resignation_date = $this->input->get('resignation_date', TRUE);  
+        $correspondence = $this->input->get('correspondence', TRUE);  
+        $permanent = $this->input->get('permanent', TRUE);  
+        $where = "active = '1' or active = '0'";
         if(!empty($name)) {
             $where.= " AND name like '%$name%'";
         }
@@ -45,6 +48,16 @@ class Member_model extends CI_Model {
         }
         if(!empty($joining_date)) {
             $where.= " AND joining_date like '%$joining_date%'";
+        }
+        if(!empty($resignation_date)) {
+            $where = "active = '0'";
+            $where.= " AND resignation_date like '%$resignation_date%'";
+        }
+        if(!empty($permanent)) {
+            $where.= " AND permanent like '%$permanent%'";
+        }
+        if(!empty($correspondence)) {
+            $where.= " AND correspondence like '%$correspondence%'";
         }
 
         $query = $this->db->limit($limit, $start)

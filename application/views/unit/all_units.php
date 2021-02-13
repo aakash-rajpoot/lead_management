@@ -21,6 +21,23 @@
      <div class="col-lg-12">
         <div id="table1" class="ex2">
             <div class="content-wrapper content-wrapper--with-bg">
+            <?=form_open(null, array('method'=>'get')); ?>
+                <div class="row inventory-filter">
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="tel" class="form-control" value="<?=isset($_GET['unit_type']) ? $_GET['unit_type'] :''?>" name="unit_type" id="unit_type" placeholder="Unit Type">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="text" class="form-control" value="<?=isset($_GET['unit_size']) ? $_GET['unit_size'] :''?>" name="unit_size" id="unit_size" placeholder="Unit Size">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="text" class="form-control" value="<?=isset($_GET['unit_range']) ? $_GET['unit_range'] :''?>" name="unit_range" id="unit_range" placeholder="Unit Range">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="submit" class="btn btn-success" name="unit_filter" value="Search">
+                        <a href="<?=base_url().'unit/index'?>" class="btn btn-default">Reset</a>
+                    </div>
+                </div>
+                <?=form_close();?>
                 <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
@@ -54,6 +71,7 @@
                     <?php } ?>
                     <?php } ?>
                 </table>
+                <div class="pagination-inv"><?=$links; ?></div>
             </div>
         </div>
     </div>

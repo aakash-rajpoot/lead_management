@@ -8,17 +8,27 @@ class Unit extends CI_Controller {
 
         $this->load->model(array('unit_model','setting_model'));
 		$this->load->helper(array('form','url','html'));
-        $this->load->library(array('form_validation','session'));
+        $this->load->library(array('form_validation','session','pagination'));
         
         $this->isUserLoggedIn = $this->session->userdata('isUserLoggedIn'); 
     }
     public function index(){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-        $query = $this->unit_model->fetch_unit_data();
-        $all_units = $query->result_array();
-        $total_units['total_unit'] = $all_units;
-        $this->load->view('unit/all_units',$total_units);
+        $config = array();
+        $config["base_url"] = base_url().'unit/index';
+        $config["total_rows"] = $this->unit_model->get_count();
+        $config["per_page"] = 10;
+        $config["uri_segment"] = 2;
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = round($choice);
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $this->pagination->initialize($config);
+        $page = (!isset($_GET['unit_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $data["links"] = $this->pagination->create_links();
+        $data['total_unit'] = $this->unit_model->get_unit($config["per_page"], $page)->result_array();
+        $this->load->view('unit/all_units',$data);
         $this->load->view('templates/admin_footer');
     }
 

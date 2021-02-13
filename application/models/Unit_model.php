@@ -51,4 +51,31 @@ class Unit_model extends CI_Model {
         return $this->db->update('sq_unit');
     }
 
+    function get_unit($limit, $start){
+
+        $unit_type = $this->input->get('unit_type', TRUE); 
+        $unit_size = $this->input->get('unit_size', TRUE); 
+        $unit_range = $this->input->get('unit_range', TRUE);  
+        $where = "active = '1'";
+        if(!empty($unit_type)) {
+            $where.= " AND unit_type like '%$unit_type%'";
+        }
+        if(!empty($unit_size)) {
+            $where.= " AND unit_size like '%$unit_size%'";
+        }
+        if(!empty($unit_range)) {
+            $where.= " AND unit_range like '%$unit_range%'";
+        }
+
+        $query = $this->db->limit($limit, $start)
+            ->select("*")
+            ->from('sq_unit')
+            ->where($where)
+            ->get();
+        return $query;
+    }
+
+    public function get_count() {
+        return $this->db->where('active','1')->count_all('sq_unit');
+    }
 }
