@@ -50,8 +50,6 @@ class Admin_model extends CI_Model {
         if(!empty($this->input->post('profile_image'))) {
             $data['profile_image'] = $this->input->post('profile_image');
         }
-        
-        // $profile = $this->input->post('profile_image');
         $this->db->set($data);
         $this->db->where('role_id', 1);
         return $this->db->update('sq_admin',$data);

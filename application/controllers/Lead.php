@@ -11,23 +11,33 @@ class Lead extends CI_Controller {
 		$this->load->library(array('form_validation','session','pagination'));
     }
     public function index(){
+
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-        $query = $this->lead_model->fetch_total_lead();
-        $all_leads = $query->result_array();
-        $total_leads['total_lead'] = $all_leads;
-        $this->load->view('lead/total_lead',$total_leads);
+        $config = array();
+        $config["base_url"] = base_url().'lead/index';
+        $config["total_rows"] = $this->lead_model->get_count();
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 2;
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = round($choice);
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $this->pagination->initialize($config);
+        $page = (!isset($_GET['lead_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $data["links"] = $this->pagination->create_links();
+        $data['total_lead'] = $this->lead_model->fetch_total_lead($config["per_page"], $page)->result_array();
+        $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
+        $this->load->view('lead/total_lead',$data);
         $this->load->view('templates/admin_footer');
     }
 
     public function add_lead(){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-
         $query = $this->unit_model->fetch_unit_data();
         $data1 = $query->result_array();
         $data2['units'] = $data1;
-
         $this->form_validation->set_rules('name', 'Lead name','required|min_length[5]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
         $this->form_validation->set_rules('email', 'Email', 'valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
         $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');

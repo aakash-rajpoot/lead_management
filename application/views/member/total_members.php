@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-3 mb-3 top-data">
                         <input type="submit" class="btn btn-success" name="member_filter" value="Submit">
-                        <a href="<?=base_url().'member/total_members'?>" class="btn btn-default">Reset</a>
+                        <a href="<?=base_url().'member/index'?>" class="btn btn-default">Reset</a>
                     </div>
                 </div>
                 <?=form_close();?>
@@ -75,7 +75,7 @@
                     <tbody class="table-bordered">
                         <?php if($totalmember['active'] == 1) { ?>
                             <tr class="active_agent">
-                                <td><?=$i;?></td>
+                                <td><?=$totalmember['id']?></td>
                                 <td><?="Emp".$totalmember['id']?></td>
                                 <td><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['name']?></a></td>
                                 <td><?=$totalmember['email']?></td>

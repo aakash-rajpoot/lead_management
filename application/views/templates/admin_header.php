@@ -127,7 +127,7 @@
                         <li class="c-menu__item site-menu-item main-menu" title="Lead">
                         <a href="<?=base_url('index.php/lead')?>"> 
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Manage Leads</span></i>
+                                <i class="fa fa-industry">&nbsp;&nbsp;<span class="icon-titles">Manage Leads</span></i>
                             </div>
                         </a>
                         <ul class="site-menu-sub submenu ">
@@ -147,23 +147,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="c-menu__item site-menu-item main-menu" title="Lead">
-                        <a href="<?=base_url('index.php/lead/inventory')?>"> 
-                            <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-industry">&nbsp;&nbsp;<span class="icon-titles">Inventory</span></i>
-                            </div>
-                        </a>
-                        <!-- <ul class="site-menu-sub ">
-                            <li class="site-menu-item"  title="Inventory">
-                                <a href="<?=base_url('index.php/lead/inventory')?>">
-                                    <div class="c-menu__item__inner submenu-color">
-                                        <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">Inventory</span></i>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul> -->
-                    </li>
-
                     <li class="c-menu__item site-menu-item main-menu" title="Unit">
                         <a href="<?=base_url('index.php/unit')?>"> 
                             <div class="c-menu__item__inner menusss">

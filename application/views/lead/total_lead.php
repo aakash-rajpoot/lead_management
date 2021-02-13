@@ -3,6 +3,38 @@
      <div class="col-lg-12">
         <div id="table1 " class="ex2">
             <div class="content-wrapper content-wrapper--with-bg">
+            <?=form_open(null, array('method'=>'get')); ?>
+                <div class="row inventory-filter">
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="text" class="form-control" value="<?=isset($_GET['email']) ? $_GET['email'] :''?>" name="email" id="email" placeholder="Email">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="text" class="form-control" value="<?=isset($_GET['phone']) ? $_GET['phone'] :''?>" name="phone" id="phone" placeholder="Phone">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="text" class="form-control" value="<?=isset($_GET['property_address']) ? $_GET['property_address'] :''?>" name="property_address" id="property_address" placeholder="Project Name">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="text" class="form-control" value="<?=isset($_GET['client_address']) ? $_GET['client_address'] :''?>" name="client_address" id="client_address" placeholder="Client Address">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <select  class="form-control" name="available_unit">
+                            <option value="">Select Unit</option>
+                            <?php foreach($units as $unit ) { ?>
+                                <option <?=isset($_GET['available_unit']) && $_GET['available_unit'] ==  $unit['id']? 'selected' :''?>  value="<?=$unit['id']?>" class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].' '.$unit['size_measure'].')'; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="submit" class="btn btn-success" name="inventory_filter" value="Submit">
+                        <a href="<?=base_url().'lead/index'?>" class="btn btn-default">Reset</a>
+                    </div>
+                </div>
+                <?=form_close();?>
+
                 <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
@@ -55,6 +87,7 @@
                     <?php } ?>
                     <?php } ?>
                 </table>
+                <div class="pagination-inv"><?=$links; ?></div>
             </div>
         </div>
     </div>

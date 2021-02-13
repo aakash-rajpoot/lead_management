@@ -27,10 +27,33 @@ class Member_model extends CI_Model {
         $this->db->insert('sq_members',$member);
    }
 
-    function fetch_total_members(){
-        $this->db->select("*");
-        $this->db->from('sq_members');
-        return $this->db->get();
+    function fetch_total_members($limit, $start){
+
+        $name = $this->input->get('name', TRUE); 
+        $email = $this->input->get('email', TRUE); 
+        $phone = $this->input->get('phone', TRUE); 
+        $joining_date = $this->input->get('joining_date', TRUE);  
+        $where = "active = '1' ";
+        if(!empty($name)) {
+            $where.= " AND name like '%$name%'";
+        }
+        if(!empty($email)) {
+            $where.= " AND email like '%$email%'";
+        }
+        if(!empty($phone)) {
+            $where.= " AND phone like '%$phone%'";
+        }
+        if(!empty($joining_date)) {
+            $where.= " AND joining_date like '%$joining_date%'";
+        }
+
+        $query = $this->db->limit($limit, $start)
+            ->select("id,name,email,phone,alt_phone,gender,dob,joining_date,resignation_date,permanent,correspondence,active")
+            ->from('sq_members')
+            ->where($where)
+            ->get();
+        return $query;
+
     }
 
     function soft_delete_member($id){
