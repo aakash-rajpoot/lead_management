@@ -66,8 +66,8 @@
                             <td><?=$totalunit['unit_range']." "." INR"?></td>
                             <td><?=$totalunit['unit_remark']?></td>
                             <td class="edit-icon">
-                                <a href="<?=base_url('index.php/unit/update_unit/'.$totalunit['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a><br/>
-                                <a href="#" onClick = "unitDelete(<?=$totalunit['id'];?>);"  data-href="<?php echo base_url();?>index.php/unit/delete_unit/<?=$totalunit['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 delete" aria-hidden="true" title="Delete"></a><br/>
+                                <a href="<?=base_url('index.php/unit/update_unit/'.$totalunit['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a>
+                                <a href="#" onClick = "unitDelete(<?=$totalunit['id'];?>);"  data-href="<?php echo base_url();?>index.php/unit/delete_unit/<?=$totalunit['id'];?>" id="delete-<?=$i?>" class="fa fa-trash mt-4 delete" aria-hidden="true" title="Delete"></a>
                             </td>
                         </tr>
                     </tbody>

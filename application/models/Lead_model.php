@@ -230,6 +230,13 @@ class Lead_model extends CI_Model {
         return $query->result_array();
     }
 
+    function fetch_lead_status(){
+        $this->db->select("status");
+        $this->db->from('sq_lead');
+        $this->db->join('sq_status as s','sq_lead.status = s.id','left');
+        return $this->db->get();
+    }
+
 
 
 }
