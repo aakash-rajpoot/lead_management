@@ -76,12 +76,25 @@
                 <div class="col-md-6 mb-3">
                     <label class="label-input " for="joining_date">Date of Joining: </label>
                     <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                    <input type="text" class="form-control" name="joining_date" id="joining_date" placeholder="dd-mm-yy">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input type="text" class="form-control" name="joining_date" id="joining_date" placeholder="dd-mm-yy">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="label-input">User Role: <span class="text-danger font-weight-medium">*</span></label>
+                    <div class="form-group">
+                        <select name="role" class="form-control">
+                            <?php foreach($roles as $role ) { ?>
+                                <option value="<?=$role['id']?>" class="form-control"><?=$role['role'];?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                <input type="checkbox" name="approval" value="1">
+                <label for="approval"> I have a boat</label><br>
             </div>
-            
             <div class="d-flex  mt-3 mb-5">
                 <button class="btn button-hor button-sub" name="member_submit" type="submit">Submit</button>
             </div>

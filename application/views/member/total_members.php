@@ -63,7 +63,6 @@
                 <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
-                            <!-- <th >S.No</th> -->
                             <th class="th-sm">Agent-Id</th>
                             <th class="th-sm">Agent Name</th>
                             <th class="th-sm">Email Id</th>
@@ -85,7 +84,6 @@
                         <?php if($totalmember['active'] == 1) { ?>
                             <tr class="active_agent">
                                 <td><?=$totalmember['id']?></td>
-                                <!-- <td><?="Emp".$totalmember['id']?></td> -->
                                 <td><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['name']?></a></td>
                                 <td><?=$totalmember['email']?></td>
                                 <td><?=$totalmember['phone']?></td>

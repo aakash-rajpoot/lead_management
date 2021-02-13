@@ -5,7 +5,7 @@ class Member_model extends CI_Model {
         $this->load->database();
     }
 
-   function member_data(){
+    function member_data(){
         $member = array(
             'name' => $this->input->post('name'),
             'phone' => $this->input->post('phone'),
@@ -16,16 +16,23 @@ class Member_model extends CI_Model {
             'aadhar' => $this->input->post('aadhar'),
             'pan' => $this->input->post('pan'),
             'permanent' => $this->input->post('permanent'),
-            'correspondence' => $this->input->post('correspondence')
+            'correspondence' => $this->input->post('correspondence'),
+            'role' => $this->input->post('role'),
+            'approval' => $this->input->post('approval')
         );
         if(empty($this->input->post('joining_date'))){
             $member['joining_date'] = date('Y-m-d');
         }else{
             $member['joining_date'] = $this->input->post('joining_date');
         }
-
         $this->db->insert('sq_members',$member);
-   }
+    }
+
+    function get_roles(){
+        $this->db->select("*");
+        $query = $this->db->from('sq_role');
+        return $this->db->get()->result_array();
+    }
 
     function fetch_total_members($limit, $start){
 
@@ -85,17 +92,14 @@ class Member_model extends CI_Model {
             'permanent' => $this->input->post('permanent'),
             'correspondence' => $this->input->post('correspondence')
         );
-
         if(!empty($this->input->post('profile_image'))){
             $member['profile_image'] = $this->input->post('profile_image');
         }
-
         if(empty($this->input->post('joining_date'))){
             $member['joining_date'] = date('Y-m-d');
         }else{
             $member['joining_date'] = $this->input->post('joining_date');
         }
-
         $this->db->set($member);
         $this->db->where('id', $id);
         return $this->db->update('sq_members',$member);

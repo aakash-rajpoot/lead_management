@@ -671,7 +671,7 @@ background-color: #1e3e6f;
   }
   
   .upload_warning {
-      color: #d61323;
+      color: #0b16ac;
   }
   
   .upload_success {
@@ -776,10 +776,6 @@ background-color: #1e3e6f;
       display: flex;
       justify-content: center;
       margin-bottom: 30px;
-  }
-  
-  .upload_warning {
-      color: #d61323;
   }
   
   .upload_success {
