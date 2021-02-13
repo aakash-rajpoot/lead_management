@@ -166,6 +166,7 @@ class Lead_model extends CI_Model {
         ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
         ->join('sq_lead_unit as u', 'sq_lead.id = u.lead_id', 'left')
         ->where($where)
+        ->group_by('sq_lead.id')
         ->get();
 
         return $query->result();
@@ -189,9 +190,7 @@ class Lead_model extends CI_Model {
         return $counter;
     }
     public function get_status() {
-        
         $query = $this->db->from('sq_status')->get();
-
         return $query->result_array();
     }
 

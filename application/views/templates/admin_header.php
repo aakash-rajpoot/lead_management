@@ -114,14 +114,14 @@
                                 <li class="site-menu-item lichild" title="All Sales Team">  
                                     <a href="<?=base_url('index.php/member')?>">
                                         <div class="c-menu__item__inner submenu-color">
-                                            <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">All Sales Team</span></i>
+                                            <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">Sales User</span></i>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="site-menu-item lichild" title="Add Sales Team">
                                     <a href="<?=base_url('index.php/member/add_member')?>">
                                         <div class="c-menu__item__inner submenu-color">
-                                            <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add Sales Team</span></i>
+                                            <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add User</span></i>
                                         </div>
                                     </a>
                                 </li>
@@ -130,7 +130,7 @@
                         <li class="c-menu__item site-menu-item main-menu" title="Lead">
                         <a href="<?=base_url('index.php/lead')?>"> 
                             <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Lead</span></i>
+                                <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Manage Leads</span></i>
                             </div>
                         </a>
                         <ul class="site-menu-sub submenu ">
