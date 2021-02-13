@@ -34,11 +34,47 @@ class Lead_model extends CI_Model {
         return $insert_status;
     }
 
-    function fetch_total_lead(){
-        $this->db->select("*");
-        $this->db->from('sq_lead');
-        $this->db->where('active',1);
-        return $this->db->get();
+    function fetch_total_lead($limit, $start){
+
+        $name = $this->input->get('name', TRUE); 
+        $email = $this->input->get('email', TRUE); 
+        $phone = $this->input->get('phone', TRUE); 
+        $property_address = $this->input->get('property_address', TRUE); 
+        $client_address = $this->input->get('client_address', TRUE); 
+        $available_unit = $this->input->get('available_unit', TRUE); 
+        $status = $this->input->get('status', TRUE); 
+        $where = "active = '1' ";
+        if(!empty($name)) {
+            $where.= " AND name like '%$name%'";
+        }
+        if(!empty($email)) {
+            $where.= " AND email like '%$email%'";
+        }
+        if(!empty($phone)) {
+            $where.= " AND phone like '%$phone%'";
+        }
+        if(!empty($property_address)) {
+            $where.= " AND property_address like '%$property_address%'";
+        }
+        if(!empty($client_address)) {
+            $where.= " AND client_address like '%$client_address%'";
+        }
+        if(!empty($available_unit)) {
+            $where.= " AND u.unit_id='$available_unit'";
+        }
+        if(!empty($status)) {
+            $where.= " AND status='$status'";
+        }
+
+        $query = $this->db->limit($limit, $start)
+        ->select("sq_lead.id,name,email,phone,alt_phone,client_address,assign_to,property_address,assign_date,available_unit,status,lead_date,remark,reference")
+        ->from($this->table)
+        ->join('sq_lead_unit as u', 'sq_lead.id = u.lead_id', 'left')
+        ->where($where)
+        ->group_by('sq_lead.id')
+        ->get();
+
+        return $query;
     }
 
     function soft_delete_lead($id){

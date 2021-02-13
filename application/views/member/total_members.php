@@ -32,21 +32,36 @@
     <div class="content-wrapper content-wrapper--with-bg">  
     <?=form_open(null, array('method'=>'get')); ?>
                 <div class="row inventory-filter">
-                    <div class="col-md-2 mb-3 top-data">
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
                     </div>
-                    <div class="col-md-2 mb-3 top-data">
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="text" class="form-control" value="<?=isset($_GET['email']) ? $_GET['email'] :''?>" name="email" id="email" placeholder="Email">
                     </div>
-                    <div class="col-md-2 mb-3 top-data">
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="text" class="form-control" value="<?=isset($_GET['phone']) ? $_GET['phone'] :''?>" name="phone" id="phone" placeholder="Phone">
                     </div>
-                    <div class="col-md-2 mb-3 top-data">
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="text" class="form-control" value="<?=isset($_GET['permanent']) ? $_GET['permanent'] :''?>" name="permanent" id="permanent" placeholder="Permanent Address">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="text" class="form-control" value="<?=isset($_GET['correspondence']) ? $_GET['correspondence'] :''?>" name="correspondence" id="correspondence" placeholder="Correspondence Address">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
                         <input type="text" class="form-control" value="<?=isset($_GET['joining_date']) ? $_GET['joining_date'] :''?>" name="joining_date" id="joining_date" placeholder="Joining Date">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                    <div id="datepicker1" class="input-group date" data-date-format="mm-dd-yyyy">
+                        <input type="text" class="form-control" value="<?=isset($_GET['resignation_date']) ? $_GET['resignation_date'] :''?>" name="resignation_date" id="resignation_date" placeholder="Resignation Date">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
                     </div>
                     <div class="col-md-3 mb-3 top-data">
                         <input type="submit" class="btn btn-success" name="member_filter" value="Submit">
-                        <a href="<?=base_url().'member/total_members'?>" class="btn btn-default">Reset</a>
+                        <a href="<?=base_url().'member/index'?>" class="btn btn-default">Reset</a>
                     </div>
                 </div>
                 <?=form_close();?>
@@ -54,7 +69,7 @@
                 <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
-                            <th >S.No</th>
+                            <!-- <th >S.No</th> -->
                             <th class="th-sm">Agent-Id</th>
                             <th class="th-sm">Agent Name</th>
                             <th class="th-sm">Email Id</th>
@@ -75,8 +90,8 @@
                     <tbody class="table-bordered">
                         <?php if($totalmember['active'] == 1) { ?>
                             <tr class="active_agent">
-                                <td><?=$i;?></td>
-                                <td><?="Emp".$totalmember['id']?></td>
+                                <td><?=$totalmember['id']?></td>
+                                <!-- <td><?="Emp".$totalmember['id']?></td> -->
                                 <td><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['name']?></a></td>
                                 <td><?=$totalmember['email']?></td>
                                 <td><?=$totalmember['phone']?></td>
@@ -93,8 +108,8 @@
                             </tr>
                         <?php }else{ ?>
                             <tr class="inactive_agent">
-                                <td><?=$i;?></td>
-                                <td data-search="{{ hit['_source']['filter'] }}"><?="Emp".$totalmember['id']?></td>
+                                <td><?=$totalmember['id'];?></td>
+                                <!-- <td data-search="{{ hit['_source']['filter'] }}"><?="Emp".$totalmember['id']?></td> -->
                                 <td data-search="{{ hit['_source']['filter'] }}"><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['name']?></a></td>
                                 <td data-search="{{ hit['_source']['filter'] }}"><?=$totalmember['email']?></td>
                                 <td><?=$totalmember['phone']?></td>

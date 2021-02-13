@@ -14,11 +14,10 @@ class Member extends CI_Controller {
     public function index(){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-
         $config = array();
         $config["base_url"] = base_url().'member/index';
         $config["total_rows"] = $this->member_model->get_count();
-        $config["per_page"] = 2;
+        $config["per_page"] = 20;
         $config["uri_segment"] = 2;
         $choice = $config["total_rows"] / $config["per_page"];
         $config["num_links"] = round($choice);
@@ -27,9 +26,7 @@ class Member extends CI_Controller {
         $this->pagination->initialize($config);
         $page = (!isset($_GET['member_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
         $data["links"] = $this->pagination->create_links();
-        $query = $this->member_model->fetch_total_members();
-        $all_members = $query->result_array();
-        $data['total_member'] = $all_members;
+        $data['total_member'] = $this->member_model->fetch_total_members($config["per_page"], $page)->result_array();
         $this->load->view('member/total_members',$data);
         $this->load->view('templates/admin_footer');
     }

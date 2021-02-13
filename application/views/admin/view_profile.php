@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="d-flex mt-3 mb-4">
-                            <button type="submit" class="btn btn-primary button-hor" title="update" name="update_profile">Update</button>
+                            <button type="submit" class="btn  button-hor btn-success" title="update" name="update_profile">Update</button>
                         </div>
                     <?=form_close(); ?>
                 </div>

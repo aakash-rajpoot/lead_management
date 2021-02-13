@@ -27,10 +27,46 @@ class Member_model extends CI_Model {
         $this->db->insert('sq_members',$member);
    }
 
-    function fetch_total_members(){
-        $this->db->select("*");
-        $this->db->from('sq_members');
-        return $this->db->get();
+    function fetch_total_members($limit, $start){
+
+        $name = $this->input->get('name', TRUE); 
+        $email = $this->input->get('email', TRUE); 
+        $phone = $this->input->get('phone', TRUE); 
+        $joining_date = $this->input->get('joining_date', TRUE);  
+        $resignation_date = $this->input->get('resignation_date', TRUE);  
+        $correspondence = $this->input->get('correspondence', TRUE);  
+        $permanent = $this->input->get('permanent', TRUE);  
+        $where = "active = '1' or active = '0'";
+        if(!empty($name)) {
+            $where.= " AND name like '%$name%'";
+        }
+        if(!empty($email)) {
+            $where.= " AND email like '%$email%'";
+        }
+        if(!empty($phone)) {
+            $where.= " AND phone like '%$phone%'";
+        }
+        if(!empty($joining_date)) {
+            $where.= " AND joining_date like '%$joining_date%'";
+        }
+        if(!empty($resignation_date)) {
+            $where = "active = '0'";
+            $where.= " AND resignation_date like '%$resignation_date%'";
+        }
+        if(!empty($permanent)) {
+            $where.= " AND permanent like '%$permanent%'";
+        }
+        if(!empty($correspondence)) {
+            $where.= " AND correspondence like '%$correspondence%'";
+        }
+
+        $query = $this->db->limit($limit, $start)
+            ->select("id,name,email,phone,alt_phone,gender,dob,joining_date,resignation_date,permanent,correspondence,active")
+            ->from('sq_members')
+            ->where($where)
+            ->get();
+        return $query;
+
     }
 
     function soft_delete_member($id){
