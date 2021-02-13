@@ -60,7 +60,7 @@
                 
             </div>
             <div class="d-flex mt-3 mb-5">
-                <button class="btn  button-sub button-hor" name="lead_submit" type="submit">Submit</button>
+                <button class="btn  button-hor btn-success" name="lead_submit" type="submit">Submit</button>
             </div>
         <?=form_close();?>
     </div>

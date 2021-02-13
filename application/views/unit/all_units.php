@@ -15,6 +15,9 @@
    td {
     text-align: center;
 }
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    padding: -2px!important;
+}
     </style>
 <div class="mt-5 ex1 top-space-hea">
     <div class="row">

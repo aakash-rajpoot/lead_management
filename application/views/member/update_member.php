@@ -40,11 +40,14 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="dob">Birth Date: <span class="text-danger font-weight-medium">*</span></label>
-                                <input type="date" class="form-control" rows="3" name="dob" id="dob" value="<?=$dob;?>" />
+                                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                <input type="text" class="form-control" rows="3" name="dob" id="dob" value="<?=$dob;?>" />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="gender">Gender: </label>
-                                <select class="custom-select d-block w-100" name="gender" id="gender">
+                                <select class="custom-select d-block w-100 form-control" name="gender" id="gender">
                                     <option value="">---Select gender---</option>
                                     <option <?php if(trim(strtolower($gender)) === trim(strtolower("Male"))){ echo 'Selected'; } ?>>Male</option>
                                     <option <?php if(trim(strtolower($gender)) === trim(strtolower("Female"))){ echo 'Selected'; } ?>>Female</option>
@@ -82,11 +85,14 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="joining_date">Date of Joining: </label>
-                                <input type="date" class="form-control" name="joining_date" id="joining_date" value="<?=$joining_date;?>">
+                                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                <input type="text" class="form-control" name="joining_date" id="joining_date" value="<?=$joining_date;?>">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
                             </div>
                         </div>
                         <div class="d-flex  mt-3 mb-5">
-                            <button class="btn  button-sub button-hor" name="member_update" type="submit">Update</button>
+                            <button class="btn button-hor btn-success" name="member_update" type="submit">Update</button>
                         </div>
                     <?=form_close();?>
                 </div>

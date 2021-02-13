@@ -560,10 +560,10 @@
   
   .dropdown-content {
       display: none;
-      margin-top: 218px;
+      margin-top: 204px;
       position: absolute;
       background-color: #f1f1f1;
-      min-width: 153px;
+      min-width: 217px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       z-index: 1;
   }
@@ -615,10 +615,9 @@ background-color: #1e3e6f;
   .submenu-color:hover {
       background-color: #95c41f!important;
   }
-  
-  .menusss:hover {
+  /* .menusss:hover {
       background-color: #95c41f;
-  }
+  } */
   
   .nav .sub-menu {
       display: none;
@@ -639,10 +638,9 @@ background-color: #1e3e6f;
       color: #95c41f;
       text-decoration: none;
   }
-  
-  .button-hor {
-      color: #393f8e!important;
-  }
+  /* .button-hor {
+      background-color: #393f8e!important;
+  } */
   
   .add_search {
       border-right: 1px solid #ddd;
@@ -728,10 +726,9 @@ background-color: #1e3e6f;
   .submenu-color:hover {
       background-color: #95c41f!important;
   }
-  
-  .menusss:hover {
+  /* .menusss:hover {
       background-color: #95c41f;
-  }
+  } */
   
   .nav .sub-menu {
       display: none;
@@ -748,10 +745,9 @@ background-color: #1e3e6f;
       padding: 14px;
       background: #ddd;
   }
-  
-  .button-hor:hover {
+  /* .button-hor:hover {
       background-color: #95c41f!important;
-  }
+  } */
   
   .add_search {
       border-right: 1px solid #ddd;
@@ -1162,8 +1158,12 @@ background-color: #1e3e6f;
       font-size: 14px!important;
   }
   
-  .button-sub {
-      background-color: #d6d6d6!important;
+  .btn-success {
+      color: #fff!important;
+  }
+  
+  .btn-success:hover {
+      color: #102c58!important;
   }
   /* reset our lists to remove bullet points and padding */
   
@@ -1178,44 +1178,30 @@ background-color: #1e3e6f;
   .mainmenu a {
       display: block;
       text-decoration: none;
-      padding: 10px;
+      padding: 10px 10px;
       color: #000;
   }
-  /* add hover behaviour */
-  /* .mainmenu a:hover {
-      background-color: #C5C5C5;
-  } */
-  /* when hovering over a .mainmenu item,
-    display the submenu inside it.
-    we're changing the submenu's max-height from 0 to 200px;
-  */
   
   .mainmenu li:hover .submenu {
       display: block;
       max-height: 200px;
   }
-  /*  
-    we now overwrite the background-color for .submenu links only.
-    CSS reads down the page, so code at the bottom will overwrite the code at the top.
-  */
-  /* hover behaviour for links inside .submenu */
-  /* .submenu a:hover {
-      background-color: #666;
-  } */
-  /* this is the initial state of all submenus.
-    we set it to max-height: 0, and hide the overflowed content.
-  */
+  
+  .mainmenu li.active>a {
+      background-color: #95c41f;
+  }
+  
+  .mainmenu li.active .submenu {
+      display: block;
+      max-height: 200px;
+  }
   
   .submenu {
       overflow: hidden;
       max-height: 0;
-      -webkit-transition: all 0.10s ease-out;
+      -webkit-transition: all 0.50s ease-out;
   }
   
-  .nav-link[data-toggle].collapsed:before {
-      content: " ▾";
-  }
-  
-  .nav-link[data-toggle]:not(.collapsed):before {
-      content: " ▴";
+  .column {
+      border-radius: 10px;
   }

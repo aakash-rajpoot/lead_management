@@ -22,8 +22,8 @@
                             <label class="label-input">Unit Size: </label>
                             <input type="text" class="form-control" name="unit_size">
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2 mb-3">
-                            <select class="custom-select d-block w-100 mt-5" name="size_measure" id="size_measure">
+                        <div class="col-lg-2 col-md-2 col-sm-2 mb-3 mt-4">
+                            <select class="custom-select d-block w-100 mt-3 form-control" name="size_measure" id="size_measure">
                                 <option value="sq.ft">Square feet</option>
                                 <option value="sq.yard">Square yard</option>
                                 <option value="sq.m">Square meter</option> 
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="d-flex mt-2 mb-5">
-                        <button class="btn  button-sub button-hor" name="unit_submit" type="submit">Submit</button>
+                        <button class="btn  button-sub btn-success" name="unit_submit" type="submit">Submit</button>
                     </div>
                     <?=form_close();?>
                 </div>

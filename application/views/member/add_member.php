@@ -96,7 +96,7 @@
                 <label for="approval"> I have a boat</label><br>
             </div>
             <div class="d-flex  mt-3 mb-5">
-                <button class="btn button-hor button-sub" name="member_submit" type="submit">Submit</button>
+                <button class="btn button-hor btn-success" name="member_submit" type="submit">Submit</button>
             </div>
         <?=form_close();?>
     </div>

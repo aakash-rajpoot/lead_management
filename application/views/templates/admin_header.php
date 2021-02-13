@@ -16,12 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
     <!-- Latest compiled and minified JavaScript -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
@@ -29,13 +26,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
-<!-- you need to include the shieldui css and js assets in order for the charts to work -->
-<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
-<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 </head>
+<?php print_r($this->uri->segment(1)); ?>
     <body class="sidebar-is-reduced">
         <header class="l-header">
             <div class="l-header__inner clearfix">
@@ -103,7 +100,7 @@
                                 </div>
                             </a>
                         </li>    
-                        <li class="c-menu__item site-menu-item main-menu" title="Sales">
+                        <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'member' ? 'active' : ''; ?>" title="Sales">
                         <a href="<?=base_url('index.php/member')?>">
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales Team</span></i>
@@ -127,7 +124,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="c-menu__item site-menu-item main-menu" title="Lead">
+                        <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'lead' ? 'active' : ''; ?>" title="Lead">
                         <a href="<?=base_url('index.php/lead')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-industry">&nbsp;&nbsp;<span class="icon-titles">Manage Leads</span></i>
@@ -150,7 +147,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="c-menu__item site-menu-item main-menu" title="Unit">
+                    <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'unit' ? 'active' : ''; ?>" title="Unit">
                         <a href="<?=base_url('index.php/unit')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Property Unit</span></i>
@@ -277,25 +274,7 @@ chart.draw(data, options);
 
 
 });
-</script>
-<script>
-//* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
 
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
-}
-</script>
-<script>
 $(function () {
   $("#datepicker").datepicker({ 
         autoclose: true, 
@@ -304,11 +283,10 @@ $(function () {
 });
 </script>
 <script>
-$(function () {
+    $(function () {
   $("#datepicker1").datepicker({ 
         autoclose: true, 
         todayHighlight: true
   }).datepicker('update', new Date());
 });
-</script>
-
+    </script>
