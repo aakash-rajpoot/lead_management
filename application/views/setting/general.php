@@ -1,4 +1,4 @@
-<div class="mt-5 ex1" style="margin-top:110px;">
+<div class="mt-5 ex1">
 <div class="row">
    <div class="col-lg-12">
       <div class="content-wrapper content-wrapper--with-bg">

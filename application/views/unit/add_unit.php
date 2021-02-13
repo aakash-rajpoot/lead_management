@@ -6,7 +6,6 @@
  
 </style>
 <div class="content-wrapper content-wrapper--with-bg">
-    <div class="top-space-hea">
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrap-career">
@@ -49,5 +48,4 @@
             </div>
         </div>
     </div>
-</div>
 

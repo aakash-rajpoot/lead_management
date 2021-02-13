@@ -1,9 +1,9 @@
 <div class="content-wrapper content-wrapper--with-bg">
-    <div class="top-space-hea">
+    <div class="">
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrap-career">
-                    <h2 class="font-weight-medium text-center mt-5 mb-5">Update Available Units</h2>
+                    <h2 class="font-weight-medium  mt-5 mb-5">Update Available Units</h2>
                     <?=form_open('unit/update_unit/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
                     <?=validation_errors(); ?> 
                     <div class="row">
