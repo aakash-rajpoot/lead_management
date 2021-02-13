@@ -1120,7 +1120,7 @@ background-color: #1e3e6f;
   }
   
   button.multiselect.dropdown-toggle.btn.btn-default {
-      width: 520px!important;
+      width: 464px!important;
   }
   
   .top-data {
@@ -1214,4 +1214,12 @@ background-color: #1e3e6f;
       overflow: hidden;
       max-height: 0;
       -webkit-transition: all 0.10s ease-out;
+  }
+  
+  .nav-link[data-toggle].collapsed:before {
+      content: " ▾";
+  }
+  
+  .nav-link[data-toggle]:not(.collapsed):before {
+      content: " ▴";
   }
