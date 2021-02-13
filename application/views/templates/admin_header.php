@@ -184,18 +184,6 @@
         </div>
         </div>
 
-        <?php
-        $pending = $progress = $booked = 0;
-        foreach($lead_status as $data){
-            if($data['status']=='1'){
-                $pending += 1;
-            } else if($data['status']=='2') {
-                $progress += 1;
-            }else{
-                $booked += 1;
-            }
-        }?>
-
 <script>
   $( function() {
     $( "#joining_date" ).datepicker({dateFormat:'dd-mm-yy'});
@@ -222,6 +210,17 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
+    <?php
+        $pending = $progress = $booked = 0;
+        foreach($lead_status as $data){
+            if($data['status']=='1'){
+                $pending += 1;
+            } else if($data['status']=='2') {
+                $progress += 1;
+            }else{
+                $booked += 1;
+            }
+        }?>
 
 var data = google.visualization.arrayToDataTable([
 ['Task', 'Status'],
