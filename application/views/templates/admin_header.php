@@ -217,16 +217,18 @@ function drawChart() {
                 $pending += 1;
             } else if($data['status']=='2') {
                 $progress += 1;
-            }else{
+            }else if($data['status']=='3'){
                 $booked += 1;
             }
         }?>
 
 var data = google.visualization.arrayToDataTable([
 ['Task', 'Status'],
-['Pending', <?=$pending;?>],
-['Progress', <?=$progress;?>],
-['Booked', <?=$booked;?>]
+['A',0],
+['Pending', <?=$pending?>],
+['B',0],
+['Booked', <?=$booked?>],
+['Progress', <?=$progress?>],
 ]);
 
 var options = {

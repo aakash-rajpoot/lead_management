@@ -7,7 +7,7 @@ class Agent_api_model extends CI_Model {
     }
 
     function agent_mobile_post($email) {
-        return $this->db->get_where("sq_members", ['email' => $email,'active'=>'1'])->row_array();
+        print_r($this->db->get_where("sq_members", ['email' => $email,'active'=>'1'])->row_array());die;
     }
 
     function save_login_otp($login_otp,$data,$token){
@@ -113,6 +113,25 @@ class Agent_api_model extends CI_Model {
         $token['iat'] = $date->getTimestamp();
         $token['exp'] = $date->getTimestamp() + 60*60*5; 
         return JWT::encode($token,$auth_key); 
+    }
+
+    function add_team_member($userData){
+        $data = array(
+            'creater' => $userData['id'],
+            'name' => $this->input->post('name'),
+            'phone' => $this->input->post('phone'),
+            'email' => $this->input->post('email'),
+            'dob' => $this->input->post('dob'),
+            'permanent' => $this->input->post('permanent'),
+            'correspondence' => $this->input->post('correspondence'),
+            'gender' => $this->input->post('gender'),
+            'active' => 1
+        );
+        return $this->db->insert('sq_team',$data);
+    }
+
+    function get_team_member($userData){
+        return $this->db->get_where("sq_team", ['creater' => $userData['id'],'active'=>'1'])->result_array();   
     }
     
 

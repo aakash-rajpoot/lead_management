@@ -51,14 +51,21 @@ class Agent extends REST_Controller {
                 
             case 'update_profile':
                 $this->update_profile();
-                break;   
+                break;
+            
+            case 'add_team':
+                $this->add_team();
+                break;
+
+            case 'my_team':
+                $this->my_team();
+                break;
         }
 
     }
 
     public function send_otp(){
         $email = $this->input->post('email');
-
         if(!empty($email)) {
             $data = $this->agent_api_model->agent_mobile_post($email);
             if($data['pass'] == ''){
@@ -68,6 +75,8 @@ class Agent extends REST_Controller {
                 $status = $this->email_config($email,$login_otp);
                 if($status) {
                     $this->response(['status'=>true,'message'=>'OTP has been sent to your email id.','auth_token'=>$token], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);  
                 }
             }else{
                 $this->response(['status'=>false,'message'=>'You can already created your password.So please login by your password.'], REST_Controller::HTTP_BAD_REQUEST);
@@ -281,7 +290,45 @@ class Agent extends REST_Controller {
             }
         }
     }
+
+    function add_team(){
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
+            $this->form_validation->set_rules('name', 'Full name','required|min_length[2]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
+            $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+            $this->form_validation->set_rules('dob', 'Birth Date','required');
+            $this->form_validation->set_rules('permanent', 'Permanent Address','required');
+            
+            if($this->form_validation->run()) {
+                $status = $this->agent_api_model->add_team_member($userData);
+                if($status > 0){
+                    $this->response(['status'=>true,'message'=>'Team member created successfully.'], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+                }
+            }else{
+                $this->response(['status'=>false,'message'=>'Please enter required fields!'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
     
+    function my_team(){
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
+            $data = $this->agent_api_model->get_team_member($userData);
+            if($data){
+                $this->response(['status'=>true,'message'=>'My team members','my_team'=>$data], REST_Controller::HTTP_OK);
+            }else{
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
+
 
 
 }

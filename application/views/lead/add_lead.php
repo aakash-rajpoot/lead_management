@@ -44,7 +44,7 @@
                                 <option value="<?=$unit['id']?>" class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].' '.$unit['size_measure'].')'; ?></option>
                             <?php } ?>
                         </select>
-                        <p class="upload_warning"> * If unit has not available then go to "Add Unit" and add your unit yourself.</p>
+                        <p class="upload_warning"><b>Note:</b> If unit has not available then go to "Add Unit" and add your unit yourself.</p>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
