@@ -203,48 +203,6 @@ $(document).ready( function () {
     $('#myTable').DataTable();
 } );
 </script>
-<script type="text/javascript">
-    jQuery(function ($) {
-        var data1 = [12, 3, 4, 2, 12, 3, 4, 17, 22, 34, 54, 67];
-        var data2 = [3, 9, 12, 14, 22, 32, 45, 12, 67, 45, 55, 7];
-        var data3 = [23, 19, 11, 134, 242, 352, 435, 22, 637, 445, 555, 57];
-            
-        // $("#chart1").shieldChart({
-        //     exportOptions: {
-        //         image: false,
-        //         print: false
-        //     },
-        //     axisY: {
-        //         title: {
-        //             text: "Break-Down for selected quarter"
-        //         }
-        //     },
-        //     dataSeries: [{
-        //         seriesType: "bar",
-        //         data: data1
-        //     }]
-        // });
-
-        $("#chart2").shieldChart({
-            exportOptions: {
-                image: false,
-                print: false
-            },
-            axisY: {
-                title: {
-                    text: "Break-Down for selected quarter"
-                }
-            },
-            dataSeries: [{
-                seriesType: "bar",
-                data: data2
-            }, {
-                seriesType: "bar",
-                data: data3
-            }]
-        });
-    });
-</script>
 <script>
     $(document).ready(function(){
 
@@ -252,18 +210,27 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
+    <?php
+        $pending = $progress = $booked = 0;
+        foreach($lead_status as $data){
+            if($data['status']=='1'){
+                $pending += 1;
+            } else if($data['status']=='2') {
+                $progress += 1;
+            }else{
+                $booked += 1;
+            }
+        }?>
 
 var data = google.visualization.arrayToDataTable([
 ['Task', 'Status'],
-// ['Study', 11],
-['Panding', 7],
-// ['Watch TV', 2],
-['Progress', 18],
-['Booked', 9]
+['Pending', <?=$pending;?>],
+['Progress', <?=$progress;?>],
+['Booked', <?=$booked;?>]
 ]);
 
 var options = {
-title: 'Status',
+title: 'Assigned Lead Status',
 is3D:true
 };
 

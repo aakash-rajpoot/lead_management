@@ -90,6 +90,8 @@ class Member_model extends CI_Model {
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
             'permanent' => $this->input->post('permanent'),
+            'role' => $this->input->post('role'),
+            'approval' => $this->input->post('approval'),
             'correspondence' => $this->input->post('correspondence')
         );
         if(!empty($this->input->post('profile_image'))){
@@ -106,9 +108,10 @@ class Member_model extends CI_Model {
     }
 
     function fetch_member_data($id){
-        $this->db->select("*");
+        $this->db->select("sq_members.id,name,email,phone,aadhar,pan,alt_phone,gender,dob,approval,joining_date,resignation_date,permanent,correspondence,active,r.role,role_id");
         $this->db->from('sq_members');
-        $this->db->where('id',$id);
+        $this->db->where('sq_members.id',$id);
+        $this->db->join('sq_role as r','sq_members.role = r.role_id','left');
         $query = $this->db->get();
         return $query->row_array();
     }
