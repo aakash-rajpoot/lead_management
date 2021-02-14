@@ -2,8 +2,8 @@
     <div class="top-space-hea">
         <div class="row">
             <div class="col-lg-12">
-                <div class="wrap-career top-space-hea">
-                    <h2 class="font-weight-medium text-center mt-2 mb-5">Update Agent Details</h2>
+                <div class="wrap-career">
+                    <h2 class="font-weight-medium mt-2 mb-5">Update Agent Details</h2>
                     <?=form_open('member/update_member/'.$id,array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
                         <?=validation_errors(); ?>  
 
