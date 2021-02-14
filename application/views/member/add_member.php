@@ -87,11 +87,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row ml-2 ">
                 <input type="checkbox" name="approval" value="1">
-                <label for="approval">Give permission to add own team.</label><br>
+                <label for="approval">&nbsp; Give permission to add own team.</label><br>
             </div>
-            <div class="d-flex  mt-3 mb-5">
+            <div class="d-flex  mt-5 mb-5">
                 <button class="btn button-hor btn-success" name="member_submit" type="submit">Submit</button>
             </div>
         <?=form_close();?>
