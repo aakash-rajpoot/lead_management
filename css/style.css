@@ -1138,6 +1138,7 @@ background-color: #1e3e6f;
       display: flex;
       margin-top: 20px;
       line-height: 3.1;
+      width: 20px;
   }
   
   .pagination-inv p,
