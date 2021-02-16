@@ -60,7 +60,7 @@ body {
               <div class="card-counter primary">
                 <i class="fa fa-code-fork"></i>
                 <span class="count-numbers"><?=$count['members']?></span>
-                <span title="Agent" class="count-name">Agents</span>
+                <span title="Agents" class="count-name">Agents</span>
               </div>
             </a>
           </div>
@@ -69,7 +69,7 @@ body {
               <div class="card-counter danger">
                 <i class="fa fa-ticket"></i>
                 <span class="count-numbers"><?=$count['leads'];?></span>
-                <span  title="Lead" class="count-name">Leads</span>
+                <span  title="Leads" class="count-name">Leads</span>
               </div>
             </a>
           </div>
@@ -78,7 +78,7 @@ body {
               <div class="card-counter success">
                 <i class="fa fa-database"></i>
                 <span class="count-numbers"><?=$count['units'];?></span>
-                <span title="Unit" class="count-name">Units</span>
+                <span title="Units" class="count-name">Units</span>
               </div>
             </a>
           </div>

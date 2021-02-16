@@ -226,9 +226,11 @@ var data = google.visualization.arrayToDataTable([
 ['Task', 'Status'],
 ['A',0],
 ['Pending', <?=$pending?>],
-['B',0],
-['Booked', <?=$booked?>],
 ['Progress', <?=$progress?>],
+['Booked', <?=$booked?>],
+['B',0],
+
+
 ]);
 
 var options = {
