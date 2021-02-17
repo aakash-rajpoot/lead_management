@@ -146,7 +146,9 @@ body {
                         </a>
                     </div>
                 <?php endforeach; ?>
+                <?php if($total_rows > $per_page){ ?>
                 <div class="pagination-inv mb-5"><?=$links; ?></div>
+                <?php } ?>
             </div>
         </div>
     </div>

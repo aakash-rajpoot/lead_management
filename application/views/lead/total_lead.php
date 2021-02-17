@@ -43,15 +43,11 @@
                             <th class="th-sm">Assign TO</th>
                             <th class="th-sm">Assign Date</th>
                             <th class="th-sm">Phone Number</th>
-                            <!-- <th class="th-sm">Alternate Phone Number</th> -->
                             <th class="th-sm">Project Name</th>
                             <th class="th-sm">Client Address</th>
-                            <!-- <th class="th-sm">Role</th> -->
                             <th class="th-sm">Remark</th>
-                            <!-- <th class="th-sm">Other Information</th> -->
                             <th class="th-sm">Lead Source By</th>
                             <th class="th-sm">Actions</th>
-                            <!-- <th class="th-sm">Lead Action</th> -->
                         </tr>
                     </thead>
                         <?php
@@ -70,16 +66,13 @@
                             <td><?=$totallead['property_address']?></td>
                             <td><?=$totallead['client_address']?></td>
                             <td>
-                                <!-- <button type="button" class="btn add_new_remark" onclick="createNewElement();">+</button>
-                                <input type='text' class='form-control' id='newInputBox' value="<?//=$totallead['remark']?>" />
-                                <div id="newElementId"></div> -->
                                 <?=$totallead['remark']?>
                             </td>
                             <td><?=$totallead['reference']?></td>
                             <td class="edit-icon">
                                 <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a>
                                 <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);"  data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash delete mt-4 " aria-hidden="true" title="Delete"></a>
-                                <a href="<?=base_url('index.php/lead/assign_lead/'.$totallead['id'])?>" class="fa fa-plus-circle text-success mt-3" aria-hidden="true" title="Assign"></a>
+                                <a href="#" onClick ="checkLead(this);" data-id="<?=$totallead['id'];?>" data-user='<?=$totallead['assign_to'];?>' class="fa fa-plus-circle text-success mt-3" aria-hidden="true" title="Assign"></a>
                                 <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="fa fa-minus-circle mt-3 text-danger" aria-hidden="true" title="De-Assign"></a>
                             </td>
                         </tr>
@@ -123,4 +116,18 @@
         }
     }
 
+    function checkLead($this) {
+        var lead_id = $($this).attr('data-id');
+        var lead_user = $($this).attr('data-user');
+        if(lead_user != '' && lead_user >'0') {
+            var conf = confirm('This lead is already assigned to a sales user, Do you want to re-assigne this lead to some other user?');
+        } else {
+            var conf = confirm("Are you sure you want to assign this lead to sales user?");
+        }
+        if(conf) {
+            window.location.replace('<?php echo base_url();?>index.php/lead/assign_lead/'+lead_id);
+        }
+        return false;
+    }
+    
 </script>
