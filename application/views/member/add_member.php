@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input" for="dob">Birth Date: <span class="text-danger font-weight-medium" >*</span></label>
-                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                    <div class="input-group date datepicker" data-date-format="mm-dd-yyyy">
                         <input type="text" class="form-control"  placeholder="dd-mm-yy" name="dob" id="dob" >
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
@@ -71,7 +71,7 @@
             <div class="row">                
                 <div class="col-md-6 mb-3">
                     <label class="label-input " for="joining_date">Date of Joining: </label>
-                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                    <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
                         <input type="text" class="form-control" name="joining_date" id="joining_date" placeholder="dd-mm-yy">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
@@ -99,3 +99,12 @@
 </div>
 </div>
 </div>
+<script>
+$(function () {
+  $(".datepicker").datepicker({ 
+        autoclose: true, 
+        todayHighlight: true
+  }).datepicker('update', new Date());
+});
+
+</script>

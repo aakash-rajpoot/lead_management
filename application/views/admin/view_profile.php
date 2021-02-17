@@ -1,21 +1,31 @@
+<style>
+input[type="file"] {
+      display: none!important;
+  }
+  
+  span.btn {
+      margin-top: -167px!important;
+  }
+
+</style>
 <div class="row">
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
     <div class="row d-flex justify-content-center">
         <div class="col-md-12 both-space">
-            <div class="mt-3 mb-5 border-0">
+            <div class=" border-0">
                 <div class="rounded-sm">
                     <div class="text-box ex2">
-                    <h3 class="heading-title text-center mt-4 mb-5">Your Profile</h3>
                     <?=form_open('admin/view_profile',array('method'=>'post','novalidate'=>"novalidate",'enctype' => "multipart/form-data")); ?>
                         <?=validation_errors(); ?>
                         <?php if($profile_image == ''){
                             $profile_image = 'avatar.png';
                         } ?>
-                        <div class="text-center">
+                        <div class="text-center" title="upload image" >
                             <img src="<?=base_url();?>media/images/<?=$profile_image; ?>" class="avatar rounded-circle profile_size img-thumbnail" alt="avatar">
                         </div>  
-                        <div class="profile-view pt-3 pb-5">
+                        <div class="profile-view">
+                        <label for="file" title="upload image"  class="sr-only">Select a file</label>
                             <input type="file" name="profile_image" />  
                         </div>
                         <div class="row">
@@ -41,7 +51,10 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="dob">Birth Date:</label>
-                                <input class="form-control" type="date" name="dob" id="dob" value="<?=$dob;?>">
+                                <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                                <input class="form-control" type="text" name="dob" id="dob" value="<?=$dob;?>">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                              </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="mobile">Mobile:</label>
@@ -75,3 +88,43 @@
 </div>
 </div>
 </div>
+<script>
+    $('input[type="file"]').each(function() {
+    // get label text
+    var label = $(this).parents('.form-group').find('label').text();
+    label = (label) ? label : 'Upload File';
+
+    // wrap the file input
+    $(this).wrap('<div class="input-file"></div>');
+    // display label
+    $(this).before('<span class="btn">'+label+'</span>');
+    // we will display selected file here
+    $(this).before('<span class="file-selected"></span>');
+
+    // file input change listener 
+    $(this).change(function(e){
+        // Get this file input value
+        var val = $(this).val();
+        
+        // Let's only show filename.
+        // By default file input value is a fullpath, something like 
+        // C:\fakepath\Nuriootpa1.jpg depending on your browser.
+        var filename = val.replace(/^.*[\\\/]/, '');
+
+        // Display the filename
+        $(this).siblings('.file-selected').text(filename);
+    });
+});
+
+// Open the file browser when our custom button is clicked.
+$('.input-file .btn').click(function() {
+    $(this).siblings('input[type="file"]').trigger('click');
+});
+$(function () {
+  $(".datepicker").datepicker({ 
+        autoclose: true, 
+        todayHighlight: true
+  }).datepicker('update', new Date());
+});
+
+</script>

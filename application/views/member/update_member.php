@@ -1,3 +1,13 @@
+<style>
+#profile-img {
+      display: none!important;
+  }
+  
+  span.btn {
+      margin-top: -167px!important;
+  }
+
+</style>
 <div class="content-wrapper content-wrapper--with-bg">
     <div class="top-space-hea">
         <div class="row">
@@ -15,7 +25,8 @@
                             <img src="<?=base_url('media/agent_photo/'.$profile_image);?>" class="avatar rounded-circle profile_size img-thumbnail" alt="avatar">
                         </div>  
                         <div class="profile-view pt-3 pb-5">
-                            <input type="file" name="profile_image" />  
+                        <label for="file" class="sr-only">Select a file</label>
+                            <input id="profile-img"  type="file" name="profile_image" />  
                         </div>  
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -30,11 +41,11 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="phone">Phone: <span class="text-danger font-weight-medium">*</span></label>
-                                <input type="tel" class="form-control" name="phone" id="phone" value="<?=$phone; ?>">
+                                <input type="text" class="form-control" name="phone" id="phone" value="<?=$phone; ?>">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="label-input" for="alt_phone">Alternate Phone Number: </label>
-                                <input type="tel" class="form-control" name="alt_phone" id="alt_phone" value="<?=$alt_phone; ?>">
+                                <input type="text" class="form-control" name="alt_phone" id="alt_phone" value="<?=$alt_phone; ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -103,9 +114,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row ml-2">
                             <input type="checkbox" name="approval" <?php if($approval){ echo 'Checked'; }?>  value="1">
-                            <label for="approval"> Give permission to add own team.</label><br>
+                            <label for="approval">&nbsp; Give permission to add own team.</label><br>
                         </div>
                         </div>
                         <div class="d-flex  mt-3 mb-5">
@@ -117,3 +128,36 @@
         </div>
     </div>
 </div>
+<script>
+    $('#profile-img').each(function() {
+  // get label text
+  var label = $(this).parents('.form-group').find('label').text();
+    label = (label) ? label : 'Upload File';
+
+    // wrap the file input
+    $(this).wrap('<div class="input-file"></div>');
+    // display label
+    $(this).before('<span class="btn">'+label+'</span>');
+    // we will display selected file here
+    $(this).before('<span class="file-selected"></span>');
+
+    // file input change listener 
+    $(this).change(function(e){
+        // Get this file input value
+        var val = $(this).val();
+        
+        // Let's only show filename.
+        // By default file input value is a fullpath, something like 
+        // C:\fakepath\Nuriootpa1.jpg depending on your browser.
+        var filename = val.replace(/^.*[\\\/]/, '');
+
+        // Display the filename
+        $(this).siblings('.file-selected').text(filename);
+    });
+});
+
+// Open the file browser when our custom button is clicked.
+$('.input-file .btn').click(function() {
+    $(this).siblings('input[type="file"]').trigger('click');
+});
+</script>

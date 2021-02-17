@@ -87,7 +87,7 @@
                     <?php } ?>
                     <?php } ?>
                 </table>
-                <div class="pagination-inv"><?=$links; ?></div>
+                <div class="pagination-inv mb-5"><?=$links; ?></div>
             </div>
         </div>
     </div>

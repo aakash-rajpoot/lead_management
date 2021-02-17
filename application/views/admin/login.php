@@ -36,7 +36,7 @@ body {
 # Login
 --------------------------------------------------------------*/
 .login-box {
-  padding: 50px;
+  padding: 60px;
   margin-top:316px;
   position: absolute;
   top: 40%;
