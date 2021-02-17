@@ -547,8 +547,8 @@
   }
   
   .profile_size {
-      width: 220px!important;
-      height: 220px!important;
+      width: 147px!important;
+      height: 148px!important;
   }
   /* Dropdown Button */
   
@@ -1112,7 +1112,7 @@ background-color: #1e3e6f;
   }
   
   button.multiselect.dropdown-toggle.btn.btn-default {
-      width: 464px!important;
+      width: 519px!important;
   }
   
   .top-data {
@@ -1161,6 +1161,7 @@ background-color: #1e3e6f;
   
   .btn-success {
       color: #fff!important;
+      border-radius: 7px!important;
   }
   
   .btn-success:hover {

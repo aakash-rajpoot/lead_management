@@ -1,16 +1,14 @@
-<div class="wrap-career " style="margin-top:50px;">
+<div class="wrap-career">
 <div class="row">
 <div class="col-lg-12">
 <div class="content-wrapper content-wrapper--with-bg">
-   
-        <h2 class="font-weight-medium text-center mt-2 mb-5">Your Profile</h2>
         <?=form_open('member/agent_profile_details',array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation','enctype' => 'multipart/form-data')); ?>
             <?=validation_errors(); ?>
             <?php if($profile_image == ''){
                 $profile_image = 'avatar.png';
             } ?>
             <div class="text-center">
-                <img src="<?=base_url();?>media/agent_photo/<?=$profile_image;?>" class="avatar rounded-circle profile_size img-thumbnail profile-agent mb-5" alt="avatar">
+                <img src="<?=base_url();?>media/agent_photo/<?=$profile_image;?>" class="avatar rounded-circle profile_size img-thumbnail mb-5" alt="avatar">
             </div>   
             <div class="row mt-3">
                 <div class="col-md-6 mb-3">
@@ -75,7 +73,7 @@
                 </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-5">
                 <!-- <div class="col-md-6 mb-3">
                     <label class="label-input" for="role">Role: </label>&nbsp; <?//=$role;?>
                     

@@ -92,20 +92,7 @@ body {
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- status -->
 <div class="mt-5 ex1 top-space-hea" >
     <div class="row">
      <div class="col-lg-12">
@@ -159,7 +146,7 @@ body {
                         </a>
                     </div>
                 <?php endforeach; ?>
-                <div class="pagination-inv"><?=$links; ?></div>
+                <div class="pagination-inv mb-5"><?=$links; ?></div>
             </div>
         </div>
     </div>

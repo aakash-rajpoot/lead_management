@@ -48,13 +48,13 @@
                         <input type="text" class="form-control" value="<?=isset($_GET['correspondence']) ? $_GET['correspondence'] :''?>" name="correspondence" id="correspondence" placeholder="Correspondence Address">
                     </div>
                     <div class="col-md-3 mb-3 top-data">
-                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                    <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
                         <input type="text" class="form-control" value="<?=isset($_GET['joining_date']) ? $_GET['joining_date'] :''?>" name="joining_date" id="joining_date" placeholder="Joining Date">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
                     </div>
                     <div class="col-md-3 mb-3 top-data">
-                    <div id="datepicker1" class="input-group date" data-date-format="mm-dd-yyyy">
+                    <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
                         <input type="text" class="form-control" value="<?=isset($_GET['resignation_date']) ? $_GET['resignation_date'] :''?>" name="resignation_date" id="resignation_date" placeholder="Resignation Date">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
@@ -122,14 +122,14 @@
                     <?php } ?>
                     <?php } ?>
                 </table>
-                <div class="pagination-inv"><?=$links; ?></div>
+                <div class="pagination-inv mb-5"><?=$links; ?></div>
             </div>
         </div>
     </div>
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+
 
 <script>
     function softDelete(memberId) {
@@ -152,5 +152,11 @@
             input.removeClass('empty');
         }
     });
+    $(function () {
+  $(".datepicker").datepicker({ 
+        autoclose: true, 
+        todayHighlight: true
+  }).datepicker('update', new Date());
+});
 </script>
 
