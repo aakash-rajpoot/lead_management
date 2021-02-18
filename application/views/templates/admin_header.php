@@ -32,6 +32,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="<?php echo base_url();?>js/common.js"></script>
 </head>
 <?php print_r($this->uri->segment(1)); ?>
     <body class="sidebar-is-reduced">
@@ -191,20 +192,17 @@
     // $( "#joining_date" ).datepicker('show');
     $( "#dob" ).datepicker({dateFormat:'dd-mm-yy'});
   });
-  </script>
-<script>
+
 $(document).ready(function() {       
 	$('#checkbox').multiselect({		
 		nonSelectedText: 'Select Unit '				
 	});
 });
-</script>
-<script>
+
 $(document).ready( function () {
     $('#myTable').DataTable();
 } );
-</script>
-<script>
+
     $(document).ready(function(){
 
 google.charts.load('current', {'packages':['corechart']});
@@ -246,5 +244,4 @@ chart.draw(data, options);
 
 
 });
- 
-    </script>
+ </script>
