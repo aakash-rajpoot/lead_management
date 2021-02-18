@@ -27,8 +27,8 @@
     <!-- <link rel="stylesheet" href="<?=base_url('css/bootstrap3.3.7.css')?>"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Latest compiled and minified JavaScript -->
-    <link rel="stylesheet" href="<?=base_url('css/bootstrap3.2.0.css')?>">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="<?=base_url('css/bootstrap3.2.0.css')?>"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
     <link rel="stylesheet" href="<?=base_url('css/bootstrap3.3.5.css')?>">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
@@ -44,7 +44,7 @@
     <!-- <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script> -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="<?php echo base_url();?>/js/shielduiall.js"></script>
-    <script src="<?php echo base_url();?>/js/chart-loader.js"></script>
+    <!-- <script src="<?php echo base_url();?>/js/chart-loader.js"></script> -->
     <script src="<?php echo base_url();?>/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> -->
