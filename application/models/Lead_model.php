@@ -165,7 +165,8 @@ class Lead_model extends CI_Model {
     }
 
     public function get_leads($limit, $start) {
-        
+        $assign_to = $this->input->get('assign_to', TRUE); 
+        $created_by = $this->input->get('created_by', TRUE); 
         $name = $this->input->get('name', TRUE); 
         $email = $this->input->get('email', TRUE); 
         $phone = $this->input->get('phone', TRUE); 
@@ -173,7 +174,15 @@ class Lead_model extends CI_Model {
         $client_address = $this->input->get('client_address', TRUE); 
         $available_unit = $this->input->get('available_unit', TRUE); 
         $status = $this->input->get('status', TRUE); 
+        $create_lead_date = $this->input->get('lead_date', TRUE); 
+        $assign_lead_date = $this->input->get('assign_date', TRUE);
         $where = "active = '1' ";
+        if(!empty($assign_to)) {
+            $where.= " AND assign_to = '$assign_to'";
+        }
+        if(!empty($created_by)) {
+            $where.= " AND created_by = '$created_by'";
+        }
         if(!empty($name)) {
             $where.= " AND name like '%$name%'";
         }
@@ -195,9 +204,16 @@ class Lead_model extends CI_Model {
         if(!empty($status)) {
             $where.= " AND status='$status'";
         }
+        if(!empty($create_lead_date)) {
+            $where.= " AND lead_date='$create_lead_date'";
+        }
+        if(!empty($assign_lead_date)) {
+            $where.= " AND assign_date='$assign_lead_date'";
+        }
+        
 
         $query = $this->db->limit($limit, $start)
-        ->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,status,status_name,color_code,lead_date")
+        ->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,assign_to,created_by,status,status_name,color_code,lead_date")
         ->from($this->table)
         ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
         ->join('sq_lead_unit as u', 'sq_lead.id = u.lead_id', 'left')
@@ -222,7 +238,7 @@ class Lead_model extends CI_Model {
         $counter=[];
         $counter['members']=$this->db->get_where("sq_members",['active'=>'1'])->num_rows();
         $counter['leads']=$this->db->get_where("sq_lead",['active'=>'1'])->num_rows();
-        $counter['units']=$this->db->get_where("sq_unit")->num_rows();
+        $counter['units']=$this->db->get_where("sq_unit",['active'=>'1'])->num_rows();
         return $counter;
     }
     public function get_status() {

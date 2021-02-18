@@ -198,11 +198,16 @@ $(document).ready(function() {
 		nonSelectedText: 'Select Unit '				
 	});
 });
+<<<<<<< HEAD
 
 $(document).ready( function () {
     $('#myTable').DataTable();
 } );
 
+=======
+</script>
+<script>
+>>>>>>> ed3442b153b4edeb12d03721bc5da5cd404f3348
     $(document).ready(function(){
 
 google.charts.load('current', {'packages':['corechart']});
@@ -211,30 +216,34 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
     <?php
         $pending = $progress = $booked = 0;
-        foreach($lead_status as $data){
-            if($data['status']=='1'){
-                $pending += 1;
-            } else if($data['status']=='2') {
-                $progress += 1;
-            }else if($data['status']=='3'){
-                $booked += 1;
+        if(!empty($lead_status)) {
+            foreach($lead_status as $data){
+                if($data['status']=='1'){
+                    $pending += 1;
+                } else if($data['status']=='2') {
+                    $progress += 1;
+                }else if($data['status']=='3'){
+                    $booked += 1;
+                }
             }
         }?>
 
 var data = google.visualization.arrayToDataTable([
 ['Task', 'Status'],
-['A',0],
-['Pending', <?=$pending?>],
+['Available', <?=$pending?>],
 ['Progress', <?=$progress?>],
 ['Booked', <?=$booked?>],
-['B',0],
-
 
 ]);
 
 var options = {
 title: 'Assigned Lead Status',
-is3D:true
+is3D:true,
+slices: {
+        0: { color: '#c95150' },
+        1: { color: '#e8df4b'},
+        2:{color : '#65b551'}
+        }
 };
 
 var chart = new google.visualization.PieChart(document.getElementById('piechart3d'));
@@ -242,6 +251,10 @@ var chart = new google.visualization.PieChart(document.getElementById('piechart3
 chart.draw(data, options);
 }
 
-
 });
+<<<<<<< HEAD
  </script>
+=======
+
+</script>
+>>>>>>> ed3442b153b4edeb12d03721bc5da5cd404f3348

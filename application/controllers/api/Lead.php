@@ -11,20 +11,6 @@ class Lead extends REST_Controller {
 		$this->load->library(array('form_validation','session'));
     }
 
-    public function index_get() {
-        $userData = $this->agent_api_model->verify_token();
-        if($userData == false) {
-            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
-        }else{
-            $leads = $this->lead_api_model->all_agent_leads($userData);
-            if($leads){
-                $this->response(['status'=>true,'message'=>'All Leads.','all leads'=>$leads], REST_Controller::HTTP_OK);
-            }else{
-                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
-            }
-        }
-    }
-
     public function index_post($action = '') {
         switch($action) {
 
@@ -46,7 +32,11 @@ class Lead extends REST_Controller {
 
             case 'dashboard_status':
                 $this->dashboard_status();
-                break;   
+                break;
+                
+            case 'all_leads':
+                $this->all_leads();
+                break;
                   
         }
     }
@@ -83,6 +73,20 @@ class Lead extends REST_Controller {
             $units = $this->lead_api_model->available_units_detail();
             if($units){
                 $this->response(['status'=>true,'message'=>'All Available Units.','available_units'=>$units], REST_Controller::HTTP_OK);
+            }else{
+                $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
+
+    public function all_leads() {
+        $userData = $this->agent_api_model->verify_token();
+        if($userData == false) {
+            $this->response(['status'=>false,'message'=>'Authorization failed!'], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
+            $leads = $this->lead_api_model->all_agent_leads($userData);
+            if($leads){
+                $this->response(['status'=>true,'message'=>'All Leads.','all leads'=>$leads], REST_Controller::HTTP_OK);
             }else{
                 $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
             }

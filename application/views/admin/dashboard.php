@@ -101,6 +101,12 @@ body {
                 <?=form_open(null, array('method'=>'get')); ?>
                 <div class="row inventory-filter">
                     <div class="col-md-3 mb-3 top-data">
+                        <input type="tel" class="form-control" value="<?=isset($_GET['assign_to']) ? $_GET['assign_to'] :''?>" name="assign_to" id="assign_to" placeholder="Assigned to ID">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                        <input type="tel" class="form-control" value="<?=isset($_GET['created_by']) ? $_GET['created_by'] :''?>" name="created_by" id="created_by" placeholder="Created by ID">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
                         <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
                     </div>
                     <div class="col-md-3 mb-3 top-data">
@@ -113,7 +119,19 @@ body {
                         <input type="text" class="form-control" value="<?=isset($_GET['property_address']) ? $_GET['property_address'] :''?>" name="property_address" id="property_address" placeholder="Property Address">
                     </div>
                     <div class="col-md-3 mb-3 top-data">
-                        <input type="text" class="form-control" name="client_address" id="client_address" placeholder="Client Address">
+                        <input type="text" class="form-control" value="<?=isset($_GET['client_address']) ? $_GET['client_address'] :''?>" name="client_address" id="client_address" placeholder="Client Address">
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                      <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                          <input type="text" class="form-control" value="<?=isset($_GET['lead_date']) ? $_GET['lead_date'] :''?>" name="lead_date" id="lead_date" placeholder="Lead Create Date">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                      <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                          <input type="text" class="form-control" value="<?=isset($_GET['assign_date']) ? $_GET['assign_date'] :''?>" name="assign_date" id="assign_date" placeholder="Lead Assign Date">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      </div>
                     </div>
                     <div class="col-md-3 mb-3 top-data">
                         <select  class="form-control" name="available_unit">
@@ -146,7 +164,9 @@ body {
                         </a>
                     </div>
                 <?php endforeach; ?>
+                <?php if($total_rows > $per_page){ ?>
                 <div class="pagination-inv mb-5"><?=$links; ?></div>
+                <?php } ?>
             </div>
         </div>
     </div>

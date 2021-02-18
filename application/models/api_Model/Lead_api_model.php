@@ -29,13 +29,13 @@ class Lead_api_model extends CI_Model {
 
     public function all_agent_leads($userData){
         $member_id = $userData['id'];
-        $name = $this->input->get('name', TRUE); 
-        $email = $this->input->get('email', TRUE); 
-        $phone = $this->input->get('phone', TRUE); 
-        $property_address = $this->input->get('property_address', TRUE); 
-        $client_address = $this->input->get('client_address', TRUE); 
-        $available_unit = $this->input->get('available_unit', TRUE); 
-        $status = $this->input->get('status', TRUE); 
+        $name = $this->input->post('name', TRUE); 
+        $email = $this->input->post('email', TRUE); 
+        $phone = $this->input->post('phone', TRUE); 
+        $property_address = $this->input->post('property_address', TRUE); 
+        $client_address = $this->input->post('client_address', TRUE); 
+        $available_unit = $this->input->post('available_unit', TRUE); 
+        $status = $this->input->post('status', TRUE); 
 
         $where = "active = '1'  and (created_by=$member_id OR assign_to=$member_id) ";
         if(!empty($name)) {
