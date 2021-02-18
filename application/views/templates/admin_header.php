@@ -13,26 +13,43 @@
     <link rel="icon" href="<?=base_url('media/logo/'.$logo)?>" type="image/x-icon">
     <!-- custom css-->
     <link rel="stylesheet" href="<?=base_url('css/style.css')?>">
+    <link rel="stylesheet" href="<?=base_url('css/twitter-bootstrap4.5.2.css')?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <script src='https://use.fontawesome.com/2188c74ac9.js'></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>/js/common.js"></script>
+    <script src="<?php echo base_url();?>/js/font-awesome.js"></script>
+    <script src="<?php echo base_url();?>/js/jquery-3.5.1.js"></script>
+    <script src="<?php echo base_url();?>/js/googleapis3.1.0.js"></script>
+    <!-- <script src='https://use.fontawesome.com/2188c74ac9.js'></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
     <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="<?=base_url('css/bootstrap3.3.7.css')?>"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Latest compiled and minified JavaScript -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=base_url('css/bootstrap3.2.0.css')?>">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="<?=base_url('css/bootstrap3.3.5.css')?>">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+    <script src="<?php echo base_url();?>/js/bootstrap3.3.5.js"></script>
+    <script src="<?php echo base_url();?>/js/multiselect0.9.13.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script> -->
+    <link rel="stylesheet" href="<?=base_url('css/bootstrap-multiselect.css')?>">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css"> -->
     <!-- you need to include the shieldui css and js assets in order for the charts to work -->
-    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
-    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <link rel="stylesheet" href="<?=base_url('css/shared-components.css')?>">
+    <!-- <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" /> -->
+    <!-- <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script> -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="<?php echo base_url();?>/js/shielduiall.js"></script>
+    <script src="<?php echo base_url();?>/js/chart-loader.js"></script>
+    <script src="<?php echo base_url();?>/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-<script src="<?php echo base_url();?>js/common.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> -->
+<script src="<?php echo base_url();?>/js/googleapis-ajax.js"></script>
+
 </head>
 <?php print_r($this->uri->segment(1)); ?>
     <body class="sidebar-is-reduced">
@@ -187,74 +204,56 @@
         </div>
 
 <script>
-  $( function() {
-    $( "#joining_date" ).datepicker({dateFormat:'dd-mm-yy'});
-    // $( "#joining_date" ).datepicker('show');
-    $( "#dob" ).datepicker({dateFormat:'dd-mm-yy'});
-  });
 
-$(document).ready(function() {       
-	$('#checkbox').multiselect({		
-		nonSelectedText: 'Select Unit '				
-	});
-});
-<<<<<<< HEAD
+ $(document).ready(function() {
 
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-
-=======
-</script>
-<script>
->>>>>>> ed3442b153b4edeb12d03721bc5da5cd404f3348
-    $(document).ready(function(){
-
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
     <?php
-        $pending = $progress = $booked = 0;
-        if(!empty($lead_status)) {
-            foreach($lead_status as $data){
-                if($data['status']=='1'){
-                    $pending += 1;
-                } else if($data['status']=='2') {
-                    $progress += 1;
-                }else if($data['status']=='3'){
-                    $booked += 1;
-                }
+    $pending = $progress = $booked = 0;
+    if(!empty($lead_status)) {
+        foreach($lead_status as $data){
+            if($data['status']=='1'){
+                $pending += 1;
+            } else if($data['status']=='2') {
+                $progress += 1;
+            }else if($data['status']=='3'){
+                $booked += 1;
             }
-        }?>
-
-var data = google.visualization.arrayToDataTable([
-['Task', 'Status'],
-['Available', <?=$pending?>],
-['Progress', <?=$progress?>],
-['Booked', <?=$booked?>],
-
-]);
-
-var options = {
-title: 'Assigned Lead Status',
-is3D:true,
-slices: {
-        0: { color: '#c95150' },
-        1: { color: '#e8df4b'},
-        2:{color : '#65b551'}
         }
-};
+    }?>
 
-var chart = new google.visualization.PieChart(document.getElementById('piechart3d'));
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Status'],
+        ['Available', <?=$pending?>],
+        ['Progress', <?=$progress?>],
+        ['Booked', <?=$booked?>],
 
-chart.draw(data, options);
+    ]);
+
+    var options = {
+        title: 'Assigned Lead Status',
+        verticalAlign: 'middle',
+        is3D: true,
+        slices: {
+            0: { color: '#c95150' },
+            1: { color: '#e8df4b' },
+            2: { color: '#65b551' }
+        }
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart3d'));
+
+    chart.draw(data, options);
 }
 
 });
-<<<<<<< HEAD
- </script>
-=======
+$(document).ready(function() {
+    $('#checkbox').multiselect({
+        nonSelectedText: 'Select Unit '
+    });
+});
 
-</script>
->>>>>>> ed3442b153b4edeb12d03721bc5da5cd404f3348
+ </script>

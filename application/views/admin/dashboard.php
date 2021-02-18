@@ -10,6 +10,11 @@
   padding: 10px;
   height: 200px; /* Should be removed. Only for demonstration */
 }
+.piechart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
 </style>
 <style>
 * {
@@ -49,6 +54,13 @@ body {
 .inventory-filter .cols-md-3 text {
     padding-right: 0px;
 }
+.piechart-box{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin-left:232px;
+  text-align:center;
+}
 </style>
 <div class="wrap-career ">
   <div class="content-wrapper content-wrapper--with-bg">
@@ -83,7 +95,7 @@ body {
             </a>
           </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="piechart-box">
                 <div id="piechart3d" style="width:80rem;height:45rem; margin-bottom:-136px;">
                 </div>
             </div>
@@ -172,4 +184,5 @@ body {
     </div>
     </div>
 </div>
-
+</div>
+</div>
