@@ -16,6 +16,7 @@ class Lead_model extends CI_Model {
             'client_address' => $this->input->post('client_address'),
             'remark' => $this->input->post('remark'),
             'reference' => $this->input->post('reference'),
+            'lead_status' => date('Y-m-d')
         );
         $units = $this->input->post('available_unit');
         $lead['available_unit'] = implode( ",",$units); 
@@ -161,10 +162,30 @@ class Lead_model extends CI_Model {
     }
 
     public function get_count() {
-        return $this->db->where('active','1')->count_all($this->table);
+        $where = $this->get_conditions();
+        $this->db->where($where);
+        $this->db->from($this->table);
+        return $this->db->count_all_results();
     }
 
     public function get_leads($limit, $start) {
+        $where = $this->get_conditions();
+
+        $query = $this->db->limit($limit, $start)
+        ->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,assign_to,created_by,status,status_name,color_code,lead_date")
+        ->from($this->table)
+        ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
+        ->join('sq_lead_unit as u', 'sq_lead.id = u.lead_id', 'left')
+        ->where($where)
+        ->group_by('sq_lead.id')
+        ->get();
+
+        return $query->result();
+    }
+
+
+    function get_conditions() {
+       
         $assign_to = $this->input->get('assign_to', TRUE); 
         $created_by = $this->input->get('created_by', TRUE); 
         $name = $this->input->get('name', TRUE); 
@@ -210,19 +231,10 @@ class Lead_model extends CI_Model {
         if(!empty($assign_lead_date)) {
             $where.= " AND assign_date='$assign_lead_date'";
         }
-        
 
-        $query = $this->db->limit($limit, $start)
-        ->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,assign_to,created_by,status,status_name,color_code,lead_date")
-        ->from($this->table)
-        ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
-        ->join('sq_lead_unit as u', 'sq_lead.id = u.lead_id', 'left')
-        ->where($where)
-        ->group_by('sq_lead.id')
-        ->get();
-
-        return $query->result();
+        return $where;
     }
+
 
     function view_lead_details($id){
         $query = $this->db->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,status,status_name,color_code,lead_date,reference,remark")

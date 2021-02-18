@@ -18,7 +18,8 @@ class Lead_api_model extends CI_Model {
             'reference' => $this->input->post('reference'),
             'available_unit' => $this->input->post('available_unit'),
             'created_by'=> $userData['id'],
-            'user_type' => '2'
+            'user_type' => '2',
+            'lead_status' => date('Y-m-d')
         );
         return $this->db->insert('sq_lead',$lead);
     }
