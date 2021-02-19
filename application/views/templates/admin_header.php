@@ -13,16 +13,16 @@
     <link rel="icon" href="<?=base_url('media/logo/'.$logo)?>" type="image/x-icon">
     <!-- custom css-->
     <link rel="stylesheet" href="<?=base_url('css/style.css')?>">
-    <link rel="stylesheet" href="<?=base_url('css/twitter-bootstrap4.5.2.css')?>">
+    <!-- <link rel="stylesheet" href="<?=base_url('css/twitter-bootstrap4.5.2.css')?>"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <script src="<?php echo base_url();?>/js/common.js"></script>
+    <!-- <script src="<?php echo base_url();?>/js/common.js"></script> -->
     <script src="<?php echo base_url();?>/js/font-awesome.js"></script>
     <script src="<?php echo base_url();?>/js/jquery-3.5.1.js"></script>
-    <script src="<?php echo base_url();?>/js/googleapis3.1.0.js"></script>
+    <!-- <script src="<?php echo base_url();?>/js/googleapis3.1.0.js"></script> -->
     <!-- <script src='https://use.fontawesome.com/2188c74ac9.js'></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
     
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <!-- <link rel="stylesheet" href="<?=base_url('css/bootstrap3.3.7.css')?>"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -48,7 +48,7 @@
     <script src="<?php echo base_url();?>/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> -->
-<script src="<?php echo base_url();?>/js/googleapis-ajax.js"></script>
+<!-- <script src="<?php echo base_url();?>/js/googleapis-ajax.js"></script> -->
 
 </head>
 <?php print_r($this->uri->segment(1)); ?>
@@ -113,14 +113,14 @@
                 <nav class="c-menu js-menu navigation">
                     <ul class="u-list site-menu mainmenu">
                         <li class="c-menu__item is-active" title="Dashboard">
-                            <a href="<?=base_url('index.php/admin/admin_dashboard')?>">
+                            <a href="<?=base_url('admin/admin_dashboard')?>">
                                 <div class="c-menu__item__inner menusss">
                                     <i class="fa fa-user"> <span class="icon-titles">&nbsp; Dashboard</span></i>
                                 </div>
                             </a>
                         </li>    
                         <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'member' ? 'active' : ''; ?>" title="Sales">
-                        <a href="<?=base_url('index.php/member')?>">
+                        <a href="<?=base_url('member')?>">
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-users"> <span class="icon-titles">&nbsp; Sales Team</span></i>
                             </div>
@@ -128,14 +128,14 @@
                                
                             <ul class="site-menu-sub limain submenu ">
                                 <li class="site-menu-item lichild" title="All Sales Team">  
-                                    <a href="<?=base_url('index.php/member')?>">
+                                    <a href="<?=base_url('member')?>">
                                         <div class="c-menu__item__inner submenu-color">
                                             <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp; <span class="icon-titles">Sales User</span></i>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="site-menu-item lichild" title="Add Sales Team">
-                                    <a href="<?=base_url('index.php/member/add_member')?>">
+                                    <a href="<?=base_url('member/add_member')?>">
                                         <div class="c-menu__item__inner submenu-color">
                                             <i class="fa fa-user-plus" aria-hidden="true">&nbsp;  <span class="icon-titles">Add User</span></i>
                                         </div>
@@ -144,21 +144,21 @@
                             </ul>
                         </li>
                         <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'lead' ? 'active' : ''; ?>" title="Lead">
-                        <a href="<?=base_url('index.php/lead')?>"> 
+                        <a href="<?=base_url('lead')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-industry">&nbsp;&nbsp;<span class="icon-titles">Manage Leads</span></i>
                             </div>
                         </a>
                         <ul class="site-menu-sub submenu ">
                             <li class="site-menu-item"  title="All Lead">
-                                <a href="<?=base_url('index.php/lead')?>">
+                                <a href="<?=base_url('lead')?>">
                                     <div class="c-menu__item__inner submenu-color">
                                         <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">All Lead</span></i>
                                     </div>
                                 </a>
                             </li>
                             <li class="site-menu-item" title="Add Lead"> 
-                                <a href="<?=base_url('index.php/lead/add_lead')?>">
+                                <a href="<?=base_url('lead/add_lead')?>">
                                     <div class="c-menu__item__inner submenu-color">
                                         <i class="fa fa-id-badge" aria-hidden="true">&nbsp; <span class="icon-titles">Add Lead</span></i>
                                     </div>
@@ -167,21 +167,21 @@
                         </ul>
                     </li>
                     <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'unit' ? 'active' : ''; ?>" title="Unit">
-                        <a href="<?=base_url('index.php/unit')?>"> 
+                        <a href="<?=base_url('unit')?>"> 
                             <div class="c-menu__item__inner menusss">
                                 <i class="fa fa-bar-chart">&nbsp;&nbsp;<span class="icon-titles">Property Unit</span></i>
                             </div>
                         </a>
                         <ul class="site-menu-sub submenu">
                             <li class="site-menu-item"  title="All unit">
-                                <a href="<?=base_url('index.php/unit')?>">
+                                <a href="<?=base_url('unit')?>">
                                     <div class="c-menu__item__inner submenu-color">
                                         <i class="fa fa-universal-access" aria-hidden="true">&nbsp;<span class="icon-titles">All Units</span></i>
                                     </div>
                                 </a>
                             </li>
                             <li class="site-menu-item" title="Add Unit"> 
-                                <a href="<?=base_url('index.php/unit/add_unit')?>">
+                                <a href="<?=base_url('unit/add_unit')?>">
                                     <div class="c-menu__item__inner submenu-color">
                                         <i class="fa fa-id-badge" aria-hidden="true">&nbsp; <span class="icon-titles">Add Unit</span></i>
                                     </div>
@@ -190,7 +190,7 @@
                         </ul>
                     </li>
                         <li class="c-menu__item has-submenu " data-toggle="tooltip" title="Settings">
-                            <a href="<?=base_url('index.php/setting')?>">
+                            <a href="<?=base_url('setting')?>">
                                 <div class="c-menu__item__inner menusss">
                                     <i class="fa fa-cogs">&nbsp;&nbsp;<span class="icon-titles">Settings</span></i>
                                 </div>
@@ -256,4 +256,12 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('#myTable').DataTable();
+});
+$(function() {
+    $("#joining_date").datepicker({ dateFormat: 'dd-mm-yy' });
+    // $( "#joining_date" ).datepicker('show');
+    $("#dob").datepicker({ dateFormat: 'dd-mm-yy' });
+});
  </script>

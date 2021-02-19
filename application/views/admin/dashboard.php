@@ -1,8 +1,4 @@
 <style>
-* {
-  box-sizing: border-box;
-}
-
 /* Create four equal col-sm-2s that floats next to each other */
 .col-sm-2 {
   float: left;
@@ -62,6 +58,7 @@ body {
   text-align:center;
 }
 </style>
+
 <div class="wrap-career ">
   <div class="content-wrapper content-wrapper--with-bg">
     <div class="row">
@@ -189,3 +186,13 @@ body {
 </div>
 </div>
 </div>
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable();
+});
+$(function() {
+    $("#joining_date").datepicker({ dateFormat: 'dd-mm-yy' });
+    // $( "#joining_date" ).datepicker('show');
+    $("#dob").datepicker({ dateFormat: 'dd-mm-yy' });
+});
+</script>
