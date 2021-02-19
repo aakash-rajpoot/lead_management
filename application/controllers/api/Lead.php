@@ -160,7 +160,7 @@ class Lead extends REST_Controller {
         $this->email->reply_to('noreply@gmail.com', 'No Reply');
         $this->email->to($email);
         $this->email->subject('Kritak|Tax Documentation');
-        $this->email->message('HEllo');
+        $this->email->message('You have successfully booked a lead and the tax documentation are given below.');
         $file_path = base_url('\media\tax-pdf\tax.pdf');
         $this->email->attach($file_path);
         if ($this->email->send()) {
