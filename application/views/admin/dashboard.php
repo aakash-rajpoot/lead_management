@@ -113,10 +113,7 @@ body {
                 <?=form_open(null, array('method'=>'get')); ?>
                 <div class="row inventory-filter">
                     <div class="col-md-3 mb-3 top-data">
-                        <input type="tel" class="form-control" value="<?=isset($_GET['assign_to']) ? $_GET['assign_to'] :''?>" name="assign_to" id="assign_to" placeholder="Assigned to ID">
-                    </div>
-                    <div class="col-md-3 mb-3 top-data">
-                        <input type="tel" class="form-control" value="<?=isset($_GET['created_by']) ? $_GET['created_by'] :''?>" name="created_by" id="created_by" placeholder="Created by ID">
+                        <input type="tel" class="form-control" value="<?=isset($_GET['user_id']) ? $_GET['user_id'] :''?>" name="user_id" id="user_id" placeholder="User ID">
                     </div>
                     <div class="col-md-3 mb-3 top-data">
                         <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
@@ -142,6 +139,12 @@ body {
                     <div class="col-md-3 mb-3 top-data">
                       <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
                           <input type="text" class="form-control" value="<?=isset($_GET['assign_date']) ? $_GET['assign_date'] :''?>" name="assign_date" id="assign_date" placeholder="Lead Assign Date">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-3 top-data">
+                      <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                          <input type="text" class="form-control" value="<?=isset($_GET['status_date']) ? $_GET['status_date'] :''?>" name="status_date" id="status_date" placeholder="Lead Status Date">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>

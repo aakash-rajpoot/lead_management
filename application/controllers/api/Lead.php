@@ -7,8 +7,8 @@ class Lead extends REST_Controller {
         parent::__construct();
 
         $this->load->model(array('api_model/lead_api_model','api_model/agent_api_model'));
-		$this->load->helper(array('form','url','html','jwt_helper'));
-		$this->load->library(array('form_validation','session'));
+		$this->load->helper(array('form','url','html','jwt_helper','pdf_helper'));
+		$this->load->library(array('form_validation','session','email'));
     }
 
     public function index_post($action = '') {
@@ -115,13 +115,18 @@ class Lead extends REST_Controller {
             $id = $this->input->post('id');
             $status = $this->input->post('status');
             $remark = $this->input->post('status_remark');
-            if($status){
-                $data = $this->lead_api_model->update_status($status,$id,$remark);
-                if($data){
-                    $this->response(['status'=>true,'message'=>'You have successfully changed assigned lead status. '], REST_Controller::HTTP_OK);
-                } else {
-                    $this->response(['status'=>false,'message'=>'Error Found.'], REST_Controller::HTTP_BAD_REQUEST);
-                }
+            $status_date = date('Y-m-d');
+
+            $data = $this->lead_api_model->update_status($status,$id,$remark,$status_date);
+            if(gettype($data) == 'array'){
+                $status = $this->send_tax_doc($data['email']);
+                if($status) {
+                    $this->response(['status'=>true,'message'=>'Documentation has been sent to client successfully.'], REST_Controller::HTTP_OK);
+                }else{
+                    $this->response(['status'=>false,'message'=>'Documentations has not sent!'], REST_Controller::HTTP_BAD_REQUEST);  
+                }            
+            } else {
+                $this->response(['status'=>false,'message'=>' Status successfully updated.'], REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }
@@ -150,6 +155,20 @@ class Lead extends REST_Controller {
         }
     }
 
+    function send_tax_doc($email){
+        $this->email->from('info@Kritak.com', 'KRITAK INFRA PVT.LTD.');
+        $this->email->reply_to('noreply@gmail.com', 'No Reply');
+        $this->email->to($email);
+        $this->email->subject('Kritak|Tax Documentation');
+        $this->email->message('HEllo');
+        $file_path = base_url('\media\tax-pdf\tax.pdf');
+        $this->email->attach($file_path);
+        if ($this->email->send()) {
+            return true;    
+        } else {
+            return false;
+        }
+    }
 
 
 }

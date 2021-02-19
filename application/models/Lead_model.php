@@ -185,9 +185,7 @@ class Lead_model extends CI_Model {
 
 
     function get_conditions() {
-       
-        $assign_to = $this->input->get('assign_to', TRUE); 
-        $created_by = $this->input->get('created_by', TRUE); 
+        $user_id = $this->input->get('user_id', TRUE); 
         $name = $this->input->get('name', TRUE); 
         $email = $this->input->get('email', TRUE); 
         $phone = $this->input->get('phone', TRUE); 
@@ -197,12 +195,11 @@ class Lead_model extends CI_Model {
         $status = $this->input->get('status', TRUE); 
         $create_lead_date = $this->input->get('lead_date', TRUE); 
         $assign_lead_date = $this->input->get('assign_date', TRUE);
-        $where = "active = '1' ";
-        if(!empty($assign_to)) {
-            $where.= " AND assign_to = '$assign_to'";
-        }
-        if(!empty($created_by)) {
-            $where.= " AND created_by = '$created_by'";
+        $status_date = $this->input->get('status_date', TRUE);
+
+        $where = "active = '1'";
+        if(!empty($user_id)) {
+            $where.= " AND created_by=$user_id OR assign_to=$user_id";
         }
         if(!empty($name)) {
             $where.= " AND name like '%$name%'";
@@ -230,6 +227,9 @@ class Lead_model extends CI_Model {
         }
         if(!empty($assign_lead_date)) {
             $where.= " AND assign_date='$assign_lead_date'";
+        }
+        if(!empty($status_date)) {
+            $where.= " AND status_date='$status_date'";
         }
 
         return $where;
