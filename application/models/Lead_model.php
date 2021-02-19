@@ -16,7 +16,7 @@ class Lead_model extends CI_Model {
             'client_address' => $this->input->post('client_address'),
             'remark' => $this->input->post('remark'),
             'reference' => $this->input->post('reference'),
-            'lead_status' => date('Y-m-d')
+            'lead_date' => date('Y-m-d')
         );
         $units = $this->input->post('available_unit');
         $lead['available_unit'] = implode( ",",$units); 
