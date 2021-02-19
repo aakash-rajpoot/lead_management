@@ -6,49 +6,30 @@
     <meta name="keywords" content="dummy content">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Favicon-->
-    <?php if($logo == ""){
+s    <?php if($logo == ""){
         $logo = 'kritak_logo.png';
     } ?>
     <link rel="icon" href="<?=base_url('media/logo/'.$logo)?>" type="image/x-icon">
-    <!-- custom css-->
     <link rel="stylesheet" href="<?=base_url('css/style.css')?>">
-    <!-- <link rel="stylesheet" href="<?=base_url('css/twitter-bootstrap4.5.2.css')?>"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <!-- <script src="<?php echo base_url();?>/js/common.js"></script> -->
     <script src="<?php echo base_url();?>/js/font-awesome.js"></script>
     <script src="<?php echo base_url();?>/js/jquery-3.5.1.js"></script>
-    <!-- <script src="<?php echo base_url();?>/js/googleapis3.1.0.js"></script> -->
-    <!-- <script src='https://use.fontawesome.com/2188c74ac9.js'></script> -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="<?=base_url('css/bootstrap3.3.7.css')?>"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <!-- <link rel="stylesheet" href="<?=base_url('css/bootstrap3.2.0.css')?>"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
     <link rel="stylesheet" href="<?=base_url('css/bootstrap3.3.5.css')?>">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
     <script src="<?php echo base_url();?>/js/bootstrap3.3.5.js"></script>
     <script src="<?php echo base_url();?>/js/multiselect0.9.13.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script> -->
     <link rel="stylesheet" href="<?=base_url('css/bootstrap-multiselect.css')?>">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css"> -->
-    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
     <link rel="stylesheet" href="<?=base_url('css/shared-components.css')?>">
-    <!-- <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" /> -->
-    <!-- <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script> -->
+   
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="<?php echo base_url();?>/js/shielduiall.js"></script>
-    <!-- <script src="<?php echo base_url();?>/js/chart-loader.js"></script> -->
     <script src="<?php echo base_url();?>/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> -->
-<!-- <script src="<?php echo base_url();?>/js/googleapis-ajax.js"></script> -->
 
 </head>
 <?php print_r($this->uri->segment(1)); ?>

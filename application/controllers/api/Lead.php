@@ -126,7 +126,7 @@ class Lead extends REST_Controller {
                     $this->response(['status'=>false,'message'=>'Documentations has not sent!'], REST_Controller::HTTP_BAD_REQUEST);  
                 }            
             } else {
-                $this->response(['status'=>false,'message'=>' Status successfully updated.'], REST_Controller::HTTP_BAD_REQUEST);
+                $this->response(['status'=>true,'message'=>' Status successfully updated.'], REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }
@@ -161,7 +161,7 @@ class Lead extends REST_Controller {
         $this->email->to($email);
         $this->email->subject('Kritak|Tax Documentation');
         $this->email->message('You have successfully booked a lead and the tax documentation are given below.');
-        $file_path = base_url('\media\tax-pdf\tax.pdf');
+        $file_path = base_url('media/tax-pdf/tax.pdf');
         $this->email->attach($file_path);
         if ($this->email->send()) {
             return true;    
@@ -169,6 +169,5 @@ class Lead extends REST_Controller {
             return false;
         }
     }
-
 
 }
