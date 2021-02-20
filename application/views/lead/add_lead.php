@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="label-input">Available units: <span class="text-danger font-weight-medium">*</span></label>
-                    <div class="form-group">
+                    <div class=" col-md-6 form-group">
                         <select id="checkbox" name="available_unit[]" multiple>
                             <?php foreach($units as $unit ) { ?>
                                 <option value="<?=$unit['id']?>" class="form-control"><?=$unit['unit_type'].' ('.$unit['unit_size'].' '.$unit['size_measure'].')'; ?></option>
