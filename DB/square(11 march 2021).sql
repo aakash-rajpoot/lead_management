@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2021 at 07:07 PM
+-- Generation Time: Mar 11, 2021 at 08:49 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.2.34
 
@@ -47,7 +47,7 @@ CREATE TABLE `sq_admin` (
 --
 
 INSERT INTO `sq_admin` (`id`, `role_id`, `username`, `email`, `password`, `fname`, `lname`, `mobile`, `dob`, `gender`, `address`, `profile_image`) VALUES
-(1, 1, 'Admin', 'admin@square.com', '0e7517141fb53f21ee439b355b5a1d0a', 'Aakash', 'shishodia', 9643293050, '2020-12-09', 'Male', 'A215, Beta-1, Greater Noida, Gauta, UP', 'WIN_20190223_21_22_35_Pro.jpg');
+(1, 1, 'Admin', 'admin@square.com', '0e7517141fb53f21ee439b355b5a1d0a', 'Aakash', 'shishodia', 9643293050, '0000-00-00', 'Male', 'A215, Beta-1, Greater Noida, Gauta, UP', 'kritak_logo2.png');
 
 -- --------------------------------------------------------
 
@@ -99,9 +99,10 @@ CREATE TABLE `sq_lead` (
   `available_unit` varchar(1000) NOT NULL,
   `remark` text NOT NULL,
   `reference` text NOT NULL,
-  `lead_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `lead_date` date NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `status_remark` varchar(500) NOT NULL,
+  `status_date` date DEFAULT NULL,
   `active` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -109,45 +110,45 @@ CREATE TABLE `sq_lead` (
 -- Dumping data for table `sq_lead`
 --
 
-INSERT INTO `sq_lead` (`id`, `name`, `assign_to`, `created_by`, `user_type`, `assign_date`, `email`, `phone`, `alt_phone`, `property_address`, `client_address`, `available_unit`, `remark`, `reference`, `lead_date`, `status`, `status_remark`, `active`) VALUES
-(4, 'Aakash shishodia', 21, 21, 1, '2021-01-31', 'aakash143only4u@gmail.com', 9643293056, 9643293056, 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1,2,3', 'rtrtt5t5tfg', 'aaaaaaaaaaaaaa', '2020-12-24 12:59:45', 3, '', 1),
-(5, 'supertech', 0, 21, 1, '2021-01-31', 'aakash143only4u@gmail.com', 8859423143, 0, 'noida ', 'Village-Sapnawat ,Block- Dhaulana, District - Hapur, State - UP\r\nSector -34, Noida, UP', '2,3,8', ' ', '', '2020-12-24 15:31:23', 2, '', 1),
-(6, 'Aakash shishodia', 21, 21, 1, '2021-02-02', 'aakash143only4u@gmail.com', 9643293056, 0, 'migsun', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1BHK (400 sq.yard), 1BHK (450 sq.ft), 2BHK (1000 sq.ft)', ' ', '', '2020-12-27 12:08:32', 3, '', 1),
-(8, 'Aakash shishodia', 25, 0, 1, '2021-02-02', 'aakash143only4u@gmail.com', 9643293056, 0, 'sdsfdsf', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1, 2, 4', '', '', '2021-01-05 12:53:48', 3, '', 1),
-(9, 'Aakash shishodia', 0, 15, 1, '2021-02-02', 'aakash143only4u@gmail.com', 9643293056, 0, 'efewf', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '2, 3', '', '', '2021-02-02 17:51:37', 3, '', 1),
-(10, 'edfewfef', 0, 15, 2, NULL, 'dsdefe@gmail.com', 8765432123, 8767897654, 'efrrrrrrrrrrrrrrrrrrr', 'erererererere', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 3, '', 1),
-(11, 'Sunil Kumar', 0, 15, 2, NULL, 'dsdefe@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 3, '', 1),
-(12, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(13, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(14, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(15, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 3, '', 1),
-(16, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 3, '', 1),
-(17, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(18, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(19, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(20, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 3, '', 1),
-(21, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(22, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(23, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(24, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(25, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(26, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(27, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(28, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(29, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(30, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(31, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 3, '', 1),
-(32, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(33, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(34, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 3, '', 1),
-(35, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(36, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-02 18:33:48', 1, '', 1),
-(37, 'Rajat Kumar', 0, 0, 1, NULL, 'rajat@test.com', 9876543210, 0, 'Arawali Apartment', 'Arawali Apartment Noida', '3,4', '', '', '2021-02-09 12:05:38', 1, '', 1),
-(38, 'Aakash Kumar', 0, 0, 1, NULL, 'sunilkumar.pks95@gmail.com', 9876543210, 0, 'Sector 4 Gurgaon ', 'Sector 4 Gurgaon ', '2,3,4', '', '', '2021-02-09 12:13:44', 1, '', 1),
-(39, 'Navneet', 0, 0, 1, NULL, 'navneet@gmail.com', 9876598765, 0, 'Noida', 'Noida', '1,10', '', '', '2021-02-09 12:15:32', 1, '', 1),
-(40, 'Navneet', 0, 0, 1, NULL, 'navneet@gmail.com', 9876598765, 0, 'Noida', 'Noida', '1,10', '', '', '2021-02-09 12:16:08', 1, '', 1),
-(41, 'Navneet', 0, 0, 1, NULL, 'navneet@gmail.com', 9876598765, 0, 'Noida', 'Noida', '1,10', '', '', '2021-02-09 12:16:21', 1, '', 1),
-(42, 'Rohit', 0, 0, 1, NULL, 'kritak@gmail.com', 6789543223, 0, 'Kritak Eureka Park', 'noida', '2,4', '', '', '2021-02-12 15:37:38', 1, '', 1);
+INSERT INTO `sq_lead` (`id`, `name`, `assign_to`, `created_by`, `user_type`, `assign_date`, `email`, `phone`, `alt_phone`, `property_address`, `client_address`, `available_unit`, `remark`, `reference`, `lead_date`, `status`, `status_remark`, `status_date`, `active`) VALUES
+(4, 'Aakash shishodia', 21, 21, 1, '2021-01-31', 'aakash143only4u@gmail.com', 9643293056, 9643293056, 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1,2,3', 'rtrtt5t5tfg', 'aaaaaaaaaaaaaa', '2020-12-24', 3, 'Success', '2021-02-19', 1),
+(5, 'supertech', 0, 21, 1, '2021-01-31', 'aakash143only4u@gmail.com', 8859423143, 0, 'noida ', 'Village-Sapnawat ,Block- Dhaulana, District - Hapur, State - UP\r\nSector -34, Noida, UP', '2,3,8', ' ', '', '2020-12-24', 2, '', '2021-02-19', 1),
+(6, 'Aakash shishodia', 21, 21, 1, '2021-02-02', 'aakash143only4u@gmail.com', 9643293056, 0, 'migsun', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1BHK (400 sq.yard), 1BHK (450 sq.ft), 2BHK (1000 sq.ft)', ' ', '', '2020-12-27', 3, '', '2021-02-19', 1),
+(8, 'Aakash shishodia', 25, 0, 1, '2021-02-02', 'aakash143only4u@gmail.com', 9643293056, 0, 'sdsfdsf', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '1, 2, 4', '', '', '2021-01-05', 3, '', '2021-02-19', 1),
+(9, 'Aakash shishodia', 0, 15, 1, '2021-02-02', 'aakash143only4u@gmail.com', 9643293056, 0, 'efewf', 'A215, Beta-1, Greater Noida, Gautam Buddha Nagar, UP', '2, 3', '', '', '2021-02-02', 3, '', '2021-02-19', 1),
+(10, 'edfewfef', 0, 15, 2, NULL, 'dsdefe@gmail.com', 8765432123, 8767897654, 'efrrrrrrrrrrrrrrrrrrr', 'erererererere', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 3, '', '2021-02-19', 1),
+(11, 'Sunil Kumar', 0, 15, 2, NULL, 'dsdefe@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 3, '', '2021-02-19', 1),
+(12, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(13, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(14, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(15, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 3, '', '2021-02-19', 1),
+(16, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 3, '', '2021-02-19', 1),
+(17, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(18, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(19, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(20, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 3, '', '2021-02-19', 1),
+(21, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(22, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(23, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(24, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(25, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(26, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(27, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(28, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(29, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(30, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(31, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 3, '', '2021-02-19', 1),
+(32, 'Vikas Kumar', 0, 15, 2, NULL, 'vikas@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(33, 'Mayank Kumar', 0, 15, 2, NULL, 'mayank@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(34, 'Pawan Kumar', 0, 15, 2, NULL, 'pk@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 3, '', '2021-02-19', 1),
+(35, 'Sushil Kumar', 0, 15, 2, NULL, 'sus@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(36, 'Manish Kumar', 0, 15, 2, NULL, 'manish@gmail.com', 8765432123, 8767897654, 'Sec- 34 Noida', 'Sec- 34 Noida', '3dd', 'dfdfcds', 'edddddddddddddd', '2021-02-03', 1, '', '2021-02-19', 1),
+(37, 'Rajat Kumar', 0, 0, 1, NULL, 'rajat@test.com', 9876543210, 0, 'Arawali Apartment', 'Arawali Apartment Noida', '3,4', '', '', '2021-02-09', 1, '', '2021-02-19', 1),
+(38, 'Aakash Kumar', 0, 0, 1, NULL, 'sunilkumar.pks95@gmail.com', 9876543210, 0, 'Sector 4 Gurgaon ', 'Sector 4 Gurgaon ', '2,3,4', '', '', '2021-02-09', 1, '', '2021-02-19', 1),
+(39, 'Navneet', 0, 0, 1, NULL, 'navneet@gmail.com', 9876598765, 0, 'Noida', 'Noida', '1,10', '', '', '2021-02-09', 1, '', '2021-02-19', 1),
+(40, 'Navneet', 0, 0, 1, NULL, 'navneet@gmail.com', 9876598765, 0, 'Noida', 'Noida', '1,10', '', '', '2021-02-09', 1, '', '2021-02-19', 1),
+(41, 'Navneet', 0, 0, 1, NULL, 'navneet@gmail.com', 9876598765, 0, 'Noida', 'Noida', '1,10', '', '', '2021-02-09', 1, '', '2021-02-19', 1),
+(42, 'Rohit', 0, 0, 1, NULL, 'kritak@gmail.com', 6789543223, 0, 'Kritak Eureka Park', 'noida', '2,4', '', '', '2021-02-12', 1, '', '2021-02-19', 1);
 
 -- --------------------------------------------------------
 
@@ -309,9 +310,9 @@ CREATE TABLE `sq_status` (
 --
 
 INSERT INTO `sq_status` (`id`, `status_name`, `color_code`) VALUES
-(1, 'Pending', 'Red'),
-(2, 'Progress', 'Purple'),
-(3, 'Booked', 'Green');
+(1, 'Available', '#c95150'),
+(2, 'Progress', '#e8df4b\r\n'),
+(3, 'Booked', '#65b551');
 
 -- --------------------------------------------------------
 
