@@ -64,7 +64,20 @@ class Admin extends CI_Controller {
         $data['statuses'] = $this->lead_model->get_status();
         $data['count'] = $this->lead_model->fetch_all_counter();
         $data['per_page'] = $config["per_page"];
-        $data['total_rows'] = $config["total_rows"];
+        $data['total_rows'] = $config["total_rows"]; 
+        
+        $user = $this->session->get_userdata();
+
+        /**Lead analysis */
+        
+        $data['new_leads']=$this->lead_model->new_leads($user['id']);
+        $data['today_leads']=5;
+        $data['attempted_leads']=4;
+        $data['future_followup']=6;
+        $data['transfered_leads']=2;
+        $data['dump_leads']=5;
+        $data['success_leads']=2;
+
         $this->load->view('admin/dashboard',$data);
         $this->load->view('templates/admin_footer');
     }
@@ -88,7 +101,8 @@ class Admin extends CI_Controller {
 		if(isset($_POST['admin_change_password']) && $this->form_validation->run()){
                 $new_pass = md5($this->input->post('new_pass'));
                 $this->admin_model->change_password($new_pass);
-                redirect('admin/logout');
+                //redirect('admin/logout');
+                redirect('member/view_profile');
             }
 		$this->load->view('admin/change_password');
 		$this->load->view('templates/admin_footer');
@@ -105,7 +119,7 @@ class Admin extends CI_Controller {
     function view_profile(){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-        $data = $this->admin_model->fetch_admin_profile_details();
+        $data = $this->admin_model->fetch_profile_details();
       
         if(isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == '0'){
             $config['upload_path'] = './media/images';

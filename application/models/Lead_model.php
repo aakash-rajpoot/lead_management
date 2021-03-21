@@ -3,7 +3,7 @@ class Lead_model extends CI_Model {
 
     protected $table = 'sq_lead';
     public function __construct() {
-        $this->load->database();
+        $this->load->database();        
     }
 
     function lead_data(){
@@ -36,7 +36,7 @@ class Lead_model extends CI_Model {
     }
 
     function fetch_total_lead($limit, $start){
-
+        $current_user = $this->session->get_userdata();
         $name = $this->input->get('name', TRUE); 
         $email = $this->input->get('email', TRUE); 
         $phone = $this->input->get('phone', TRUE); 
@@ -65,7 +65,11 @@ class Lead_model extends CI_Model {
         }
         if(!empty($status)) {
             $where.= " AND status='$status'";
-        }
+        } 
+        if($current_user['role']>=2){
+            $cid = $current_user['id'];
+            $where.= " AND assign_to='$cid'";
+        } 
 
         $query = $this->db->limit($limit, $start)
         ->select("sq_lead.id,name,email,phone,alt_phone,client_address,assign_to,property_address,assign_date,available_unit,status,lead_date,remark,reference")
@@ -168,9 +172,8 @@ class Lead_model extends CI_Model {
         return $this->db->count_all_results();
     }
 
-    public function get_leads($limit, $start) {
+    public function get_leads($limit, $start) { 
         $where = $this->get_conditions();
-
         $query = $this->db->limit($limit, $start)
         ->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,assign_to,created_by,status,status_name,color_code,lead_date")
         ->from($this->table)
@@ -185,6 +188,8 @@ class Lead_model extends CI_Model {
 
 
     function get_conditions() {
+        $current_user = $this->session->get_userdata(); 
+
         $user_id = $this->input->get('user_id', TRUE); 
         $name = $this->input->get('name', TRUE); 
         $email = $this->input->get('email', TRUE); 
@@ -231,7 +236,10 @@ class Lead_model extends CI_Model {
         if(!empty($status_date)) {
             $where.= " AND status_date='$status_date'";
         }
-
+        if($current_user['role']>=2){
+            $cid = $current_user['id'];
+            $where.= " AND assign_to='$cid'";
+        }  
         return $where;
     }
 
@@ -265,6 +273,25 @@ class Lead_model extends CI_Model {
         return $this->db->get();
     }
 
+    function new_leads($id)
+    {
+        $this->db->select("*");
+        $this->db->from('sq_lead');
+        $this->db->where('assign_to',$id);
+        $this->db->where('lead_date',date('Y-m-d'));
+        $this->db->where('active',1);
+        return $this->db->count_all_results();
+    }
+
+    function today_leads($id)
+    {
+        $this->db->select("*");
+        $this->db->from('sq_lead');
+        $this->db->where('assign_to',$id);
+        $this->db->where('lead_date',date('Y-m-d'));
+        $this->db->where('active',1);
+        return $this->db->count_all_results();
+    }
 
 
 }

@@ -11,7 +11,6 @@ class Lead extends CI_Controller {
 		$this->load->library(array('form_validation','session','pagination'));
     }
     public function index(){
-
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $config = array();
@@ -26,8 +25,11 @@ class Lead extends CI_Controller {
         $this->pagination->initialize($config);
         $page = (!isset($_GET['lead_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
         $data["links"] = $this->pagination->create_links();
+        
         $data['total_lead'] = $this->lead_model->fetch_total_lead($config["per_page"], $page)->result_array();
+        
         $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
+
         $this->load->view('lead/total_lead',$data);
         $this->load->view('templates/admin_footer');
     }

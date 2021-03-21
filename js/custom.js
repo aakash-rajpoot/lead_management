@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $('#dt-all-checkbox').dataTable({
-
         columnDefs: [{
             orderable: false,
             className: 'select-checkbox select-checkbox-all',

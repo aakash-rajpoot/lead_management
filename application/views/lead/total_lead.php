@@ -1,7 +1,7 @@
 <div class="mt-5 ex1 top-space-hea">
     <div class="row">
      <div class="col-lg-12">
-        <div id="table1 " class="ex2">
+        <div id="table1" class="ex2">
             <div class="content-wrapper content-wrapper--with-bg">
             <?=form_open(null, array('method'=>'get')); ?>
                 <div class="row inventory-filter">
@@ -88,10 +88,9 @@
 </div>
 
 
-<script>
-    $(document).ready(function() {
+<script> 
+    $(document).ready(function() {        
         $('#dt-all-checkbox').dataTable({
-
             columnDefs: [{
                 orderable: false,
                 className: 'select-checkbox select-checkbox-all',

@@ -54,7 +54,6 @@ body {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  margin-left:232px;
   text-align:center;
 }
 </style>
@@ -62,51 +61,121 @@ body {
 <div class="wrap-career ">
   <div class="content-wrapper content-wrapper--with-bg">
     <div class="row">
-      <div class="col-lg-12">
-        <div class="row">
-          <div class="col-md-4">
-            <a href="<?=base_url('index.php/member')?>"> 
-              <div class="card-counter primary">
-                <i class="fa fa-code-fork"></i>
-                <span class="count-numbers"><?=$count['members']?></span>
-                <span title="Agents" class="count-name">Agents</span>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="<?=base_url('index.php/lead')?>"> 
-              <div class="card-counter danger">
-                <i class="fa fa-ticket"></i>
-                <span class="count-numbers"><?=$count['leads'];?></span>
-                <span  title="Leads" class="count-name">Leads</span>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="<?=base_url('index.php/unit')?>"> 
-              <div class="card-counter success">
-                <i class="fa fa-database"></i>
-                <span class="count-numbers"><?=$count['units'];?></span>
-                <span title="Units" class="count-name">Units</span>
-              </div>
-            </a>
-          </div>
-            <div class="row">
-                <div class="piechart-box">
-                <div id="piechart3d" style="width:80rem;height:45rem; margin-bottom:-136px;">
+      <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/member')?>"> 
+                    <div class="card-counter primary">
+                      <i class="fa fa-code-fork"></i>
+                      <span class="count-numbers"><?=$new_leads;?></span>
+                      <span title="Agents" class="count-name">New Enquiry</span>
+                    </div>
+                  </a>
                 </div>
+                <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/member')?>"> 
+                    <div class="card-counter primary">
+                      <i class="fa fa-code-fork"></i>
+                      <span class="count-numbers"><?=$today_leads;?></span>
+                      <span title="Agents" class="count-name">Today's followup</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/member')?>"> 
+                    <div class="card-counter primary">
+                      <i class="fa fa-code-fork"></i>
+                      <span class="count-numbers"><?=$attempted_leads;?></span>
+                      <span title="Agents" class="count-name">Attempted followup</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/member')?>"> 
+                    <div class="card-counter primary">
+                      <i class="fa fa-code-fork"></i>
+                      <span class="count-numbers"><?=$future_followup;?></span>
+                      <span title="Agents" class="count-name">Future followup</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/member')?>"> 
+                    <div class="card-counter primary">
+                      <i class="fa fa-code-fork"></i>
+                      <span class="count-numbers"><?=$transfered_leads;?></span>
+                      <span title="Agents" class="count-name">Transferred followup</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/member')?>"> 
+                    <div class="card-counter primary">
+                      <i class="fa fa-code-fork"></i>
+                      <span class="count-numbers"><?=$dump_leads;?></span>
+                      <span title="Agents" class="count-name">Dump followup</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/member')?>"> 
+                    <div class="card-counter primary">
+                      <i class="fa fa-code-fork"></i>
+                      <span class="count-numbers"><?=$success_leads;?></span>
+                      <span title="Agents" class="count-name">Success followup</span>
+                    </div>
+                  </a>
+                </div>
+                <!-- <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/member')?>"> 
+                    <div class="card-counter primary">
+                      <i class="fa fa-code-fork"></i>
+                      <span class="count-numbers"><?=$count['members']?></span>
+                      <span title="Agents" class="count-name">Agents</span>
+                    </div>
+                  </a>
+                </div> -->
+                <!-- <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/lead')?>"> 
+                    <div class="card-counter danger">
+                      <i class="fa fa-ticket"></i>
+                      <span class="count-numbers"><?=$count['leads'];?></span>
+                      <span  title="Leads" class="count-name">Leads</span>
+                    </div>
+                  </a>
+                </div> -->
+                <!-- <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/unit')?>"> 
+                    <div class="card-counter success">
+                      <i class="fa fa-database"></i>
+                      <span class="count-numbers"><?=$count['units'];?></span>
+                      <span title="Units" class="count-name">Units</span>
+                    </div>
+                  </a>
+                </div> -->
+                
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="piechart-box">
+                <div id="piechart3d" style="width:50rem;height:32rem;">
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
 <!-- status -->
-<div class="mt-5 ex1 top-space-hea" >
+<div class="mt-2 ex1 top-space-hea" >
     <div class="row">
-     <div class="col-lg-12">
+     <div class="col-md-12">
         <div id="table1" class="ex2">
             <div class="content-wrapper content-wrapper--with-bg">
+            <hr>
                 <?=form_open(null, array('method'=>'get')); ?>
                 <div class="row inventory-filter">
                     <div class="col-md-3 mb-3 top-data">
@@ -160,14 +229,15 @@ body {
                                 <option <?=isset($_GET['status']) && $_GET['status'] ==  $status['id']? 'selected' :''?> style="color:<?=$status['color_code']?>;" value="<?=$status['id']?>" class="form-control"><?=$status['status_name']?></option>
                             <?php } ?>
                         </select>
-                    </div>
+                    </div> 
                     <div class="col-md-3 mb-3">
                         <input type="submit" class="btn btn-success" name="inventory_filter" value="Submit">
                         <a href="<?=base_url().'admin/admin_dashboard'?>" class="btn btn-default">Reset</a>
                     </div>
                 </div>
-                <?=form_close();?>
-                <div class="row">
+                <?=form_close();?> 
+                <hr>
+                <div class="row m-0">
                   <?php foreach ($inventories as $inventory): ?>
                     <div class="column" onclick="openTab('b1');" style="background:<?=$inventory->color_code?>;">
                         <a href="<?=base_url('index.php/lead/view_lead/').$inventory->id?>">
@@ -175,24 +245,64 @@ body {
                             <p class="lead-des"><?=$inventory->property_address?></p>
                         </a>
                     </div>
-                <?php endforeach; ?>
-                <?php if($total_rows > $per_page){ ?>
-                <div class="pagination-inv mb-5"><?=$links; ?></div>
-                <?php } ?>
+                  <?php endforeach; ?>                  
+                </div> 
+                <div class="row m-0">
+                  <div class="col-md-12 mb-5">
+                    <?php if($total_rows > $per_page){ ?>
+                      <div class="pagination-inv"><?=$links; ?></div>
+                    <?php } ?>  
+                  </div>     
+                </div>                    
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    </div>
-</div>
-</div>
-</div>
+  </div>
 <script>
 $(document).ready(function() {
-    $('#myTable').DataTable();
-});
-$(function() {
-    $("#joining_date").datepicker({ dateFormat: 'dd-mm-yy' });
-    // $( "#joining_date" ).datepicker('show');
-    $("#dob").datepicker({ dateFormat: 'dd-mm-yy' });
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        <?php
+        $pending = $progress = $booked = 0;
+        if(!empty($lead_status)) {
+            foreach($lead_status as $data){
+                if($data['status']=='1'){
+                    $pending += 1;
+                } else if($data['status']=='2') {
+                    $progress += 1;
+                }else if($data['status']=='3'){
+                    $booked += 1;
+                }
+            }
+        }?>
+
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Status'],
+            ['Available', <?=$pending?>],
+            ['Progress', <?=$progress?>],
+            ['Booked', <?=$booked?>],
+        ]);
+
+        var options = {
+            title: 'Assigned Lead Status',
+            verticalAlign: 'middle',
+            is3D: true,
+            slices: {
+                0: { color: '#c95150' },
+                1: { color: '#e8df4b' },
+                2: { color: '#65b551' }
+            }
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart3d'));
+        chart.draw(data, options);
+    }
+    //$('#table1').DataTable();
+    $("#status_date").datepicker({ dateFormat: 'dd-mm-yy' });
+    $("#lead_date").datepicker({ dateFormat: 'dd-mm-yy' });
+    $("#assign_date").datepicker({ dateFormat: 'dd-mm-yy' });
+    
 });
 </script>

@@ -17,7 +17,7 @@ class Chat_model extends CI_Model {
     }
     
     function get_chat_data($agent_id){
-        $this->db->select("sm.name as agent_name,sa.username as admin_name,sc.message,sc.type,sc.date_time")
+        $this->db->select("sm.fname, sm.lname as agent_name,sa.username as admin_name,sc.message,sc.type,sc.date_time")
             ->from("sq_chat as sc")
             ->join('sq_admin as sa', 'sc.admin_id = sa.id', 'inner')
             ->join('sq_members as sm', 'sc.agent_id = sm.id', 'inner')

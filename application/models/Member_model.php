@@ -7,7 +7,8 @@ class Member_model extends CI_Model {
 
     function member_data(){
         $member = array(
-            'name' => $this->input->post('name'),
+            'fname' => $this->input->post('fname'),
+            'lname' => $this->input->post('lname'),
             'phone' => $this->input->post('phone'),
             'email' => $this->input->post('email'),
             'alt_phone' => $this->input->post('alt_phone'),
@@ -36,16 +37,21 @@ class Member_model extends CI_Model {
 
     function fetch_total_members($limit, $start){
 
-        $name = $this->input->get('name', TRUE); 
+        $fname = $this->input->get('fname', TRUE); 
+        $lname = $this->input->get('lname', TRUE); 
         $email = $this->input->get('email', TRUE); 
         $phone = $this->input->get('phone', TRUE); 
+        $role = $this->input->get('role', TRUE); 
         $joining_date = $this->input->get('joining_date', TRUE);  
         $resignation_date = $this->input->get('resignation_date', TRUE);  
         $correspondence = $this->input->get('correspondence', TRUE);  
         $permanent = $this->input->get('permanent', TRUE);  
         $where = "active = '1' or active = '0'";
-        if(!empty($name)) {
-            $where.= " AND name like '%$name%'";
+        if(!empty($fname)) {
+            $where.= " AND fname like '%$fname%'";
+        }
+        if(!empty($lname)) {
+            $where.= " AND lname like '%$lname%'";
         }
         if(!empty($email)) {
             $where.= " AND email like '%$email%'";
@@ -66,15 +72,18 @@ class Member_model extends CI_Model {
         if(!empty($correspondence)) {
             $where.= " AND correspondence like '%$correspondence%'";
         }
-
+        if(!empty($role)) {
+            $where.= " AND role ='$role'";
+        }
         $query = $this->db->limit($limit, $start)
-            ->select("id,name,email,phone,alt_phone,gender,dob,joining_date,resignation_date,permanent,correspondence,active")
+            ->select("sq_members.id,fname,lname,email,phone,aadhar,pan,alt_phone,gender,dob,approval,joining_date,resignation_date,permanent,correspondence,active,r.role as urole,role_id")
             ->from('sq_members')
             ->where($where)
+            ->join('sq_role as r','sq_members.role = r.role_id','left')
             ->get();
         return $query;
-
     }
+    //print_r($this->db->last_query());   
 
     function soft_delete_member($id){
         $this->db->where('id', $id);
@@ -83,12 +92,12 @@ class Member_model extends CI_Model {
 
     function update_member_details($id){
         $member = array(
-            'name' => $this->input->post('name'),
+            'fname' => $this->input->post('fname'),
+            'lname' => $this->input->post('lname'),
             'phone' => $this->input->post('phone'),
             'email' => $this->input->post('email'),
             'alt_phone' => $this->input->post('alt_phone'),
-            'gender' => $this->input->post('gender'),
-            'dob' => $this->input->post('dob'),
+            'gender' => $this->input->post('gender'), 
             'permanent' => $this->input->post('permanent'),
             'role' => $this->input->post('role'),
             'approval' => $this->input->post('approval'),
@@ -97,18 +106,24 @@ class Member_model extends CI_Model {
         if(!empty($this->input->post('profile_image'))){
             $member['profile_image'] = $this->input->post('profile_image');
         }
+
+        if(!empty($this->input->post('dob'))){
+            $member['dob'] = date("Y-m-d", strtotime($this->input->post('dob')));
+        }
+        
         if(empty($this->input->post('joining_date'))){
             $member['joining_date'] = date('Y-m-d');
         }else{
-            $member['joining_date'] = $this->input->post('joining_date');
+            $member['joining_date'] = date("Y-m-d", strtotime($this->input->post('joining_date')));
         }
+
         $this->db->set($member);
         $this->db->where('id', $id);
         return $this->db->update('sq_members',$member);
     }
 
     function fetch_member_data($id){
-        $this->db->select("sq_members.id,name,email,phone,aadhar,pan,alt_phone,gender,dob,approval,joining_date,resignation_date,permanent,correspondence,active,r.role,role_id");
+        $this->db->select("sq_members.id,fname,lname,email,phone,aadhar,pan,alt_phone,gender,dob,approval,joining_date,resignation_date,permanent,correspondence,profile_image,active,r.role,role_id");
         $this->db->from('sq_members');
         $this->db->where('sq_members.id',$id);
         $this->db->join('sq_role as r','sq_members.role = r.role_id','left');
@@ -134,5 +149,25 @@ class Member_model extends CI_Model {
 
     public function get_count() {
         return $this->db->where('active','1')->count_all('sq_members');
+    }
+    function add_review_to_agent($agent_id,$reviewer_id){
+        $member_review = array(
+            'agent_id' => $agent_id,
+            'letter_type' => $this->input->post('letter_type'),   
+            'reviewer_id' =>  $reviewer_id,       
+            'review_date' => date('Y-m-d'),
+            'comments' => $this->input->post('comments')
+        );
+        if(!empty($this->input->post('letters'))){
+            $member_review['letter_name'] = $this->input->post('letters');
+        } 
+        return $this->db->insert('sq_members_performance',$member_review);
+    }
+    function fetch_member_review($id){
+        $this->db->select("sq_members_performance.*,m.fname,m.lname");
+        $this->db->from('sq_members_performance');
+        $this->db->where('agent_id',$id);
+        $this->db->join('sq_members as m','m.id = sq_members_performance.reviewer_id','left');
+        return $this->db->get()->result_array();
     }
 }
