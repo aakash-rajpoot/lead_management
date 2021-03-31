@@ -97,13 +97,14 @@
                             <th class="th-sm all-icon">Action</th>
                         </tr>
                     </thead>
+                    <tbody class="table-bordered">
                         <?php 
                             if ($total_member) {
                                 $i = 0;
                                 foreach($total_member as $totalmember) {
                                     $i++; 
                         ?>
-                    <tbody class="table-bordered">
+                    
                         <?php if($totalmember['active'] == 1) { ?>
                             <tr class="active_agent">
                                 <td><?=$totalmember['id']?></td>
@@ -136,10 +137,15 @@
                                 <td><?=$totalmember['resignation_date']?></td>
                                 <td></td>
                             </tr>
-                        <?php } ?>    
+                        <?php } ?> 
+                    <?php } ?>
+
+                    <?php } else{?>
+                        <tr class="inactive_agent">
+                            <td colspan="10">No result found</td>
+                        <tr>
+                    <?php } ?>
                     </tbody>
-                    <?php } ?>
-                    <?php } ?>
                 </table>
                 <div class="pagination-inv mb-5"><?=$links; ?></div>
             </div>

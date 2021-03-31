@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Member extends CI_Controller {
 
     public function __construct() {
-        parent::__construct();        
+        parent::__construct();
+        if ( ! $this->session->userdata('id')){ redirect('admin');}  
         $this->load->model(array('member_model','admin_model','setting_model'));
 		$this->load->helper(array('form','url','html','date'));
 		$this->load->library(array('form_validation','session','pagination'));
@@ -270,9 +271,7 @@ class Member extends CI_Controller {
     }
     function Feedbacks(){
         $data = $this->setting_model->fetch_setting_details();
-        $this->load->view('templates/admin_header',$data);
-        //$this->member_model->get_feedbacks();
-        
+        $this->load->view('templates/admin_header',$data);        
         $this->load->view('templates/admin_footer');
     }
 

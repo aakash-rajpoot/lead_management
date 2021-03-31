@@ -110,15 +110,11 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row ml-2">
-                            <input type="checkbox" name="approval" <?php if($approval){ echo 'Checked'; }?>  value="1">
-                            <label for="approval">&nbsp; Give permission to add own team.</label><br>
-                        </div>
-                        </div>
-                        <div class="d-flex  mt-3 mb-5">
-                            <button class="btn button-hor btn-success" name="member_update" type="submit">Update</button>
-                        </div>
+                        </div> 
+                    </div>
+                    <div class="d-flex  mt-3 mb-5">
+                        <button class="btn button-hor btn-success" name="member_update" type="submit">Update</button>
+                    </div>
                     <?=form_close();?>
                 </div>
             </div>

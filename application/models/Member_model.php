@@ -170,4 +170,5 @@ class Member_model extends CI_Model {
         $this->db->join('sq_members as m','m.id = sq_members_performance.reviewer_id','left');
         return $this->db->get()->result_array();
     }
+    
 }

@@ -12,6 +12,11 @@ class Admin extends CI_Controller {
     }
     
     public function index(){
+        if ($this->session->userdata('id'))
+        { 
+            redirect('admin/admin_dashboard');
+        }
+
         $data = $this->setting_model->fetch_setting_details();
 
         if(isset($_POST['admin-login'])) {
@@ -44,6 +49,10 @@ class Admin extends CI_Controller {
     }
 
     function admin_dashboard(){
+        if ( ! $this->session->userdata('id'))
+        { 
+            redirect('admin');
+        }
         $data = $this->setting_model->fetch_setting_details();
         $data['lead_status'] = $this->lead_model->fetch_lead_status()->result_array();
         $this->load->view('templates/admin_header',$data);
@@ -58,25 +67,25 @@ class Admin extends CI_Controller {
         $config['prev_link'] = 'Prev';
         $this->pagination->initialize($config);
         $page = (!isset($_GET['inventory_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        
         $data["links"] = $this->pagination->create_links();
+        print_r($this->pagination->create_links());
+
         $data['inventories'] = $this->lead_model->get_leads($config["per_page"], $page);
         $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
         $data['statuses'] = $this->lead_model->get_status();
         $data['count'] = $this->lead_model->fetch_all_counter();
         $data['per_page'] = $config["per_page"];
         $data['total_rows'] = $config["total_rows"]; 
-        
-        $user = $this->session->get_userdata();
 
-        /**Lead analysis */
-        
-        $data['new_leads']=$this->lead_model->new_leads($user['id']);
-        $data['today_leads']=5;
-        $data['attempted_leads']=4;
-        $data['future_followup']=6;
-        $data['transfered_leads']=2;
-        $data['dump_leads']=5;
-        $data['success_leads']=2;
+        /**Lead analysis */        
+        $data['new_leads']=$this->lead_model->get_leads_analysis('new'); 
+        $data['today_leads']=$this->lead_model->get_leads_analysis('today');
+        $data['attempted_leads']=$this->lead_model->get_leads_analysis('attempt');
+        $data['future_followup']=$this->lead_model->get_leads_analysis('future');
+        $data['transfered_leads']=$this->lead_model->get_leads_analysis('transferred');
+        $data['dump_leads']=$this->lead_model->get_leads_analysis('dumps');
+        $data['success_leads']=$this->lead_model->get_leads_analysis('success');
 
         $this->load->view('admin/dashboard',$data);
         $this->load->view('templates/admin_footer');
@@ -88,6 +97,10 @@ class Admin extends CI_Controller {
     }
 
     function change_pass(){
+        if ( ! $this->session->userdata('id'))
+        { 
+            redirect('admin');
+        }
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         
@@ -109,6 +122,10 @@ class Admin extends CI_Controller {
 	}
 	
 	function oldPassCheck($old_pass) {
+        if ( ! $this->session->userdata('id'))
+        { 
+            redirect('admin');
+        }
         $password = $this->admin_model->check_old_password();
 		if($password['password'] == md5($old_pass)){
 			return true;
@@ -117,6 +134,10 @@ class Admin extends CI_Controller {
     }
 
     function view_profile(){
+        if ( ! $this->session->userdata('id'))
+        { 
+            redirect('admin');
+        }
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $data = $this->admin_model->fetch_profile_details();

@@ -5,7 +5,7 @@ class Lead extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-
+        if ( ! $this->session->userdata('id')){ redirect('admin'); }
         $this->load->model(array('lead_model','setting_model','unit_model'));
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('form_validation','session','pagination'));
@@ -15,21 +15,22 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_header',$data);
         $config = array();
         $config["base_url"] = base_url().'lead/index';
-        $config["total_rows"] = $this->lead_model->get_count();
+        
+        $config["total_rows"] = $this->lead_model->get_count();        
         $config["per_page"] = 20;
         $config["uri_segment"] = 2;
         $choice = $config["total_rows"] / $config["per_page"];
         $config["num_links"] = round($choice);
         $config['next_link'] = 'Next';
         $config['prev_link'] = 'Prev';
+        
         $this->pagination->initialize($config);
-        $page = (!isset($_GET['lead_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $page = (!isset($_GET['lead_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0;         
         $data["links"] = $this->pagination->create_links();
         
         $data['total_lead'] = $this->lead_model->fetch_total_lead($config["per_page"], $page)->result_array();
-        
         $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
-
+        
         $this->load->view('lead/total_lead',$data);
         $this->load->view('templates/admin_footer');
     }
@@ -50,9 +51,20 @@ class Lead extends CI_Controller {
 		$this->form_validation->set_message('required', '* Please enter valid %s');
 
 		if(isset($_POST['lead_submit']) && $this->form_validation->run()) {
-            $this->lead_model->lead_data();
+            $this->lead_model->add_lead_data();
             redirect('lead');
         }
+        $data2 = array(
+            'name' => $this->input->post('name'),
+            'phone' => $this->input->post('phone'),
+            'email' => $this->input->post('email'),
+            'alt_phone' => $this->input->post('alt_phone'),
+            'property_address' => $this->input->post('property_address'),
+            'client_address' => $this->input->post('client_address'), 
+            'remark' => $this->input->post('remark'),
+            'reference' => $this->input->post('reference') 
+        );
+        $data2['units'] = $data1;
         $this->load->view('lead/add_lead',$data2);
         $this->load->view('templates/admin_footer');
     }
@@ -68,7 +80,7 @@ class Lead extends CI_Controller {
     function update_lead($id){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-        $data = $this->lead_model->fetch_all_lead($id);
+        $data = $this->lead_model->fetch_lead($id);
         $query = $this->unit_model->fetch_unit_data();
         $data1 = $query->result_array();
         $data['units'] = $data1;
@@ -102,20 +114,15 @@ class Lead extends CI_Controller {
     function assign_lead($id){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-
-        $data1 = $this->lead_model->fetch_lead_data();
-        $all_leads = $data1->result_array();
-        $names['leads'] = $all_leads;
-
-        $data2 = $this->lead_model->fetch_lead_name($id);
-        $assign = $data2->result_array();
-        $names['rename'] = $assign;
+        
+        $data['lead'] = $this->lead_model->fetch_lead($id);
+        $data['members'] =$this->lead_model->fetch_members_data()->result_array();
 
         if(isset($_POST['lead_assign'])){
-            $this->lead_model->lead_assign_data();
+            $this->lead_model->lead_assign_data($id);
             redirect('lead');
         }
-        $this->load->view('lead/assign_lead',$names);
+        $this->load->view('lead/assign_lead',$data);
         $this->load->view('templates/admin_footer');
     }
 

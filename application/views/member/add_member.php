@@ -78,14 +78,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <?php $user = $this->session->get_userdata(); 
-                    if($user['role']==1 || $user['role']==2){?>
-                        <div class="row ml-2 ">
-                            <input type="checkbox" name="approval" value="1">
-                            <label for="approval">&nbsp; Give permission to add own team.</label><br>
-                        </div>
-                    <?php }?>
+                    </div> 
                     <div class="d-flex  mt-5 mb-5">
                         <button class="btn button-hor btn-success" name="member_submit" type="submit">Submit</button>
                     </div>

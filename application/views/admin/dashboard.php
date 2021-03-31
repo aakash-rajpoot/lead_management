@@ -66,63 +66,63 @@ body {
             <div class="col-md-8">
               <div class="row">
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/member')?>"> 
+                  <a href="<?=base_url('index.php/lead?search=new')?>"> 
                     <div class="card-counter primary">
-                      <i class="fa fa-code-fork"></i>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
                       <span class="count-numbers"><?=$new_leads;?></span>
                       <span title="Agents" class="count-name">New Enquiry</span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/member')?>"> 
-                    <div class="card-counter primary">
-                      <i class="fa fa-code-fork"></i>
+                  <a href="<?=base_url('index.php/lead?search=today')?>"> 
+                    <div class="card-counter warning">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
                       <span class="count-numbers"><?=$today_leads;?></span>
                       <span title="Agents" class="count-name">Today's followup</span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/member')?>"> 
-                    <div class="card-counter primary">
-                      <i class="fa fa-code-fork"></i>
+                  <a href="<?=base_url('index.php/lead?search=attempt')?>"> 
+                    <div class="card-counter secondary">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                       <span class="count-numbers"><?=$attempted_leads;?></span>
                       <span title="Agents" class="count-name">Attempted followup</span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/member')?>"> 
-                    <div class="card-counter primary">
-                      <i class="fa fa-code-fork"></i>
+                  <a href="<?=base_url('index.php/lead?search=future')?>"> 
+                    <div class="card-counter info ">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>                    
                       <span class="count-numbers"><?=$future_followup;?></span>
                       <span title="Agents" class="count-name">Future followup</span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/member')?>"> 
-                    <div class="card-counter primary">
-                      <i class="fa fa-code-fork"></i>
+                  <a href="<?=base_url('index.php/lead?search=transferred')?>"> 
+                    <div class="card-counter muted">
+                      <i class="fa fa-code-fork" aria-hidden="true"></i>
                       <span class="count-numbers"><?=$transfered_leads;?></span>
                       <span title="Agents" class="count-name">Transferred followup</span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/member')?>"> 
-                    <div class="card-counter primary">
-                      <i class="fa fa-code-fork"></i>
+                  <a href="<?=base_url('index.php/lead?search=dumps')?>"> 
+                    <div class="card-counter danger">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
                       <span class="count-numbers"><?=$dump_leads;?></span>
                       <span title="Agents" class="count-name">Dump followup</span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/member')?>"> 
-                    <div class="card-counter primary">
-                      <i class="fa fa-code-fork"></i>
+                  <a href="<?=base_url('index.php/lead?search=success')?>"> 
+                    <div class="card-counter success">                    
+                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
                       <span class="count-numbers"><?=$success_leads;?></span>
                       <span title="Agents" class="count-name">Success followup</span>
                     </div>
@@ -266,7 +266,7 @@ $(document).ready(function() {
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         <?php
-        $pending = $progress = $booked = 0;
+        $pending = $progress = $booked = $dumped = 0;
         if(!empty($lead_status)) {
             foreach($lead_status as $data){
                 if($data['status']=='1'){
@@ -276,14 +276,18 @@ $(document).ready(function() {
                 }else if($data['status']=='3'){
                     $booked += 1;
                 }
+                else if($data['status']=='4'){
+                  $dumped += 1;
+              }
             }
         }?>
 
         var data = google.visualization.arrayToDataTable([
             ['Task', 'Status'],
-            ['Available', <?=$pending?>],
+            ['New', <?=$pending?>],
             ['Progress', <?=$progress?>],
             ['Booked', <?=$booked?>],
+            ['Dumped', <?=$dumped?>],
         ]);
 
         var options = {
@@ -291,9 +295,10 @@ $(document).ready(function() {
             verticalAlign: 'middle',
             is3D: true,
             slices: {
-                0: { color: '#c95150' },
+                0: { color: '#007bff' },
                 1: { color: '#e8df4b' },
-                2: { color: '#65b551' }
+                2: { color: '#65b551' },
+                3: { color: '#c95150' }
             }
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart3d'));

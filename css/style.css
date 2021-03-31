@@ -859,7 +859,7 @@
       background-color: #007bff;
       color: #FFF;
   }
-  
+
   .card-counter.danger {
       background-color: #ef5350;
       color: #FFF;
@@ -869,12 +869,23 @@
       background-color: #66bb6a;
       color: #FFF;
   }
-  
+  .card-counter.warning {
+    background-color: #ffc107;
+    color: #FFF;
+    }
+    .card-counter.muted {
+        background-color: #6c757d;
+        color: #FFF;
+    }
+
   .card-counter.info {
       background-color: #26c6da;
       color: #FFF;
   }
-  
+  .card-counter.secondary {
+    background-color: #6c757d;
+    color: #FFF;
+    } 
   .card-counter i {
       font-size: 4em;
       opacity: 0.8;
@@ -1116,6 +1127,9 @@
   li.site-menu-item a {
     margin: 0px;
     padding: 10px 2px;
+  }
+  li.site-menu-item a:hover {
+    background-color: #95c41f;
   }
   ul.site-menu-sub li.site-menu-item a{
     padding: 0px;

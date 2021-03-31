@@ -5,7 +5,7 @@ class Unit extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-
+        if ( ! $this->session->userdata('id')){ eedirect('admin'); }
         $this->load->model(array('unit_model','setting_model'));
 		$this->load->helper(array('form','url','html'));
         $this->load->library(array('form_validation','session','pagination'));
