@@ -16,14 +16,14 @@
         text-align: center;
     }
     input.empty {
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-}
-.dataTables_empty {
-    display: none;
-  }
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+    }
+    .dataTables_empty {
+        display: none;
+    }
     </style>
 <div class="mt-5 ex1 top-space-hea">
     <div class="row">
@@ -44,19 +44,25 @@
                     <div class="col-sm-3 col-md-2 mb-3 top-data">
                         <input type="text" class="form-control" value="<?=isset($_GET['phone']) ? $_GET['phone'] :''?>" name="phone" id="phone" placeholder="Phone">
                     </div>
-                    <div class="col-sm-3 col-md-2 mb-3 top-data">
-                        <input type="text" class="form-control" value="<?=isset($_GET['permanent']) ? $_GET['permanent'] :''?>" name="permanent" id="permanent" placeholder="Permanent Address">
-                    </div>
-                    <div class="col-sm-3 col-md-2 mb-3 top-data">
-                        <input type="text" class="form-control" value="<?=isset($_GET['correspondence']) ? $_GET['correspondence'] :''?>" name="correspondence" id="correspondence" placeholder="Correspondence Address">
-                    </div>
                     <div class="col-sm-3 col-md-2 mb-3 top-data">                      
                         <select name="role" class="form-control">
                             <option value="">Select Role</option>
                             <?php 
                             if ($roles) {
                                 foreach($roles as $role) {?>
-                                    <option value="<?=$role['role_id'];?>"><?=$role['role'];?></option>
+                                    <option value="<?=$role['role_id'];?>" <?php if(isset($_GET['role']) && $_GET['role']==$role['role_id']){ echo "selected";}?>><?=$role['role'];?></option>
+                            <?php }
+                            }
+                            ?>
+                        </select>                                    
+                    </div>
+                    <div class="col-sm-3 col-md-2 mb-3 top-data">                      
+                        <select name="manager" class="form-control">
+                            <option value="">Select Manager</option>
+                            <?php 
+                            if ($managers) {
+                                foreach($managers as $manager) {?>
+                                    <option value="<?=$manager['id'];?>" <?php if(isset($_GET['manager']) && $_GET['manager']==$manager['id']){ echo "selected";}?>><?=$manager['fname'];?> <?=$manager['lname'];?></option>
                             <?php }
                             }
                             ?>
@@ -68,12 +74,7 @@
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                         </div>
                     </div>
-                    <div class="col-sm-3 col-md-2 mb-3 top-data">
-                        <div class="input-group date datepicker" data-date-format="mm-dd-yyyy">
-                            <input type="text" class="form-control" value="<?=isset($_GET['resignation_date']) ? $_GET['resignation_date'] :''?>" name="resignation_date" id="resignation_date" placeholder="Resignation Date">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        </div>
-                    </div>
+                    
                     
                     <div class="col-sm-3 col-md-2 mb-3 top-data">
                         <input type="submit" class="btn btn-success" name="member_filter" value="Search">
@@ -85,57 +86,55 @@
                 <table id="dt-all-checkbox" class="table table-bordered">
                     <thead>
                         <tr>
-                            <th class="th-sm">Agent-Id</th>
-                            <th class="th-sm">Agent Name</th>
-                            <th class="th-sm">Email Id</th>
-                            <th class="th-sm">Phone Number</th>
+                            <th class="th-sm">Id</th>
+                            <th class="th-sm">Name</th>
+                            <th class="th-sm">Email</th>
+                            <th class="th-sm">Phone</th>
                             <th class="th-sm">Gender</th>
                             <th class="th-sm">User Role</th>
-                            <th class="th-sm">Permanent Address</th>
+                            <th class="th-sm">Manager</th>
                             <th class="th-sm">Joining Date</th>
-                            <th class="th-sm">Resignation Date</th>
                             <th class="th-sm all-icon">Action</th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <?php 
-                            if ($total_member) {
-                                $i = 0;
-                                foreach($total_member as $totalmember) {
-                                    $i++; 
+                        if ($total_member) {
+                            $i = 0;
+                            foreach($total_member as $member) {
+                            $i++; 
                         ?>
                     
-                        <?php if($totalmember['active'] == 1) { ?>
+                        <?php if($member['active'] == 1) { ?>
                             <tr class="active_agent">
-                                <td><?=$totalmember['id']?></td>
-                                <td><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['fname']?> &nbsp;<?=$totalmember['lname']?></a></td>
-                                <td><?=$totalmember['email']?></td>
-                                <td><?=$totalmember['phone']?></td>
-                                <td><?=$totalmember['gender']?></td>
-                                <td><?=$totalmember['urole']?></td>
-                                <td><?=$totalmember['permanent']?></td>
-                                <td><?=$totalmember['joining_date']?></td>
-                                <td></td>
+                                <td><?=$member['id']?></td>
+                                <td><a href="<?=base_url('index.php/member/profile_details/'.$member['id']);?>"><?=$member['fname']?> &nbsp;<?=$member['lname']?></a></td>
+                                <td><?=$member['email']?></td>
+                                <td><?=$member['phone']?></td>
+                                <td><?=$member['gender']?></td>
+                                <td><?=$member['urole']?></td>
+                                <td><?=$member['finame'].' '. $member['laname'] ;?> </td>
+                                <td><?=$member['joining_date']?></td>
                                 <td class="edit-icon">
-                                    <a href="<?=base_url('index.php/member/update_member/'.$totalmember['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"></a>
-                                    <a href="#" data-href="<?=base_url('index.php/member/resign_agent/'.$totalmember['id'])?>" onClick = "resignAgent(<?=$totalmember['id'];?>);" class="fa fa-sign-out " title="Resign" data-toggle="modal" aria-hidden="true"></a>
-                                    <a href="#" onClick = "softDelete(<?=$totalmember['id'];?>);" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$totalmember['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode delete" aria-hidden="true"></a>
-                                    <a href="<?=base_url('index.php/chat/index/'.$totalmember['id'])?>" class="fa fa-comment text-success" title="Message"></a>
+                                    <?php if($this->session->get_userdata()['role']<=3 || $member['id'] == $this->session->get_userdata()['id']){?> 
+                                        <a href="<?=base_url('index.php/member/update_member/'.$member['id'])?>"  class="fa fa-pencil-square-o" title="Edit" data-toggle="modal" aria-hidden="true"></a>
+                                    <?php } ?>
+                                    <!-- <a href="#" data-href="<?=base_url('index.php/member/profile_details/'.$member['id'])?>" onClick = "resignAgent(<?=$member['id'];?>);" class="fa fa-sign-out " title="Resign" data-toggle="modal" aria-hidden="true"></a>
+                                    <a href="#" onClick = "softDelete(<?=$member['id'];?>);" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$member['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode delete" aria-hidden="true"></a> -->
+                                    <a href="<?=base_url('index.php/chat/index/'.$member['id'])?>" class="fa fa-comment text-success" title="Message"></a>
                                 </td>
                             </tr>
                         <?php }else{ ?>
                             <tr class="inactive_agent">
-                                <td><?=$totalmember['id'];?></td>
-                                <!-- <td data-search="{{ hit['_source']['filter'] }}"><?="Emp".$totalmember['id']?></td> -->
-                                <td data-search="{{ hit['_source']['filter'] }}"><a href="<?=base_url('index.php/member/agent_profile_details/'.$totalmember['id']);?>"><?=$totalmember['fname']?> &nbsp;<?=$totalmember['lname']?></a></a></td>
-                                <td data-search="{{ hit['_source']['filter'] }}"><?=$totalmember['email']?></td>
-                                <td><?=$totalmember['phone']?></td>
-                                <td><?=$totalmember['gender']?></td>
-                                <td><?=$totalmember['urole']?></td>
-                                <td><?=$totalmember['permanent']?></td>
-                                <td><?=$totalmember['joining_date']?></td>
-                                <td><?=$totalmember['resignation_date']?></td>
-                                <td></td>
+                                <td><?=$member['id'];?></td>
+                                <td data-search="{{ hit['_source']['filter'] }}"><a href="<?=base_url('index.php/member/profile_details/'.$member['id']);?>"><?=$member['fname']?> &nbsp;<?=$member['lname']?></a></a></td>
+                                <td data-search="{{ hit['_source']['filter'] }}"><?=$member['email']?></td>
+                                <td><?=$member['phone']?></td>
+                                <td><?=$member['gender']?></td>
+                                <td><?=$member['urole']?></td>
+                                <td><?=$member['finame'].' '. $member['laname'] ;?> </td>
+                                <td><?=$member['joining_date']?></td>
+                                <td><?=$member['resignation_date']?></td> 
                             </tr>
                         <?php } ?> 
                     <?php } ?>
@@ -177,11 +176,13 @@
             input.removeClass('empty');
         }
     });
-    $(function () {
-  $(".datepicker").datepicker({ 
-        autoclose: true, 
-        todayHighlight: true
-  }).datepicker('update', new Date());
-});
+    
+    /*$(function () {
+        $(".datepicker").datepicker({ 
+                autoclose: true, 
+                todayHighlight: true
+        }).datepicker('update', new Date());
+    });*/
+    $("#joining_date").datepicker({ dateFormat: 'dd-mm-yy' });
 </script>
 

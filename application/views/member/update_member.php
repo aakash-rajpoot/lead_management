@@ -67,13 +67,19 @@
                                 </select>
                             </div>
                         
+                            
                             <div class="col-md-3 mb-3">
-                                <label class="label-input" for="aadhar">Aadhar Card: <?php if($aadhar == '') { ?><span class="text-danger font-weight-medium">*</span><?php }?></label>
-                                <input type="file" class="form-control" name="aadhar" id="aadhar" value="<?=$aadhar;?>">
-                                <?php if($aadhar !== '') { ?>
-                                    <p class="fa fa-check-circle upload_success"> Aadhar card uploaded successfully. <a href="<?=base_url();?>media/aadhar/<?=$aadhar;?>" target="_blank"><?=$aadhar;?></a></p>                                    
-                                <?php }?>
+                                <label class="label-input">User Role: <span class="text-danger font-weight-medium">*</span></label>
+                                <div class="form-group">
+                                    <select name="role" class="form-control" <?php if($this->session->get_userdata()['role']<=3 || $id == $this->session->get_userdata()['id']){echo 'disabled';}?>>
+                                        <option value="">Select Role</option>
+                                        <?php foreach($roles as $data ) { ?>
+                                            <option value="<?=$data['role_id']?>" <?php if($role == $data['role']){ echo 'Selected'; }?> class="form-control"> <?=$data['role'];?> </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
+
                             <div class="col-md-3 mb-3">
                                 <label class="label-input" for="joining_date">Date of Joining: </label>
                                 <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
@@ -81,7 +87,20 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                             </div>
-                        
+                            <div class="col-md-3 mb-3">
+                                <label class="label-input" for="pan">Pan Card: <?php if($pan == '') { ?><span class="text-danger font-weight-medium">*</span><?php }?></label>
+                                <input type="file" class="form-control" name="pan" id="pan">
+                                <?php if($pan !== '') { ?>
+                                    <p class="fa fa-check-circle upload_success"> Pan card uploaded successfully. <a href="<?=base_url();?>media/pan/<?=$pan;?>" target="_blank"><?=$pan;?></a></p>
+                                <?php }?>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="label-input" for="aadhar">Aadhar Card: <?php if($aadhar == '') { ?><span class="text-danger font-weight-medium">*</span><?php }?></label>
+                                <input type="file" class="form-control" name="aadhar" id="aadhar" value="<?=$aadhar;?>">
+                                <?php if($aadhar !== '') { ?>
+                                    <p class="fa fa-check-circle upload_success"> Aadhar card uploaded successfully. <a href="<?=base_url();?>media/aadhar/<?=$aadhar;?>" target="_blank"><?=$aadhar;?></a></p>                                    
+                                <?php }?>
+                            </div>
                             <div class="col-md-3 mb-3">
                                 <label class="label-input" for="permanent">Permanent Address: <span class="text-danger font-weight-medium">*</span></label>
                                 <textarea  class="form-control" cols = "50" name="permanent" id="permanent"><?=$permanent;?></textarea>
@@ -91,25 +110,8 @@
                                 <textarea class="form-control" cols = "50" name="correspondence" id="correspondence"><?=$correspondence;?></textarea>
                             </div>
                         
-                            <div class="col-md-3 mb-3">
-                                <label class="label-input" for="pan">Pan Card: <?php if($pan == '') { ?><span class="text-danger font-weight-medium">*</span><?php }?></label>
-                                <input type="file" class="form-control" name="pan" id="pan">
-                                <?php if($pan !== '') { ?>
-                                    <p class="fa fa-check-circle upload_success"> Pan card uploaded successfully. <a href="<?=base_url();?>media/pan/<?=$pan;?>" target="_blank"><?=$pan;?></a></p>
-                                <?php }?>
-                            </div>
                             
-                            <div class="col-md-3 mb-3">
-                                <label class="label-input">User Role: <span class="text-danger font-weight-medium">*</span></label>
-                                <div class="form-group">
-                                    <select name="role" class="form-control">
-                                        <option value="">Select Role</option>
-                                        <?php foreach($roles as $data ) { ?>
-                                            <option value="<?=$data['role_id']?>" <?php if($role == $data['role']){ echo 'Selected'; }?> class="form-control"> <?=$data['role'];?> </option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
+                           
                         </div> 
                     </div>
                     <div class="d-flex  mt-3 mb-5">

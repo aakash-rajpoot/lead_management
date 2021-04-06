@@ -32,7 +32,7 @@
                                 <input type="text" class="form-control"  placeholder="dd-mm-yy" name="dob" id="dob" >
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
-                    </div>
+                        </div>
                         <div class="col-md-3 mb-3">
                             <label class="label-input" for="gender">Gender: </label>
                             <select class="custom-select d-block w-100 gender-custom form-control" name="gender" id="gender">
@@ -43,32 +43,6 @@
                             </select>
                         </div> 
                         <div class="col-md-3 mb-3">
-                            <label class="label-input" for="permanent">Permanent Address: <span class="text-danger font-weight-medium">*</span></label>
-                            <textarea class="form-control" cols = "50" name="permanent" id="permanent"></textarea>
-                        </div>
-                    
-                        <div class="col-md-3 mb-3">
-                            <label class="label-input" for="correspondence">Correspondence Address:</label>
-                            <textarea class="form-control" cols = "50" name="correspondence" id="correspondence"></textarea>
-                        </div> 
-                        <div class="col-md-3 mb-3">
-                            <label class="label-input" for="aadhar">ID Proof (Aadhar Card / Voter ID Card / Driving license): <span class="text-danger font-weight-medium">*</span></label>
-                            <input type="file" class="form-control" name="aadhar" id="aadhar">
-                            <p class="upload_warning"> * Only pdf format is allowed. Any of one from list</p>
-                        </div>            
-                        <div class="col-md-3 mb-3">
-                            <label class="label-input" for="pan">Pan Card: <span class="text-danger font-weight-medium">*</span></label>
-                            <input type="file" class="form-control" name="pan" id="pan">
-                            <p class="upload_warning"> * Only pdf format is allowed.</p>
-                        </div>              
-                        <div class="col-md-3 mb-3">
-                            <label class="label-input " for="joining_date">Date of Joining: </label>
-                            <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
-                                <input type="text" class="form-control" name="joining_date" id="joining_date" placeholder="dd-mm-yy">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
                             <label class="label-input">User Role: <span class="text-danger font-weight-medium">*</span></label>
                             <div class="form-group">
                                 <select name="role" class="form-control">
@@ -78,6 +52,32 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-input " for="joining_date">Date of Joining: </label>
+                            <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                                <input type="text" class="form-control" name="joining_date" id="joining_date" placeholder="dd-mm-yy">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-input" for="pan">Pan Card: <span class="text-danger font-weight-medium">*</span></label>
+                            <input type="file" class="form-control" name="pan" id="pan">
+                            <p class="upload_warning"> * Only pdf format is allowed.</p>
+                        </div> 
+                        <div class="col-md-3 mb-3">
+                            <label class="label-input" for="aadhar">ID Proof (Aadhar Card / Voter ID Card / Driving license): <span class="text-danger font-weight-medium">*</span></label>
+                            <input type="file" class="form-control" name="aadhar" id="aadhar">
+                            <p class="upload_warning"> * Only pdf format is allowed. Any of one from list</p>
+                        </div> 
+                        <div class="col-md-3 mb-3">
+                            <label class="label-input" for="permanent">Permanent Address: <span class="text-danger font-weight-medium">*</span></label>
+                            <textarea class="form-control" cols = "50" name="permanent" id="permanent"></textarea>
+                        </div>
+                    
+                        <div class="col-md-3 mb-3">
+                            <label class="label-input" for="correspondence">Correspondence Address:</label>
+                            <textarea class="form-control" cols = "50" name="correspondence" id="correspondence"></textarea>
+                        </div> 
                     </div> 
                     <div class="d-flex  mt-5 mb-5">
                         <button class="btn button-hor btn-success" name="member_submit" type="submit">Submit</button>

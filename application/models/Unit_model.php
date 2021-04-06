@@ -49,7 +49,7 @@ class Unit_model extends CI_Model {
         $this->db->set('active',0);
         $this->db->where('id', $id);
         return $this->db->update('sq_unit');
-    }
+    } 
 
     function get_unit($limit, $start){
 

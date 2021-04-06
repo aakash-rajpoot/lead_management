@@ -27,9 +27,11 @@
 
 body {
   font-family: sans-serif;
-  background: url('./media/images/image-logo.jpg') no-repeat;
-  background-size: auto;
-  background-position-y: 30%;
+  background: url('./media/images/image-logo.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /*--------------------------------------------------------------
@@ -109,27 +111,29 @@ body {
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <?=form_open('',array('method' => 'post','novalidate'=>'novalidate')); ?>
-        
-<!-- login -->
+        <!-- login -->
         <div class="login-box">
-          <h1>Admin Login</h1>
+          <h1>Login</h1>
+          <?php if($inactive){?>
+              <div class="php_error">Your account is de-activated. Please connect to admin.</div> 
+            <?php } ?>
           <?=validation_errors();?>
           <!-- ======= Username ======= -->
           <div class="textbox">
             <i class="fa fa-user" aria-hidden="true"></i>
-            <input type="text" name="email" id="email" placeholder="Enter Your User Id"><sup class='error'>*</sup>
+            <input type="text" name="email" id="email" placeholder="Enter Your User Id" value="<?=isset($_POST['email']) ? $_POST['email'] :''?>"><sup class='error'>*</sup>
           </div>
-
           <!-- ======= Password ======= -->
           <div class="textbox">
             <i class="fa fa-lock" aria-hidden="true"></i>
-            <input type="password" name="password" id="password" placeholder="Enter Your Password"><sup class='error'>*</sup>
+            <input type="password" name="password" id="password" placeholder="Enter Your Password" value="<?=isset($_POST['password']) ? $_POST['password'] :''?>"><sup class='error'>*</sup>
           </div>
-
           <!-- ======= Sign in ======= -->
           <button type="submit" class="btn btn-primary button-hor" name="admin-login">Login</button>
+          
         </div>
         <?=form_close(); ?>
+        
       </div>
     </div>
   </div>

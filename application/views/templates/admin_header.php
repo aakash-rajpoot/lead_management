@@ -118,6 +118,7 @@
                                 </div>
                             </a>
                         </li>    
+                        <?php if( $user['role']<=4 ){?>
                         <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'member' ? 'active' : ''; ?>" title="Sales">
                             <a href="<?=base_url('member')?>">
                                 <div class="c-menu__item__inner menusss">
@@ -126,14 +127,6 @@
                             </a>
                                
                             <ul class="site-menu-sub limain submenu ">
-                                <!-- <li class="site-menu-item lichild" title="All Sales Team">  
-                                    <a href="<?=base_url('member')?>">
-                                        <div class="c-menu__item__inner submenu-color">
-                                            <i class="fa fa-user-circle-o" aria-hidden="true"></i><span class="icon-titles">Manage User</span>
-                                        </div>
-                                    </a>
-                                </li> -->
-                                <?php if( $user['role']==1 || $user['role']==2 ){?>
                                 <li class="site-menu-item lichild" title="Add Sales Team">
                                     <a href="<?=base_url('member/add_member')?>">
                                         <div class="c-menu__item__inner submenu-color">
@@ -141,7 +134,7 @@
                                         </div>
                                     </a>
                                 </li>
-                                <?php }?>
+                                
                                 <li class="site-menu-item lichild" title="Add Sales Team">
                                     <a href="<?=base_url('member/feedbacks')?>">
                                         <div class="c-menu__item__inner submenu-color">
@@ -151,30 +144,31 @@
                                 </li>
                             </ul>
                         </li>
+                        <?php }?>
                         <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'lead' ? 'active' : ''; ?>" title="Lead">
-                        <a href="<?=base_url('lead')?>"> 
-                            <div class="c-menu__item__inner menusss">
-                                <i class="fa fa-industry"></i><span class="icon-titles">Manage Leads</span>
-                            </div>
-                        </a>
-                        <ul class="site-menu-sub submenu ">
-                            <li class="site-menu-item"  title="All Lead">
-                                <a href="<?=base_url('lead')?>">
-                                    <div class="c-menu__item__inner submenu-color">
-                                        <i class="fa fa-universal-access" aria-hidden="true"></i><span class="icon-titles">All Lead</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="site-menu-item" title="Add Lead"> 
-                                <a href="<?=base_url('lead/add_lead')?>">
-                                    <div class="c-menu__item__inner submenu-color">
-                                        <i class="fa fa-id-badge" aria-hidden="true"></i><span class="icon-titles">Add Lead</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <?php if( $user['role']<=3 ){?>
+                            <a href="<?=base_url('lead')?>"> 
+                                <div class="c-menu__item__inner menusss">
+                                    <i class="fa fa-industry"></i><span class="icon-titles">Manage Leads</span>
+                                </div>
+                            </a>
+                            <ul class="site-menu-sub submenu ">
+                                <li class="site-menu-item"  title="All Lead">
+                                    <a href="<?=base_url('lead')?>">
+                                        <div class="c-menu__item__inner submenu-color">
+                                            <i class="fa fa-universal-access" aria-hidden="true"></i><span class="icon-titles">All Lead</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item" title="Add Lead"> 
+                                    <a href="<?=base_url('lead/add_lead')?>">
+                                        <div class="c-menu__item__inner submenu-color">
+                                            <i class="fa fa-id-badge" aria-hidden="true"></i><span class="icon-titles">Add Lead</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php if( $user['role']<=3 ){?>
                         <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'unit' ? 'active' : ''; ?>" title="Unit">
                             <a href="<?=base_url('unit')?>"> 
                                 <div class="c-menu__item__inner menusss">
@@ -198,8 +192,8 @@
                                 </li>
                             </ul>
                         </li>
-                    <?php }?>
-                    <?php if( $user['role']==1 ){?>
+                        <?php }?>
+                        <?php if( $user['role']<=2 ){?>
                         <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'setting' ? 'active' : ''; ?>" title="setting">
                             <a href="<?=base_url('setting')?>"> 
                                 <div class="c-menu__item__inner menusss">
@@ -207,13 +201,13 @@
                                 </div>
                             </a>
                         </li>
-                    <?php }?>
+                        <?php }?>
                     </ul>
                 </nav>
             </div>
         </div>
-        </div>
-        </div>
+    </div>
+</div>
 
 <script>
 

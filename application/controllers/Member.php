@@ -12,6 +12,9 @@ class Member extends CI_Controller {
     }
     
     public function index(){
+        if($this->session->get_userdata()['role']>4 ){
+            redirect('admin/admin_dashboard');
+        } 
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $config = array();
@@ -28,11 +31,17 @@ class Member extends CI_Controller {
         $data["links"] = $this->pagination->create_links();
         $data['roles'] = $this->member_model->get_roles();
         $data['total_member'] = $this->member_model->fetch_total_members($config["per_page"], $page)->result_array();
+        $data['managers'] = $this->member_model->get_managers();
         $this->load->view('member/total_members',$data);
         $this->load->view('templates/admin_footer');
     }
 
     function add_member(){
+
+        if($this->session->get_userdata()['role']>3 ){
+            redirect('member');
+        }
+
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
     
@@ -91,6 +100,9 @@ class Member extends CI_Controller {
     }
 
     function delete_member_soft_data($id){
+        if($this->session->get_userdata()['role']>3 ){
+            redirect('member');
+        }
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $this->member_model->soft_delete_member($id);
@@ -107,6 +119,10 @@ class Member extends CI_Controller {
     }
 
     function update_member($id){
+        if($this->session->get_userdata()['role']>3 && $this->session->get_userdata()['id']!=$id){
+            redirect('member');
+        } 
+
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $data = $this->member_model->fetch_member_data($id);
@@ -226,7 +242,7 @@ class Member extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
-    function agent_profile_details($id) {
+    function profile_details($id) {
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
         $data = $this->member_model->fetch_agent_profile_details($id);

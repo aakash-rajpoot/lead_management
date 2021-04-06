@@ -18,21 +18,26 @@ class Admin extends CI_Controller {
         }
 
         $data = $this->setting_model->fetch_setting_details();
+        $data['inactive']=false;
 
         if(isset($_POST['admin-login'])) {
-            $query = $this->admin_model->login_verification();
-
-            $this->form_validation->set_rules('email', 'Email', 'required|callback_validateUser[' . $query->num_rows() . ']');
+            
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
             $this->form_validation->set_rules('password', 'Password', 'required');
 
             $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
             $this->form_validation->set_message('required', '* Please enter valid %s');
 
             if($this->form_validation->run()){
+                $query = $this->admin_model->login_verification();
                 $user = $query->row_array();
-                if(!empty($user)) {
+                $data['email'] = $this->input->post('email');
+                
+                if(!empty($user) && $user['active']==1) {
                     $this->session->set_userdata($user);
                     redirect('admin/admin_dashboard');
+                }else{
+                    $data['inactive']=true;
                 }
             }
         }
@@ -69,24 +74,35 @@ class Admin extends CI_Controller {
         $page = (!isset($_GET['inventory_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
         
         $data["links"] = $this->pagination->create_links();
-        print_r($this->pagination->create_links());
-
         $data['inventories'] = $this->lead_model->get_leads($config["per_page"], $page);
         $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
-        $data['statuses'] = $this->lead_model->get_status();
+        $statuses = $this->lead_model->get_status();
+        $data['statuses'] = $statuses; 
         $data['count'] = $this->lead_model->fetch_all_counter();
         $data['per_page'] = $config["per_page"];
         $data['total_rows'] = $config["total_rows"]; 
 
-        /**Lead analysis */        
-        $data['new_leads']=$this->lead_model->get_leads_analysis('new'); 
-        $data['today_leads']=$this->lead_model->get_leads_analysis('today');
-        $data['attempted_leads']=$this->lead_model->get_leads_analysis('attempt');
-        $data['future_followup']=$this->lead_model->get_leads_analysis('future');
-        $data['transfered_leads']=$this->lead_model->get_leads_analysis('transferred');
-        $data['dump_leads']=$this->lead_model->get_leads_analysis('dumps');
-        $data['success_leads']=$this->lead_model->get_leads_analysis('success');
-
+        /**Lead analysis */ 
+        foreach($statuses as $status) { 
+            
+            if($status['short_name']=='follow_up'){
+                //Today's follow-up
+                $c = $this->lead_model->get_leads_analysis($status['id'],'today');
+                $data['leads'][] = (object)  ['name'=>'Today Follow-up','short_name'=>'today','status'=>$status['id'],'count'=>$c,'color'=>$status['color_code'],'icon'=>$status['icon']];
+                //Attempted
+                $c = $this->lead_model->get_leads_analysis($status['id'],'attempted');
+                $data['leads'][] = (object)  ['name'=>'Attempted Follow-up','short_name'=>'attempted','status'=>$status['id'],'count'=>$c,'color'=>'#ff9800','icon'=>'fa-calendar-check-o'];
+                //Future Follow-up
+                $c = $this->lead_model->get_leads_analysis($status['id'],'future');
+                $data['leads'][] = (object)  ['name'=>'Future Follow-up','short_name'=>'future','status'=>$status['id'],'count'=>$c,'color'=>'#607d8b','icon'=>'fa-calendar-plus-o'];
+               
+            } else {
+                $c = $this->lead_model->get_leads_analysis($status['id'],$status['short_name']);
+                $data['leads'][] = (object)  ['name'=>$status['status_name'],'short_name'=>$status['short_name'],'status'=>$status['id'],'count'=>$c,'color'=>$status['color_code'],'icon'=>$status['icon']];
+            }
+            
+        }
+        
         $this->load->view('admin/dashboard',$data);
         $this->load->view('templates/admin_footer');
     }
@@ -114,7 +130,6 @@ class Admin extends CI_Controller {
 		if(isset($_POST['admin_change_password']) && $this->form_validation->run()){
                 $new_pass = md5($this->input->post('new_pass'));
                 $this->admin_model->change_password($new_pass);
-                //redirect('admin/logout');
                 redirect('member/view_profile');
             }
 		$this->load->view('admin/change_password');

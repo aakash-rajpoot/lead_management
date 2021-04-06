@@ -129,7 +129,26 @@ class Lead extends CI_Controller {
     function view_lead($id){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
+        
         $lead['data'] = $this->lead_model->view_lead_details($id);
+        $lead['lead_statuses']=$this->lead_model->get_status();
+        $units = explode(',',$lead['data']['available_unit']);
+        foreach($units as $unit){
+            $lead['units'][] = $this->unit_model->get_unit_data($unit);
+        }
+        
+        $this->form_validation->set_rules('status', 'Lead status','required');
+        $this->form_validation->set_rules('remark', 'Remarks','required|min_length[10]|max_length[100]'); 
+        $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
+		$this->form_validation->set_message('required', '* Please enter valid %s');
+
+        if(isset($_POST['lead_update']) && $this->form_validation->run()) {
+            $this->lead_model->update_lead_followup($id);
+            redirect('lead');
+        }
+        
+        $lead['lead_history'] = $this->lead_model->get_lead_history($id);
+
         $this->load->view('lead/view_lead',$lead);
         $this->load->view('templates/admin_footer');
     }

@@ -36,55 +36,55 @@ class Member_model extends CI_Model {
     }
 
     function fetch_total_members($limit, $start){
-
         $fname = $this->input->get('fname', TRUE); 
         $lname = $this->input->get('lname', TRUE); 
         $email = $this->input->get('email', TRUE); 
         $phone = $this->input->get('phone', TRUE); 
         $role = $this->input->get('role', TRUE); 
-        $joining_date = $this->input->get('joining_date', TRUE);  
-        $resignation_date = $this->input->get('resignation_date', TRUE);  
-        $correspondence = $this->input->get('correspondence', TRUE);  
-        $permanent = $this->input->get('permanent', TRUE);  
-        $where = "active = '1' or active = '0'";
+        $manager_id = $this->input->get('manager', TRUE); 
+        $joining_date = $this->input->get('joining_date', TRUE);
+        $correspondence = $this->input->get('correspondence', TRUE);
+
+        $where = "( m.active = '1' or m.active = '0') ";
         if(!empty($fname)) {
-            $where.= " AND fname like '%$fname%'";
+            $where.= " AND m.fname like '%$fname%'";
         }
         if(!empty($lname)) {
-            $where.= " AND lname like '%$lname%'";
+            $where.= " AND m.lname like '%$lname%'";
         }
         if(!empty($email)) {
-            $where.= " AND email like '%$email%'";
+            $where.= " AND m.email like '%$email%'";
         }
         if(!empty($phone)) {
-            $where.= " AND phone like '%$phone%'";
+            $where.= " AND m.phone like '%$phone%'";
         }
         if(!empty($joining_date)) {
-            $where.= " AND joining_date like '%$joining_date%'";
+            $joining_date = date("Y-m-d", strtotime($joining_date));
+            $where.= " AND m.joining_date = '$joining_date'";
         }
-        if(!empty($resignation_date)) {
-            $where = "active = '0'";
-            $where.= " AND resignation_date like '%$resignation_date%'";
-        }
-        if(!empty($permanent)) {
-            $where.= " AND permanent like '%$permanent%'";
-        }
-        if(!empty($correspondence)) {
-            $where.= " AND correspondence like '%$correspondence%'";
-        }
+        // if(!empty($resignation_date)) {
+        //     $where = "m.active = '0'";
+        //     $where.= " AND resignation_date like '%$resignation_date%'";
+        // }
         if(!empty($role)) {
-            $where.= " AND role ='$role'";
+            $where.= " AND m.role ='$role'";
         }
+        if(!empty($manager_id)) {
+            $where.= " AND m.manager_id = $manager_id";
+        } 
         $query = $this->db->limit($limit, $start)
-            ->select("sq_members.id,fname,lname,email,phone,aadhar,pan,alt_phone,gender,dob,approval,joining_date,resignation_date,permanent,correspondence,active,r.role as urole,role_id")
-            ->from('sq_members')
+            ->select("m.id,m.fname,m.lname,m.email,m.phone,m.gender,m.joining_date,m.resignation_date,m.manager_id,m.active,r.role as urole,role_id,m1.fname finame,m1.lname as laname")
+            ->from('sq_members as m')
             ->where($where)
-            ->join('sq_role as r','sq_members.role = r.role_id','left')
-            ->get();
-        return $query;
+            ->join('sq_role as r','r.role_id = m.role ','left')
+            ->join('sq_members as m1','m.manager_id = m1.id','left')
+            ->get();        
+            //print_r($this->db->last_query()); 
+            
+            return $query;
     }
-    //print_r($this->db->last_query());   
-
+      
+    
     function soft_delete_member($id){
         $this->db->where('id', $id);
         return $this->db->delete('sq_members');
@@ -130,11 +130,19 @@ class Member_model extends CI_Model {
         $query = $this->db->get();
         return $query->row_array();
     }
+    function get_managers(){
+        $this->db->select("id,fname,lname");
+        $this->db->from('sq_members');
+        $this->db->where('is_manager',1);
+        $this->db->where('active',1);
+        return $this->db->get()->result_array();
+    } 
 
     function fetch_agent_profile_details($id){
-        $this->db->select("*");
-        $this->db->from('sq_members');
-        $this->db->where('id',$id);
+        $this->db->select("m.*,,m1.fname finame,m1.lname as laname");
+        $this->db->from('sq_members as m');
+        $this->db->join('sq_members as m1','m.manager_id = m1.id','left');
+        $this->db->where('m.id',$id);
         $query = $this->db->get();
         return $query->row_array();
     }

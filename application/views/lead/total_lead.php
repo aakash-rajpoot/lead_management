@@ -84,7 +84,7 @@
                             <tr>
                         <?php } ?>
                         </tbody>
-                    </table>
+                    </table> 
                 <div class="pagination-inv mb-5"><?=$links; ?></div>
             </div>
         </div> 

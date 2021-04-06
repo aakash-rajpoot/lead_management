@@ -532,4 +532,4 @@ $config['proxy_ips'] = '';
 
 //email config (06/01/2021)
 
-
+$config['max_leads']=40;

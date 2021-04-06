@@ -6,23 +6,6 @@
   padding: 10px;
   height: 200px; /* Should be removed. Only for demonstration */
 }
-.piechart {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-</style>
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* The grid: Three equal columns that floats next to each other */
 .column {
    float: left;
     width: 20%;
@@ -65,96 +48,27 @@ body {
           <div class="row">
             <div class="col-md-8">
               <div class="row">
+              <?php foreach($leads as $lead) {?>              
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/lead?search=new')?>"> 
-                    <div class="card-counter primary">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                      <span class="count-numbers"><?=$new_leads;?></span>
-                      <span title="Agents" class="count-name">New Enquiry</span>
+                  <a href="<?=base_url('index.php/lead?status='.$lead->status.'&search_term='.$lead->short_name)?>"> 
+                    <div class="card-counter primary" style="background-color:<?=$lead->color;?>;">
+                    <i class="fa <?=$lead->icon;?>" aria-hidden="true"></i>
+                      <span class="count-numbers"><?=$lead->count;?></span>
+                      <span class="count-name"><?=$lead->name;?></span>
                     </div>
                   </a>
                 </div>
+                <?php } ?>
+                
                 <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/lead?search=today')?>"> 
-                    <div class="card-counter warning">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                      <span class="count-numbers"><?=$today_leads;?></span>
-                      <span title="Agents" class="count-name">Today's followup</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/lead?search=attempt')?>"> 
-                    <div class="card-counter secondary">
-                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                      <span class="count-numbers"><?=$attempted_leads;?></span>
-                      <span title="Agents" class="count-name">Attempted followup</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/lead?search=future')?>"> 
-                    <div class="card-counter info ">
-                    <i class="fa fa-paper-plane" aria-hidden="true"></i>                    
-                      <span class="count-numbers"><?=$future_followup;?></span>
-                      <span title="Agents" class="count-name">Future followup</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/lead?search=transferred')?>"> 
-                    <div class="card-counter muted">
-                      <i class="fa fa-code-fork" aria-hidden="true"></i>
-                      <span class="count-numbers"><?=$transfered_leads;?></span>
-                      <span title="Agents" class="count-name">Transferred followup</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/lead?search=dumps')?>"> 
-                    <div class="card-counter danger">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                      <span class="count-numbers"><?=$dump_leads;?></span>
-                      <span title="Agents" class="count-name">Dump followup</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/lead?search=success')?>"> 
-                    <div class="card-counter success">                    
-                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                      <span class="count-numbers"><?=$success_leads;?></span>
-                      <span title="Agents" class="count-name">Success followup</span>
-                    </div>
-                  </a>
-                </div>
-                <!-- <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/member')?>"> 
-                    <div class="card-counter primary">
-                      <i class="fa fa-code-fork"></i>
-                      <span class="count-numbers"><?=$count['members']?></span>
-                      <span title="Agents" class="count-name">Agents</span>
-                    </div>
-                  </a>
-                </div> -->
-                <!-- <div class="col-md-3 p-0">
                   <a href="<?=base_url('index.php/lead')?>"> 
-                    <div class="card-counter danger">
+                    <div class="card-counter primary">
                       <i class="fa fa-ticket"></i>
                       <span class="count-numbers"><?=$count['leads'];?></span>
-                      <span  title="Leads" class="count-name">Leads</span>
+                      <span  title="Leads" class="count-name">Total Leads</span>
                     </div>
                   </a>
-                </div> -->
-                <!-- <div class="col-md-3 p-0">
-                  <a href="<?=base_url('index.php/unit')?>"> 
-                    <div class="card-counter success">
-                      <i class="fa fa-database"></i>
-                      <span class="count-numbers"><?=$count['units'];?></span>
-                      <span title="Units" class="count-name">Units</span>
-                    </div>
-                  </a>
-                </div> -->
+                </div>
                 
               </div>
             </div>
@@ -170,7 +84,7 @@ body {
   </div>
 </div>
 <!-- status -->
-<div class="mt-2 ex1 top-space-hea" >
+<!-- <div class="mt-2 ex1 top-space-hea" >
     <div class="row">
      <div class="col-md-12">
         <div id="table1" class="ex2">
@@ -197,19 +111,19 @@ body {
                         <input type="text" class="form-control" value="<?=isset($_GET['client_address']) ? $_GET['client_address'] :''?>" name="client_address" id="client_address" placeholder="Client Address">
                     </div>
                     <div class="col-md-3 mb-3 top-data">
-                      <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                      <div  class="input-group date datepicker" data-date-format="m-d-Y">
                           <input type="text" class="form-control" value="<?=isset($_GET['lead_date']) ? $_GET['lead_date'] :''?>" name="lead_date" id="lead_date" placeholder="Lead Create Date">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>
                     <div class="col-md-3 mb-3 top-data">
-                      <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                      <div  class="input-group date datepicker" data-date-format="m-d-Y">
                           <input type="text" class="form-control" value="<?=isset($_GET['assign_date']) ? $_GET['assign_date'] :''?>" name="assign_date" id="assign_date" placeholder="Lead Assign Date">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>
                     <div class="col-md-3 mb-3 top-data">
-                      <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                      <div  class="input-group date datepicker" data-date-format="m-d-Y">
                           <input type="text" class="form-control" value="<?=isset($_GET['status_date']) ? $_GET['status_date'] :''?>" name="status_date" id="status_date" placeholder="Lead Status Date">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
@@ -259,7 +173,7 @@ body {
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 <script>
 $(document).ready(function() {
     google.charts.load('current', { 'packages': ['corechart'] });
