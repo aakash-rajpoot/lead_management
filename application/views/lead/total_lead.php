@@ -2,11 +2,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div id="table1" class="ex2">
-                <div class="content-wrapper content-wrapper--with-bg">
-                <?=form_open(null, array('method'=>'get')); ?>
-                
-                    <input type="hidden" class="form-control" value="<?=isset($_GET['search']) ? $_GET['search'] :''?>" name="search">
-                
+                <div class="content-wrapper content-wrapper--with-bg"> 
+                <?=form_open(null, array('method'=>'get')); ?>                
+                    <input type="hidden" class="form-control" value="<?=isset($_GET['search']) ? $_GET['search'] :''?>" name="search">        
                     <div class="row inventory-filter">
                         <div class="col-md-3 mb-3 top-data">
                             <input type="tel" class="form-control" value="<?=isset($_GET['name']) ? $_GET['name'] :''?>" name="name" id="name" placeholder="Name">
@@ -70,11 +68,13 @@
                                 <td><?=$totallead['client_address']?></td>
                                 <td><?=$totallead['remark']?></td>
                                 <td><?=$totallead['reference']?></td>
-                                <td class="edit-icon">
+                                <td class="edit-icon">                                
                                     <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a>
-                                    <a href="#" onClick = "softDelete(<?=$totallead['id'];?>);"  data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash delete mt-4 " aria-hidden="true" title="Delete"></a>
-                                    <a href="#" onClick ="checkLead(this);" data-id="<?=$totallead['id'];?>" data-user='<?=$totallead['assign_to'];?>' class="fa fa-plus-circle text-success mt-3" aria-hidden="true" title="Assign"></a>
-                                    <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="fa fa-minus-circle mt-3 text-danger" aria-hidden="true" title="De-Assign"></a>
+                                    <?php if($this->session->get_userdata()['role']<=4){?>
+                                        <a href="#" onClick = "softDelete(this);" data-id="<?=$totallead['id'];?>" data-user-role='<?=$this->session->get_userdata()['role'];?>' data-href="<?php echo base_url();?>index.php/lead/delete_lead_soft_data/<?=$totallead['id'];?>" id="delete-<?=$i?>" class="fa fa-trash delete mt-4 " aria-hidden="true" title="Delete"></a>
+                                        <a href="#" onClick ="checkLead(this);" data-id="<?=$totallead['id'];?>" data-user='<?=$totallead['assign_to'];?>' data-user-role='<?=$this->session->get_userdata()['role'];?>' class="fa fa fa-tag text-success mt-3" aria-hidden="true" title="Assign"></a>
+                                        <!-- <a href="#" onClick = "deAssignLead(<?=$totallead['id'];?>);" class="fa fa-minus-circle mt-3 text-danger" aria-hidden="true" title="De-Assign"></a> -->
+                                    <?php }?>
                                 </td>
                             </tr>                   
                             <?php } ?>                                                    
@@ -107,21 +107,28 @@
         });
     });
 
-    function softDelete(leadId) {
-        if(confirm('Are you sure to remove this record ?')) {
-            window.location.replace('<?php echo base_url();?>index.php/lead/soft_delete_lead_data/'+leadId);
+    function softDelete($this) {
+        var lead_id = $($this).attr('data-id');
+        var role = $($this).attr('data-user-role');
+        if(role>=4){
+            alert('You are not allowed to delete this record ?');
+        }else{
+            if(confirm('Are you sure to delete this record ?')) {
+                window.location.replace('<?php echo base_url();?>index.php/lead/soft_delete_lead_data/'+lead_id);
+            }
         }
     }
 
-    function deAssignLead(leadId) {
-        if(confirm('Are you sure to delete your assigned lead from records ?')) {
-            window.location.replace('<?php echo base_url();?>index.php/lead/deassign_lead/'+leadId);
-        }
-    }
+    // function deAssignLead(leadId) {
+    //     if(confirm('Are you sure to delete your assigned lead from records ?')) {
+    //         window.location.replace('<?php echo base_url();?>index.php/lead/deassign_lead/'+leadId);
+    //     }
+    // }
 
     function checkLead($this) {
         var lead_id = $($this).attr('data-id');
         var lead_user = $($this).attr('data-user');
+        var role = $($this).attr('data-user-role');
         if(lead_user != '' && lead_user >'0') {
             var conf = confirm('This lead is already assigned to a sales user, Do you want to re-assigne this lead to some other user?');
         } else {

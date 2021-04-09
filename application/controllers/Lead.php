@@ -72,8 +72,11 @@ class Lead extends CI_Controller {
     function soft_delete_lead_data($id){
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-        $this->lead_model->soft_delete_lead($id);
-        redirect('lead');
+        $user = $this->session->get_userdata();
+        if($user['role']<=4){
+            $this->lead_model->soft_delete_lead($id);
+            redirect('lead');
+        }
         $this->load->view('templates/admin_footer');
     }
 

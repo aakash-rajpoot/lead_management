@@ -2,7 +2,7 @@
 <div class="col-lg-12">
     <div class="content-wrapper content-wrapper--with-bg">
         <div class="wrap-career">
-            <h2 class="p-4" style="background-color:<?=$data['color_code'];?>;">Lead Details</h2>
+            <h2 class="p-1">Lead Details</h2><hr>
                 <div class="row py-3">
                     <div class="col-md-3 mb-3"> 
                         <label class="label-input" for="name">Lead Name: </label> <span><?=$data['name'];?> </span>
@@ -32,13 +32,13 @@
                         <label class="label-input" for="reference">Lead Source By: </label> <span><?=$data['reference'];?> </span>
                     </div> 
                 </div>
-                <h3 class="p-4 bg-secondary">Lead History</h3><hr>
+                <h3 class="p-0">Lead History</h3><hr class="my-3">
                 <div class="row">
                     <div class="col-md-12 mb-3">
                     <table id="dt-all-checkbox" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>S.No</th>
+                                <!-- <th>S.No</th> -->
                                 <th class="th-sm">Date & Time</th>
                                 <th class="th-sm">Status</th>
                                 <th class="th-sm">Updated By</th>
@@ -52,12 +52,12 @@
                         $i = 1;
                         foreach($lead_history as $history) {?>
                             <tr>
-                                <td><?=$i;?></td>
+                                <!-- <td><?=$i;?></td> -->
                                 <td><?=$history['activity_date'];?></td>
                                 <td><?=$history['status_name'];?></td>
-                                <td><?=$history['fname'];?></td>
+                                <td><?=$history['fname'];?> <?=$history['lname'];?></td>
                                 <td><?=$history['activity_type'];?></td>
-                                <td><?=$history['transfer_user_id'];?></td>
+                                <td><?=$history['transfer_user_id']!=0?$history['ffname'].' '.$history['llname']:'--';?></td>
                                 <td><?=$history['activity_comment'];?></td>
                             </tr>
                         <?php $i++; }?>
@@ -78,8 +78,8 @@
                     </div>
                 </div>
 
-                <h4>Update Lead : </h4>
-                <hr>
+                <h4 class="p-0">Update Lead : </h4>
+                <hr class="my-3">
                 <?=form_open(null, array('method'=>'post')); ?>
                 <?=validation_errors(); ?>
                     <div class="row">
@@ -95,7 +95,7 @@
                             <select  class="form-control" name="status" id="status">
                                 <option value="">Change Status</option>
                                 <?php foreach($lead_statuses as $status ) { ?>
-                                    <option <?=$data['status'] ==  $status['id']? 'selected' :''?> <?=$data['status'] >  $status['id']? 'disabled' :''?>  value="<?=$status['id']?>" class="form-control"><?=$status['status_name']; ?></option>
+                                    <option <?=$data['status'] ==  $status['id']? 'selected' :''?>  value="<?=$status['id']?>" class="form-control"><?=$status['status_name']; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

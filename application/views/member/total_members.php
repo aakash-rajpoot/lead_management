@@ -121,7 +121,7 @@
                                     <?php } ?>
                                     <!-- <a href="#" data-href="<?=base_url('index.php/member/profile_details/'.$member['id'])?>" onClick = "resignAgent(<?=$member['id'];?>);" class="fa fa-sign-out " title="Resign" data-toggle="modal" aria-hidden="true"></a>
                                     <a href="#" onClick = "softDelete(<?=$member['id'];?>);" data-href="<?=base_url();?>index.php/member/delete_member_soft_data/<?=$member['id'];?>" title="delete" id="delete-<?=$i?>" class="fa fa-trash soft-recode delete" aria-hidden="true"></a> -->
-                                    <a href="<?=base_url('index.php/chat/index/'.$member['id'])?>" class="fa fa-comment text-success" title="Message"></a>
+                                   <?php if($member['id'] != $this->session->get_userdata()['id']){?> <a href="<?=base_url('index.php/chat?mid'.$member['id'])?>" class="fa fa-comment text-success" title="Message"></a><?php } ?>
                                 </td>
                             </tr>
                         <?php }else{ ?>

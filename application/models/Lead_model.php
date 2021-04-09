@@ -17,7 +17,7 @@ class Lead_model extends CI_Model {
             'client_address' => $this->input->post('client_address'),
             'created_by' => $current_user['id'],
             'remark' => $this->input->post('remark'),
-            'reference' => $this->input->post('reference'),
+            'reference' => $this->input->post('reference'),            
             'lead_date' => date('Y-m-d'),
             'active' => 1
         );
@@ -31,7 +31,7 @@ class Lead_model extends CI_Model {
             'user_id' => $current_user['id'],
             'activity_type' => 'Lead Created',
             'lead_status' =>1,
-            'activity_comment' => $this->input->post('remark'),
+            'activity_comment' =>'Lead Created',
             'activity_date' => date("Y-m-d H:i:s")
         );
         $this->update_lead_history($lead_h);
@@ -58,12 +58,13 @@ class Lead_model extends CI_Model {
         }
     }
     function get_lead_history($id){ 
-            $query = $this->db->select("h.*, m.fname,m.lname,s.status_name")
+            $query = $this->db->select("h.*, m.fname,m.lname,s.status_name, m2.fname as ffname,m2.lname as llname")
             ->from('sq_lead_history as h') 
             ->join('sq_members as m', 'm.id = h.user_id', 'left')
+            ->join('sq_members as m2', 'm2.id = h.transfer_user_id', 'left')
             ->join('sq_status as s', 's.id = h.lead_status', 'left')
             ->where('lead_id', $id) 
-            ->order_by('id','ASC')
+            ->order_by('id','DESC')
             ->get();  
             //print_r($this->db->last_query());       
             return $query->result_array();
@@ -136,7 +137,7 @@ class Lead_model extends CI_Model {
         ->where($where)
         ->group_by('sq_lead.id')
         ->get();  
-       // print_r($this->db->last_query());       
+        //print_r($this->db->last_query());       
         return $query;
     }
 
@@ -155,6 +156,7 @@ class Lead_model extends CI_Model {
             'last_update' => date("Y-m-d H:i:s")
         );
         $this->db->set($lead);
+        $this->db->set('attempted', 'attempted+1', FALSE); 
         $this->db->where('id', $id);
         $this->db->update('sq_lead',$lead);
         $lead_h = array(
@@ -162,6 +164,7 @@ class Lead_model extends CI_Model {
             'user_id' => $user['id'],
             'activity_type' => 'Follow-up Update',
             'lead_status' =>$this->input->post('status'),
+            
             'activity_comment' => $this->input->post('remark'),
             'activity_date' => date("Y-m-d H:i:s")
         );
@@ -169,7 +172,6 @@ class Lead_model extends CI_Model {
     }
 
     function update_lead_details($id){
-
         $lead = array(
             'name' => $this->input->post('name'),
             'phone' => $this->input->post('phone'),
@@ -237,12 +239,20 @@ class Lead_model extends CI_Model {
     }
 
     function lead_assign_data($id){
+        $user = $this->session->get_userdata();
         $name = $this->input->post('lead_name');       
         $this->db->set('assign_to',$this->input->post('assign_lead'));
-        $this->db->set('status',1);
+        $this->db->set('status',5);
         $this->db->set('assign_date',date('Y-m-d')); 
+        $this->db->set('transferred_date',date('Y-m-d')); 
+        $this->db->set('followup_date',date('Y-m-d')); 
+        $this->db->set('last_update',date('Y-m-d H:i:s'));  
+        $this->db->set('status_remark','Lead Transfer');         
         $this->db->where('id', $id);
-        return $this->db->update('sq_lead');
+        $st = $this->db->update('sq_lead');
+        $lead_data = array('lead_id'=>$id, 'user_id'=>$user['id'],'activity_type'=>'Lead Transfer','lead_status'=>5,'activity_comment'=>'Lead Transfered','transfer_user_id'=>$this->input->post('assign_lead'));
+        $this->update_lead_history($lead_data);
+        return $st;
     }
 
     function deassign_lead_data($id){
@@ -491,7 +501,7 @@ class Lead_model extends CI_Model {
         $this->db->select("sq_members.id");
         $this->db->from('sq_members');
         $this->db->where('active',1);
-        $this->db->where('role >=',4); 
+        $this->db->where('role',5); 
         $query = $this->db->get(); 
         return $query->result_array();
     }
@@ -559,7 +569,7 @@ class Lead_model extends CI_Model {
             $max_leads = $this->config->item('max_leads');
            
             foreach($assigned_leads_per_user as $g){
-                if($g['leads']<40){
+                if($g['leads']<10){
                     array_push($er,$g);
                 }
             }
@@ -576,9 +586,12 @@ class Lead_model extends CI_Model {
             $this->db->set('assign_to',$assign_to);
             $this->db->set('status',1);
             $this->db->set('assign_date',date('Y-m-d')); 
+            $this->db->set('followup_date',date('Y-m-d')); 
+            $this->db->set('last_update',date('Y-m-d H:i:s')); 
+            $this->db->set('status_remark','Lead Assigned');      
             $this->db->where('id', $id);
             $this->db->update('sq_lead');
-            $lead_data = array('lead_id'=>$id, 'user_id'=>$assign_to,'activity_type'=>1,'lead_status'=>'assigned','activity_comment'=>'Lead Created','transfer_user_id'=>0);
+            $lead_data = array('lead_id'=>$id, 'user_id'=>$assign_to,'activity_type'=>'Lead Assigned','lead_status'=>1,'activity_comment'=>'Lead Assigned','transfer_user_id'=>0);
             $this->update_lead_history($lead_data);
         }
     }

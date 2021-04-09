@@ -136,8 +136,8 @@ class Member_model extends CI_Model {
         $this->db->where('is_manager',1);
         $this->db->where('active',1);
         return $this->db->get()->result_array();
-    } 
-
+    }
+    
     function fetch_agent_profile_details($id){
         $this->db->select("m.*,,m1.fname finame,m1.lname as laname");
         $this->db->from('sq_members as m');

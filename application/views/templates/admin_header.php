@@ -136,15 +136,24 @@
                                 </li>
                                 
                                 <li class="site-menu-item lichild" title="Add Sales Team">
-                                    <a href="<?=base_url('member/feedbacks')?>">
+                                    <a href="<?=base_url('chat')?>">
                                         <div class="c-menu__item__inner submenu-color">
-                                        <i class="fa fa-comment" aria-hidden="true"></i><span class="icon-titles">Feedbacks</span>
+                                        <i class="fa fa-comment" aria-hidden="true"></i><span class="icon-titles">Chat</span>
                                         </div>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <?php }?>
+                        <?php }else{?>
+                            <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'chat' ? 'active' : ''; ?>" title="setting">
+                                <a href="<?=base_url('chat')?>"> 
+                                    <div class="c-menu__item__inner menusss">
+                                    <i class="fa fa-comment" aria-hidden="true"></i><span class="icon-titles">Chat</span>
+                                    </div>
+                                </a>
+                            </li>
+                        <?php } ?>
+
                         <li class="c-menu__item site-menu-item main-menu <?php echo $this->uri->segment(1) == 'lead' ? 'active' : ''; ?>" title="Lead">
                             <a href="<?=base_url('lead')?>"> 
                                 <div class="c-menu__item__inner menusss">

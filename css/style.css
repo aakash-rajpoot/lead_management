@@ -780,18 +780,23 @@
   }
   
   .chat li.left .chat-body {
-      margin-left: 60px;
+      margin-left: 60px;    
+      text-align: left;
   }
   
   .chat li.right .chat-body {
       margin-right: 60px;
+      text-align: right !important;
   }
   
   .chat li .chat-body p {
       margin: 0;
       color: #777777;
   }
-  
+  .chat li.right .chat-body p{
+    text-align: right;
+    float: right;
+  }
   .panel .slidedown .glyphicon,
   .chat .glyphicon {
       margin-right: 5px;
