@@ -29,6 +29,22 @@
                                 <?php } ?>
                             </select>
                         </div>
+                        <div class="col-md-3 mb-3 top-data">
+                            <select  class="form-control" name="assign_to">
+                                <option value="">Assigned to</option>
+                                <?php foreach($salespersons as $person ) { ?>
+                                    <option <?=isset($_GET['assign_to']) && $_GET['assign_to'] ==  $person['id']? 'selected' :''?>  value="<?=$person['id']?>" class="form-control"><?=$person['fname'].' '.$person['lname']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3 top-data">
+                            <select class="form-control" name="reference" id="reference">
+                                <option value="">Select Source</option>
+                                <?php foreach($lead_sources as $source ) { ?>
+                                        <option <?=isset($_GET['reference']) && $_GET['reference'] ==  $source['id']? 'selected' :''?>  value="<?=$source['id']?>" class="form-control"><?=$source['source_name']; ?></option>
+                                <?php } ?>
+                            </select> 
+                        </div>
                         <div class="col-md-3 mb-3">
                             <input type="submit" class="btn btn-success" name="inventory_filter" value="Submit">
                             <a href="<?=base_url().'lead/index'?>" class="btn btn-default">Reset</a>
@@ -63,11 +79,11 @@
                                 <td><a href="<?=base_url('index.php/lead/view_lead/'.$totallead['id'])?>"><?=$totallead['name']?></a></td>
                                 <td><?=$totallead['fname']?> <?=$totallead['lname']?> </td>
                                 <td><?=$totallead['assign_date']?></td>
-                                <td><?=$totallead['phone']?></td>
+                                <td><a href="callto:<?=$totallead['phone'];?>"><?=$totallead['phone']?></a></td>
                                 <td><?=$totallead['property_address']?></td>
                                 <td><?=$totallead['client_address']?></td>
                                 <td><?=$totallead['remark']?></td>
-                                <td><?=$totallead['reference']?></td>
+                                <td><?=$totallead['source_name']?></td>
                                 <td class="edit-icon">                                
                                     <a href="<?=base_url('index.php/lead/update_lead/'.$totallead['id'])?>" class="fa fa-pencil-square-o mt-3" data-toggle="modal" aria-hidden="true" title="Edit"></a>
                                     <?php if($this->session->get_userdata()['role']<=4){?>

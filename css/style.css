@@ -1142,3 +1142,31 @@
   .submenu-color{
     padding: 10px 2px;
   }
+.lead-stats {
+    display: block;
+}
+.lead-stats .lead-counter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.lead-stats .lead-text{
+    display: block;
+    position: absolute;
+    width: 80%;
+    text-align: left;
+    bottom: 15px;
+}
+.lead-stats .lead-text .count-name{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    opacity: 1;
+}
+
+.avatar.leads {
+    height: auto;
+    max-width: 48px;
+    border-radius: 6px;
+}

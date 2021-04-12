@@ -6,7 +6,7 @@ class Member extends CI_Controller {
     public function __construct() {
         parent::__construct();
         if ( ! $this->session->userdata('id')){ redirect('admin');}  
-        $this->load->model(array('member_model','admin_model','setting_model','chat_model'));
+        $this->load->model(array('member_model','admin_model','setting_model','chat_model','lead_model'));
 		$this->load->helper(array('form','url','html','date'));
 		$this->load->library(array('form_validation','session','pagination'));
     }
@@ -29,36 +29,40 @@ class Member extends CI_Controller {
         $this->pagination->initialize($config);
         $page = (!isset($_GET['member_filter']) && $this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
         $data["links"] = $this->pagination->create_links();
-        $data['roles'] = $this->member_model->get_roles();
         $data['total_member'] = $this->member_model->fetch_total_members($config["per_page"], $page)->result_array();
+        
+        $data['roles'] = $this->member_model->get_roles();
         $data['managers'] = $this->member_model->get_managers();
+
         $this->load->view('member/total_members',$data);
         $this->load->view('templates/admin_footer');
     }
 
     function add_member(){
-
         if($this->session->get_userdata()['role']>3 ){
             redirect('member');
         }
-
         $data = $this->setting_model->fetch_setting_details();
         $this->load->view('templates/admin_header',$data);
-    
+        $data['dob'] = date("d-m-Y");
+        $data['joining_date'] = date("d-m-Y");
+
         if(isset($_POST['member_submit'])) { 
             $this->form_validation->set_rules('fname', 'First name','required|min_length[2]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
             $this->form_validation->set_rules('lname', 'Last name','required|min_length[2]|regex_match[/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/]');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]');
             $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
+            $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]');
             $this->form_validation->set_rules('dob', 'Birth Date','required');
             $this->form_validation->set_rules('aadhar', 'Aadhar Card','required');
             $this->form_validation->set_rules('pan', 'Pan Card','required');
             $this->form_validation->set_rules('role', 'User Role','required');
+            $this->form_validation->set_rules('manager', 'Reporting manager','required');
             $this->form_validation->set_rules('permanent', 'Permanent Address','required');
             
             $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
-            $this->form_validation->set_message('required', '* Please enter valid %s');
-            
+            $this->form_validation->set_message('required', '* Please enter valid %s'); 
+
             $config1['upload_path'] = './media/aadhar';
             $config1['allowed_types'] = 'pdf';
             $config1['max_size']    = '15000000';
@@ -87,6 +91,14 @@ class Member extends CI_Controller {
                 $error = array('error' => $this->upload->display_errors());
             } else {
                 $_POST['pan'] = $this->upload->data('file_name');
+            } 
+
+            if(!empty($this->input->post('dob'))){
+                $data['dob'] = date("d-m-Y", strtotime($this->input->post('dob')));
+            } 
+    
+            if(!empty($this->input->post('joining_date'))){
+                $data['joining_date'] = date("d-m-Y", strtotime($this->input->post('joining_date')));
             }
 
             if($this->form_validation->run()) {
@@ -95,6 +107,7 @@ class Member extends CI_Controller {
             }
         }
         $data['roles'] = $this->member_model->get_roles();
+        $data['managers'] = $this->member_model->get_managers();
         $this->load->view('member/add_member',$data);
         $this->load->view('templates/admin_footer');
     }
@@ -133,6 +146,7 @@ class Member extends CI_Controller {
             $this->form_validation->set_rules('phone', 'Phone number','required|min_length[10]|max_length[12]|regex_match[/^[0]?[0-9]\d{9}$/]');
             $this->form_validation->set_rules('dob', 'Birth Date','required');
             $this->form_validation->set_rules('role', 'User Role','required');
+            $this->form_validation->set_rules('manager', 'Reporting manager','required');
             $this->form_validation->set_rules('permanent', 'Permanent Address','required');            
             $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
             $this->form_validation->set_message('required', '* Please enter valid %s');
@@ -238,6 +252,7 @@ class Member extends CI_Controller {
         }
 
         $data['roles'] = $this->member_model->get_roles();
+        $data['managers'] = $this->member_model->get_managers();
         $this->load->view('member/update_member', $data);
         $this->load->view('templates/admin_footer');
     }
@@ -247,18 +262,29 @@ class Member extends CI_Controller {
         $this->load->view('templates/admin_header',$data);
         $data = $this->member_model->fetch_agent_profile_details($id);
         $data['reviews'] = $this->member_model->fetch_member_review($id);
-
+        
         if(empty($data['dob'])){
             $data['dob'] = date('d-m-Y');
         }else{
             $data['dob'] = date("d-m-Y", strtotime($data['dob']));
         } 
-
         if(empty($data['joining_date'])){
             $data['joining_date'] = date('d-m-Y');
         }else{
             $data['joining_date'] = date("d-m-Y", strtotime($data['joining_date']));
-        }        
+        } 
+        if(isset($_POST['password_update'])) {
+            $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]');
+            $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
+            $this->form_validation->set_message('required', '* Please enter valid %s'); 
+            
+            if($this->form_validation->run()){
+                $new_pass = md5($this->input->post('password'));
+                $this->admin_model->change_password($new_pass); 
+            }
+        }
+        $data['leads'] = $this->member_model->lead_assignedTo_user($id);  
+
         $this->load->view('member/agent_profile',$data);
         $this->load->view('templates/admin_footer');
     }
@@ -288,15 +314,12 @@ class Member extends CI_Controller {
 
     function change_pass(){
         $data = $this->setting_model->fetch_setting_details();
-        $this->load->view('templates/admin_header',$data);
-        
+        $this->load->view('templates/admin_header',$data);        
 		$this->form_validation->set_rules('old_pass', 'Old Password', 'required|callback_oldPassCheck');
     	$this->form_validation->set_rules('new_pass', 'New Password', 'required|min_length[8]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/]');
 		$this->form_validation->set_rules('confirm_pass', 'Confirm Password', 'required|matches[new_pass]');
-
         $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
         $this->form_validation->set_message('required', '* Please enter valid %s');
-
 		if(isset($_POST['admin_change_password']) && $this->form_validation->run()){
                 $new_pass = md5($this->input->post('new_pass'));
                 $this->admin_model->change_password($new_pass);
@@ -323,6 +346,4 @@ class Member extends CI_Controller {
 		$this->load->view('admin/view_profile', $data);
 		$this->load->view('templates/admin_footer');	
 	}
-
-
 }

@@ -52,10 +52,10 @@
                         
                             <div class="col-md-3 mb-3">
                                 <label class="label-input" for="dob">Birth Date: <span class="text-danger font-weight-medium">*</span></label>
-                                <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
-                                <input type="text" class="form-control" rows="3" name="dob" id="dob" value="<?=$dob;?>" />
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                            </div>
+                                <div class="input-group date datepicker dob" data-format="mm-dd-yyyy">
+                                    <input type="text" class="form-control" rows="3" name="dob" id="dob" value="<?=$dob;?>" />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label class="label-input" for="gender">Gender: </label>
@@ -71,7 +71,7 @@
                             <div class="col-md-3 mb-3">
                                 <label class="label-input">User Role: <span class="text-danger font-weight-medium">*</span></label>
                                 <div class="form-group">
-                                    <select name="role" class="form-control" <?php if($this->session->get_userdata()['role']<=3 || $id == $this->session->get_userdata()['id']){echo 'disabled';}?>>
+                                    <select name="role" class="form-control" <?php if($this->session->get_userdata()['role']>=3 ){echo 'disabled';}?>>
                                         <option value="">Select Role</option>
                                         <?php foreach($roles as $data ) { ?>
                                             <option value="<?=$data['role_id']?>" <?php if($role == $data['role']){ echo 'Selected'; }?> class="form-control"> <?=$data['role'];?> </option>
@@ -79,10 +79,22 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="label-input">Reporting Manager: <span class="text-danger font-weight-medium">*</span></label>
+                                <div class="form-group">
+                                    <select name="manager" class="form-control">
+                                    <option value="">Select Manager</option>
+                                        <?php  
+                                            foreach($managers as $manager) {?>
+                                                <option value="<?=$manager['id'];?>" <?php if(isset($_POST['manager']) && $_POST['manager']==$manager['id']){ echo "selected";}?>><?=$manager['fname'];?> <?=$manager['lname'];?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="col-md-3 mb-3">
                                 <label class="label-input" for="joining_date">Date of Joining: </label>
-                                <div  class="input-group date datepicker" data-date-format="mm-dd-yyyy">
+                                <div  class="input-group date datepicker joining_date" data-format="mm-dd-yyyy">
                                     <input type="text" class="form-control" name="joining_date" id="joining_date" value="<?=$joining_date;?>">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
@@ -108,10 +120,7 @@
                             <div class="col-md-3 mb-3">
                                 <label class="label-input" for="correspondence">Correspondence Address:</label>
                                 <textarea class="form-control" cols = "50" name="correspondence" id="correspondence"><?=$correspondence;?></textarea>
-                            </div>
-                        
-                            
-                           
+                            </div>                           
                         </div> 
                     </div>
                     <div class="d-flex  mt-3 mb-5">
@@ -164,35 +173,47 @@
     </div>
 </div>
 <script>
+$(function () {
     $('#profile-img').each(function() {
-  // get label text
-  var label = $(this).parents('.form-group').find('label').text();
-    label = (label) ? label : 'Upload File';
+        // get label text
+        var label = $(this).parents('.form-group').find('label').text();
+        label = (label) ? label : 'Upload File';
 
-    // wrap the file input
-    $(this).wrap('<div class="input-file"></div>');
-    // display label
-    $(this).before('<span class="btn">'+label+'</span>');
-    // we will display selected file here
-    $(this).before('<span class="file-selected"></span>');
+        // wrap the file input
+        $(this).wrap('<div class="input-file"></div>');
+        // display label
+        $(this).before('<span class="btn">'+label+'</span>');
+        // we will display selected file here
+        $(this).before('<span class="file-selected"></span>');
 
-    // file input change listener 
-    $(this).change(function(e){
-        // Get this file input value
-        var val = $(this).val();
-        
-        // Let's only show filename.
-        // By default file input value is a fullpath, something like 
-        // C:\fakepath\Nuriootpa1.jpg depending on your browser.
-        var filename = val.replace(/^.*[\\\/]/, '');
+        // file input change listener 
+        $(this).change(function(e){
+            // Get this file input value
+            var val = $(this).val();
+            
+            // Let's only show filename.
+            // By default file input value is a fullpath, something like 
+            // C:\fakepath\Nuriootpa1.jpg depending on your browser.
+            var filename = val.replace(/^.*[\\\/]/, '');
 
-        // Display the filename
-        $(this).siblings('.file-selected').text(filename);
+            // Display the filename
+            $(this).siblings('.file-selected').text(filename);
+        });
     });
-});
-
-// Open the file browser when our custom button is clicked.
-$('.input-file .btn').click(function() {
-    $(this).siblings('input[type="file"]').trigger('click');
+    // Open the file browser when our custom button is clicked.
+    $('.input-file .btn').click(function() {
+        $(this).siblings('input[type="file"]').trigger('click');
+    }); 
+    $('.datepicker').datepicker({
+        format: 'dd-mm-yyyy',
+        endDate: '+0d',
+        autoclose: true
+    });
+    $('.input-group.date.joining_date .glyphicon-calendar').click(function(){
+        $("#joining_date").datepicker().focus();
+    });
+    $('.input-group.date.dob .glyphicon-calendar').click(function(){
+        $("#dob").datepicker().focus();
+    });
 });
 </script>

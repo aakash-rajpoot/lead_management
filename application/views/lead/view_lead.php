@@ -29,7 +29,7 @@
                         <?php if($i<count($units)){ echo ", ";} }?>
                     </div> 
                     <div class="col-md-3 mb-3"> 
-                        <label class="label-input" for="reference">Lead Source By: </label> <span><?=$data['reference'];?> </span>
+                        <label class="label-input" for="reference">Lead Source By: </label> <span><?=$data['source_name'];?> </span>
                     </div> 
                 </div>
                 <h3 class="p-0">Lead History</h3><hr class="my-3">
@@ -37,8 +37,7 @@
                     <div class="col-md-12 mb-3">
                     <table id="dt-all-checkbox" class="table table-bordered">
                         <thead>
-                            <tr>
-                                <!-- <th>S.No</th> -->
+                            <tr> 
                                 <th class="th-sm">Date & Time</th>
                                 <th class="th-sm">Status</th>
                                 <th class="th-sm">Updated By</th>
@@ -52,7 +51,6 @@
                         $i = 1;
                         foreach($lead_history as $history) {?>
                             <tr>
-                                <!-- <td><?=$i;?></td> -->
                                 <td><?=$history['activity_date'];?></td>
                                 <td><?=$history['status_name'];?></td>
                                 <td><?=$history['fname'];?> <?=$history['lname'];?></td>
@@ -77,7 +75,6 @@
                         <label class="label-input" for="remark">Last Remark: </label> <span><?=$data['remark'];?> </span>
                     </div>
                 </div>
-
                 <h4 class="p-0">Update Lead : </h4>
                 <hr class="my-3">
                 <?=form_open(null, array('method'=>'post')); ?>
@@ -85,7 +82,7 @@
                     <div class="row">
                         <div class="col-md-3 mb-3 top-data">
                             <label class="label-input" for="followup_date">Follow-up Date: <span class="text-danger font-weight-medium">*</span></label>
-                            <div class="input-group date datepicker" data-date-format="m-d-Y">
+                            <div class="input-group date datepicker followup_date" data-date-format="m-d-Y">
                                 <input type="text" class="form-control" value="<?=isset($data['followup_date']) ? date("m-d-Y", strtotime($data['followup_date'])) :''?>" name="followup_date" id="followup_date" placeholder="Follow-up Date">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
@@ -95,7 +92,9 @@
                             <select  class="form-control" name="status" id="status">
                                 <option value="">Change Status</option>
                                 <?php foreach($lead_statuses as $status ) { ?>
-                                    <option <?=$data['status'] ==  $status['id']? 'selected' :''?>  value="<?=$status['id']?>" class="form-control"><?=$status['status_name']; ?></option>
+                                    <?php if($status['id']!=5){?>
+                                        <option <?=$data['status'] ==  $status['id']? 'selected' :''?>  value="<?=$status['id']?>" class="form-control"><?=$status['status_name']; ?></option>
+                                    <?php }?>                                    
                                 <?php } ?>
                             </select>
                         </div>
@@ -119,5 +118,8 @@ $(document).ready(function() {
     var date = new Date();
     date.setDate(date.getDate()-1);
     $("#followup_date").datepicker({  startDate: date, dateFormat: 'dd-mm-yy' });
+    $('.input-group.date.followup_date .glyphicon-calendar').click(function(){
+        $("#followup_date").datepicker().focus();
+    });
 });
 </script>

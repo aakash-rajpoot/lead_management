@@ -167,7 +167,7 @@
             window.location.replace('<?=base_url();?>index.php/member/resign_agent/'+memberId);
         }
     }
-
+$(function () {
     $('#iconified').on('keyup', function() {
         var input = $(this);
         if(input.val().length === 0) {
@@ -184,5 +184,9 @@
         }).datepicker('update', new Date());
     });*/
     $("#joining_date").datepicker({ dateFormat: 'dd-mm-yy' });
+    $('.input-group.date .glyphicon-calendar').click(function(){
+        $("#joining_date").datepicker().focus();
+    });
+});
 </script>
 

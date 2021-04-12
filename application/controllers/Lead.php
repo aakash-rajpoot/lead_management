@@ -30,7 +30,8 @@ class Lead extends CI_Controller {
         
         $data['total_lead'] = $this->lead_model->fetch_total_lead($config["per_page"], $page)->result_array();
         $data['units'] = $this->unit_model->fetch_unit_data()->result_array();
-        
+        $data['salespersons']  = $this->lead_model->get_sales_persons();
+        $data['lead_sources']  = $this->lead_model->get_lead_sources();
         $this->load->view('lead/total_lead',$data);
         $this->load->view('templates/admin_footer');
     }
@@ -65,6 +66,7 @@ class Lead extends CI_Controller {
             'reference' => $this->input->post('reference') 
         );
         $data2['units'] = $data1;
+        $data['lead_sources']  = $this->lead_model->get_lead_sources();
         $this->load->view('lead/add_lead',$data2);
         $this->load->view('templates/admin_footer');
     }
@@ -101,7 +103,7 @@ class Lead extends CI_Controller {
             $this->lead_model->update_lead_details($id);
             redirect('lead');
         }
-
+        $data['lead_sources']  = $this->lead_model->get_lead_sources();
         $this->load->view('lead/update_lead', $data);
         $this->load->view('templates/admin_footer');
     }
@@ -119,12 +121,16 @@ class Lead extends CI_Controller {
         $this->load->view('templates/admin_header',$data);
         
         $data['lead'] = $this->lead_model->fetch_lead($id);
-        $data['members'] =$this->lead_model->fetch_members_data()->result_array();
+        $data['members'] =$this->lead_model->fetch_members_data()->result_array(); 
 
-        if(isset($_POST['lead_assign'])){
+        $this->form_validation->set_rules('remark', 'Remarks','required|min_length[10]|max_length[100]'); 
+        $this->form_validation->set_error_delimiters('<div class="php_error">', '</div>');
+		$this->form_validation->set_message('required', '* Please enter valid %s');
+
+        if(isset($_POST['lead_assign']) && $this->form_validation->run()) {
             $this->lead_model->lead_assign_data($id);
             redirect('lead');
-        }
+        } 
         $this->load->view('lead/assign_lead',$data);
         $this->load->view('templates/admin_footer');
     }

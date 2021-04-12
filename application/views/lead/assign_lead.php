@@ -5,18 +5,18 @@
             <?php if(!empty($lead)){  
                 ?>
                 <?=form_open('lead/assign_lead/'.$lead['id'],array('method'=>'post','novalidate'=>"novalidate", 'class'=>'needs-validation')); ?>
-                <div class="row">                
-                    <?=validation_errors(); ?>                 
-                    <div class="col-md-4 mb-3">
+                <?=validation_errors(); ?> 
+                <div class="row"> 
+                    <div class="col-md-3 mb-3">
                         <label class="label-input" for="lead_name">Lead Name: </label>
                         <input class="form-control" name="lead_name" id="lead_name" value="<?=$lead['name'];?>" readonly>
                         <input type="hidden" class="form-control" name="lead_email" id="lead_email" value="<?=$lead['email'];?>">
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label class="label-input" for="current_assign_name">Assigned to: </label>
                         <input class="form-control" name="current_assign_name" id="current_assign_name" value="<?=$lead['fname'];?> <?=$lead['lname'];?>" readonly>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label class="label-input" for="assign_lead">Lead Assign: </label>
                         <select class="custom-select d-block  form-control" name="assign_lead" id="assign_lead">
                             <option>---Select---</option>
@@ -26,6 +26,10 @@
                                 <?php } ?>
                             <?php } ?>
                         </select>      
+                    </div>
+                    <div class="col-md-3 col-lg-3 mb-3">
+                        <label class="label-input" for="remark">Remarks:</label>
+                        <textarea class="form-control" rows="3" name="remark" id="remark"></textarea>
                     </div>
                 </div>
                 <div class="row">        

@@ -10,10 +10,11 @@ class Member_model extends CI_Model {
             'fname' => $this->input->post('fname'),
             'lname' => $this->input->post('lname'),
             'phone' => $this->input->post('phone'),
+            'password' => md5($this->input->post('password')),
             'email' => $this->input->post('email'),
             'alt_phone' => $this->input->post('alt_phone'),
             'gender' => $this->input->post('gender'),
-            'dob' => $this->input->post('dob'),
+            'dob' => date("Y-m-d", strtotime($this->input->post('dob'))),
             'aadhar' => $this->input->post('aadhar'),
             'pan' => $this->input->post('pan'),
             'permanent' => $this->input->post('permanent'),
@@ -24,7 +25,7 @@ class Member_model extends CI_Model {
         if(empty($this->input->post('joining_date'))){
             $member['joining_date'] = date('Y-m-d');
         }else{
-            $member['joining_date'] = $this->input->post('joining_date');
+            $member['joining_date'] = date("Y-m-d", strtotime($this->input->post('joining_date')));
         }
         $this->db->insert('sq_members',$member);
     }
@@ -79,11 +80,9 @@ class Member_model extends CI_Model {
             ->join('sq_role as r','r.role_id = m.role ','left')
             ->join('sq_members as m1','m.manager_id = m1.id','left')
             ->get();        
-            //print_r($this->db->last_query()); 
-            
+            //print_r($this->db->last_query());             
             return $query;
     }
-      
     
     function soft_delete_member($id){
         $this->db->where('id', $id);
@@ -100,6 +99,7 @@ class Member_model extends CI_Model {
             'gender' => $this->input->post('gender'), 
             'permanent' => $this->input->post('permanent'),
             'role' => $this->input->post('role'),
+            'manager_id' => $this->input->post('manager'),
             'approval' => $this->input->post('approval'),
             'correspondence' => $this->input->post('correspondence')
         );
@@ -116,7 +116,6 @@ class Member_model extends CI_Model {
         }else{
             $member['joining_date'] = date("Y-m-d", strtotime($this->input->post('joining_date')));
         }
-
         $this->db->set($member);
         $this->db->where('id', $id);
         return $this->db->update('sq_members',$member);
@@ -134,6 +133,7 @@ class Member_model extends CI_Model {
         $this->db->select("id,fname,lname");
         $this->db->from('sq_members');
         $this->db->where('is_manager',1);
+        $this->db->or_where('role',4);
         $this->db->where('active',1);
         return $this->db->get()->result_array();
     }
@@ -177,6 +177,16 @@ class Member_model extends CI_Model {
         $this->db->where('agent_id',$id);
         $this->db->join('sq_members as m','m.id = sq_members_performance.reviewer_id','left');
         return $this->db->get()->result_array();
+    }
+
+    function lead_assignedTo_user($id){
+        $this->db->select("sq_lead.*,s.status_name,s.color_code,ls.source_name");
+        $this->db->from('sq_lead');
+        $this->db->join('sq_status as s', 's.id = sq_lead.status', 'left');
+        $this->db->join('sq_lead_source as ls','ls.id = sq_lead.reference','left');
+        $this->db->where('sq_lead.assign_to',$id);    
+        $query = $this->db->get();
+        return $query->result_array();        
     }
     
 }

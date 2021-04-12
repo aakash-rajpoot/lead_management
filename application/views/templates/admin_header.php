@@ -33,7 +33,7 @@
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
 </head>
-<?php print_r($this->uri->segment(1)); ?>
+<?php //print_r($this->uri->segment(1)); ?>
 <?php $user = $this->session->get_userdata();?>
     <body class="sidebar-is-reduced">
         <header class="l-header">
@@ -54,7 +54,7 @@
                             <div class="c-dropdown__content"></div>
                         </div>
                     </div>
-                    <?=$user['role'];?>
+                    <?php //echo $user['role'];?>
                     <div class="dropdown">
                         <div class="c-header-icon user dropbtn">
                             <span class=" c-badge--header-icon animated shake" ></span>

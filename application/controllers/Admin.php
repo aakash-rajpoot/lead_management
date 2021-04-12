@@ -58,6 +58,7 @@ class Admin extends CI_Controller {
         { 
             redirect('admin');
         }
+        
         $data = $this->setting_model->fetch_setting_details();
         $data['lead_status'] = $this->lead_model->fetch_lead_status()->result_array();
         $this->load->view('templates/admin_header',$data);
@@ -81,6 +82,7 @@ class Admin extends CI_Controller {
         $data['count'] = $this->lead_model->fetch_all_counter();
         $data['per_page'] = $config["per_page"];
         $data['total_rows'] = $config["total_rows"]; 
+        
 
         /**Lead analysis */ 
         foreach($statuses as $status) { 
@@ -102,7 +104,7 @@ class Admin extends CI_Controller {
             }
             
         }
-        
+        $data['sources'] = $this->lead_model->get_source_count();
         $this->load->view('admin/dashboard',$data);
         $this->load->view('templates/admin_footer');
     }

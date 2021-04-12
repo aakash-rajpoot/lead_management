@@ -48,36 +48,57 @@
           <div class="row">
             <div class="col-md-8">
               <div class="row">
-              <?php foreach($leads as $lead) {?>              
+                <?php foreach($leads as $lead) {?>              
                 <div class="col-md-3 p-0">
                   <a href="<?=base_url('index.php/lead?status='.$lead->status.'&search_term='.$lead->short_name)?>"> 
-                    <div class="card-counter primary" style="background-color:<?=$lead->color;?>;">
-                    <i class="fa <?=$lead->icon;?>" aria-hidden="true"></i>
-                      <span class="count-numbers"><?=$lead->count;?></span>
-                      <span class="count-name"><?=$lead->name;?></span>
+                    <div class="card-counter primary lead-stats" style="background-color:<?=$lead->color;?>;">
+                        <div class="lead-counter">
+                          <i class="fa <?=$lead->icon;?>" aria-hidden="true"></i>
+                          <span class="count-numbers"><?=$lead->count;?></span>
+                        </div>
+                        <div class="lead-text">
+                          <span class="count-name"><?=$lead->name;?></span>
+                        </div> 
+                    </div>
+                  </a>
+                </div>
+                <?php } ?>     
+              </div>
+              <div class="row">
+                <?php foreach($sources as $source) {?>              
+                <div class="col-md-3 p-0">
+                  <a href="<?=base_url('index.php/lead?reference='.$source['reference'])?>"> 
+                    <div class="card-counter primary lead-stats" style="background-color:<?=$source['bgcolor'];?>;">
+                      <div class="lead-counter">
+                        <img src="<?=base_url('media/logo/'.$source['image'])?>" alt="<?=$source['source_name'];?>" class="avatar leads">
+                        <span class="count-numbers"><?=$source['leads'];?></span>
+                      </div>
+                      <div class="lead-text"><span class="count-name"><?=$source['source_name'];?></span></div>
                     </div>
                   </a>
                 </div>
                 <?php } ?>
-                
                 <div class="col-md-3 p-0">
                   <a href="<?=base_url('index.php/lead')?>"> 
-                    <div class="card-counter primary">
-                      <i class="fa fa-ticket"></i>
-                      <span class="count-numbers"><?=$count['leads'];?></span>
-                      <span  title="Leads" class="count-name">Total Leads</span>
+                    <div class="card-counter primary lead-stats">
+                      <div class="lead-counter">
+                          <i class="fa fa-ticket"></i>
+                          <span class="count-numbers"><?=$count['leads'];?></span>
+                        </div>
+                        <div class="lead-text">
+                          <span  title="Leads" class="count-name">Total Leads</span>
+                        </div>
+                      </div>
                     </div>
                   </a>
+                </div>  
+              </div>
+              <div class="col-md-4">
+                <div class="piechart-box">
+                  <div id="piechart3d" style="width:50rem;height:32rem;">
                 </div>
-                
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="piechart-box">
-                <div id="piechart3d" style="width:50rem;height:32rem;">
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -32,7 +32,12 @@
                         </div> 
                         <div class="col-md-4 col-lg-3 mb-3">
                             <label class="label-input" for="reference">Lead Source By:</label>
-                            <input type="text" class="form-control" name="reference" id="reference">
+                            <select  class="form-control" name="status" id="status">
+                                <option value="">Select Source</option>
+                                <?php foreach($lead_sources as $source ) { ?>
+                                        <option <?=$data['reference'] ==  $source['id']? 'selected' :''?>  value="<?=$source['id']?>" class="form-control"><?=$source['source_name']; ?></option>
+                                <?php } ?>
+                            </select> 
                         </div>
 
                         <div class="col-md-4 col-lg-3 mb-3">

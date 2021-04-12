@@ -73,38 +73,27 @@ class Lead_model extends CI_Model {
         $current_user = $this->session->get_userdata();
         $name = $this->input->get('name', TRUE); 
         $email = $this->input->get('email', TRUE); 
-        $phone = $this->input->get('phone', TRUE); 
+        $phone = $this->input->get('phone', TRUE);
+        $reference = $this->input->get('reference', TRUE);
+        $assign_to = $this->input->get('assign_to', TRUE); 
         $property_address = $this->input->get('property_address', TRUE); 
         $client_address = $this->input->get('client_address', TRUE); 
         $available_unit = $this->input->get('available_unit', TRUE); 
         $status = $this->input->get('status', TRUE);  
-
-        if($status!=3){
-            if($current_user['role']<=3){
-                $where = " (sq_lead.active = '0' OR  sq_lead.active = '1') ";
-            }
-            else if($current_user['role']==4){            
-                $where = " (sq_lead.active = '0' OR  sq_lead.active = '1') ";
-                $where .= " AND assign_to in (SELECT id FROM sq_members WHERE manager_id = ".$current_user['id'].") ";
-            }
-            else{
-                $where = " sq_lead.active = '1' ";
-                $where .= " AND assign_to = ".$current_user['id'];
+        if($status){
+            if($status==7){
+                $where = " sq_lead.active = '0'"; 
+            }else{
+                $where = " sq_lead.active = '1'";
+                $where .= ' AND sq_lead.status ='.$status; 
             }
         }else{
-            if($current_user['role']<=3){
-                $where = " sq_lead.active = '0' ";
-            }
-            else if($current_user['role']==4){            
-                $where = " sq_lead.active = '0' ";
-                $where .= " AND assign_to in (SELECT id FROM sq_members WHERE manager_id = ".$current_user['id'].") ";
-            }
-            else{
-                $where = " sq_lead.active = '0' ";
-                $where .= " AND assign_to = ".$current_user['id'];
-            }
+            $where = " sq_lead.active = '0' OR sq_lead.active = '1'";
         }
+       
         
+       
+
         if(!empty($name)) {
             $where.= " AND sq_lead.name like '%$name%'";
         }
@@ -113,6 +102,9 @@ class Lead_model extends CI_Model {
         }
         if(!empty($phone)) {
             $where.= " AND sq_lead.phone like '%$phone%'";
+        }
+        if(!empty($assign_to)) {
+            $where.= " AND sq_lead.assign_to =$assign_to";
         }
         if(!empty($property_address)) {
             $where.= " AND sq_lead.property_address like '%$property_address%'";
@@ -123,21 +115,29 @@ class Lead_model extends CI_Model {
         if(!empty($available_unit)) {
             $where.= " AND sq_lead.available_unit like '%$available_unit%'";
         }
-        if(!empty($status) && $status!=3) {
-            $where.= " AND sq_lead.status='$status'";
-        } 
+        if(!empty($reference)) {
+            $where.= " AND sq_lead.reference =$reference";
+        }
         // Apply filters on leads directed from dashboard
         $search_term = $this->input->get('search_term', TRUE);
         $where.= $this->search_leads($search_term);        
+        
+        if($current_user['role']==4){ 
+            $where .= " AND assign_to in (SELECT id FROM sq_members WHERE manager_id = ".$current_user['id'].") ";
+        }
+        else if($current_user['role']==5){
+            $where .= " AND assign_to = ".$current_user['id'];
+        }
 
         $query = $this->db->limit($limit, $start)
-        ->select("sq_lead.*, sq_members.fname,sq_members.lname,sq_members.active as mactive")
+        ->select("sq_lead.*, sq_members.fname,sq_members.lname,sq_members.active as mactive,ls.source_name")
         ->from($this->table) 
         ->join('sq_members', 'sq_members.id = sq_lead.assign_to', 'left')
+        ->join('sq_lead_source as ls', 'ls.id = sq_lead.reference', 'left')
         ->where($where)
         ->group_by('sq_lead.id')
         ->get();  
-        //print_r($this->db->last_query());       
+       // print_r($this->db->last_query());       
         return $query;
     }
 
@@ -163,8 +163,7 @@ class Lead_model extends CI_Model {
             'lead_id' => $id,
             'user_id' => $user['id'],
             'activity_type' => 'Follow-up Update',
-            'lead_status' =>$this->input->post('status'),
-            
+            'lead_status' =>$this->input->post('status'),            
             'activity_comment' => $this->input->post('remark'),
             'activity_date' => date("Y-m-d H:i:s")
         );
@@ -196,8 +195,7 @@ class Lead_model extends CI_Model {
                 ];
             }
             $this->db->insert_batch('sq_lead_unit', $unit_data);   
-        }
-        
+        }        
         $this->db->set($lead);
         $this->db->where('id', $id);
         return $this->db->update('sq_lead',$lead);
@@ -219,13 +217,13 @@ class Lead_model extends CI_Model {
             $this->db->where('status',$status);
         }
         $this->db->where('active',1);
-       // return $this->db->get();
         return $this->db->count_all_results();
     }
     
     function fetch_members_data(){
         $this->db->select("*");
         $this->db->from('sq_members');
+        $this->db->where('role',5);
         $this->db->where('active',1);
         return $this->db->get();
     }
@@ -240,17 +238,18 @@ class Lead_model extends CI_Model {
 
     function lead_assign_data($id){
         $user = $this->session->get_userdata();
-        $name = $this->input->post('lead_name');       
+        $name = $this->input->post('lead_name'); 
+        $remark = $this->input->post('remark');       
         $this->db->set('assign_to',$this->input->post('assign_lead'));
         $this->db->set('status',5);
         $this->db->set('assign_date',date('Y-m-d')); 
         $this->db->set('transferred_date',date('Y-m-d')); 
         $this->db->set('followup_date',date('Y-m-d')); 
         $this->db->set('last_update',date('Y-m-d H:i:s'));  
-        $this->db->set('status_remark','Lead Transfer');         
+        //$this->db->set('status_remark',$remark);         
         $this->db->where('id', $id);
         $st = $this->db->update('sq_lead');
-        $lead_data = array('lead_id'=>$id, 'user_id'=>$user['id'],'activity_type'=>'Lead Transfer','lead_status'=>5,'activity_comment'=>'Lead Transfered','transfer_user_id'=>$this->input->post('assign_lead'));
+        $lead_data = array('lead_id'=>$id, 'user_id'=>$user['id'],'activity_type'=>'Lead Transfer','lead_status'=>5,'activity_comment'=>$remark,'transfer_user_id'=>$this->input->post('assign_lead'));
         $this->update_lead_history($lead_data);
         return $st;
     }
@@ -268,25 +267,24 @@ class Lead_model extends CI_Model {
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
-
+    
     public function get_leads($limit, $start) { 
         $where = $this->get_conditions();
         $query = $this->db->limit($limit, $start)
-        ->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,assign_to,created_by,status,status_name,color_code,lead_date")
+        ->select("sq_lead.id,name,email,phone,alt_phone,client_address,property_address,assign_date,available_unit,assign_to,created_by,status,status_name,color_code,lead_date,ls.source_name")
         ->from($this->table)
         ->join('sq_status', 'sq_lead.status = sq_status.id', 'left')
         ->join('sq_lead_unit as u', 'sq_lead.id = u.lead_id', 'left')
+        ->join('sq_lead_source as ls', 'ls.id = sq_lead.reference', 'left')
         ->where($where)
         ->group_by('sq_lead.id')
         ->get();
-
         return $query->result();
     }
 
 
     function get_conditions() {
         $current_user = $this->session->get_userdata(); 
-
         $user_id = $this->input->get('user_id', TRUE); 
         $name = $this->input->get('name', TRUE); 
         $email = $this->input->get('email', TRUE); 
@@ -298,7 +296,6 @@ class Lead_model extends CI_Model {
         $create_lead_date = $this->input->get('lead_date', TRUE); 
         $assign_lead_date = $this->input->get('assign_date', TRUE);
         $status_date = $this->input->get('status_date', TRUE);
-
         if($current_user['role']<=2){
             $where = " sq_lead.active = '0' OR  sq_lead.active = '1'";
         }else{
@@ -344,17 +341,13 @@ class Lead_model extends CI_Model {
         if($current_user['role']>=2){
             $cid = $current_user['id'];
             $where.= " AND sq_lead.assign_to='$cid'";
-        }  
-        
+        }          
         return $where;
     }
   
     function search_leads($search_term){
         $where = ""; 
-        if($search_term=='new'){
-            $d = date('Y-m-d');
-            $where.= " AND DATE(sq_lead.followup_date) <= '$d' ";
-        }else if($search_term=='today'){
+        if($search_term=='today'){
             $d = date('Y-m-d');
             $where.= " AND DATE(sq_lead.followup_date) = '$d' "; 
         }
@@ -374,10 +367,11 @@ class Lead_model extends CI_Model {
     }
 
     function view_lead_details($id){
-        $query = $this->db->select("sq_lead.*, s.*, m.fname, m.lname")
+        $query = $this->db->select("sq_lead.*, s.*, m.fname, m.lname,ls.source_name")
         ->from('sq_lead')
         ->join('sq_status as s', 's.id = sq_lead.status', 'left')
         ->join('sq_members as m', 'm.id = sq_lead.assign_to', 'left')
+        ->join('sq_lead_source as ls', 'ls.id = sq_lead.reference', 'left')
         ->where('sq_lead.id',$id)
         ->get();
         //print_r($this->db->last_query());        
@@ -390,8 +384,7 @@ class Lead_model extends CI_Model {
     function fetch_all_counter(){
         $user = $this->session->get_userdata();
         $counter=[];
-        $counter['members']=$this->db->get_where("sq_members",['active'=>'1'])->num_rows();
-       
+        $counter['members']=$this->db->get_where("sq_members",['active'=>'1'])->num_rows();       
         if($user['role']<=3){
             $where = " (sq_lead.active = '0' OR sq_lead.active = 1) ";
         }
@@ -411,6 +404,20 @@ class Lead_model extends CI_Model {
         $query = $this->db->from('sq_status')->get();
         return $query->result_array();
     }
+    public function get_lead_sources() {
+        $query = $this->db->from('sq_lead_source')->get();
+        return $query->result_array();
+    }
+    
+    function get_source_count(){
+        $this->db->select("reference, count(*) as leads, ls.source_name, ls.bgcolor, ls.image");
+        $this->db->from('sq_lead');  
+        $this->db->join('sq_lead_source as ls','ls.id = sq_lead.reference','left');
+        $this->db->order_by('leads','ASC'); 
+        $this->db->group_by("reference");
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     function fetch_lead_status(){
         $this->db->select("status");
@@ -421,30 +428,19 @@ class Lead_model extends CI_Model {
     // Dashboard analysis data to be fetched 
     function get_leads_analysis($lead_status, $extra=null){
         $user = $this->session->get_userdata();        
-        if($extra!=='dumps'){
-            if($user['role']<=3){
-                $where = " (sq_lead.active = '0' OR  sq_lead.active = '1') ";
-            }
-            else if($user['role']==4){            
-                $where = " (sq_lead.active = '0' OR  sq_lead.active = '1') ";
-                $where .= " AND assign_to in (SELECT id FROM sq_members WHERE manager_id = ".$user['id'].") ";
-            }
-            else{
-                $where = " sq_lead.active = '1' ";
-                $where .= " AND assign_to = ".$user['id'];
-            }
+
+        if($extra =='delete'){
+            $where = " sq_lead.active = '0'"; 
         }else{
-            if($user['role']<=3){
-                $where = " sq_lead.active = '0' ";
-            }
-            else if($user['role']==4){            
-                $where = " sq_lead.active = '0' ";
-                $where .= " AND assign_to in (SELECT id FROM sq_members WHERE manager_id = ".$user['id'].") ";
-            }
-            else{
-                $where = " sq_lead.active = '0' ";
-                $where .= " AND assign_to = ".$user['id'];
-            }
+            $where = " sq_lead.active = '1'";
+            $where .= ' AND sq_lead.status ='.$lead_status; 
+        }
+        
+        if($user['role']==4){ 
+            $where .= " AND assign_to in (SELECT id FROM sq_members WHERE manager_id = ".$user['id'].") ";
+        }
+        else if($user['role']==5){
+            $where .= " AND assign_to = ".$user['id'];
         }
 
         if($extra == 'today'){
@@ -453,19 +449,16 @@ class Lead_model extends CI_Model {
         }else if($extra == 'future'){
             $d = date('Y-m-d');
             $where.= " AND sq_lead.followup_date > '$d'";
-        }elseif($extra =='attempted'){
+        }else if($extra =='attempted'){
             $d = date('Y-m-d');
-            $where.= " AND sq_lead.attempted > 0 AND sq_lead.followup_date <= '$d'";
+            $where.= " AND sq_lead.followup_date <= '$d' AND sq_lead.attempted > 0 ";
         }
-        if($extra!=='dumps'){
-            $where .= ' AND sq_lead.status ='.$lead_status; 
-        }         
+        
         $this->db->select("*");        
         $this->db->from('sq_lead');
         $this->db->where($where);
         //print_r($this->db->last_query());
         return $this->db->count_all_results();
-        
     }
 
     function new_leads($id)
@@ -498,7 +491,7 @@ class Lead_model extends CI_Model {
         return $this->db->count_all_results();
     }
     function get_sales_persons(){
-        $this->db->select("sq_members.id");
+        $this->db->select("sq_members.id,sq_members.fname,sq_members.lname");
         $this->db->from('sq_members');
         $this->db->where('active',1);
         $this->db->where('role',5); 
@@ -566,8 +559,7 @@ class Lead_model extends CI_Model {
             //print_r($assigned_leads_per_user);
             //print_r($last_lead);
             $er=[];
-            $max_leads = $this->config->item('max_leads');
-           
+            $max_leads = $this->config->item('max_leads');           
             foreach($assigned_leads_per_user as $g){
                 if($g['leads']<10){
                     array_push($er,$g);
@@ -588,7 +580,7 @@ class Lead_model extends CI_Model {
             $this->db->set('assign_date',date('Y-m-d')); 
             $this->db->set('followup_date',date('Y-m-d')); 
             $this->db->set('last_update',date('Y-m-d H:i:s')); 
-            $this->db->set('status_remark','Lead Assigned');      
+            //$this->db->set('status_remark','Lead Assigned');      
             $this->db->where('id', $id);
             $this->db->update('sq_lead');
             $lead_data = array('lead_id'=>$id, 'user_id'=>$assign_to,'activity_type'=>'Lead Assigned','lead_status'=>1,'activity_comment'=>'Lead Assigned','transfer_user_id'=>0);
